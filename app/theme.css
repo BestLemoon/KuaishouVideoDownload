@@ -1,0 +1,54 @@
+:root {
+  --background: 0 0% 100%;
+  --foreground: 240 10% 10%; /* 深灰色 */
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 10%;
+  --primary: 262 83% 58%; /* 紫色 */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 320 80% 86%; /* 淡粉色 */
+  --secondary-foreground: 262 83% 58%;
+  --muted: 240 20% 95%;
+  --muted-foreground: 240 10% 40%;
+  --accent: 300 100% 90%; /* 粉色 */
+  --accent-foreground: 262 83% 58%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 240 20% 90%;
+  --input: 240 20% 90%;
+  --ring: 262 83% 58%;
+  --radius: 0.5rem;
+  --chart-1: 262 83% 58%;
+  --chart-2: 320 80% 86%;
+  --chart-3: 300 100% 90%;
+  --chart-4: 262 100% 90%;
+  --chart-5: 262 83% 80%;
+}
+
+.dark {
+  --background: 240 10% 10%;
+  --foreground: 0 0% 100%;
+  --card: 240 10% 15%;
+  --card-foreground: 0 0% 100%;
+  --popover: 240 10% 15%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 262 83% 68%; /* 更亮的紫色 */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 320 80% 30%; /* 深粉色 */
+  --secondary-foreground: 0 0% 100%;
+  --muted: 240 10% 20%;
+  --muted-foreground: 0 0% 80%;
+  --accent: 300 100% 40%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 72.2% 50.6%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 240 10% 20%;
+  --input: 240 10% 20%;
+  --ring: 262 83% 68%;
+  --chart-1: 262 83% 68%;
+  --chart-2: 320 80% 30%;
+  --chart-3: 300 100% 40%;
+  --chart-4: 262 100% 40%;
+  --chart-5: 262 83% 60%;
+}

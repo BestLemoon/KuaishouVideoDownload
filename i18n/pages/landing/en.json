@@ -1,0 +1,656 @@
+{
+  "template": "shipany-template-one",
+  "theme": "light",
+  "header": {
+    "brand": {
+      "title": "TwitterDown",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "TwitterDown"
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "Features",
+          "url": "/#feature",
+          "icon": "HiOutlineSparkles"
+        },
+        {
+          "title": "Pricing",
+          "url": "/#pricing",
+          "icon": "MdPayment"
+        },
+        {
+          "title": "How It Works",
+          "url": "/#usage",
+          "icon": "BiCube"
+        }
+      ]
+    },
+    "buttons": [
+      {
+        "title": "Start Downloading",
+        "url": "/#pricing",
+        "target": "_self",
+        "variant": "link",
+        "icon": "RiArrowRightUpLine"
+      }
+    ],
+    "show_sign": true,
+    "show_theme": true,
+    "show_locale": true
+  },
+  "hero": {
+    "title": "Download Twitter Videos in Seconds",
+    "highlight_text": "Twitter Videos",
+    "description": "TwitterDown is the fastest way to download Twitter videos.<br/>Save and share your favorite Twitter content with just a few clicks.",
+    "announcement": {
+      "label": "NEW",
+      "title": "🎉 Now supports Twitter Spaces recordings",
+      "url": "/#feature"
+    },
+    "tip": "🔥 No login required, completely free to start",
+    "buttons": [
+      {
+        "title": "Start Downloading",
+        "icon": "RiDownloadCloud2Fill",
+        "url": "/#usage",
+        "target": "_self",
+        "variant": "default"
+      },
+      {
+        "title": "Learn More",
+        "icon": "RiInformationLine",
+        "url": "/#feature",
+        "target": "_self",
+        "variant": "outline"
+      }
+    ],
+    "show_happy_users": true,
+    "show_badge": false
+  },
+  "branding": {
+    "title": "TwitterDown works with all major platforms",
+    "items": [
+      {
+        "title": "Twitter",
+        "image": {
+          "src": "/imgs/logos/twitter.svg",
+          "alt": "Twitter"
+        }
+      },
+      {
+        "title": "Chrome",
+        "image": {
+          "src": "/imgs/logos/chrome.svg",
+          "alt": "Chrome"
+        }
+      },
+      {
+        "title": "Firefox",
+        "image": {
+          "src": "/imgs/logos/firefox.svg",
+          "alt": "Firefox"
+        }
+      },
+      {
+        "title": "Safari",
+        "image": {
+          "src": "/imgs/logos/safari.svg",
+          "alt": "Safari"
+        }
+      },
+      {
+        "title": "Edge",
+        "image": {
+          "src": "/imgs/logos/edge.svg",
+          "alt": "Edge"
+        }
+      }
+    ]
+  },
+  "introduce": {
+    "name": "introduce",
+    "title": "What is TwitterDown",
+    "label": "Introduce",
+    "description": "TwitterDown is a powerful tool that lets you download any Twitter video in high quality. Perfect for content creators, marketers, and casual users.",
+    "image": {
+      "src": "/imgs/features/1.png"
+    },
+    "items": [
+      {
+        "title": "Simple & Fast",
+        "description": "Just paste the Twitter URL and download your video in seconds. No complicated steps required.",
+        "icon": "RiTimerFlashLine"
+      },
+      {
+        "title": "High Quality Downloads",
+        "description": "Get the highest quality version of any Twitter video, maintaining the original resolution.",
+        "icon": "RiHdLine"
+      },
+      {
+        "title": "No Login Required",
+        "description": "Use TwitterDown without creating an account or sharing your Twitter credentials.",
+        "icon": "RiLockUnlockLine"
+      }
+    ]
+  },
+  "benefit": {
+    "name": "benefit",
+    "title": "Why Choose TwitterDown",
+    "label": "Benefits",
+    "description": "TwitterDown offers the fastest and most reliable way to download Twitter videos with features designed for both casual users and professionals.",
+    "items": [
+      {
+        "title": "Multiple Format Options",
+        "description": "Download videos in MP4, WebM, or GIF format to suit your specific needs and use cases.",
+        "icon": "RiFileList3Line",
+        "image": {
+          "src": "/imgs/features/2.png"
+        }
+      },
+      {
+        "title": "Batch Processing",
+        "description": "Save time by downloading multiple Twitter videos at once with our premium batch processing feature.",
+        "icon": "RiStackLine",
+        "image": {
+          "src": "/imgs/features/3.png"
+        }
+      },
+      {
+        "title": "Browser Extension",
+        "description": "Download videos directly while browsing Twitter with our convenient browser extension.",
+        "icon": "RiChromeLine",
+        "image": {
+          "src": "/imgs/features/4.png"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "name": "usage",
+    "title": "How to Use TwitterDown",
+    "description": "Download any Twitter video in three simple steps:",
+    "image": {
+      "src": "/imgs/features/1.png"
+    },
+    "image_position": "left",
+    "text_align": "center",
+    "items": [
+      {
+        "title": "Copy the URL",
+        "description": "Find the Twitter video you want to download and copy its URL from the address bar or share menu.",
+        "image": {
+          "src": "/imgs/features/5.png"
+        }
+      },
+      {
+        "title": "Paste & Process",
+        "description": "Paste the URL into TwitterDown and click the process button. Our system will analyze the video.",
+        "image": {
+          "src": "/imgs/features/6.png"
+        }
+      },
+      {
+        "title": "Download",
+        "description": "Choose your preferred quality and format, then click download. The video will be saved to your device.",
+        "image": {
+          "src": "/imgs/features/7.png"
+        }
+      }
+    ]
+  },
+  "feature": {
+    "name": "feature",
+    "title": "Key Features of TwitterDown",
+    "description": "Everything you need to download and manage Twitter videos efficiently.",
+    "items": [
+      {
+        "title": "High-Speed Downloads",
+        "description": "Our optimized servers ensure the fastest possible download speeds for all videos.",
+        "icon": "RiRocketLine"
+      },
+      {
+        "title": "Quality Selection",
+        "description": "Choose between different quality options to balance file size and video quality.",
+        "icon": "RiSettings4Line"
+      },
+      {
+        "title": "Audio Extraction",
+        "description": "Extract audio tracks from Twitter videos and save them as MP3 files.",
+        "icon": "RiMusic2Line"
+      },
+      {
+        "title": "Spaces Recording Downloads",
+        "description": "Download Twitter Spaces recordings for offline listening and archiving.",
+        "icon": "RiRecordCircleLine"
+      },
+      {
+        "title": "Video Trimming",
+        "description": "Premium users can trim videos before downloading to get exactly what they need.",
+        "icon": "RiScissorsCutLine"
+      },
+      {
+        "title": "Download History",
+        "description": "Keep track of your downloaded videos with a convenient history feature.",
+        "icon": "RiHistoryLine"
+      }
+    ]
+  },
+  "showcase": {
+    "name": "showcase",
+    "title": "See TwitterDown in Action",
+    "description": "Check out how others are using TwitterDown to save and share content.",
+    "items": [
+      {
+        "title": "Content Creators",
+        "description": "Download inspiration for your next project",
+        "url": "/#usage",
+        "target": "_self",
+        "image": {
+          "src": "/imgs/showcases/1.png"
+        }
+      },
+      {
+        "title": "Journalists",
+        "description": "Archive important news videos",
+        "url": "/#usage",
+        "target": "_self",
+        "image": {
+          "src": "/imgs/showcases/2.png"
+        }
+      },
+      {
+        "title": "Marketers",
+        "description": "Save competitor content for analysis",
+        "url": "/#usage",
+        "target": "_self",
+        "image": {
+          "src": "/imgs/showcases/3.png"
+        }
+      },
+      {
+        "title": "Educators",
+        "description": "Download educational content for classes",
+        "url": "/#usage",
+        "target": "_self",
+        "image": {
+          "src": "/imgs/showcases/4.png"
+        }
+      },
+      {
+        "title": "Researchers",
+        "description": "Archive videos for research purposes",
+        "url": "/#usage",
+        "target": "_self",
+        "image": {
+          "src": "/imgs/showcases/5.png"
+        }
+      },
+      {
+        "title": "Casual Users",
+        "description": "Save funny videos to share with friends",
+        "url": "/#usage",
+        "target": "_self",
+        "image": {
+          "src": "/imgs/showcases/6.png"
+        }
+      }
+    ]
+  },
+  "stats": {
+    "name": "stats",
+    "label": "Stats",
+    "title": "Trusted by Thousands",
+    "description": "Join the community of satisfied TwitterDown users.",
+    "icon": "FaRegHeart",
+    "items": [
+      {
+        "title": "Videos Downloaded",
+        "label": "1M+",
+        "description": "And counting"
+      },
+      {
+        "title": "Active Users",
+        "label": "50K+",
+        "description": "Monthly"
+      },
+      {
+        "title": "Average Download Time",
+        "label": "<5",
+        "description": "Seconds"
+      }
+    ]
+  },
+  "pricing": {
+    "name": "pricing",
+    "label": "Pricing",
+    "title": "Simple, Transparent Pricing",
+    "description": "Choose the plan that works best for your Twitter video downloading needs.",
+    "groups": [],
+    "items": [
+      {
+        "title": "Free",
+        "description": "Perfect for casual users",
+        "features_title": "Includes",
+        "features": [
+          "Download Twitter videos in standard quality",
+          "MP4 format downloads",
+          "5 downloads per day",
+          "Basic download history",
+          "Web app access"
+        ],
+        "interval": "monthly",
+        "amount": 0,
+        "cn_amount": 0,
+        "currency": "USD",
+        "price": "$0",
+        "original_price": "$0",
+        "unit": "USD",
+        "is_featured": false,
+        "tip": "No credit card required",
+        "button": {
+          "title": "Start Free",
+          "url": "/#usage",
+          "icon": "RiDownloadCloud2Fill"
+        },
+        "product_id": "free",
+        "product_name": "TwitterDown Free",
+        "credits": 5,
+        "valid_months": 1
+      },
+      {
+        "title": "Pro",
+        "description": "For regular content savers",
+        "label": "Popular",
+        "features_title": "Everything in Free, plus",
+        "features": [
+          "Unlimited downloads",
+          "High-quality video downloads",
+          "Multiple format options (MP4, WebM, GIF)",
+          "Audio extraction (MP3)",
+          "Download history with organization",
+          "Browser extension",
+          "Email support"
+        ],
+        "interval": "monthly",
+        "amount": 499,
+        "cn_amount": 3499,
+        "currency": "USD",
+        "price": "$4.99",
+        "original_price": "$7.99",
+        "unit": "USD",
+        "is_featured": true,
+        "tip": "Most popular choice for regular users",
+        "button": {
+          "title": "Get Pro",
+          "url": "/#pricing",
+          "icon": "RiVipCrownLine"
+        },
+        "product_id": "pro",
+        "product_name": "TwitterDown Pro",
+        "credits": 999,
+        "valid_months": 1
+      },
+      {
+        "title": "Business",
+        "description": "For professionals and teams",
+        "features_title": "Everything in Pro, plus",
+        "features": [
+          "Batch downloading",
+          "Video trimming before download",
+          "Team accounts (up to 5 users)",
+          "API access",
+          "Twitter Spaces recording downloads",
+          "Advanced analytics",
+          "Priority support"
+        ],
+        "interval": "monthly",
+        "amount": 1499,
+        "cn_amount": 9999,
+        "currency": "USD",
+        "price": "$14.99",
+        "original_price": "$19.99",
+        "unit": "USD",
+        "is_featured": false,
+        "tip": "Perfect for content creators and marketing teams",
+        "button": {
+          "title": "Get Business",
+          "url": "/#pricing",
+          "icon": "RiBriefcase4Line"
+        },
+        "product_id": "business",
+        "product_name": "TwitterDown Business",
+        "credits": 9999,
+        "valid_months": 1
+      }
+    ]
+  },
+  "testimonial": {
+    "name": "testimonial",
+    "label": "Testimonial",
+    "title": "What Users Say About TwitterDown",
+    "description": "Hear from people who use TwitterDown to download and save Twitter videos.",
+    "icon": "GoThumbsup",
+    "items": [
+      {
+        "title": "Sarah Johnson",
+        "label": "Content Creator",
+        "description": "TwitterDown has become an essential tool in my content creation workflow. The high-quality downloads and fast processing save me so much time!",
+        "image": {
+          "src": "/imgs/users/1.png"
+        }
+      },
+      {
+        "title": "Mark Chen",
+        "label": "Digital Marketer",
+        "description": "The batch processing feature is a game-changer for our marketing team. We can easily archive competitor content for analysis and inspiration.",
+        "image": {
+          "src": "/imgs/users/2.png"
+        }
+      },
+      {
+        "title": "Jessica Rodriguez",
+        "label": "Journalist",
+        "description": "As a journalist, I need to quickly save important videos before they disappear. TwitterDown's speed and reliability have been invaluable for my work.",
+        "image": {
+          "src": "/imgs/users/3.png"
+        }
+      },
+      {
+        "title": "David Kim",
+        "label": "Teacher",
+        "description": "I use TwitterDown to save educational videos for my students. The quality options help me manage storage space while maintaining clarity.",
+        "image": {
+          "src": "/imgs/users/4.png"
+        }
+      },
+      {
+        "title": "Emily Wilson",
+        "label": "Social Media Manager",
+        "description": "The browser extension makes downloading videos incredibly convenient. I can save inspiration with just one click while browsing Twitter.",
+        "image": {
+          "src": "/imgs/users/5.png"
+        }
+      },
+      {
+        "title": "Michael Taylor",
+        "label": "Researcher",
+        "description": "TwitterDown's history feature helps me organize downloaded videos by project. It's become an essential part of my research workflow.",
+        "image": {
+          "src": "/imgs/users/6.png"
+        }
+      }
+    ]
+  },
+  "faq": {
+    "name": "faq",
+    "label": "FAQ",
+    "title": "Frequently Asked Questions",
+    "description": "Have another question? Contact our support team for assistance.",
+    "items": [
+      {
+        "title": "Is it legal to download Twitter videos?",
+        "description": "TwitterDown is designed for personal use. While downloading videos for personal viewing is generally acceptable, please respect copyright laws and the original creator's rights. Do not republish or monetize content without proper permission."
+      },
+      {
+        "title": "Do I need a Twitter account to use TwitterDown?",
+        "description": "No, you don't need a Twitter account to use TwitterDown. Simply copy the URL of the video you want to download and paste it into our tool."
+      },
+      {
+        "title": "What video formats does TwitterDown support?",
+        "description": "Our free plan supports MP4 downloads. Pro and Business plans offer additional formats including WebM and GIF, as well as MP3 audio extraction."
+      },
+      {
+        "title": "Is there a limit to how many videos I can download?",
+        "description": "Free users can download up to 5 videos per day. Pro and Business users enjoy unlimited downloads with no daily restrictions."
+      },
+      {
+        "title": "Can I download private Twitter videos?",
+        "description": "No, TwitterDown can only download publicly available videos. Videos from private accounts or direct messages cannot be accessed."
+      },
+      {
+        "title": "How do I use the browser extension?",
+        "description": "After installing our browser extension (available for Pro and Business users), you'll see a download button appear when you hover over Twitter videos. Click it to download directly without leaving Twitter."
+      }
+    ]
+  },
+  "cta": {
+    "name": "cta",
+    "title": "Start Downloading Twitter Videos Today",
+    "description": "Join thousands of users who trust TwitterDown for fast, high-quality video downloads.",
+    "buttons": [
+      {
+        "title": "Start Free",
+        "url": "/#usage",
+        "target": "_self",
+        "icon": "RiDownloadCloud2Fill"
+      },
+      {
+        "title": "View Pricing",
+        "url": "/#pricing",
+        "target": "_self",
+        "variant": "outline"
+      }
+    ]
+  },
+  "footer": {
+    "name": "footer",
+    "brand": {
+      "title": "TwitterDown",
+      "description": "The fastest way to download Twitter videos in high quality. Save and share your favorite Twitter content with just a few clicks.",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "TwitterDown"
+      },
+      "url": "/"
+    },
+    "copyright": "© 2025 • TwitterDown All rights reserved.",
+    "nav": {
+      "items": [
+        {
+          "title": "Product",
+          "children": [
+            {
+              "title": "Features",
+              "url": "/#feature",
+              "target": "_self"
+            },
+            {
+              "title": "How It Works",
+              "url": "/#usage",
+              "target": "_self"
+            },
+            {
+              "title": "Pricing",
+              "url": "/#pricing",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "Resources",
+          "children": [
+            {
+              "title": "Help Center",
+              "url": "/help",
+              "target": "_self"
+            },
+            {
+              "title": "API Documentation",
+              "url": "/api-docs",
+              "target": "_self"
+            },
+            {
+              "title": "Browser Extensions",
+              "url": "/extensions",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "Company",
+          "children": [
+            {
+              "title": "About Us",
+              "url": "/about",
+              "target": "_self"
+            },
+            {
+              "title": "Blog",
+              "url": "/blog",
+              "target": "_self"
+            },
+            {
+              "title": "Contact",
+              "url": "/contact",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    },
+    "social": {
+      "items": [
+        {
+          "title": "Twitter",
+          "icon": "RiTwitterXFill",
+          "url": "https://twitter.com/twitterdown",
+          "target": "_blank"
+        },
+        {
+          "title": "Github",
+          "icon": "RiGithubFill",
+          "url": "https://github.com/twitterdown",
+          "target": "_blank"
+        },
+        {
+          "title": "Discord",
+          "icon": "RiDiscordFill",
+          "url": "https://discord.gg/twitterdown",
+          "target": "_blank"
+        },
+        {
+          "title": "Email",
+          "icon": "RiMailLine",
+          "url": "mailto:support@twitterdown.com",
+          "target": "_self"
+        }
+      ]
+    },
+    "agreement": {
+      "items": [
+        {
+          "title": "Privacy Policy",
+          "url": "/privacy-policy"
+        },
+        {
+          "title": "Terms of Service",
+          "url": "/terms-of-service"
+        }
+      ]
+    }
+  }
+}
