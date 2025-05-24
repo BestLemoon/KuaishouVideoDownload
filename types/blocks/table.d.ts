@@ -5,6 +5,7 @@ export interface TableColumn {
   options?: any[];
   className?: string;
   callback?: (item: any) => any;
+  allowHtml?: boolean;
 }
 
 export interface Table {

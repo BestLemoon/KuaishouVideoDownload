@@ -1,0 +1,506 @@
+{
+    "template": "shipany-template-one",
+    "theme": "light",
+    "header": {
+      "brand": {
+        "title": "TwitterDown",
+        "logo": {
+          "src": "/logo.png",
+          "alt": "TwitterDown"
+        },
+        "url": "/"
+      },
+      "nav": {
+        "items": [
+          {
+            "title": "機能",
+            "url": "/#feature",
+            "icon": "HiOutlineSparkles"
+          },
+          {
+            "title": "料金",
+            "url": "/#pricing",
+            "icon": "MdPayment"
+          },
+          {
+            "title": "使い方",
+            "url": "/#usage",
+            "icon": "BiCube"
+          },
+          {
+            "title": "ブログ",
+            "url": "/ja/posts",
+            "icon": "RiArticleLine"
+          }
+        ]
+      },
+      "buttons": [
+        {
+          "title": "ダウンロードを開始",
+          "url": "/#pricing",
+          "target": "_self",
+          "variant": "link",
+          "icon": "RiArrowRightUpLine"
+        }
+      ],
+      "show_sign": true,
+      "show_theme": true,
+      "show_locale": true
+    },
+    "hero": {
+      "title": "Twitter動画を数秒でダウンロード",
+      "highlight_text": "Twitter動画",
+      "description": "TwitterDownはTwitter動画をダウンロードする最速の方法です。<br/>数クリックでお気に入りのTwitterコンテンツを保存して共有できます。",
+      "announcement": {
+        "label": "NEW",
+        "title": "🎉 高品質のTwitter動画ダウンロードに対応しました",
+        "url": "/#pricing"
+      },
+      "tip": "🔥 ログイン不要、完全に無料で開始できます",
+      "buttons": [
+        {
+          "title": "ダウンロードを開始",
+          "icon": "RiDownloadCloud2Fill",
+          "url": "/#usage",
+          "target": "_self",
+          "variant": "default"
+        },
+        {
+          "title": "詳細を見る",
+          "icon": "RiInformationLine",
+          "url": "/#feature",
+          "target": "_self",
+          "variant": "outline"
+        }
+      ],
+      "show_happy_users": true,
+      "show_badge": false
+    },
+    "introduce": {
+      "name": "introduce",
+      "title": "TwitterDownとは",
+      "label": "導入",
+      "description": "TwitterDownは、どんなTwitter動画でも高品質でダウンロードできる強力なツールです。コンテンツクリエーター、マーケター、一般ユーザーに最適です。",
+      "image": {
+        "src": "/imgs/features/1.png"
+      },
+      "items": [
+        {
+          "title": "シンプル＆高速",
+          "description": "TwitterのURLを貼り付けるだけで、数秒で動画をダウンロードできます。複雑な手順は不要です。",
+          "icon": "RiTimerFlashLine"
+        },
+        {
+          "title": "高品質ダウンロード",
+          "description": "元の解像度を維持したまま、Twitter動画の最高品質バージョンを入手できます。",
+          "icon": "RiHdLine"
+        },
+        {
+          "title": "ログイン不要",
+          "description": "アカウントを作成したり、Twitterの認証情報を共有したりすることなくTwitterDownを使用できます。",
+          "icon": "RiLockUnlockLine"
+        }
+      ]
+    },
+    "benefit": {
+      "name": "benefit",
+      "title": "TwitterDownを選ぶ理由",
+      "label": "メリット",
+      "description": "TwitterDownは、一般ユーザーからプロまで、両方のために設計された機能で、Twitter動画をダウンロードする最速かつ最も信頼性の高い方法を提供します。",
+      "items": [
+        {
+          "title": "高品質MP4ダウンロード",
+          "description": "複数の品質オプションと18歳以上のコンテンツ制限を回避する機能を備えたプロフェッショナルなMP4形式のダウンロードで、特定のニーズを満たします。",
+          "icon": "RiFileList3Line",
+          "image": {
+            "src": "/imgs/features/2.png"
+          }
+        },
+        {
+          "title": "バッチ処理",
+          "description": "プレミアムなバッチ処理機能で、複数のTwitter動画を一度にダウンロードして時間を節約します。",
+          "icon": "RiStackLine",
+          "image": {
+            "src": "/imgs/features/3.png"
+          }
+        },
+        {
+          "title": "ダウンロード履歴",
+          "description": "ダウンロード履歴を自動的に追跡し、以前にダウンロードした動画ファイルを簡単に管理・取得できます。",
+          "icon": "RiHistoryLine",
+          "image": {
+            "src": "/imgs/features/4.png"
+          }
+        }
+      ]
+    },
+    "usage": {
+      "name": "usage",
+      "title": "TwitterDownの使い方",
+      "description": "4つの簡単なステップでTwitter動画をダウンロード：",
+      "image": {
+        "src": "/imgs/features/1.png"
+      },
+      "image_position": "left",
+      "text_align": "center",
+      "items": [
+        {
+          "title": "ツイートを見つける",
+          "description": "Twitterでダウンロードしたい動画が含まれているツイートを見つけます。"
+        },
+        {
+          "title": "リンクをコピーする",
+          "description": "共有アイコンをクリックし、「リンクをコピー」を選択してツイートリンクをコピーします。"
+        },
+        {
+          "title": "貼り付けて解析",
+          "description": "ツイートリンクをTwitterDownの入力ボックスに貼り付け、「ダウンロード」ボタンをクリックします。"
+        },
+        {
+          "title": "形式を選択してダウンロード",
+          "description": "お好みのMP4形式と品質を選択し、デバイスにダウンロードします。"
+        }
+      ]
+    },
+    "feature": {
+      "name": "feature",
+      "title": "TwitterDownの主な機能",
+      "description": "すべてのニーズを満たす、シンプルで効率的なTwitter動画ダウンローダー。",
+      "items": [
+        {
+          "title": "高速解析",
+          "description": "Twitter動画リンクをインテリジェントに解析し、数秒以内にダウンロードアドレスを取得します。",
+          "icon": "RiRocketLine"
+        },
+        {
+          "title": "品質選択",
+          "description": "標準から高解像度HDまで、複数の品質オプションをサポートし、さまざまなニーズとストレージスペースに対応します。",
+          "icon": "RiSettings4Line"
+        },
+        {
+          "title": "高速ダウンロード",
+          "description": "最適化されたダウンロードサーバーは最速のダウンロード速度を保証し、貴重な時間を節約します。",
+          "icon": "RiDownloadCloud2Line"
+        },
+        {
+          "title": "MP4形式ダウンロード",
+          "description": "すべてのデバイスとプラットフォームに対応したプロフェッショナルなMP4形式のダウンロードで、最高の再生体験を保証します。",
+          "icon": "RiFileList3Line"
+        },
+        {
+          "title": "バッチダウンロード",
+          "description": "上級ユーザーは複数のTwitter動画を一括で処理でき、作業効率を大幅に向上させます。",
+          "icon": "RiStackLine"
+        },
+        {
+          "title": "完全無料",
+          "description": "アカウント登録不要、隠れた費用や使用制限なしで完全に無料で利用できます。",
+          "icon": "RiGiftLine"
+        }
+      ]
+    },
+    "stats": {
+      "name": "stats",
+      "label": "統計",
+      "title": "何千もの信頼",
+      "description": "満足しているTwitterDownユーザーのコミュニティに参加しましょう。",
+      "icon": "FaRegHeart",
+      "items": [
+        {
+          "title": "ダウンロードされた動画",
+          "label": "100万以上",
+          "description": "そして増加中"
+        },
+        {
+          "title": "アクティブユーザー",
+          "label": "5万人以上",
+          "description": "月間"
+        },
+        {
+          "title": "平均ダウンロード時間",
+          "label": "5秒未満",
+          "description": "秒"
+        }
+      ]
+    },
+    "pricing": {
+      "name": "pricing",
+      "label": "クレジットパック",
+      "title": "適切なクレジットパックを選択",
+      "description": "クレジットベースの利用モデル：HD動画（720p以上）は2クレジット、SD動画は1クレジット。",
+      "groups": [],
+      "items": [
+        {
+          "title": "ベーシック",
+          "description": "新規ユーザーがお試しに最適",
+          "features_title": "含まれるもの",
+          "features": [
+            "100クレジット（新規ユーザーは無料）",
+            "HD動画ダウンロード（720p以上）は2クレジット",
+            "SD動画ダウンロードは1クレジット",
+            "MP4形式ダウンロード",
+            "基本的なダウンロード履歴",
+            "ウェブアプリへのアクセス",
+            "永久有効"
+          ],
+          "interval": "one-time",
+          "amount": 0,
+          "currency": "USD",
+          "price": "無料",
+          "original_price": "",
+          "unit": "クレジット",
+          "is_featured": false,
+          "tip": "新規ユーザーは無料",
+          "button": {
+            "title": "無料で開始",
+            "url": "/#usage",
+            "icon": "RiDownloadCloud2Fill"
+          },
+          "product_id": "basic",
+          "product_name": "TwitterDown ベーシック",
+          "credits": 100,
+          "valid_months": 9999
+        },
+        {
+          "title": "スタンダードクレジットパック",
+          "description": "一般ユーザー向け",
+          "label": "人気",
+          "features_title": "含まれるもの",
+          "features": [
+            "500クレジット",
+            "HD動画約250本ダウンロード",
+            "SD動画約500本ダウンロード",
+            "永久有効",
+            "バッチダウンロード機能",
+            "優先ダウンロード速度"
+          ],
+          "interval": "one-time",
+          "amount": 199,
+          "currency": "USD",
+          "price": "$1.99",
+          "original_price": "$3.99",
+          "unit": "パック",
+          "is_featured": true,
+          "tip": "最も人気のある選択肢",
+          "button": {
+            "title": "スタンダードパックを入手",
+            "url": "/#pricing",
+            "icon": "RiVipCrownLine"
+          },
+          "product_id": "standard",
+          "product_name": "TwitterDown スタンダードクレジットパック",
+          "credits": 500,
+          "valid_months": 9999
+        },
+        {
+          "title": "プロフェッショナルクレジットパック",
+          "description": "ヘビーユーザーやクリエイター向け",
+          "features_title": "含まれるもの",
+          "features": [
+            "2000クレジット",
+            "HD動画約1000本ダウンロード",
+            "SD動画約2000本ダウンロード",
+            "永久有効",
+            "APIアクセス",
+            "優先カスタマーサポート"
+          ],
+          "interval": "one-time",
+          "amount": 599,
+          "currency": "USD",
+          "price": "$5.99",
+          "original_price": "$11.99",
+          "unit": "パック",
+          "is_featured": false,
+          "tip": "最も価値のある選択肢",
+          "button": {
+            "title": "プロフェッショナルパックを入手",
+            "url": "/#pricing",
+            "icon": "RiBriefcase4Line"
+          },
+          "product_id": "professional",
+          "product_name": "TwitterDown プロフェッショナルクレジットパック",
+          "credits": 2000,
+          "valid_months": 9999
+        },
+        {
+          "title": "エンタープライズクレジットパック",
+          "description": "ビジネスや開発者向け",
+          "features_title": "含まれるもの",
+          "features": [
+            "10000クレジット",
+            "HD動画約5000本ダウンロード",
+            "SD動画約10000本ダウンロード",
+            "永久有効",
+            "フルAPIアクセス",
+            "専用技術サポート"
+          ],
+          "interval": "one-time",
+          "amount": 1999,
+          "currency": "USD",
+          "price": "$19.99",
+          "original_price": "$39.99",
+          "unit": "パック",
+          "is_featured": false,
+          "tip": "エンタープライズレベルのサービス",
+          "button": {
+            "title": "エンタープライズパックを入手",
+            "url": "/#pricing",
+            "icon": "RiBuilding4Line"
+          },
+          "product_id": "enterprise",
+          "product_name": "TwitterDown エンタープライズクレジットパック",
+          "credits": 10000,
+          "valid_months": 9999
+        }
+      ]
+    },
+    "testimonial": {
+      "name": "testimonial",
+      "label": "お客様の声",
+      "title": "TwitterDownについてユーザーが語る",
+      "description": "TwitterDownを使ってTwitter動画をダウンロード・保存している人々の声を聞いてください。",
+      "icon": "GoThumbsup",
+      "items": [
+        {
+          "title": "Sarah Johnson",
+          "label": "コンテンツクリエーター",
+          "description": "TwitterDownは、私のコンテンツ作成ワークフローにおいて不可欠なツールとなりました。高品質のダウンロードと高速処理により、多くの時間を節約できます！",
+          "image": {
+            "src": "/imgs/users/1.png"
+          }
+        },
+        {
+          "title": "Mark Chen",
+          "label": "デジタルマーケター",
+          "description": "Proプランのバッチダウンロード機能は、当社のマーケティングチームにとって画期的なものです。分析のために複数の動画を簡単にアーカイブできます。",
+          "image": {
+            "src": "/imgs/users/2.png"
+          }
+        },
+        {
+          "title": "Jessica Rodriguez",
+          "label": "ジャーナリスト",
+          "description": "ジャーナリストとして、重要な動画が消える前にすばやく保存する必要があります。TwitterDownの速度と信頼性は、私の仕事にとって非常に貴重です。",
+          "image": {
+            "src": "/imgs/users/3.png"
+          }
+        },
+        {
+          "title": "David Kim",
+          "label": "教師",
+          "description": "私はTwitterDownを使って、生徒向けの教育動画を保存しています。品質オプションは、鮮明さを保ちながらストレージスペースを管理するのに役立ちます。",
+          "image": {
+            "src": "/imgs/users/4.png"
+          }
+        },
+        {
+          "title": "Emily Wilson",
+          "label": "ソーシャルメディアマネージャー",
+          "description": "TwitterDownのウェブインターフェースは非常にクリーンでユーザーフレンドリーです。簡単にリンクを貼り付けて、シンプルかつ効率的な操作で動画をダウンロードできます。",
+          "image": {
+            "src": "/imgs/users/5.png"
+          }
+        },
+        {
+          "title": "Michael Taylor",
+          "label": "研究者",
+          "description": "TwitterDownの履歴機能は、プロジェクトごとにダウンロードした動画を整理するのに役立ちます。私の研究ワークフローの不可欠な一部となっています。",
+          "image": {
+            "src": "/imgs/users/6.png"
+          }
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "よくある質問",
+      "title": "よくある質問",
+      "description": "他に質問がありますか？サポートチームにお問い合わせください。",
+      "items": [
+        {
+          "title": "Twitter動画をダウンロードするのは合法ですか？",
+          "description": "TwitterDownは個人利用のために設計されています。個人的な視聴のために動画をダウンロードすることは一般的に許容されますが、著作権法と元のクリエイターの権利を尊重してください。適切な許可なくコンテンツを再公開したり、収益化したりしないでください。"
+        },
+        {
+          "title": "TwitterDownを使用するにはTwitterアカウントが必要ですか？",
+          "description": "いいえ、TwitterDownを使用するためにTwitterアカウントは必要ありません。ダウンロードしたい動画のURLをコピーして、当社のツールに貼り付けるだけです。"
+        },
+        {
+          "title": "TwitterDownはどの動画形式をサポートしていますか？",
+          "description": "TwitterDownはMP4形式のダウンロードをサポートしており、これはすべてのデバイスとプラットフォームで動作する最も汎用性が高く互換性のある動画形式です。"
+        },
+        {
+          "title": "ダウンロードできる動画の数に制限はありますか？",
+          "description": "無料ユーザーは1日あたり最大5本の動画をダウンロードできます。Proユーザーは一括ダウンロードを実行できます。ビジネスユーザーは制限なしで完全に無制限のダウンロードを楽しむことができます。"
+        },
+        {
+          "title": "プライベートなTwitter動画をダウンロードできますか？",
+          "description": "いいえ、TwitterDownは公開されている動画のみをダウンロードできます。プライベートアカウントやダイレクトメッセージからの動画はアクセスできません。"
+        },
+        {
+          "title": "適切な動画品質を選択するにはどうすればよいですか？",
+          "description": "ニーズに応じて品質を選択できます。HDはアーカイブや編集に最適で、標準品質は素早いプレビューやストレージスペースの節約に最適です。複数の解像度オプションから選択できます。"
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "今日からTwitter動画のダウンロードを始めましょう",
+      "description": "高速で高品質な動画ダウンロードのためにTwitterDownを信頼している何千ものユーザーに参加しましょう。",
+      "buttons": [
+        {
+          "title": "無料で開始",
+          "url": "/#usage",
+          "target": "_self",
+          "icon": "RiDownloadCloud2Fill"
+        },
+        {
+          "title": "料金を見る",
+          "url": "/#pricing",
+          "target": "_self",
+          "variant": "outline"
+        }
+      ]
+    },
+    "footer": {
+      "name": "footer",
+      "brand": {
+        "title": "TwitterDown",
+        "description": "Twitter動画を高品質でダウンロードする最速の方法。数クリックでお気に入りのTwitterコンテンツを保存して共有できます。",
+        "logo": {
+          "src": "/logo.png",
+          "alt": "TwitterDown"
+        },
+        "url": "/"
+      },
+      "copyright": "© 2025 • TwitterDown 無断複写・転載を禁じます。",
+      "social": {
+        "items": [
+          {
+            "title": "Twitter",
+            "icon": "RiTwitterXFill",
+            "url": "https://twitter.com/Real_Jewel_AI",
+            "target": "_blank"
+          },
+          {
+            "title": "メール",
+            "icon": "RiMailLine",
+            "url": "mailto:support@twitterdown.com",
+            "target": "_self"
+          }
+        ]
+      },
+      "agreement": {
+        "items": [
+          {
+            "title": "プライバシーポリシー",
+            "url": "/privacy-policy"
+          },
+          {
+            "title": "利用規約",
+            "url": "/terms-of-service"
+          }
+        ]
+      }
+    }
+  }

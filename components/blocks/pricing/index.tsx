@@ -12,6 +12,33 @@ import { Label } from "@/components/ui/label";
 import { loadStripe } from "@stripe/stripe-js";
 import { toast } from "sonner";
 import { useAppContext } from "@/contexts/app";
+import { useLocale } from "next-intl";
+
+// 格式化价格显示的辅助函数
+const formatPriceDisplay = (price: string, locale: string) => {
+  // 如果价格包含货币符号，分离数字和符号
+  const priceMatch = price.match(/^([¥$€£₹]?)(.+)$/);
+  if (priceMatch) {
+    const [, currency, amount] = priceMatch;
+    return {
+      currency: currency || "",
+      amount: amount,
+      fullPrice: price
+    };
+  }
+  
+  return {
+    currency: "",
+    amount: price,
+    fullPrice: price
+  };
+};
+
+// 根据语言获取货币符号位置（前置或后置）
+const getCurrencyPosition = (locale: string) => {
+  const prefixCurrencies = ["en", "zh", "ja", "ko"];
+  return prefixCurrencies.includes(locale) ? "prefix" : "suffix";
+};
 
 export default function Pricing({ pricing }: { pricing: PricingType }) {
   if (pricing.disabled) {
@@ -19,6 +46,7 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
   }
 
   const { user, setShowSignModal } = useAppContext();
+  const locale = useLocale();
 
   const [group, setGroup] = useState(pricing.groups?.[0]?.name);
   const [isLoading, setIsLoading] = useState(false);
@@ -151,13 +179,7 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
               </RadioGroup>
             </div>
           )}
-          <div
-            className={`md:min-w-96 mt-0 grid gap-6 md:grid-cols-${
-              pricing.items?.filter(
-                (item) => !item.group || item.group === group
-              )?.length
-            }`}
-          >
+          <div className="w-full mt-0 grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
             {pricing.items?.map((item, index) => {
               if (item.group && item.group !== group) {
                 return null;
@@ -181,31 +203,48 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
                           </h3>
                         )}
                         <div className="flex-1"></div>
-                        {item.label && (
-                          <Badge
-                            variant="outline"
-                            className="border-primary bg-primary px-1.5 text-primary-foreground"
-                          >
-                            {item.label}
-                          </Badge>
-                        )}
                       </div>
-                      <div className="flex items-end gap-2 mb-4">
+                      <div className="flex flex-col items-start gap-2 mb-6">
                         {item.original_price && (
-                          <span className="text-xl text-muted-foreground font-semibold line-through">
-                            {item.original_price}
-                          </span>
+                          <div className="flex items-center gap-1">
+                            <span className="text-lg text-muted-foreground font-medium line-through">
+                              {item.original_price}
+                            </span>
+                          </div>
                         )}
-                        {item.price && (
-                          <span className="text-5xl font-semibold">
-                            {item.price}
-                          </span>
-                        )}
-                        {item.unit && (
-                          <span className="block font-semibold">
-                            {item.unit}
-                          </span>
-                        )}
+                        <div className="flex flex-col items-start">
+                          {item.price && (
+                            <div className="flex items-baseline gap-1 mb-1">
+                              {(() => {
+                                const { currency, amount } = formatPriceDisplay(item.price, locale);
+                                const currencyPosition = getCurrencyPosition(locale);
+                                
+                                return (
+                                  <>
+                                    {currencyPosition === "prefix" && currency && (
+                                      <span className="text-2xl font-bold text-primary">
+                                        {currency}
+                                      </span>
+                                    )}
+                                    <span className="text-4xl md:text-5xl font-bold leading-none">
+                                      {amount}
+                                    </span>
+                                    {currencyPosition === "suffix" && currency && (
+                                      <span className="text-2xl font-bold text-primary">
+                                        {currency}
+                                      </span>
+                                    )}
+                                  </>
+                                );
+                              })()}
+                            </div>
+                          )}
+                          {item.unit && (
+                            <span className="text-sm font-medium text-muted-foreground leading-tight max-w-full break-words">
+                              {item.unit}
+                            </span>
+                          )}
+                        </div>
                       </div>
                       {item.description && (
                         <p className="text-muted-foreground">

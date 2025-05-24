@@ -1,10 +1,12 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import HappyUsers from "./happy-users";
 import HeroBg from "./bg";
 import { Hero as HeroType } from "@/types/blocks/hero";
 import Icon from "@/components/icon";
 import Link from "next/link";
+import { DownloadTabs } from "@/components/downloads";
 
 export default function Hero({ hero }: { hero: HeroType }) {
   if (hero.disabled) {
@@ -45,7 +47,7 @@ export default function Hero({ hero }: { hero: HeroType }) {
             )}
 
             {texts && texts.length > 1 ? (
-              <h1 className="mx-auto mb-3 mt-4 max-w-3xl text-balance text-4xl font-bold lg:mb-7 lg:text-7xl">
+              <h1 className="mx-auto mb-3 mt-4 max-w-4xl text-balance text-4xl font-bold lg:mb-7 lg:text-7xl">
                 {texts[0]}
                 <span className="bg-gradient-to-r from-primary via-primary to-primary bg-clip-text text-transparent">
                   {highlightText}
@@ -53,40 +55,20 @@ export default function Hero({ hero }: { hero: HeroType }) {
                 {texts[1]}
               </h1>
             ) : (
-              <h1 className="mx-auto mb-3 mt-4 max-w-3xl text-balance text-4xl font-bold lg:mb-7 lg:text-7xl">
+              <h1 className="mx-auto mb-3 mt-4 max-w-4xl text-balance text-4xl font-bold lg:mb-7 lg:text-7xl">
                 {hero.title}
               </h1>
             )}
 
             <p
-              className="m mx-auto max-w-3xl text-muted-foreground lg:text-xl"
+              className="m mx-auto max-w-4xl text-muted-foreground lg:text-xl"
               dangerouslySetInnerHTML={{ __html: hero.description || "" }}
             />
-            {hero.buttons && (
-              <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-                {hero.buttons.map((item, i) => {
-                  return (
-                    <Link
-                      key={i}
-                      href={item.url || ""}
-                      target={item.target || ""}
-                      className="flex items-center"
-                    >
-                      <Button
-                        className="w-full"
-                        size="lg"
-                        variant={item.variant || "default"}
-                      >
-                        {item.title}
-                        {item.icon && (
-                          <Icon name={item.icon} className="ml-1" />
-                        )}
-                      </Button>
-                    </Link>
-                  );
-                })}
-              </div>
-            )}
+            
+            <div className="mx-auto mt-8 max-w-4xl">
+              <DownloadTabs />
+            </div>
+            
             {hero.tip && (
               <p className="mt-8 text-md text-muted-foreground">{hero.tip}</p>
             )}

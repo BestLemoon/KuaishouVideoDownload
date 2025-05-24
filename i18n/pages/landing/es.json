@@ -1,0 +1,506 @@
+{
+  "template": "shipany-template-one",
+  "theme": "light",
+  "header": {
+    "brand": {
+      "title": "TwitterDown",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "TwitterDown"
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "Características",
+          "url": "/#feature",
+          "icon": "HiOutlineSparkles"
+        },
+        {
+          "title": "Precios",
+          "url": "/#pricing",
+          "icon": "MdPayment"
+        },
+        {
+          "title": "Cómo funciona",
+          "url": "/#usage",
+          "icon": "BiCube"
+        },
+        {
+          "title": "Blog",
+          "url": "/es/posts",
+          "icon": "RiArticleLine"
+        }
+      ]
+    },
+    "buttons": [
+      {
+        "title": "Empezar a descargar",
+        "url": "/#pricing",
+        "target": "_self",
+        "variant": "link",
+        "icon": "RiArrowRightUpLine"
+      }
+    ],
+    "show_sign": true,
+    "show_theme": true,
+    "show_locale": true
+  },
+  "hero": {
+    "title": "Descarga Videos de Twitter en Segundos",
+    "highlight_text": "Videos de Twitter",
+    "description": "TwitterDown es la forma más rápida de descargar videos de Twitter.<br/>Guarda y comparte tu contenido favorito de Twitter con solo unos pocos clics.",
+    "announcement": {
+      "label": "NUEVO",
+      "title": "🎉 Ahora soporta la descarga de videos de Twitter en alta calidad",
+      "url": "/#pricing"
+    },
+    "tip": "🔥 No se requiere inicio de sesión, completamente gratis para empezar",
+    "buttons": [
+      {
+        "title": "Empezar a descargar",
+        "icon": "RiDownloadCloud2Fill",
+        "url": "/#usage",
+        "target": "_self",
+        "variant": "default"
+      },
+      {
+        "title": "Saber más",
+        "icon": "RiInformationLine",
+        "url": "/#feature",
+        "target": "_self",
+        "variant": "outline"
+      }
+    ],
+    "show_happy_users": true,
+    "show_badge": false
+  },
+  "introduce": {
+    "name": "introduce",
+    "title": "¿Qué es TwitterDown?",
+    "label": "Introducción",
+    "description": "TwitterDown es una potente herramienta que te permite descargar cualquier video de Twitter en alta calidad. Perfecta para creadores de contenido, especialistas en marketing y usuarios ocasionales.",
+    "image": {
+      "src": "/imgs/features/1.png"
+    },
+    "items": [
+      {
+        "title": "Simple y Rápido",
+        "description": "Solo pega la URL de Twitter y descarga tu video en segundos. No se requieren pasos complicados.",
+        "icon": "RiTimerFlashLine"
+      },
+      {
+        "title": "Descargas de Alta Calidad",
+        "description": "Obtén la versión de mayor calidad de cualquier video de Twitter, manteniendo la resolución original.",
+        "icon": "RiHdLine"
+      },
+      {
+        "title": "No se requiere inicio de sesión",
+        "description": "Usa TwitterDown sin crear una cuenta o compartir tus credenciales de Twitter.",
+        "icon": "RiLockUnlockLine"
+      }
+    ]
+  },
+  "benefit": {
+    "name": "benefit",
+    "title": "¿Por qué elegir TwitterDown?",
+    "label": "Beneficios",
+    "description": "TwitterDown ofrece la forma más rápida y confiable de descargar videos de Twitter con funciones diseñadas tanto para usuarios ocasionales como para profesionales.",
+    "items": [
+      {
+        "title": "Descargas MP4 de Alta Calidad",
+        "description": "Descargas en formato MP4 profesional con múltiples opciones de calidad y la capacidad de omitir restricciones de contenido para mayores de 18 años para satisfacer tus necesidades específicas.",
+        "icon": "RiFileList3Line",
+        "image": {
+          "src": "/imgs/features/2.png"
+        }
+      },
+      {
+        "title": "Procesamiento por Lotes",
+        "description": "Ahorra tiempo descargando múltiples videos de Twitter a la vez con nuestra función premium de procesamiento por lotes.",
+        "icon": "RiStackLine",
+        "image": {
+          "src": "/imgs/features/3.png"
+        }
+      },
+      {
+        "title": "Historial de Descargas",
+        "description": "Registra automáticamente tu historial de descargas para una fácil gestión y recuperación de archivos de video previamente descargados.",
+        "icon": "RiHistoryLine",
+        "image": {
+          "src": "/imgs/features/4.png"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "name": "usage",
+    "title": "Cómo Usar TwitterDown",
+    "description": "Descarga cualquier video de Twitter en cuatro sencillos pasos:",
+    "image": {
+      "src": "/imgs/features/1.png"
+    },
+    "image_position": "left",
+    "text_align": "center",
+    "items": [
+      {
+        "title": "Encuentra el Tweet",
+        "description": "Encuentra el tweet que contiene el video que quieres descargar en Twitter."
+      },
+      {
+        "title": "Copia el Enlace",
+        "description": "Haz clic en el icono de compartir y selecciona \"Copiar Enlace\" para copiar el enlace del tweet."
+      },
+      {
+        "title": "Pega y Analiza",
+        "description": "Pega el enlace del tweet en la caja de entrada de TwitterDown y haz clic en el botón \"Descargar\"."
+      },
+      {
+        "title": "Selecciona Formato y Descarga",
+        "description": "Elige tu formato MP4 y calidad preferidos, luego descarga a tu dispositivo."
+      }
+    ]
+  },
+  "feature": {
+    "name": "feature",
+    "title": "Características Clave de TwitterDown",
+    "description": "Descargador de videos de Twitter simple y eficiente para satisfacer todas tus necesidades.",
+    "items": [
+      {
+        "title": "Análisis Rápido",
+        "description": "Analiza inteligentemente los enlaces de videos de Twitter y obtén direcciones de descarga en segundos.",
+        "icon": "RiRocketLine"
+      },
+      {
+        "title": "Selección de Calidad",
+        "description": "Soporta múltiples opciones de calidad, desde estándar hasta alta definición HD, satisfaciendo diferentes necesidades y espacio de almacenamiento.",
+        "icon": "RiSettings4Line"
+      },
+      {
+        "title": "Descargas de Alta Velocidad",
+        "description": "Servidores de descarga optimizados aseguran las velocidades de descarga más rápidas, ahorrando tu valioso tiempo.",
+        "icon": "RiDownloadCloud2Line"
+      },
+      {
+        "title": "Descargas en Formato MP4",
+        "description": "Descargas en formato MP4 profesional compatibles con todos los dispositivos y plataformas, garantizando la mejor experiencia de reproducción.",
+        "icon": "RiFileList3Line"
+      },
+      {
+        "title": "Descargas por Lotes",
+        "description": "Los usuarios avanzados pueden procesar múltiples videos de Twitter por lotes, mejorando enormemente la eficiencia del trabajo.",
+        "icon": "RiStackLine"
+      },
+      {
+        "title": "Completamente Gratis",
+        "description": "No se requiere registro de cuenta, completamente gratis de usar sin tarifas ocultas ni restricciones de uso.",
+        "icon": "RiGiftLine"
+      }
+    ]
+  },
+  "stats": {
+    "name": "stats",
+    "label": "Estadísticas",
+    "title": "Con la confianza de miles",
+    "description": "Únete a la comunidad de usuarios satisfechos de TwitterDown.",
+    "icon": "FaRegHeart",
+    "items": [
+      {
+        "title": "Videos Descargados",
+        "label": "Más de 1M",
+        "description": "Y contando"
+      },
+      {
+        "title": "Usuarios Activos",
+        "label": "Más de 50K",
+        "description": "Mensuales"
+      },
+      {
+        "title": "Tiempo Promedio de Descarga",
+        "label": "<5",
+        "description": "Segundos"
+      }
+    ]
+  },
+  "pricing": {
+    "name": "pricing",
+    "label": "Paquetes de Créditos",
+    "title": "Elige el Paquete de Créditos Adecuado",
+    "description": "Modelo de uso basado en créditos: los videos HD (720p+) cuestan 2 créditos, los videos SD cuestan 1 crédito.",
+    "groups": [],
+    "items": [
+      {
+        "title": "Básico",
+        "description": "Perfecto para que los nuevos usuarios prueben",
+        "features_title": "Incluye",
+        "features": [
+          "100 créditos (gratis para nuevos usuarios)",
+          "Las descargas de video HD (720p+) cuestan 2 créditos",
+          "Las descargas de video SD cuestan 1 crédito",
+          "Descargas en formato MP4",
+          "Historial de descargas básico",
+          "Acceso a la aplicación web",
+          "Validez permanente"
+        ],
+        "interval": "one-time",
+        "amount": 0,
+        "currency": "USD",
+        "price": "Gratis",
+        "original_price": "",
+        "unit": "créditos",
+        "is_featured": false,
+        "tip": "Gratis para nuevos usuarios",
+        "button": {
+          "title": "Empezar Gratis",
+          "url": "/#usage",
+          "icon": "RiDownloadCloud2Fill"
+        },
+        "product_id": "basic",
+        "product_name": "TwitterDown Básico",
+        "credits": 100,
+        "valid_months": 9999
+      },
+      {
+        "title": "Paquete de Créditos Estándar",
+        "description": "Para usuarios regulares",
+        "label": "Popular",
+        "features_title": "Incluye",
+        "features": [
+          "500 créditos",
+          "Aproximadamente 250 descargas de video HD",
+          "Aproximadamente 500 descargas de video SD",
+          "Validez permanente",
+          "Función de descarga por lotes",
+          "Velocidad de descarga prioritaria"
+        ],
+        "interval": "one-time",
+                  "amount": 199,
+          "currency": "USD",
+          "price": "$1.99",
+          "original_price": "$3.99",
+          "unit": "paquete",
+        "is_featured": true,
+        "tip": "La opción más popular",
+        "button": {
+          "title": "Obtener Paquete Estándar",
+          "url": "/#pricing",
+          "icon": "RiVipCrownLine"
+        },
+        "product_id": "standard",
+        "product_name": "Paquete de Créditos Estándar de TwitterDown",
+        "credits": 500,
+        "valid_months": 9999
+      },
+      {
+        "title": "Paquete de Créditos Profesional",
+        "description": "Para usuarios intensivos y creadores",
+        "features_title": "Incluye",
+        "features": [
+          "2000 créditos",
+          "Aproximadamente 1000 descargas de video HD",
+          "Aproximadamente 2000 descargas de video SD",
+          "Validez permanente",
+          "Acceso a la API",
+          "Soporte al cliente prioritario"
+        ],
+        "interval": "one-time",
+                  "amount": 599,
+          "currency": "USD",
+          "price": "$5.99",
+          "original_price": "$11.99",
+          "unit": "paquete",
+        "is_featured": false,
+        "tip": "La mejor relación calidad-precio",
+        "button": {
+          "title": "Obtener Paquete Profesional",
+          "url": "/#pricing",
+          "icon": "RiBriefcase4Line"
+        },
+        "product_id": "professional",
+        "product_name": "Paquete de Créditos Profesional de TwitterDown",
+        "credits": 2000,
+        "valid_months": 9999
+      },
+      {
+        "title": "Paquete de Créditos Empresarial",
+        "description": "Para empresas y desarrolladores",
+        "features_title": "Incluye",
+        "features": [
+          "10000 créditos",
+          "Aproximadamente 5000 descargas de video HD",
+          "Aproximadamente 10000 descargas de video SD",
+          "Validez permanente",
+          "Acceso completo a la API",
+          "Soporte técnico dedicado"
+        ],
+        "interval": "one-time",
+                  "amount": 1999,
+          "currency": "USD",
+          "price": "$19.99",
+          "original_price": "$39.99",
+          "unit": "paquete",
+        "is_featured": false,
+        "tip": "Servicio de nivel empresarial",
+        "button": {
+          "title": "Obtener Paquete Empresarial",
+          "url": "/#pricing",
+          "icon": "RiBuilding4Line"
+        },
+        "product_id": "enterprise",
+        "product_name": "Paquete de Créditos Empresarial de TwitterDown",
+        "credits": 10000,
+        "valid_months": 9999
+      }
+    ]
+  },
+  "testimonial": {
+    "name": "testimonial",
+    "label": "Testimonios",
+    "title": "Lo que los usuarios dicen sobre TwitterDown",
+    "description": "Escucha a las personas que usan TwitterDown para descargar y guardar videos de Twitter.",
+    "icon": "GoThumbsup",
+    "items": [
+      {
+        "title": "Sarah Johnson",
+        "label": "Creadora de Contenido",
+        "description": "TwitterDown se ha convertido en una herramienta esencial en mi flujo de trabajo de creación de contenido. ¡Las descargas de alta calidad y el procesamiento rápido me ahorran muchísimo tiempo!",
+        "image": {
+          "src": "/imgs/users/1.png"
+        }
+      },
+      {
+        "title": "Mark Chen",
+        "label": "Comercializador Digital",
+        "description": "La función de descarga por lotes del plan Pro es un cambio de juego para nuestro equipo de marketing. Podemos archivar fácilmente varios videos para su análisis.",
+        "image": {
+          "src": "/imgs/users/2.png"
+        }
+      },
+      {
+        "title": "Jessica Rodriguez",
+        "label": "Periodista",
+        "description": "Como periodista, necesito guardar rápidamente videos importantes antes de que desaparezcan. La velocidad y confiabilidad de TwitterDown han sido invaluables para mi trabajo.",
+        "image": {
+          "src": "/imgs/users/3.png"
+        }
+      },
+      {
+        "title": "David Kim",
+        "label": "Maestro",
+        "description": "Uso TwitterDown para guardar videos educativos para mis estudiantes. Las opciones de calidad me ayudan a gestionar el espacio de almacenamiento manteniendo la claridad.",
+        "image": {
+          "src": "/imgs/users/4.png"
+        }
+      },
+      {
+        "title": "Emily Wilson",
+        "label": "Gerente de Redes Sociales",
+        "description": "La interfaz web de TwitterDown es increíblemente limpia y fácil de usar. Puedo pegar enlaces rápidamente y descargar videos con operaciones sencillas y eficientes.",
+        "image": {
+          "src": "/imgs/users/5.png"
+        }
+      },
+      {
+        "title": "Michael Taylor",
+        "label": "Investigador",
+        "description": "La función de historial de TwitterDown me ayuda a organizar los videos descargados por proyecto. Se ha convertido en una parte esencial de mi flujo de trabajo de investigación.",
+        "image": {
+          "src": "/imgs/users/6.png"
+        }
+      }
+    ]
+  },
+  "faq": {
+    "name": "faq",
+    "label": "Preguntas Frecuentes",
+    "title": "Preguntas Frecuentes",
+    "description": "¿Tienes otra pregunta? Contacta a nuestro equipo de soporte para obtener ayuda.",
+    "items": [
+      {
+        "title": "¿Es legal descargar videos de Twitter?",
+        "description": "TwitterDown está diseñado para uso personal. Si bien descargar videos para visualización personal es generalmente aceptable, por favor respeta las leyes de derechos de autor y los derechos del creador original. No republiques ni monetices contenido sin el permiso adecuado."
+      },
+      {
+        "title": "¿Necesito una cuenta de Twitter para usar TwitterDown?",
+        "description": "No, no necesitas una cuenta de Twitter para usar TwitterDown. Simplemente copia la URL del video que deseas descargar y pégala en nuestra herramienta."
+      },
+      {
+        "title": "¿Qué formatos de video soporta TwitterDown?",
+        "description": "TwitterDown soporta descargas en formato MP4, que es el formato de video más universal y compatible que funciona en todos los dispositivos y plataformas."
+      },
+      {
+        "title": "¿Hay un límite en la cantidad de videos que puedo descargar?",
+        "description": "Los usuarios gratuitos pueden descargar hasta 5 videos por día. Los usuarios Pro pueden realizar descargas por lotes. Los usuarios de Negocios disfrutan de descargas completamente ilimitadas sin restricciones."
+      },
+      {
+        "title": "¿Puedo descargar videos privados de Twitter?",
+        "description": "No, TwitterDown solo puede descargar videos disponibles públicamente. Los videos de cuentas privadas o mensajes directos no pueden ser accedidos."
+      },
+      {
+        "title": "¿Cómo elijo la calidad de video correcta?",
+        "description": "Puedes seleccionar la calidad según tus necesidades: HD es perfecto para archivar y editar, mientras que la calidad estándar es ideal para vistas previas rápidas y para ahorrar espacio de almacenamiento. Ofrecemos múltiples opciones de resolución para que elijas."
+      }
+    ]
+  },
+  "cta": {
+    "name": "cta",
+    "title": "Empieza a Descargar Videos de Twitter Hoy",
+    "description": "Únete a miles de usuarios que confían en TwitterDown para descargas de video rápidas y de alta calidad.",
+    "buttons": [
+      {
+        "title": "Empieza Gratis",
+        "url": "/#usage",
+        "target": "_self",
+        "icon": "RiDownloadCloud2Fill"
+      },
+      {
+        "title": "Ver Precios",
+        "url": "/#pricing",
+        "target": "_self",
+        "variant": "outline"
+      }
+    ]
+  },
+  "footer": {
+    "name": "footer",
+    "brand": {
+      "title": "TwitterDown",
+      "description": "La forma más rápida de descargar videos de Twitter en alta calidad. Guarda y comparte tu contenido favorito de Twitter con solo unos pocos clics.",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "TwitterDown"
+      },
+      "url": "/"
+    },
+    "copyright": "© 2025 • TwitterDown Todos los derechos reservados.",
+    "social": {
+      "items": [
+        {
+          "title": "Twitter",
+          "icon": "RiTwitterXFill",
+          "url": "https://twitter.com/Real_Jewel_AI",
+          "target": "_blank"
+        },
+        {
+          "title": "Correo electrónico",
+          "icon": "RiMailLine",
+          "url": "mailto:support@twitterdown.com",
+          "target": "_self"
+        }
+      ]
+    },
+    "agreement": {
+      "items": [
+        {
+          "title": "Política de Privacidad",
+          "url": "/privacy-policy"
+        },
+        {
+          "title": "Términos de Servicio",
+          "url": "/terms-of-service"
+        }
+      ]
+    }
+  }
+}

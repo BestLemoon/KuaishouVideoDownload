@@ -40,7 +40,7 @@ export default function Header({ header }: { header: HeaderType }) {
 
   return (
     <section className="py-3">
-      <div className="md:max-w-7xl mx-auto px-4">
+      <div className="container">
         <nav className="hidden justify-between lg:flex">
           <div className="flex items-center gap-6">
             <a

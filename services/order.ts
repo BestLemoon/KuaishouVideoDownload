@@ -5,6 +5,7 @@ import {
 } from "./credit";
 import { findOrderByOrderNo, updateOrderStatus } from "@/models/order";
 import { getIsoTimestr, getOneYearLaterTimestr } from "@/lib/time";
+import { chargeCredits } from '@/models/credit';
 
 import Stripe from "stripe";
 import { updateAffiliateForOrder } from "./affiliate";
@@ -35,8 +36,19 @@ export async function handleOrderSession(session: Stripe.Checkout.Session) {
 
     if (order.user_uuid) {
       if (order.credits > 0) {
-        // increase credits for paied order
+        // 使用新积分系统充值
+        await chargeCredits(
+          order.user_uuid,
+          order.credits,
+          order_no,
+          `购买积分包: ${order.product_name}`,
+          order.valid_months || undefined
+        );
+
+        // 保持兼容旧系统
         await updateCreditForOrder(order);
+        
+        console.log(`[Credits] User ${order.user_uuid} charged ${order.credits} credits from order ${order_no}`);
       }
 
       // update affiliate for paied order

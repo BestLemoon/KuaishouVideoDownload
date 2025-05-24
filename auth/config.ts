@@ -174,6 +174,27 @@ export const authOptions: NextAuthConfig = {
             console.error("save user failed:", e);
           }
         }
+        
+        // 确保现有token保持用户信息
+        if (!token.user && token.email) {
+          // 尝试从数据库重新加载用户信息
+          try {
+            const { findUserByEmail } = await import('@/models/user');
+            const existingUser = await findUserByEmail(token.email);
+            if (existingUser) {
+              token.user = {
+                uuid: existingUser.uuid,
+                email: existingUser.email,
+                nickname: existingUser.nickname,
+                avatar_url: existingUser.avatar_url,
+                created_at: existingUser.created_at,
+              };
+            }
+          } catch (e) {
+            console.error("reload user failed:", e);
+          }
+        }
+        
         return token;
       } catch (e) {
         console.error("jwt callback error:", e);

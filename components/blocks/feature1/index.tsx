@@ -9,7 +9,7 @@ export default function Feature1({ section }: { section: SectionType }) {
   return (
     <section id={section.name} className="py-16">
       <div className="container">
-        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-10">
           {section.image && (
             <img
               src={section.image?.src}

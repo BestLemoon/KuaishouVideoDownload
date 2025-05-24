@@ -18,7 +18,7 @@ export default function FAQ({ section }: { section: SectionType }) {
             {section.description}
           </p>
         </div>
-        <div className="mx-auto mt-14 grid gap-8 md:grid-cols-2 md:gap-12">
+        <div className="mx-auto mt-14 grid gap-6 md:grid-cols-2 md:gap-8">
           {section.items?.map((item, index) => (
             <div key={index} className="flex gap-4">
               <span className="flex size-6 shrink-0 items-center justify-center rounded-sm border border-primary font-mono text-xs text-primary">

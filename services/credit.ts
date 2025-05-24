@@ -20,7 +20,7 @@ export enum CreditsTransType {
 }
 
 export enum CreditsAmount {
-  NewUserGet = 10,
+  NewUserGet = 100,
   PingCost = 1,
 }
 
@@ -79,7 +79,7 @@ export async function decreaseCredits({
 
         // credit enough for cost
         if (left_credits >= credits) {
-          order_no = credit.order_no;
+          order_no = credit.order_no || "";
           expired_at = credit.expired_at || "";
           break;
         }

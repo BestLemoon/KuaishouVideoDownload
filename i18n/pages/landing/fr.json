@@ -1,0 +1,506 @@
+{
+    "template": "shipany-template-one",
+    "theme": "light",
+    "header": {
+      "brand": {
+        "title": "TwitterDown",
+        "logo": {
+          "src": "/logo.png",
+          "alt": "TwitterDown"
+        },
+        "url": "/"
+      },
+      "nav": {
+        "items": [
+          {
+            "title": "Fonctionnalités",
+            "url": "/#feature",
+            "icon": "HiOutlineSparkles"
+          },
+          {
+            "title": "Tarifs",
+            "url": "/#pricing",
+            "icon": "MdPayment"
+          },
+                  {
+          "title": "Comment ça marche",
+          "url": "/#usage",
+          "icon": "BiCube"
+        },
+        {
+          "title": "Blog",
+          "url": "/fr/posts",
+          "icon": "RiArticleLine"
+        }
+        ]
+      },
+      "buttons": [
+        {
+          "title": "Commencer le téléchargement",
+          "url": "/#pricing",
+          "target": "_self",
+          "variant": "link",
+          "icon": "RiArrowRightUpLine"
+        }
+      ],
+      "show_sign": true,
+      "show_theme": true,
+      "show_locale": true
+    },
+    "hero": {
+      "title": "Téléchargez les vidéos Twitter en quelques secondes",
+      "highlight_text": "Vidéos Twitter",
+      "description": "TwitterDown est le moyen le plus rapide de télécharger des vidéos Twitter.<br/>Enregistrez et partagez votre contenu Twitter préféré en quelques clics.",
+      "announcement": {
+        "label": "NOUVEAU",
+        "title": "🎉 Prend désormais en charge le téléchargement de vidéos Twitter en haute qualité",
+        "url": "/#pricing"
+      },
+      "tip": "🔥 Aucune connexion requise, entièrement gratuit pour commencer",
+      "buttons": [
+        {
+          "title": "Commencer le téléchargement",
+          "icon": "RiDownloadCloud2Fill",
+          "url": "/#usage",
+          "target": "_self",
+          "variant": "default"
+        },
+        {
+          "title": "En savoir plus",
+          "icon": "RiInformationLine",
+          "url": "/#feature",
+          "target": "_self",
+          "variant": "outline"
+        }
+      ],
+      "show_happy_users": true,
+      "show_badge": false
+    },
+    "introduce": {
+      "name": "introduce",
+      "title": "Qu'est-ce que TwitterDown ?",
+      "label": "Introduction",
+      "description": "TwitterDown est un outil puissant qui vous permet de télécharger n'importe quelle vidéo Twitter en haute qualité. Parfait pour les créateurs de contenu, les marketeurs et les utilisateurs occasionnels.",
+      "image": {
+        "src": "/imgs/features/1.png"
+      },
+      "items": [
+        {
+          "title": "Simple et Rapide",
+          "description": "Collez simplement l'URL Twitter et téléchargez votre vidéo en quelques secondes. Aucune étape compliquée n'est requise.",
+          "icon": "RiTimerFlashLine"
+        },
+        {
+          "title": "Téléchargements de Haute Qualité",
+          "description": "Obtenez la version de la plus haute qualité de n'importe quelle vidéo Twitter, en conservant la résolution originale.",
+          "icon": "RiHdLine"
+        },
+        {
+          "title": "Aucune Connexion Requise",
+          "description": "Utilisez TwitterDown sans créer de compte ni partager vos identifiants Twitter.",
+          "icon": "RiLockUnlockLine"
+        }
+      ]
+    },
+    "benefit": {
+      "name": "benefit",
+      "title": "Pourquoi choisir TwitterDown ?",
+      "label": "Avantages",
+      "description": "TwitterDown offre le moyen le plus rapide et le plus fiable de télécharger des vidéos Twitter avec des fonctionnalités conçues pour les utilisateurs occasionnels et les professionnels.",
+      "items": [
+        {
+          "title": "Téléchargements MP4 de Haute Qualité",
+          "description": "Téléchargements au format MP4 professionnel avec plusieurs options de qualité et la possibilité de contourner les restrictions de contenu pour les plus de 18 ans afin de répondre à vos besoins spécifiques.",
+          "icon": "RiFileList3Line",
+          "image": {
+            "src": "/imgs/features/2.png"
+          }
+        },
+        {
+          "title": "Traitement par Lots",
+          "description": "Gagnez du temps en téléchargeant plusieurs vidéos Twitter à la fois grâce à notre fonction de traitement par lots premium.",
+          "icon": "RiStackLine",
+          "image": {
+            "src": "/imgs/features/3.png"
+          }
+        },
+        {
+          "title": "Historique de Téléchargement",
+          "description": "Suivez automatiquement votre historique de téléchargement pour une gestion et une récupération faciles des fichiers vidéo précédemment téléchargés.",
+          "icon": "RiHistoryLine",
+          "image": {
+            "src": "/imgs/features/4.png"
+          }
+        }
+      ]
+    },
+    "usage": {
+      "name": "usage",
+      "title": "Comment utiliser TwitterDown",
+      "description": "Téléchargez n'importe quelle vidéo Twitter en quatre étapes simples :",
+      "image": {
+        "src": "/imgs/features/1.png"
+      },
+      "image_position": "left",
+      "text_align": "center",
+      "items": [
+        {
+          "title": "Trouver le Tweet",
+          "description": "Trouvez le tweet qui contient la vidéo que vous souhaitez télécharger sur Twitter."
+        },
+        {
+          "title": "Copier le Lien",
+          "description": "Cliquez sur l'icône de partage et sélectionnez \"Copier le lien\" pour copier le lien du tweet."
+        },
+        {
+          "title": "Coller et Analyser",
+          "description": "Collez le lien du tweet dans la boîte de saisie de TwitterDown et cliquez sur le bouton \"Télécharger\"."
+        },
+        {
+          "title": "Sélectionner le Format et Télécharger",
+          "description": "Choisissez votre format MP4 et votre qualité préférés, puis téléchargez-le sur votre appareil."
+        }
+      ]
+    },
+    "feature": {
+      "name": "feature",
+      "title": "Fonctionnalités Clés de TwitterDown",
+      "description": "Téléchargeur de vidéos Twitter simple et efficace pour répondre à tous vos besoins.",
+      "items": [
+        {
+          "title": "Analyse Rapide",
+          "description": "Analysez intelligemment les liens vidéo Twitter et obtenez des adresses de téléchargement en quelques secondes.",
+          "icon": "RiRocketLine"
+        },
+        {
+          "title": "Sélection de la Qualité",
+          "description": "Prend en charge plusieurs options de qualité, du standard à la haute définition HD, répondant à différents besoins et espaces de stockage.",
+          "icon": "RiSettings4Line"
+        },
+        {
+          "title": "Téléchargements Haute Vitesse",
+          "description": "Les serveurs de téléchargement optimisés garantissent les vitesses de téléchargement les plus rapides, vous faisant gagner un temps précieux.",
+          "icon": "RiDownloadCloud2Line"
+        },
+        {
+          "title": "Téléchargements au Format MP4",
+          "description": "Téléchargements au format MP4 professionnel compatibles avec tous les appareils et plates-formes, garantissant la meilleure expérience de lecture.",
+          "icon": "RiFileList3Line"
+        },
+        {
+          "title": "Téléchargements par Lots",
+          "description": "Les utilisateurs avancés peuvent traiter plusieurs vidéos Twitter par lots, améliorant considérablement l'efficacité du travail.",
+          "icon": "RiStackLine"
+        },
+        {
+          "title": "Entièrement Gratuit",
+          "description": "Aucune inscription de compte requise, utilisation entièrement gratuite sans frais cachés ni restrictions d'utilisation.",
+          "icon": "RiGiftLine"
+        }
+      ]
+    },
+    "stats": {
+      "name": "stats",
+      "label": "Statistiques",
+      "title": "Approuvé par des milliers",
+      "description": "Rejoignez la communauté des utilisateurs satisfaits de TwitterDown.",
+      "icon": "FaRegHeart",
+      "items": [
+        {
+          "title": "Vidéos Téléchargées",
+          "label": "1M+",
+          "description": "Et ce n'est pas fini"
+        },
+        {
+          "title": "Utilisateurs Actifs",
+          "label": "50K+",
+          "description": "Mensuels"
+        },
+        {
+          "title": "Temps de Téléchargement Moyen",
+          "label": "<5",
+          "description": "Secondes"
+        }
+      ]
+    },
+    "pricing": {
+      "name": "pricing",
+      "label": "Forfaits de Crédits",
+      "title": "Choisissez le Forfait de Crédits Adapté",
+      "description": "Modèle d'utilisation basé sur les crédits : les vidéos HD (720p+) coûtent 2 crédits, les vidéos SD coûtent 1 crédit.",
+      "groups": [],
+      "items": [
+        {
+          "title": "Basique",
+          "description": "Parfait pour les nouveaux utilisateurs à essayer",
+          "features_title": "Comprend",
+          "features": [
+            "100 crédits (gratuits pour les nouveaux utilisateurs)",
+            "Les téléchargements de vidéos HD (720p+) coûtent 2 crédits",
+            "Les téléchargements de vidéos SD coûtent 1 crédit",
+            "Téléchargements au format MP4",
+            "Historique de téléchargement de base",
+            "Accès à l'application web",
+            "Validité permanente"
+          ],
+          "interval": "one-time",
+          "amount": 0,
+          "currency": "USD",
+          "price": "Gratuit",
+          "original_price": "",
+          "unit": "crédits",
+          "is_featured": false,
+          "tip": "Gratuit pour les nouveaux utilisateurs",
+          "button": {
+            "title": "Commencer Gratuitement",
+            "url": "/#usage",
+            "icon": "RiDownloadCloud2Fill"
+          },
+          "product_id": "basic",
+          "product_name": "TwitterDown Basique",
+          "credits": 100,
+          "valid_months": 9999
+        },
+        {
+          "title": "Pack de Crédits Standard",
+          "description": "Pour les utilisateurs réguliers",
+          "label": "Populaire",
+          "features_title": "Comprend",
+          "features": [
+            "500 crédits",
+            "Environ 250 téléchargements de vidéos HD",
+            "Environ 500 téléchargements de vidéos SD",
+            "Validité permanente",
+            "Fonction de téléchargement par lots",
+            "Vitesse de téléchargement prioritaire"
+          ],
+          "interval": "one-time",
+          "amount": 199,
+          "currency": "USD",
+          "price": "$1.99",
+          "original_price": "$3.99",
+          "unit": "pack",
+          "is_featured": true,
+          "tip": "Le choix le plus populaire",
+          "button": {
+            "title": "Obtenir le Pack Standard",
+            "url": "/#pricing",
+            "icon": "RiVipCrownLine"
+          },
+          "product_id": "standard",
+          "product_name": "Pack de Crédits Standard TwitterDown",
+          "credits": 500,
+          "valid_months": 9999
+        },
+        {
+          "title": "Pack de Crédits Professionnel",
+          "description": "Pour les gros utilisateurs et les créateurs",
+          "features_title": "Comprend",
+          "features": [
+            "2000 crédits",
+            "Environ 1000 téléchargements de vidéos HD",
+            "Environ 2000 téléchargements de vidéos SD",
+            "Validité permanente",
+            "Accès API",
+            "Support client prioritaire"
+          ],
+          "interval": "one-time",
+          "amount": 599,
+          "currency": "USD",
+          "price": "$5.99",
+          "original_price": "$11.99",
+          "unit": "pack",
+          "is_featured": false,
+          "tip": "Le meilleur rapport qualité-prix",
+          "button": {
+            "title": "Obtenir le Pack Professionnel",
+            "url": "/#pricing",
+            "icon": "RiBriefcase4Line"
+          },
+          "product_id": "professional",
+          "product_name": "Pack de Crédits Professionnel TwitterDown",
+          "credits": 2000,
+          "valid_months": 9999
+        },
+        {
+          "title": "Pack de Crédits Entreprise",
+          "description": "Pour les entreprises et les développeurs",
+          "features_title": "Comprend",
+          "features": [
+            "10000 crédits",
+            "Environ 5000 téléchargements de vidéos HD",
+            "Environ 10000 téléchargements de vidéos SD",
+            "Validité permanente",
+            "Accès API complet",
+            "Support technique dédié"
+          ],
+          "interval": "one-time",
+          "amount": 1999,
+          "currency": "USD",
+          "price": "$19.99",
+          "original_price": "$39.99",
+          "unit": "pack",
+          "is_featured": false,
+          "tip": "Service de niveau entreprise",
+          "button": {
+            "title": "Obtenir le Pack Entreprise",
+            "url": "/#pricing",
+            "icon": "RiBuilding4Line"
+          },
+          "product_id": "enterprise",
+          "product_name": "Pack de Crédits Entreprise TwitterDown",
+          "credits": 10000,
+          "valid_months": 9999
+        }
+      ]
+    },
+    "testimonial": {
+      "name": "testimonial",
+      "label": "Témoignages",
+      "title": "Ce que les utilisateurs disent de TwitterDown",
+      "description": "Écoutez les personnes qui utilisent TwitterDown pour télécharger et enregistrer des vidéos Twitter.",
+      "icon": "GoThumbsup",
+      "items": [
+        {
+          "title": "Sarah Johnson",
+          "label": "Créatrice de Contenu",
+          "description": "TwitterDown est devenu un outil essentiel dans mon flux de travail de création de contenu. Les téléchargements de haute qualité et le traitement rapide me font gagner tellement de temps !",
+          "image": {
+            "src": "/imgs/users/1.png"
+          }
+        },
+        {
+          "title": "Mark Chen",
+          "label": "Responsable Marketing Digital",
+          "description": "La fonction de téléchargement par lots du plan Pro est un tournant pour notre équipe marketing. Nous pouvons facilement archiver plusieurs vidéos pour l'analyse.",
+          "image": {
+            "src": "/imgs/users/2.png"
+          }
+        },
+        {
+          "title": "Jessica Rodriguez",
+          "label": "Journaliste",
+          "description": "En tant que journaliste, je dois rapidement sauvegarder des vidéos importantes avant qu'elles ne disparaissent. La vitesse et la fiabilité de TwitterDown ont été inestimables pour mon travail.",
+          "image": {
+            "src": "/imgs/users/3.png"
+          }
+        },
+        {
+          "title": "David Kim",
+          "label": "Enseignant",
+          "description": "J'utilise TwitterDown pour sauvegarder des vidéos éducatives pour mes élèves. Les options de qualité m'aident à gérer l'espace de stockage tout en conservant la clarté.",
+          "image": {
+            "src": "/imgs/users/4.png"
+          }
+        },
+        {
+          "title": "Emily Wilson",
+          "label": "Gestionnaire de Médias Sociaux",
+          "description": "L'interface web de TwitterDown est incroyablement propre et conviviale. Je peux rapidement coller des liens et télécharger des vidéos avec des opérations simples et efficaces.",
+          "image": {
+            "src": "/imgs/users/5.png"
+          }
+        },
+        {
+          "title": "Michael Taylor",
+          "label": "Chercheur",
+          "description": "La fonction d'historique de TwitterDown m'aide à organiser les vidéos téléchargées par projet. C'est devenu une partie essentielle de mon flux de travail de recherche.",
+          "image": {
+            "src": "/imgs/users/6.png"
+          }
+        }
+      ]
+    },
+    "faq": {
+      "name": "faq",
+      "label": "FAQ",
+      "title": "Questions Fréquemment Posées",
+      "description": "Vous avez une autre question ? Contactez notre équipe de support pour obtenir de l'aide.",
+      "items": [
+        {
+          "title": "Est-il légal de télécharger des vidéos Twitter ?",
+          "description": "TwitterDown est conçu pour un usage personnel. Bien que le téléchargement de vidéos pour une visualisation personnelle soit généralement acceptable, veuillez respecter les lois sur le droit d'auteur et les droits du créateur original. Ne republiez ni ne monétisez le contenu sans autorisation appropriée."
+        },
+        {
+          "title": "Ai-je besoin d'un compte Twitter pour utiliser TwitterDown ?",
+          "description": "Non, vous n'avez pas besoin d'un compte Twitter pour utiliser TwitterDown. Copiez simplement l'URL de la vidéo que vous souhaitez télécharger et collez-la dans notre outil."
+        },
+        {
+          "title": "Quels formats vidéo TwitterDown prend-il en charge ?",
+          "description": "TwitterDown prend en charge les téléchargements au format MP4, qui est le format vidéo le plus universel et compatible, fonctionnant sur tous les appareils et plates-formes."
+        },
+        {
+          "title": "Y a-t-il une limite au nombre de vidéos que je peux télécharger ?",
+          "description": "Les utilisateurs gratuits peuvent télécharger jusqu'à 5 vidéos par jour. Les utilisateurs Pro peuvent effectuer des téléchargements par lots. Les utilisateurs professionnels bénéficient de téléchargements illimités sans aucune restriction."
+        },
+        {
+          "title": "Puis-je télécharger des vidéos Twitter privées ?",
+          "description": "Non, TwitterDown ne peut télécharger que des vidéos accessibles au public. Les vidéos provenant de comptes privés ou de messages directs ne peuvent pas être consultées."
+        },
+        {
+          "title": "Comment choisir la bonne qualité vidéo ?",
+          "description": "Vous pouvez sélectionner la qualité en fonction de vos besoins : la HD est parfaite pour l'archivage et l'édition, tandis que la qualité standard est idéale pour des aperçus rapides et pour économiser de l'espace de stockage. Nous proposons plusieurs options de résolution parmi lesquelles choisir."
+        }
+      ]
+    },
+    "cta": {
+      "name": "cta",
+      "title": "Commencez à télécharger des vidéos Twitter dès aujourd'hui",
+      "description": "Rejoignez des milliers d'utilisateurs qui font confiance à TwitterDown pour des téléchargements de vidéos rapides et de haute qualité.",
+      "buttons": [
+        {
+          "title": "Commencer Gratuitement",
+          "url": "/#usage",
+          "target": "_self",
+          "icon": "RiDownloadCloud2Fill"
+        },
+        {
+          "title": "Voir les Tarifs",
+          "url": "/#pricing",
+          "target": "_self",
+          "variant": "outline"
+        }
+      ]
+    },
+    "footer": {
+      "name": "footer",
+      "brand": {
+        "title": "TwitterDown",
+        "description": "Le moyen le plus rapide de télécharger des vidéos Twitter en haute qualité. Enregistrez et partagez votre contenu Twitter préféré en quelques clics.",
+        "logo": {
+          "src": "/logo.png",
+          "alt": "TwitterDown"
+        },
+        "url": "/"
+      },
+      "copyright": "© 2025 • TwitterDown Tous droits réservés.",
+      "social": {
+        "items": [
+          {
+            "title": "Twitter",
+            "icon": "RiTwitterXFill",
+            "url": "https://twitter.com/Real_Jewel_AI",
+            "target": "_blank"
+          },
+          {
+            "title": "E-mail",
+            "icon": "RiMailLine",
+            "url": "mailto:support@twitterdown.com",
+            "target": "_self"
+          }
+        ]
+      },
+      "agreement": {
+        "items": [
+          {
+            "title": "Politique de Confidentialité",
+            "url": "/privacy-policy"
+          },
+          {
+            "title": "Conditions d'Utilisation",
+            "url": "/terms-of-service"
+          }
+        ]
+      }
+    }
+  }

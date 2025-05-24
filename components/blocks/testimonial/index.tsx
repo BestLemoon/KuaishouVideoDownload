@@ -44,7 +44,7 @@ export default function Testimonial({ section }: { section: SectionType }) {
           {section.description}
         </p>
       </div>
-      <div className="lg:container">
+      <div className="container">
         <div className="mt-16 space-y-4">
           <Carousel
             opts={{
@@ -57,7 +57,7 @@ export default function Testimonial({ section }: { section: SectionType }) {
             <CarouselContent>
               {section.items?.map((item, index) => (
                 <CarouselItem key={index} className="basis-auto">
-                  <Card className="max-w-96 select-none p-6">
+                  <Card className="max-w-xl select-none p-6">
                     <div className="flex justify-between">
                       <div className="mb-4 flex gap-4">
                         <Avatar className="size-14 rounded-full ring-1 ring-input">

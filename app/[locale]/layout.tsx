@@ -9,6 +9,7 @@ import { NextAuthSessionProvider } from "@/auth/session";
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "@/providers/theme";
 import { cn } from "@/lib/utils";
+import Script from "next/script";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -45,6 +46,24 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
+      <head>
+        {/* Define isSpace function globally to fix markdown-it issues with Next.js + Turbopack */}
+        <Script id="markdown-it-fix" strategy="beforeInteractive">
+          {`
+            if (typeof window !== 'undefined' && typeof window.isSpace === 'undefined') {
+              window.isSpace = function(code) {
+                return code === 0x20 || code === 0x09 || code === 0x0A || code === 0x0B || code === 0x0C || code === 0x0D;
+              };
+            }
+            // Also define globally for Node.js environments
+            if (typeof global !== 'undefined' && typeof global.isSpace === 'undefined') {
+              global.isSpace = function(code) {
+                return code === 0x20 || code === 0x09 || code === 0x0A || code === 0x0B || code === 0x0C || code === 0x0D;
+              };
+            }
+          `}
+        </Script>
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased overflow-x-hidden",

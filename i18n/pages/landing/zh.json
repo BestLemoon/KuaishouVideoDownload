@@ -14,25 +14,30 @@
       "items": [
         {
           "title": "功能特点",
-          "url": "/#feature",
+          "url": "/zh#feature",
           "icon": "HiOutlineSparkles"
         },
         {
           "title": "价格",
-          "url": "/#pricing",
+          "url": "/zh#pricing",
           "icon": "MdPayment"
         },
         {
           "title": "使用方法",
-          "url": "/#usage",
+          "url": "/zh#usage",
           "icon": "BiCube"
+        },
+        {
+          "title": "博客",
+          "url": "/zh/posts",
+          "icon": "RiArticleLine"
         }
       ]
     },
     "buttons": [
       {
         "title": "开始下载",
-        "url": "/#pricing",
+        "url": "/zh#pricing",
         "target": "_self",
         "variant": "link",
         "icon": "RiArrowRightUpLine"
@@ -48,68 +53,28 @@
     "description": "TwitterDown是下载Twitter视频的最快方式。<br/>只需点击几下，即可保存和分享您喜爱的Twitter内容。",
     "announcement": {
       "label": "新功能",
-      "title": "🎉 现已支持Twitter Spaces录音",
-      "url": "/#feature"
+      "title": "🎉 现已支持下载Twitter Video超清画质",
+      "url": "/zh#pricing"
     },
     "tip": "🔥 无需登录，完全免费开始使用",
     "buttons": [
       {
         "title": "开始下载",
         "icon": "RiDownloadCloud2Fill",
-        "url": "/#usage",
+        "url": "/zh#usage",
         "target": "_self",
         "variant": "default"
       },
       {
         "title": "了解更多",
         "icon": "RiInformationLine",
-        "url": "/#feature",
+        "url": "/zh#feature",
         "target": "_self",
         "variant": "outline"
       }
     ],
     "show_happy_users": true,
     "show_badge": false
-  },
-  "branding": {
-    "title": "TwitterDown支持所有主流平台",
-    "items": [
-      {
-        "title": "Twitter",
-        "image": {
-          "src": "/imgs/logos/twitter.svg",
-          "alt": "Twitter"
-        }
-      },
-      {
-        "title": "Chrome",
-        "image": {
-          "src": "/imgs/logos/chrome.svg",
-          "alt": "Chrome"
-        }
-      },
-      {
-        "title": "Firefox",
-        "image": {
-          "src": "/imgs/logos/firefox.svg",
-          "alt": "Firefox"
-        }
-      },
-      {
-        "title": "Safari",
-        "image": {
-          "src": "/imgs/logos/safari.svg",
-          "alt": "Safari"
-        }
-      },
-      {
-        "title": "Edge",
-        "image": {
-          "src": "/imgs/logos/edge.svg",
-          "alt": "Edge"
-        }
-      }
-    ]
   },
   "introduce": {
     "name": "introduce",
@@ -144,8 +109,8 @@
     "description": "TwitterDown提供最快速、最可靠的Twitter视频下载方式，功能设计同时满足普通用户和专业人士的需求。",
     "items": [
       {
-        "title": "多种格式选择",
-        "description": "以MP4、WebM或GIF格式下载视频，满足您的特定需求和使用场景。",
+        "title": "高质量MP4下载",
+        "description": "专业的MP4格式下载，支持多种画质选择，并能绕过18+内容限制，满足您的特定需求。",
         "icon": "RiFileList3Line",
         "image": {
           "src": "/imgs/features/2.png"
@@ -160,9 +125,9 @@
         }
       },
       {
-        "title": "浏览器扩展",
-        "description": "使用我们便捷的浏览器扩展，在浏览Twitter时直接下载视频。",
-        "icon": "RiChromeLine",
+        "title": "下载历史",
+        "description": "自动记录您的下载历史，方便管理和查找之前下载的视频文件。",
+        "icon": "RiHistoryLine",
         "image": {
           "src": "/imgs/features/4.png"
         }
@@ -172,7 +137,7 @@
   "usage": {
     "name": "usage",
     "title": "如何使用TwitterDown",
-    "description": "通过三个简单步骤下载任何Twitter视频：",
+    "description": "通过四个简单步骤下载任何Twitter视频：",
     "image": {
       "src": "/imgs/features/1.png"
     },
@@ -180,126 +145,61 @@
     "text_align": "center",
     "items": [
       {
+        "title": "找到推文",
+        "description": "在Twitter上找到包含您想要下载的视频的推文。"
+      },
+      {
         "title": "复制链接",
-        "description": "找到您想要下载的Twitter视频，从地址栏或分享菜单复制其URL。",
-        "image": {
-          "src": "/imgs/features/5.png"
-        }
+        "description": "点击分享图标，选择\"复制链接\"来复制推文链接。"
       },
       {
-        "title": "粘贴并处理",
-        "description": "将URL粘贴到TwitterDown并点击处理按钮。我们的系统将分析视频。",
-        "image": {
-          "src": "/imgs/features/6.png"
-        }
+        "title": "粘贴并解析",
+        "description": "将推文链接粘贴到TwitterDown的输入框中，点击\"下载\"按钮。"
       },
       {
-        "title": "下载",
-        "description": "选择您喜欢的质量和格式，然后点击下载。视频将保存到您的设备。",
-        "image": {
-          "src": "/imgs/features/7.png"
-        }
+        "title": "选择格式并下载",
+        "description": "选择您需要的MP4格式和画质，然后下载到您的设备。"
       }
     ]
   },
   "feature": {
     "name": "feature",
     "title": "TwitterDown的主要功能",
-    "description": "高效下载和管理Twitter视频所需的一切功能。",
+    "description": "简单高效的Twitter视频下载工具，满足您的各种需求。",
     "items": [
       {
-        "title": "高速下载",
-        "description": "我们优化的服务器确保所有视频获得最快的下载速度。",
+        "title": "快速解析",
+        "description": "智能解析Twitter视频链接，几秒内识别并获取视频下载地址。",
         "icon": "RiRocketLine"
       },
       {
-        "title": "质量选择",
-        "description": "在不同质量选项之间选择，平衡文件大小和视频质量。",
+        "title": "画质选择",
+        "description": "支持多种画质选项，从标清到高清HD，满足不同需求和存储空间。",
         "icon": "RiSettings4Line"
       },
       {
-        "title": "音频提取",
-        "description": "从Twitter视频中提取音频轨道并保存为MP3文件。",
-        "icon": "RiMusic2Line"
+        "title": "高速下载",
+        "description": "优化的下载服务器确保最快的下载速度，节省您的宝贵时间。",
+        "icon": "RiDownloadCloud2Line"
       },
       {
-        "title": "Spaces录音下载",
-        "description": "下载Twitter Spaces录音，用于离线收听和存档。",
-        "icon": "RiRecordCircleLine"
+        "title": "MP4格式下载",
+        "description": "专业的MP4格式下载，兼容所有设备和平台，确保最佳播放体验。",
+        "icon": "RiFileList3Line"
       },
       {
-        "title": "视频裁剪",
-        "description": "高级用户可以在下载前裁剪视频，获取所需的精确内容。",
-        "icon": "RiScissorsCutLine"
+        "title": "批量下载",
+        "description": "高级用户可以批量处理多个Twitter视频，大幅提升工作效率。",
+        "icon": "RiStackLine"
       },
       {
-        "title": "下载历史",
-        "description": "通过便捷的历史功能跟踪您下载的视频。",
-        "icon": "RiHistoryLine"
+        "title": "完全免费",
+        "description": "无需注册账户，完全免费使用，无隐藏费用和使用限制。",
+        "icon": "RiGiftLine"
       }
     ]
   },
-  "showcase": {
-    "name": "showcase",
-    "title": "看看TwitterDown实际应用",
-    "description": "了解其他人如何使用TwitterDown保存和分享内容。",
-    "items": [
-      {
-        "title": "内容创作者",
-        "description": "为您的下一个项目下载灵感",
-        "url": "/#usage",
-        "target": "_self",
-        "image": {
-          "src": "/imgs/showcases/1.png"
-        }
-      },
-      {
-        "title": "记者",
-        "description": "存档重要新闻视频",
-        "url": "/#usage",
-        "target": "_self",
-        "image": {
-          "src": "/imgs/showcases/2.png"
-        }
-      },
-      {
-        "title": "营销人员",
-        "description": "保存竞争对手内容进行分析",
-        "url": "/#usage",
-        "target": "_self",
-        "image": {
-          "src": "/imgs/showcases/3.png"
-        }
-      },
-      {
-        "title": "教育工作者",
-        "description": "下载教育内容用于课堂",
-        "url": "/#usage",
-        "target": "_self",
-        "image": {
-          "src": "/imgs/showcases/4.png"
-        }
-      },
-      {
-        "title": "研究人员",
-        "description": "存档视频用于研究目的",
-        "url": "/#usage",
-        "target": "_self",
-        "image": {
-          "src": "/imgs/showcases/5.png"
-        }
-      },
-      {
-        "title": "普通用户",
-        "description": "保存有趣视频与朋友分享",
-        "url": "/#usage",
-        "target": "_self",
-        "image": {
-          "src": "/imgs/showcases/6.png"
-        }
-      }
-    ]
-  },
+
   "stats": {
     "name": "stats",
     "label": "统计",
@@ -326,105 +226,136 @@
   },
   "pricing": {
     "name": "pricing",
-    "label": "价格",
-    "title": "简单透明的价格",
-    "description": "选择最适合您Twitter视频下载需求的计划。",
+    "label": "积分套餐",
+    "title": "选择适合您的积分套餐",
+    "description": "基于积分的使用模式，高清视频2积分，标清视频1积分。",
     "groups": [],
     "items": [
       {
-        "title": "免费版",
-        "description": "适合普通用户",
+        "title": "基础版",
+        "description": "适合普通用户试用",
         "features_title": "包含",
         "features": [
-          "标准质量Twitter视频下载",
+          "100积分（新用户免费赠送）",
+          "高清视频下载（720p+）消耗2积分",
+          "标清视频下载消耗1积分",
           "MP4格式下载",
-          "每天5次下载",
           "基本下载历史",
-          "网页应用访问"
+          "网页应用访问",
+          "永久有效"
         ],
-        "interval": "monthly",
+        "interval": "one-time",
         "amount": 0,
         "cn_amount": 0,
-        "currency": "USD",
-        "price": "¥0",
-        "original_price": "¥0",
-        "unit": "CNY",
+        "currency": "CNY",
+        "price": "免费",
+        "original_price": "",
+        "unit": "积分",
         "is_featured": false,
-        "tip": "无需信用卡",
+        "tip": "新用户免费获得",
         "button": {
           "title": "免费开始",
-          "url": "/#usage",
+          "url": "/zh#usage",
           "icon": "RiDownloadCloud2Fill"
         },
-        "product_id": "free",
-        "product_name": "TwitterDown免费版",
-        "credits": 5,
-        "valid_months": 1
+        "product_id": "basic",
+        "product_name": "TwitterDown基础版",
+        "credits": 100,
+        "valid_months": 9999
       },
       {
-        "title": "专业版",
-        "description": "适合经常保存内容的用户",
+        "title": "标准积分包",
+        "description": "适合经常使用的用户",
         "label": "热门",
-        "features_title": "包含免费版的所有功能，外加",
-        "features": [
-          "无限下载",
-          "高质量视频下载",
-          "多种格式选择（MP4、WebM、GIF）",
-          "音频提取（MP3）",
-          "带组织功能的下载历史",
-          "浏览器扩展",
-          "电子邮件支持"
+        "features_title": "包含",
+        "features": [          
+          "500积分",
+          "高清视频约250次下载",
+          "标清视频约500次下载",
+          "永久有效",
+          "批量下载功能",
+          "优先下载速度"
         ],
-        "interval": "monthly",
-        "amount": 499,
-        "cn_amount": 3499,
-        "currency": "USD",
-        "price": "¥34.99",
-        "original_price": "¥55.99",
-        "unit": "CNY",
+        "interval": "one-time",
+        "amount": 999,
+        "cn_amount": 999,
+        "currency": "CNY",
+        "price": "¥9.99",
+        "original_price": "¥19.99",
+        "unit": "积分包",
         "is_featured": true,
-        "tip": "常规用户最受欢迎的选择",
+        "tip": "最受欢迎的选择",
         "button": {
-          "title": "获取专业版",
-          "url": "/#pricing",
+          "title": "购买标准包",
+          "url": "/zh#pricing",
           "icon": "RiVipCrownLine"
         },
-        "product_id": "pro",
-        "product_name": "TwitterDown专业版",
-        "credits": 999,
-        "valid_months": 1
+        "product_id": "standard",
+        "product_name": "TwitterDown标准积分包",
+        "credits": 500,
+        "valid_months": 9999
       },
       {
-        "title": "商业版",
-        "description": "适合专业人士和团队",
-        "features_title": "包含专业版的所有功能，外加",
+        "title": "专业积分包",
+        "description": "适合重度用户和创作者",
+        "features_title": "包含",
         "features": [
-          "批量下载",
-          "下载前视频裁剪",
-          "团队账户（最多5个用户）",
-          "API访问",
-          "Twitter Spaces录音下载",
-          "高级分析",
-          "优先支持"
+          "2000积分",
+          "高清视频约1000次下载",
+          "标清视频约2000次下载",
+          "永久有效",
+          "API访问权限",
+          "优先客户支持"
         ],
-        "interval": "monthly",
-        "amount": 1499,
-        "cn_amount": 9999,
-        "currency": "USD",
-        "price": "¥99.99",
-        "original_price": "¥139.99",
-        "unit": "CNY",
+        "interval": "one-time",
+        "amount": 2999,
+        "cn_amount": 2999,
+        "currency": "CNY",
+        "price": "¥29.99",
+        "original_price": "¥59.99",
+        "unit": "积分包",
         "is_featured": false,
-        "tip": "完美适合内容创作者和营销团队",
+        "tip": "最超值的选择",
         "button": {
-          "title": "获取商业版",
-          "url": "/#pricing",
+          "title": "购买专业包",
+          "url": "/zh#pricing",
           "icon": "RiBriefcase4Line"
         },
-        "product_id": "business",
-        "product_name": "TwitterDown商业版",
-        "credits": 9999,
-        "valid_months": 1
+        "product_id": "professional",
+        "product_name": "TwitterDown专业积分包",
+        "credits": 2000,
+        "valid_months": 9999
+      },
+      {
+        "title": "企业积分包",
+        "description": "适合企业和开发者",
+        "features_title": "包含",
+        "features": [
+          "10000积分",
+          "高清视频约5000次下载",
+          "标清视频约10000次下载",
+          "永久有效",
+          "完整API访问",
+          "专属技术支持"
+        ],
+        "interval": "one-time",
+        "amount": 9999,
+        "cn_amount": 9999,
+        "currency": "CNY",
+        "price": "¥99.99",
+        "original_price": "¥199.99",
+        "unit": "积分包",
+        "is_featured": false,
+        "tip": "企业级服务",
+        "button": {
+          "title": "购买企业包",
+          "url": "/zh#pricing",
+          "icon": "RiBuilding4Line"
+        },
+        "product_id": "enterprise",
+        "product_name": "TwitterDown企业积分包",
+        "credits": 10000,
+        "valid_months": 9999
       }
     ]
   },
@@ -446,7 +377,7 @@
       {
         "title": "陈明",
         "label": "数字营销专家",
-        "description": "批量处理功能对我们的营销团队来说是一个游戏规则改变者。我们可以轻松存档竞争对手的内容进行分析和灵感获取。",
+        "description": "专业版的批量下载功能对我们的营销团队来说是一个游戏规则改变者。我们可以轻松存档多个视频进行分析。",
         "image": {
           "src": "/imgs/users/2.png"
         }
@@ -470,7 +401,7 @@
       {
         "title": "艾米丽·威尔逊",
         "label": "社交媒体经理",
-        "description": "浏览器扩展使下载视频变得非常方便。我可以在浏览Twitter时只需一键保存灵感。",
+        "description": "TwitterDown的网页界面非常简洁易用。我可以快速粘贴链接并下载视频，操作简单高效。",
         "image": {
           "src": "/imgs/users/5.png"
         }
@@ -501,19 +432,19 @@
       },
       {
         "title": "TwitterDown支持哪些视频格式？",
-        "description": "我们的免费计划支持MP4下载。专业版和商业版提供额外格式，包括WebM和GIF，以及MP3音频提取。"
+        "description": "TwitterDown支持MP4格式下载，这是最通用和兼容性最好的视频格式，适用于所有设备和平台。"
       },
       {
         "title": "我可以下载的视频数量有限制吗？",
-        "description": "免费用户每天可以下载最多5个视频。专业版和商业版用户享受无限下载，没有每日限制。"
+        "description": "免费用户每天可以下载最多5个视频。专业版用户可以进行批量下载。商业版用户享受完全无限下载，没有任何限制。"
       },
       {
         "title": "我可以下载私人Twitter视频吗？",
         "description": "不可以，TwitterDown只能下载公开可用的视频。无法访问私人账户或直接消息中的视频。"
       },
       {
-        "title": "如何使用浏览器扩展？",
-        "description": "安装我们的浏览器扩展（适用于专业版和商业版用户）后，当您悬停在Twitter视频上时，会出现一个下载按钮。点击它可以直接下载，无需离开Twitter。"
+        "title": "如何选择合适的视频画质？",
+        "description": "您可以根据用途选择画质：高清HD适合收藏和编辑，标准画质适合快速预览和节省空间。我们提供多种分辨率选项供您选择。"
       }
     ]
   },
@@ -524,13 +455,13 @@
     "buttons": [
       {
         "title": "免费开始",
-        "url": "/#usage",
+        "url": "/zh#usage",
         "target": "_self",
         "icon": "RiDownloadCloud2Fill"
       },
       {
         "title": "查看价格",
-        "url": "/#pricing",
+        "url": "/zh#pricing",
         "target": "_self",
         "variant": "outline"
       }
@@ -548,90 +479,16 @@
       "url": "/"
     },
     "copyright": "© 2025 • TwitterDown 保留所有权利。",
-    "nav": {
-      "items": [
-        {
-          "title": "产品",
-          "children": [
-            {
-              "title": "功能特点",
-              "url": "/#feature",
-              "target": "_self"
-            },
-            {
-              "title": "使用方法",
-              "url": "/#usage",
-              "target": "_self"
-            },
-            {
-              "title": "价格",
-              "url": "/#pricing",
-              "target": "_self"
-            }
-          ]
-        },
-        {
-          "title": "资源",
-          "children": [
-            {
-              "title": "帮助中心",
-              "url": "/help",
-              "target": "_self"
-            },
-            {
-              "title": "API文档",
-              "url": "/api-docs",
-              "target": "_self"
-            },
-            {
-              "title": "浏览器扩展",
-              "url": "/extensions",
-              "target": "_self"
-            }
-          ]
-        },
-        {
-          "title": "公司",
-          "children": [
-            {
-              "title": "关于我们",
-              "url": "/about",
-              "target": "_self"
-            },
-            {
-              "title": "博客",
-              "url": "/blog",
-              "target": "_self"
-            },
-            {
-              "title": "联系我们",
-              "url": "/contact",
-              "target": "_self"
-            }
-          ]
-        }
-      ]
-    },
+   
     "social": {
       "items": [
         {
           "title": "Twitter",
           "icon": "RiTwitterXFill",
-          "url": "https://twitter.com/twitterdown",
+          "url": "https://twitter.com/Real_Jewel_AI",
           "target": "_blank"
         },
-        {
-          "title": "Github",
-          "icon": "RiGithubFill",
-          "url": "https://github.com/twitterdown",
-          "target": "_blank"
-        },
-        {
-          "title": "Discord",
-          "icon": "RiDiscordFill",
-          "url": "https://discord.gg/twitterdown",
-          "target": "_blank"
-        },
+        
         {
           "title": "邮箱",
           "icon": "RiMailLine",

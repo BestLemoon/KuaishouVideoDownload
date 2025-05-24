@@ -1,0 +1,237 @@
+{
+  "metadata": {
+    "title": "TwitterDown - أداة تنزيل مقاطع فيديو تويتر مجانية | تنزيل مقاطع فيديو تويتر عبر الإنترنت",
+    "description": "TwitterDown هي أداة مجانية لتنزيل مقاطع فيديو تويتر عبر الإنترنت. قم بتنزيل مقاطع فيديو وصور GIF وصور تويتر بجودة عالية. سريع وآمن وسهل الاستخدام.",
+    "keywords": "أداة تنزيل فيديو تويتر, تنزيل مقاطع فيديو تويتر, تحميل فيديو تويتر, أداة تنزيل gif تويتر, حفظ مقاطع فيديو تويتر"
+  },
+  "user": {
+    "sign_in": "تسجيل الدخول",
+    "sign_out": "تسجيل الخروج",
+    "credits": "الرصيد",
+    "api_keys": "مفاتيح API",
+    "my_orders": "طلباتي",
+    "download_history": "تاريخ التنزيل",
+    "user_center": "مركز المستخدم",
+    "admin_system": "نظام الإدارة"
+  },
+  "sign_modal": {
+    "sign_in_title": "تسجيل الدخول",
+    "sign_in_description": "سجل دخولك إلى حسابك",
+    "sign_up_title": "إنشاء حساب",
+    "sign_up_description": "إنشاء حساب جديد",
+    "email_title": "البريد الإلكتروني",
+    "email_placeholder": "أدخل بريدك الإلكتروني هنا",
+    "password_title": "كلمة المرور",
+    "password_placeholder": "أدخل كلمة المرور هنا",
+    "forgot_password": "نسيت كلمة المرور؟",
+    "or": "أو",
+    "continue": "متابعة",
+    "no_account": "ليس لديك حساب؟",
+    "email_sign_in": "تسجيل الدخول بالبريد الإلكتروني",
+    "google_sign_in": "تسجيل الدخول بـ Google",
+    "github_sign_in": "تسجيل الدخول بـ GitHub",
+    "close_title": "إغلاق",
+    "cancel_title": "إلغاء"
+  },
+  "my_orders": {
+    "title": "طلباتي",
+    "description": "الطلبات المدفوعة مع TwitterDown.",
+    "no_orders": "لم يتم العثور على طلبات",
+    "tip": "",
+    "activate_order": "تفعيل الطلب",
+    "actived": "مُفعل",
+    "join_discord": "انضم إلى Discord",
+    "read_docs": "اقرأ الوثائق",
+    "table": {
+      "order_no": "رقم الطلب",
+      "email": "البريد الإلكتروني",
+      "product_name": "اسم المنتج",
+      "amount": "المبلغ",
+      "paid_at": "تاريخ الدفع",
+      "github_username": "اسم مستخدم GitHub",
+      "status": "الحالة"
+    }
+  },
+  "my_credits": {
+    "title": "رصيدي",
+    "left_tip": "الرصيد المتبقي: {left_credits}",
+    "no_credits": "لا توجد سجلات رصيد",
+    "recharge": "إعادة شحن",
+    "table": {
+      "trans_no": "رقم المعاملة",
+      "trans_type": "نوع المعاملة",
+      "credits": "الرصيد",
+      "updated_at": "تاريخ التحديث",
+      "status": "الحالة"
+    }
+  },
+  "api_keys": {
+    "title": "مفاتيح API",
+    "tip": "يرجى الحفاظ على مفتاح API الخاص بك آمناً لتجنب التسريبات",
+    "no_api_keys": "لا توجد مفاتيح API",
+    "create_api_key": "إنشاء مفتاح API",
+    "table": {
+      "name": "الاسم",
+      "key": "المفتاح",
+      "created_at": "تاريخ الإنشاء"
+    },
+    "form": {
+      "name": "الاسم",
+      "name_placeholder": "اسم مفتاح API",
+      "submit": "إرسال"
+    }
+  },
+  "blog": {
+    "title": "المدونة",
+    "description": "الأخبار والموارد والتحديثات حول TwitterDown",
+    "read_more_text": "اقرأ المزيد"
+  },
+  "my_invites": {
+    "title": "دعواتي",
+    "description": "عرض سجلات الدعوة الخاصة بك",
+    "no_invites": "لم يتم العثور على سجلات دعوة",
+    "my_invite_link": "رابط الدعوة الخاص بي",
+    "edit_invite_link": "تحرير رابط الدعوة",
+    "copy_invite_link": "نسخ رابط الدعوة",
+    "invite_code": "رمز الدعوة",
+    "invite_tip": "ادع صديقاً واحداً لشراء TwitterDown، مكافأة 50 دولار.",
+    "invite_balance": "رصيد مكافأة الدعوة",
+    "total_invite_count": "إجمالي عدد الدعوات",
+    "total_paid_count": "إجمالي عدد المدفوعات",
+    "total_award_amount": "إجمالي مبلغ المكافأة",
+    "update_invite_code": "تعيين رمز الدعوة",
+    "update_invite_code_tip": "أدخل رمز الدعوة المخصص الخاص بك",
+    "update_invite_button": "حفظ",
+    "no_orders": "لا يمكنك دعوة الآخرين قبل شراء TwitterDown",
+    "no_affiliates": "غير مسموح لك بدعوة الآخرين، يرجى الاتصال بنا لطلب الإذن.",
+    "table": {
+      "invite_time": "وقت الدعوة",
+      "invite_user": "المستخدم المدعو",
+      "status": "الحالة",
+      "reward_percent": "نسبة المكافأة",
+      "reward_amount": "مبلغ المكافأة",
+      "pending": "في الانتظار",
+      "completed": "مكتمل"
+    }
+  },
+  "download_history": {
+    "title": "تاريخ التنزيل",
+    "description": "عرض سجلات تنزيل الفيديو الخاصة بك",
+    "no_history": "لم يتم العثور على تاريخ تنزيل",
+    "table": {
+      "download_no": "رقم التنزيل",
+      "file_name": "اسم الملف",
+      "original_tweet": "التغريدة الأصلية",
+      "video_resolution": "الدقة",
+      "video_quality": "جودة الفيديو",
+      "file_size": "حجم الملف",
+      "credits_consumed": "الرصيد المستخدم",
+      "download_status": "الحالة",
+      "username": "مستخدم تويتر",
+      "created_at": "وقت التنزيل"
+    },
+    "status": {
+      "completed": "مكتمل",
+      "failed": "فشل"
+    }
+  },
+  "downloads": {
+    "single_download": "تحميل مفرد",
+    "batch_download": "تحميل مجمع",
+    "single_placeholder": "الصق رابط فيديو تويتر...",
+    "batch_placeholder": "أدخل رابط فيديو تويتر واحد في كل سطر، حتى 10 روابط...",
+    "start_download": "بدء التحميل",
+    "batch_download_button": "تحميل مجمع",
+    "free_used_notice": "لقد استخدمت التحميل المجاني، يرجى",
+    "login_to_continue": "تسجيل الدخول",
+    "continue_use": "للمتابعة",
+    "free_user_tip": "أدخل أي رابط فيديو تويتر/X للتحميل بجودة عالية",
+    "batch_feature_title": "ميزة التحميل المجمع",
+    "batch_feature_description": "قم بالترقية إلى النسخة المدفوعة لإلغاء قفل ميزة التحميل المجمع ومعالجة عدة روابط فيديو في وقت واحد",
+    "batch_processing": "معالجة مجمعة",
+    "high_speed": "سرعة عالية",
+    "unlimited": "غير محدود",
+    "view_pricing": "عرض الأسعار",
+    "urls_count": "تم إدخال {count} رابط",
+    "results": {
+      "title": "نتائج التحميل",
+      "batch_title": "نتائج التحميل المجمع",
+      "video_info": "معلومات الفيديو",
+      "available_formats": "الصيغ المتاحة",
+      "download_button": "تحميل",
+      "downloading": "جاري التحميل...",
+      "quality_hd": "عالي الجودة",
+      "quality_sd": "جودة عادية",
+      "credits_required": "يتطلب {credits} رصيد",
+      "credits_remaining": "الرصيد المتبقي: {credits}",
+      "available_credits": "الرصيد المتاح",
+      "top_up_credits": "شحن الرصيد",
+      "download_success": "تم التحميل بنجاح",
+      "download_failed": "فشل التحميل",
+      "retry": "إعادة المحاولة",
+      "new_download": "تحميل جديد",
+      "continue_download": "متابعة التحميل",
+      "file_size": "حجم الملف",
+      "resolution": "الدقة",
+      "format": "التنسيق",
+      "video_preview": "معاينة الفيديو",
+      "loading": "جاري التحليل...",
+      "parse_error": "فشل التحليل",
+      "invalid_url": "رابط فيديو غير صالح",
+      "no_video_found": "لم يتم العثور على فيديو",
+      "insufficient_credits": "رصيد غير كافٍ، المتاح: {available}، المطلوب: {required}",
+      "insufficient_credits_short": "غير كافٍ: {available}/{required}",
+      "login_required": "يرجى تسجيل الدخول",
+      "invalid_twitter_url": "تنسيق رابط Twitter/X غير صالح",
+      "no_urls_provided": "لم يتم توفير روابط",
+      "invalid_twitter_urls": "تم العثور على {count} روابط Twitter/X غير صالحة",
+      "no_valid_urls": "لم يتم العثور على روابط Twitter/X صالحة",
+      "batch_parse_error": "فشلت المعالجة المجمعة",
+      "successful_videos": "الفيديوهات المحللة بنجاح",
+      "failed_links": "الروابط الفاشلة",
+      "success_count": "نجح",
+      "failed_count": "فشل",
+      "total_count": "المجموع",
+      "view_original_tweet": "عرض التغريدة الأصلية",
+      "cost_credits": "التكلفة",
+      "cost_format": "{credits} رصيد"
+    }
+  },
+  "api": {
+    "auth": {
+      "login_required": "يرجى تسجيل الدخول أولاً",
+      "login_required_download": "يرجى تسجيل الدخول قبل تنزيل المقاطع"
+    },
+    "credits": {
+      "insufficient": "رصيد غير كافٍ، المتاح: {available}، المطلوب: {required}",
+      "deduction_success": "تم خصم الرصيد بنجاح",
+      "deduction_failed": "فشل في خصم الرصيد",
+      "deduction_error": "خطأ في خصم الرصيد",
+      "gift_success": "تم منح الرصيد بنجاح",
+      "gift_failed": "فشل في منح الرصيد",
+      "balance_current": "الرصيد المتاح حالياً: {balance}",
+      "get_balance_failed": "فشل في الحصول على رصيد الحساب",
+      "get_history_failed": "فشل في الحصول على تاريخ الرصيد"
+    },
+    "download": {
+      "missing_token": "معامل الرمز المميز مفقود",
+      "invalid_token": "رمز مميز غير صالح",
+      "invalid_video_url": "رابط فيديو غير صالح",
+      "video_fetch_failed": "فشل في جلب الفيديو: {status}",
+      "download_failed": "فشل في تنزيل الفيديو، يرجى المحاولة مرة أخرى",
+      "server_error": "خطأ داخلي في الخادم",
+      "get_history_failed": "فشل في الحصول على تاريخ التنزيل"
+    },
+    "test": {
+      "invalid_action": "نوع إجراء غير صالح",
+      "test_failed": "فشل في اختبار نظام الرصيد",
+      "download_record_success": "تم إنشاء سجل التنزيل بنجاح",
+      "download_record_failed": "فشل في إنشاء سجل التنزيل"
+    },
+    "batch": {
+      "max_urls_exceeded": "الحد الأقصى {max} روابط مسموح للمعالجة المجمعة",
+      "invalid_urls_found": "تم العثور على روابط غير صالحة في المجموعة",
+      "no_valid_urls": "لم يتم العثور على روابط صالحة في المجموعة"
+    }
+  }
+} 

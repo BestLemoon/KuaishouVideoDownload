@@ -36,8 +36,12 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
 
   const [showSignModal, setShowSignModal] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
+  const [isUserLoaded, setIsUserLoaded] = useState(false);
+  const [sessionId, setSessionId] = useState<string | null>(null);
 
   const fetchUserInfo = async function () {
+    if (isUserLoaded) return; // 避免重复请求
+    
     try {
       const resp = await fetch("/api/get-user-info", {
         method: "POST",
@@ -53,10 +57,12 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
       }
 
       setUser(data);
+      setIsUserLoaded(true);
 
       updateInvite(data);
     } catch (e) {
       console.log("fetch user info failed");
+      setIsUserLoaded(false);
     }
   };
 
@@ -113,8 +119,35 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
-    if (session && session.user) {
-      fetchUserInfo();
+    const currentSessionId = session?.user?.email || null;
+    
+    // 只有session变化时才重新加载用户信息
+    if (currentSessionId !== sessionId) {
+      setSessionId(currentSessionId);
+      
+      if (session && session.user) {
+        // 如果session中有完整的用户信息，直接使用
+        if (session.user.uuid && session.user.email) {
+          const sessionUser: User = {
+            uuid: session.user.uuid,
+            email: session.user.email,
+            nickname: session.user.nickname || '',
+            avatar_url: session.user.avatar_url || '',
+            created_at: session.user.created_at,
+          };
+          setUser(sessionUser);
+          setIsUserLoaded(true);
+          updateInvite(sessionUser);
+        } else {
+          // 否则从API获取完整信息
+          setIsUserLoaded(false);
+          fetchUserInfo();
+        }
+      } else {
+        // 登出时清理状态
+        setUser(null);
+        setIsUserLoaded(false);
+      }
     }
   }, [session]);
 

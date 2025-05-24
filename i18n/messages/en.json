@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "Ship Any AI SaaS Startups in hours | ShipAny",
-    "description": "ShipAny is a NextJS boilerplate for building AI SaaS startups, Ship Fast with a variety of templates and components.",
-    "keywords": "ShipAny, AI SaaS Boilerplate, NextJS Boilerplate"
+    "title": "TwitterDown - Free Twitter Video Downloader | Download Twitter Videos Online",
+    "description": "TwitterDown is a free online Twitter video downloader. Download Twitter videos, GIFs and images in high quality. Fast, secure and easy to use.",
+    "keywords": "twitter video downloader, download twitter videos, twitter video download, twitter gif downloader, save twitter videos"
   },
   "user": {
     "sign_in": "Sign In",
@@ -10,6 +10,7 @@
     "credits": "Credits",
     "api_keys": "API Keys",
     "my_orders": "My Orders",
+    "download_history": "Download History",
     "user_center": "User Center",
     "admin_system": "Admin System"
   },
@@ -34,7 +35,7 @@
   },
   "my_orders": {
     "title": "My Orders",
-    "description": "orders paid with ShipAny.",
+    "description": "orders paid with TwitterDown.",
     "no_orders": "No orders found",
     "tip": "",
     "activate_order": "Activate Order",
@@ -82,7 +83,7 @@
   },
   "blog": {
     "title": "Blog",
-    "description": "News, resources, and updates about ShipAny",
+    "description": "News, resources, and updates about TwitterDown",
     "read_more_text": "Read More"
   },
   "my_invites": {
@@ -93,7 +94,7 @@
     "edit_invite_link": "Edit Invite Link",
     "copy_invite_link": "Copy Invite Link",
     "invite_code": "Invite Code",
-    "invite_tip": "Invite 1 friend to buy ShipAny, reward $50.",
+    "invite_tip": "Invite 1 friend to buy TwitterDown, reward $50.",
     "invite_balance": "Invite Reward Balance",
     "total_invite_count": "Total Invite Count",
     "total_paid_count": "Total Paid Count",
@@ -101,7 +102,7 @@
     "update_invite_code": "Set Invite Code",
     "update_invite_code_tip": "Input your custom invite code",
     "update_invite_button": "Save",
-    "no_orders": "You can't invite others before you bought ShipAny",
+    "no_orders": "You can't invite others before you bought TwitterDown",
     "no_affiliates": "You're not allowed to invite others, please contact us to apply for permission.",
     "table": {
       "invite_time": "Invite Time",
@@ -111,6 +112,126 @@
       "reward_amount": "Reward Amount",
       "pending": "Pending",
       "completed": "Completed"
+    }
+  },
+  "download_history": {
+    "title": "Download History",
+    "description": "View your video download records",
+    "no_history": "No download history found",
+    "table": {
+      "download_no": "Download No",
+      "file_name": "File Name",
+      "original_tweet": "Original Tweet",
+      "video_resolution": "Resolution",
+      "video_quality": "Video Quality",
+      "file_size": "File Size",
+      "credits_consumed": "Credits Used",
+      "download_status": "Status",
+      "username": "Twitter User",
+      "created_at": "Download Time"
+    },
+    "status": {
+      "completed": "Completed",
+      "failed": "Failed"
+    }
+  },
+  "downloads": {
+    "single_download": "Single Download",
+    "batch_download": "Batch Download",
+    "single_placeholder": "Paste Twitter video URL...",
+    "batch_placeholder": "Enter one Twitter video URL per line, up to 10 URLs...",
+    "start_download": "Start Download",
+    "batch_download_button": "Batch Download",
+    "free_used_notice": "You have used your free download, please",
+    "login_to_continue": "login",
+    "continue_use": "to continue",
+    "free_user_tip": "Enter any Twitter/X video URL to download in high quality",
+    "batch_feature_title": "Batch Download Feature",
+    "batch_feature_description": "Upgrade to premium to unlock batch download feature and process multiple video URLs at once",
+    "batch_processing": "Batch Processing",
+    "high_speed": "High Speed",
+    "unlimited": "Unlimited",
+    "view_pricing": "View Pricing",
+    "urls_count": "{count} URLs entered",
+    "results": {
+      "title": "Download Results",
+      "batch_title": "Batch Download Results",
+      "video_info": "Video Information",
+      "available_formats": "Available Formats",
+      "download_button": "Download",
+      "downloading": "Downloading...",
+      "quality_hd": "HD",
+      "quality_sd": "SD",
+      "credits_required": "Requires {credits} credits",
+      "credits_remaining": "Credits remaining: {credits}",
+      "available_credits": "Available Credits",
+      "top_up_credits": "Top Up Credits",
+      "download_success": "Download successful",
+      "download_failed": "Download failed",
+      "retry": "Retry",
+      "new_download": "New download",
+      "continue_download": "Continue Download",
+      "file_size": "File size",
+      "resolution": "Resolution",
+      "format": "Format",
+      "video_preview": "Video preview",
+      "loading": "Parsing...",
+      "parse_error": "Parse failed",
+      "invalid_url": "Invalid video URL",
+      "no_video_found": "No video found",
+      "insufficient_credits": "Insufficient credits, available: {available}, required: {required}",
+      "insufficient_credits_short": "Insufficient: {available}/{required}",
+      "login_required": "Please login",
+      "invalid_twitter_url": "Invalid Twitter/X URL format",
+      "no_urls_provided": "No URLs provided",
+      "invalid_twitter_urls": "{count} invalid Twitter/X URLs found",
+      "no_valid_urls": "No valid Twitter/X URLs found",
+      "batch_parse_error": "Batch processing failed",
+      "successful_videos": "Successfully Parsed Videos",
+      "failed_links": "Failed Links",
+      "success_count": "Success",
+      "failed_count": "Failed",
+      "total_count": "Total",
+      "view_original_tweet": "View Original Tweet",
+      "cost_credits": "Cost",
+      "cost_format": "{credits} credits"
+    }
+  },
+  "api": {
+    "auth": {
+      "login_required": "Please login first",
+      "login_required_download": "Please login before downloading videos"
+    },
+    "credits": {
+      "insufficient": "Insufficient credits, available: {available}, required: {required}",
+      "deduction_success": "Credits deducted successfully",
+      "deduction_failed": "Credits deduction failed",
+      "deduction_error": "Credits deduction error",
+      "gift_success": "Credits gifted successfully",
+      "gift_failed": "Credits gift failed",
+      "balance_current": "Current available credits: {balance}",
+      "get_balance_failed": "Failed to get credit balance",
+      "get_history_failed": "Failed to get credit history"
+    },
+    "download": {
+      "missing_token": "Missing token parameter",
+      "invalid_token": "Invalid token",
+      "invalid_video_url": "Invalid video URL",
+      "video_fetch_failed": "Video fetch failed: {status}",
+      "download_failed": "Video download failed, please try again",
+      "server_error": "Internal server error",
+      "get_history_failed": "Failed to get download history"
+    },
+    "test": {
+      "invalid_action": "Invalid action type",
+      "test_failed": "Credits system test failed",
+      "download_record_success": "Download record created successfully",
+      "download_record_failed": "Download record creation failed"
+    },
+    "batch": {
+      "max_urls_exceeded": "Maximum {max} URLs allowed for batch processing",
+      "invalid_urls_found": "Invalid URLs found in batch",
+      "no_valid_urls": "No valid URLs found in batch"
     }
   }
 }

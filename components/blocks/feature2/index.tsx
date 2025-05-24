@@ -44,7 +44,7 @@ export default function Feature2({ section }: { section: SectionType }) {
   return (
     <section id={section.name} className="py-32">
       <div className="container">
-        <div className="mx-auto grid gap-20 lg:grid-cols-2">
+        <div className="mx-auto grid gap-12 lg:grid-cols-2">
           <div>
             {section.label && (
               <Badge variant="outline" className="mb-4">

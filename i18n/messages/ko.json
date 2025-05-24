@@ -1,0 +1,237 @@
+{
+  "metadata": {
+    "title": "TwitterDown - 무료 트위터 동영상 다운로더 | 온라인으로 트위터 동영상 다운로드",
+    "description": "TwitterDown은 무료 온라인 트위터 동영상 다운로더입니다. 고품질로 트위터 동영상, GIF, 이미지를 다운로드하세요. 빠르고 안전하며 사용하기 쉽습니다.",
+    "keywords": "트위터 동영상 다운로더, 트위터 동영상 다운로드, 트위터 비디오 저장, 트위터 gif 다운로더, 트위터 동영상 저장"
+  },
+  "user": {
+    "sign_in": "로그인",
+    "sign_out": "로그아웃",
+    "credits": "크레딧",
+    "api_keys": "API 키",
+    "my_orders": "내 주문",
+    "download_history": "다운로드 기록",
+    "user_center": "사용자 센터",
+    "admin_system": "관리 시스템"
+  },
+  "sign_modal": {
+    "sign_in_title": "로그인",
+    "sign_in_description": "계정에 로그인",
+    "sign_up_title": "회원가입",
+    "sign_up_description": "계정 만들기",
+    "email_title": "이메일",
+    "email_placeholder": "이메일을 입력하세요",
+    "password_title": "비밀번호",
+    "password_placeholder": "비밀번호를 입력하세요",
+    "forgot_password": "비밀번호를 잊으셨나요?",
+    "or": "또는",
+    "continue": "계속",
+    "no_account": "계정이 없으신가요?",
+    "email_sign_in": "이메일로 로그인",
+    "google_sign_in": "Google로 로그인",
+    "github_sign_in": "GitHub로 로그인",
+    "close_title": "닫기",
+    "cancel_title": "취소"
+  },
+  "my_orders": {
+    "title": "내 주문",
+    "description": "TwitterDown에서 결제한 주문.",
+    "no_orders": "주문을 찾을 수 없습니다",
+    "tip": "",
+    "activate_order": "주문 활성화",
+    "actived": "활성화됨",
+    "join_discord": "Discord 참여",
+    "read_docs": "문서 읽기",
+    "table": {
+      "order_no": "주문 번호",
+      "email": "이메일",
+      "product_name": "상품명",
+      "amount": "금액",
+      "paid_at": "결제일",
+      "github_username": "GitHub 사용자명",
+      "status": "상태"
+    }
+  },
+  "my_credits": {
+    "title": "내 크레딧",
+    "left_tip": "남은 크레딧: {left_credits}",
+    "no_credits": "크레딧 기록이 없습니다",
+    "recharge": "충전",
+    "table": {
+      "trans_no": "거래 번호",
+      "trans_type": "거래 유형",
+      "credits": "크레딧",
+      "updated_at": "업데이트 일시",
+      "status": "상태"
+    }
+  },
+  "api_keys": {
+    "title": "API 키",
+    "tip": "API 키를 안전하게 보관하여 유출을 방지하세요",
+    "no_api_keys": "API 키가 없습니다",
+    "create_api_key": "API 키 생성",
+    "table": {
+      "name": "이름",
+      "key": "키",
+      "created_at": "생성일"
+    },
+    "form": {
+      "name": "이름",
+      "name_placeholder": "API 키 이름",
+      "submit": "제출"
+    }
+  },
+  "blog": {
+    "title": "블로그",
+    "description": "TwitterDown에 관한 뉴스, 리소스 및 업데이트",
+    "read_more_text": "더 읽기"
+  },
+  "my_invites": {
+    "title": "내 초대",
+    "description": "초대 기록 보기",
+    "no_invites": "초대 기록을 찾을 수 없습니다",
+    "my_invite_link": "내 초대 링크",
+    "edit_invite_link": "초대 링크 편집",
+    "copy_invite_link": "초대 링크 복사",
+    "invite_code": "초대 코드",
+    "invite_tip": "친구 1명을 TwitterDown 구매에 초대하면 $50 보상.",
+    "invite_balance": "초대 보상 잔액",
+    "total_invite_count": "총 초대 수",
+    "total_paid_count": "총 결제 수",
+    "total_award_amount": "총 보상 금액",
+    "update_invite_code": "초대 코드 설정",
+    "update_invite_code_tip": "사용자 정의 초대 코드 입력",
+    "update_invite_button": "저장",
+    "no_orders": "TwitterDown을 구매하기 전에는 다른 사람을 초대할 수 없습니다",
+    "no_affiliates": "다른 사람을 초대할 권한이 없습니다. 권한 신청을 위해 문의해 주세요.",
+    "table": {
+      "invite_time": "초대 시간",
+      "invite_user": "초대된 사용자",
+      "status": "상태",
+      "reward_percent": "보상 비율",
+      "reward_amount": "보상 금액",
+      "pending": "대기 중",
+      "completed": "완료"
+    }
+  },
+  "download_history": {
+    "title": "다운로드 기록",
+    "description": "동영상 다운로드 기록 보기",
+    "no_history": "다운로드 기록을 찾을 수 없습니다",
+    "table": {
+      "download_no": "다운로드 번호",
+      "file_name": "파일명",
+      "original_tweet": "원본 트윗",
+      "video_resolution": "해상도",
+      "video_quality": "동영상 품질",
+      "file_size": "파일 크기",
+      "credits_consumed": "사용 크레딧",
+      "download_status": "상태",
+      "username": "Twitter 사용자",
+      "created_at": "다운로드 시간"
+    },
+    "status": {
+      "completed": "완료",
+      "failed": "실패"
+    }
+  },
+  "downloads": {
+    "single_download": "단일 다운로드",
+    "batch_download": "일괄 다운로드",
+    "single_placeholder": "트위터 비디오 URL 붙여넣기...",
+    "batch_placeholder": "한 줄에 하나의 트위터 비디오 URL 입력, 최대 10개 URL...",
+    "start_download": "다운로드 시작",
+    "batch_download_button": "일괄 다운로드",
+    "free_used_notice": "무료 다운로드를 사용하셨습니다.",
+    "login_to_continue": "로그인",
+    "continue_use": "하여 계속하세요",
+    "free_user_tip": "트위터/X 비디오 URL을 입력하여 고품질로 다운로드",
+    "batch_feature_title": "일괄 다운로드 기능",
+    "batch_feature_description": "프리미엄으로 업그레이드하여 일괄 다운로드 기능을 잠금 해제하고 여러 비디오 URL을 한 번에 처리",
+    "batch_processing": "일괄 처리",
+    "high_speed": "고속",
+    "unlimited": "무제한",
+    "view_pricing": "가격 보기",
+    "urls_count": "{count}개 URL 입력됨",
+    "results": {
+      "title": "다운로드 결과",
+      "batch_title": "일괄 다운로드 결과",
+      "video_info": "동영상 정보",
+      "available_formats": "사용 가능한 형식",
+      "download_button": "다운로드",
+      "downloading": "다운로드 중...",
+      "quality_hd": "고화질",
+      "quality_sd": "표준화질",
+      "credits_required": "{credits} 크레딧 필요",
+      "credits_remaining": "남은 크레딧: {credits}",
+      "available_credits": "사용 가능한 크레딧",
+      "top_up_credits": "크레딧 충전",
+      "download_success": "다운로드 성공",
+      "download_failed": "다운로드 실패",
+      "retry": "재시도",
+      "new_download": "새 다운로드",
+      "continue_download": "다운로드 계속",
+      "file_size": "파일 크기",
+      "resolution": "해상도",
+      "format": "형식",
+      "video_preview": "동영상 미리보기",
+      "loading": "분석 중...",
+      "parse_error": "분석 실패",
+      "invalid_url": "유효하지 않은 동영상 URL",
+      "no_video_found": "동영상을 찾을 수 없음",
+      "insufficient_credits": "크레딧 부족, 사용 가능: {available}, 필요: {required}",
+      "insufficient_credits_short": "부족: {available}/{required}",
+      "login_required": "로그인이 필요합니다",
+      "invalid_twitter_url": "유효하지 않은 Twitter/X URL 형식",
+      "no_urls_provided": "URL이 제공되지 않았습니다",
+      "invalid_twitter_urls": "{count}개의 유효하지 않은 Twitter/X URL을 발견했습니다",
+      "no_valid_urls": "유효한 Twitter/X URL을 찾을 수 없습니다",
+      "batch_parse_error": "일괄 처리에 실패했습니다",
+      "successful_videos": "성공적으로 파싱된 동영상",
+      "failed_links": "실패한 링크",
+      "success_count": "성공",
+      "failed_count": "실패",
+      "total_count": "총",
+      "view_original_tweet": "원래 트윗 보기",
+      "cost_credits": "비용",
+      "cost_format": "{credits} 크레딧"
+    }
+  },
+  "api": {
+    "auth": {
+      "login_required": "먼저 로그인해 주세요",
+      "login_required_download": "동영상을 다운로드하기 전에 로그인해 주세요"
+    },
+    "credits": {
+      "insufficient": "크레딧 부족, 사용 가능: {available}, 필요: {required}",
+      "deduction_success": "크레딧이 성공적으로 차감되었습니다",
+      "deduction_failed": "크레딧 차감에 실패했습니다",
+      "deduction_error": "크레딧 차감 오류",
+      "gift_success": "크레딧이 성공적으로 선물되었습니다",
+      "gift_failed": "크레딧 선물에 실패했습니다",
+      "balance_current": "현재 사용 가능한 크레딧: {balance}",
+      "get_balance_failed": "크레딧 잔액 가져오기에 실패했습니다",
+      "get_history_failed": "크레딧 기록 가져오기에 실패했습니다"
+    },
+    "download": {
+      "missing_token": "토큰 매개변수가 누락되었습니다",
+      "invalid_token": "유효하지 않은 토큰",
+      "invalid_video_url": "유효하지 않은 동영상 URL",
+      "video_fetch_failed": "동영상 가져오기에 실패했습니다: {status}",
+      "download_failed": "동영상 다운로드에 실패했습니다. 다시 시도해 주세요",
+      "server_error": "내부 서버 오류",
+      "get_history_failed": "다운로드 기록 가져오기에 실패했습니다"
+    },
+    "test": {
+      "invalid_action": "유효하지 않은 액션 유형",
+      "test_failed": "크레딧 시스템 테스트에 실패했습니다",
+      "download_record_success": "다운로드 기록이 성공적으로 생성되었습니다",
+      "download_record_failed": "다운로드 기록 생성에 실패했습니다"
+    },
+    "batch": {
+      "max_urls_exceeded": "일괄 처리에는 최대 {max}개의 URL이 허용됩니다",
+      "invalid_urls_found": "일괄 처리에서 유효하지 않은 URL을 발견했습니다",
+      "no_valid_urls": "일괄 처리에서 유효한 URL을 찾을 수 없습니다"
+    }
+  }
+} 

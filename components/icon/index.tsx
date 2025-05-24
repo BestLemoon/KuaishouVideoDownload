@@ -1,10 +1,10 @@
 "use client";
 
 // import * as Ai from "react-icons/ai"; // Ant Design icons
-// import * as Bi from "react-icons/bi"; // Boxicons
+import * as Bi from "react-icons/bi"; // Boxicons
 // import * as Bs from "react-icons/bs"; // Bootstrap icons
 
-// import * as Md from "react-icons/md"; // Material Design icons
+import * as Md from "react-icons/md"; // Material Design icons
 // import * as Pi from "react-icons/pi"; // Phosphor Icons
 import * as Ri from "react-icons/ri"; // Remix icons
 
@@ -13,14 +13,14 @@ import { ReactNode } from "react";
 // import * as Cg from "react-icons/cg"; // Circum icons
 // import * as Ci from "react-icons/ci"; // css.gg
 // import * as Di from "react-icons/di"; // Devicons
-// import * as Fa from "react-icons/fa"; // Font Awesome icons
+import * as Fa from "react-icons/fa"; // Font Awesome icons
 // import * as Fa6 from "react-icons/fa6"; // Font Awesome 6 icons
 // import * as Fc from "react-icons/fc"; // Flat Color icons
 // import * as Fi from "react-icons/fi"; // Feather icons
 // import * as Gi from "react-icons/gi"; // Game Icons
-// import * as Go from "react-icons/go"; // Github Octicons icons
+import * as Go from "react-icons/go"; // Github Octicons icons
 // import * as Gr from "react-icons/gr"; // Grommet-Icons
-// import * as Hi from "react-icons/hi"; // Heroicons
+import * as Hi from "react-icons/hi"; // Heroicons
 // import * as Hi2 from "react-icons/hi2"; // Heroicons 2
 // import * as Im from "react-icons/im"; // IcoMoon Free
 // import * as Io from "react-icons/io"; // Ionicons 4
@@ -41,25 +41,25 @@ import { ReactNode } from "react";
 const iconPackages: { [key: string]: any } = {
   // Ai,
   // Bs,
-  // Bi,
+  Bi,
   // Ci,
   // Cg,
   // Di,
   // Fi,
   // Fc,
-  // Fa,
+  Fa,
   // Fa6,
-  // Go,
+  Go,
   // Gi,
   // Gr,
-  // Hi,
+  Hi,
   // Hi2,
   // Im,
   // Io,
   // Io5,
   // Lia,
   // Lu,
-  // Md,
+  Md,
   // Pi,
   Ri,
   // Rx,

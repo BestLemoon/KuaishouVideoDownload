@@ -1,0 +1,237 @@
+{
+  "metadata": {
+    "title": "TwitterDown - Téléchargeur Gratuit de Vidéos Twitter | Télécharger Vidéos Twitter en Ligne",
+    "description": "TwitterDown est un téléchargeur gratuit de vidéos Twitter en ligne. Téléchargez des vidéos, GIFs et images Twitter en haute qualité. Rapide, sécurisé et facile à utiliser.",
+    "keywords": "téléchargeur vidéo twitter, télécharger vidéos twitter, téléchargement vidéo twitter, téléchargeur gif twitter, sauvegarder vidéos twitter"
+  },
+  "user": {
+    "sign_in": "Se Connecter",
+    "sign_out": "Se Déconnecter",
+    "credits": "Crédits",
+    "api_keys": "Clés API",
+    "my_orders": "Mes Commandes",
+    "download_history": "Historique des Téléchargements",
+    "user_center": "Centre Utilisateur",
+    "admin_system": "Système d'Administration"
+  },
+  "sign_modal": {
+    "sign_in_title": "Se Connecter",
+    "sign_in_description": "Connectez-vous à votre compte",
+    "sign_up_title": "S'inscrire",
+    "sign_up_description": "Créer un compte",
+    "email_title": "Email",
+    "email_placeholder": "Entrez votre email ici",
+    "password_title": "Mot de passe",
+    "password_placeholder": "Entrez votre mot de passe ici",
+    "forgot_password": "Mot de passe oublié ?",
+    "or": "Ou",
+    "continue": "Continuer",
+    "no_account": "Vous n'avez pas de compte ?",
+    "email_sign_in": "Se connecter avec Email",
+    "google_sign_in": "Se connecter avec Google",
+    "github_sign_in": "Se connecter avec GitHub",
+    "close_title": "Fermer",
+    "cancel_title": "Annuler"
+  },
+  "my_orders": {
+    "title": "Mes Commandes",
+    "description": "commandes payées avec TwitterDown.",
+    "no_orders": "Aucune commande trouvée",
+    "tip": "",
+    "activate_order": "Activer la Commande",
+    "actived": "Activé",
+    "join_discord": "Rejoindre Discord",
+    "read_docs": "Lire la Documentation",
+    "table": {
+      "order_no": "N° de Commande",
+      "email": "Email",
+      "product_name": "Nom du Produit",
+      "amount": "Montant",
+      "paid_at": "Payé le",
+      "github_username": "Nom d'utilisateur GitHub",
+      "status": "Statut"
+    }
+  },
+  "my_credits": {
+    "title": "Mes Crédits",
+    "left_tip": "crédits restants : {left_credits}",
+    "no_credits": "Aucun enregistrement de crédits",
+    "recharge": "Recharger",
+    "table": {
+      "trans_no": "N° de Transaction",
+      "trans_type": "Type de Transaction",
+      "credits": "Crédits",
+      "updated_at": "Mis à jour le",
+      "status": "Statut"
+    }
+  },
+  "api_keys": {
+    "title": "Clés API",
+    "tip": "Veuillez garder votre clé API en sécurité pour éviter les fuites",
+    "no_api_keys": "Aucune Clé API",
+    "create_api_key": "Créer une Clé API",
+    "table": {
+      "name": "Nom",
+      "key": "Clé",
+      "created_at": "Créé le"
+    },
+    "form": {
+      "name": "Nom",
+      "name_placeholder": "Nom de la Clé API",
+      "submit": "Soumettre"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Actualités, ressources et mises à jour sur TwitterDown",
+    "read_more_text": "Lire Plus"
+  },
+  "my_invites": {
+    "title": "Mes Invitations",
+    "description": "Voir vos enregistrements d'invitation",
+    "no_invites": "Aucun enregistrement d'invitation trouvé",
+    "my_invite_link": "Mon Lien d'Invitation",
+    "edit_invite_link": "Modifier le Lien d'Invitation",
+    "copy_invite_link": "Copier le Lien d'Invitation",
+    "invite_code": "Code d'Invitation",
+    "invite_tip": "Invitez 1 ami à acheter TwitterDown, récompense 50$.",
+    "invite_balance": "Solde de Récompense d'Invitation",
+    "total_invite_count": "Nombre Total d'Invitations",
+    "total_paid_count": "Nombre Total Payé",
+    "total_award_amount": "Montant Total de la Récompense",
+    "update_invite_code": "Définir le Code d'Invitation",
+    "update_invite_code_tip": "Entrez votre code d'invitation personnalisé",
+    "update_invite_button": "Sauvegarder",
+    "no_orders": "Vous ne pouvez pas inviter d'autres personnes avant d'avoir acheté TwitterDown",
+    "no_affiliates": "Vous n'êtes pas autorisé à inviter d'autres personnes, veuillez nous contacter pour demander l'autorisation.",
+    "table": {
+      "invite_time": "Heure d'Invitation",
+      "invite_user": "Utilisateur Invité",
+      "status": "Statut",
+      "reward_percent": "Pourcentage de Récompense",
+      "reward_amount": "Montant de la Récompense",
+      "pending": "En attente",
+      "completed": "Terminé"
+    }
+  },
+  "download_history": {
+    "title": "Historique des Téléchargements",
+    "description": "Voir vos enregistrements de téléchargement de vidéos",
+    "no_history": "Aucun historique de téléchargement trouvé",
+    "table": {
+      "download_no": "N° de Téléchargement",
+      "file_name": "Nom du Fichier",
+      "original_tweet": "Tweet Original",
+      "video_resolution": "Résolution",
+      "video_quality": "Qualité Vidéo",
+      "file_size": "Taille du Fichier",
+      "credits_consumed": "Crédits Utilisés",
+      "download_status": "Statut",
+      "username": "Utilisateur Twitter",
+      "created_at": "Heure de Téléchargement"
+    },
+    "status": {
+      "completed": "Terminé",
+      "failed": "Échoué"
+    }
+  },
+  "downloads": {
+    "single_download": "Téléchargement Simple",
+    "batch_download": "Téléchargement par Lots",
+    "single_placeholder": "Collez l'URL de la vidéo Twitter...",
+    "batch_placeholder": "Entrez une URL de vidéo Twitter par ligne, jusqu'à 10 URLs...",
+    "start_download": "Commencer le Téléchargement",
+    "batch_download_button": "Téléchargement par Lots",
+    "free_used_notice": "Vous avez utilisé votre téléchargement gratuit, veuillez",
+    "login_to_continue": "vous connecter",
+    "continue_use": "pour continuer",
+    "free_user_tip": "Entrez n'importe quelle URL de vidéo Twitter/X pour télécharger en haute qualité",
+    "batch_feature_title": "Fonction de Téléchargement par Lots",
+    "batch_feature_description": "Passez au premium pour débloquer la fonction de téléchargement par lots et traiter plusieurs URLs de vidéo à la fois",
+    "batch_processing": "Traitement par Lots",
+    "high_speed": "Haute Vitesse",
+    "unlimited": "Illimité",
+    "view_pricing": "Voir les Tarifs",
+    "urls_count": "{count} URLs saisies",
+    "results": {
+      "title": "Résultats de Téléchargement",
+      "batch_title": "Résultats de Téléchargement par Lots",
+      "video_info": "Informations Vidéo",
+      "available_formats": "Formats Disponibles",
+      "download_button": "Télécharger",
+      "downloading": "Téléchargement en cours...",
+      "quality_hd": "HD",
+      "quality_sd": "SD",
+      "credits_required": "Nécessite {credits} crédits",
+      "credits_remaining": "Crédits restants : {credits}",
+      "available_credits": "Crédits Disponibles",
+      "top_up_credits": "Recharger les Crédits",
+      "download_success": "Téléchargement réussi",
+      "download_failed": "Échec du téléchargement",
+      "retry": "Réessayer",
+      "new_download": "Nouveau téléchargement",
+      "continue_download": "Continuer le Téléchargement",
+      "file_size": "Taille du fichier",
+      "resolution": "Résolution",
+      "format": "Format",
+      "video_preview": "Aperçu vidéo",
+      "loading": "Analyse en cours...",
+      "parse_error": "Échec de l'analyse",
+      "invalid_url": "URL vidéo invalide",
+      "no_video_found": "Aucune vidéo trouvée",
+      "insufficient_credits": "Crédits insuffisants, disponibles : {available}, requis : {required}",
+      "insufficient_credits_short": "Insuffisants : {available}/{required}",
+      "login_required": "Veuillez vous connecter",
+      "invalid_twitter_url": "Format d'URL Twitter/X invalide",
+      "no_urls_provided": "Aucune URL fournie",
+      "invalid_twitter_urls": "{count} URLs Twitter/X invalides trouvées",
+      "no_valid_urls": "Aucune URL Twitter/X valide trouvée",
+      "batch_parse_error": "Échec du traitement par lots",
+      "successful_videos": "Vidéos Analysées avec Succès",
+      "failed_links": "Liens Échoués",
+      "success_count": "Succès",
+      "failed_count": "Échec",
+      "total_count": "Total",
+      "view_original_tweet": "Voir le Tweet Original",
+      "cost_credits": "Coût",
+      "cost_format": "{credits} crédits"
+    }
+  },
+  "api": {
+    "auth": {
+      "login_required": "Veuillez vous connecter d'abord",
+      "login_required_download": "Veuillez vous connecter avant de télécharger des vidéos"
+    },
+    "credits": {
+      "insufficient": "Crédits insuffisants, disponibles : {available}, requis : {required}",
+      "deduction_success": "Crédits déduits avec succès",
+      "deduction_failed": "Échec de la déduction des crédits",
+      "deduction_error": "Erreur de déduction des crédits",
+      "gift_success": "Crédits offerts avec succès",
+      "gift_failed": "Échec de l'offre de crédits",
+      "balance_current": "Crédits disponibles actuels : {balance}",
+      "get_balance_failed": "Échec de l'obtention du solde de crédits",
+      "get_history_failed": "Échec de l'obtention de l'historique des crédits"
+    },
+    "download": {
+      "missing_token": "Paramètre token manquant",
+      "invalid_token": "Token invalide",
+      "invalid_video_url": "URL de vidéo invalide",
+      "video_fetch_failed": "Échec de la récupération de la vidéo : {status}",
+      "download_failed": "Échec du téléchargement de la vidéo, veuillez réessayer",
+      "server_error": "Erreur interne du serveur",
+      "get_history_failed": "Échec de l'obtention de l'historique des téléchargements"
+    },
+    "test": {
+      "invalid_action": "Type d'action invalide",
+      "test_failed": "Échec du test du système de crédits",
+      "download_record_success": "Enregistrement de téléchargement créé avec succès",
+      "download_record_failed": "Échec de la création de l'enregistrement de téléchargement"
+    },
+    "batch": {
+      "max_urls_exceeded": "Maximum {max} URLs autorisées pour le traitement par lots",
+      "invalid_urls_found": "URLs invalides trouvées dans le lot",
+      "no_valid_urls": "Aucune URL valide trouvée dans le lot"
+    }
+  }
+} 

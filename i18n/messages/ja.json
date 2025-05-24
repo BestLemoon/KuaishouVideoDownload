@@ -1,0 +1,237 @@
+{
+  "metadata": {
+    "title": "TwitterDown - 無料のTwitter動画ダウンローダー | オンラインでTwitter動画をダウンロード",
+    "description": "TwitterDownは無料のオンラインTwitter動画ダウンローダーです。高品質でTwitter動画、GIF、画像をダウンロードできます。高速、安全で使いやすい。",
+    "keywords": "twitter 動画 ダウンローダー, twitter 動画 ダウンロード, ツイッター 動画 保存, twitter gif ダウンローダー, ツイッター 動画 保存"
+  },
+  "user": {
+    "sign_in": "サインイン",
+    "sign_out": "サインアウト",
+    "credits": "クレジット",
+    "api_keys": "APIキー",
+    "my_orders": "マイ注文",
+    "download_history": "ダウンロード履歴",
+    "user_center": "ユーザーセンター",
+    "admin_system": "管理システム"
+  },
+  "sign_modal": {
+    "sign_in_title": "ログイン",
+    "sign_in_description": "アカウントにログイン",
+    "sign_up_title": "新規登録",
+    "sign_up_description": "アカウントを作成",
+    "email_title": "メールアドレス",
+    "email_placeholder": "メールアドレスを入力してください",
+    "password_title": "パスワード",
+    "password_placeholder": "パスワードを入力してください",
+    "forgot_password": "パスワードを忘れましたか？",
+    "or": "または",
+    "continue": "続行",
+    "no_account": "アカウントをお持ちではありませんか？",
+    "email_sign_in": "メールでログイン",
+    "google_sign_in": "Googleでログイン",
+    "github_sign_in": "GitHubでログイン",
+    "close_title": "閉じる",
+    "cancel_title": "キャンセル"
+  },
+  "my_orders": {
+    "title": "マイ注文",
+    "description": "TwitterDownで支払った注文。",
+    "no_orders": "注文が見つかりません",
+    "tip": "",
+    "activate_order": "注文を有効化",
+    "actived": "有効化済み",
+    "join_discord": "Discordに参加",
+    "read_docs": "ドキュメントを読む",
+    "table": {
+      "order_no": "注文番号",
+      "email": "メールアドレス",
+      "product_name": "商品名",
+      "amount": "金額",
+      "paid_at": "支払い日時",
+      "github_username": "GitHubユーザー名",
+      "status": "ステータス"
+    }
+  },
+  "my_credits": {
+    "title": "マイクレジット",
+    "left_tip": "残りクレジット: {left_credits}",
+    "no_credits": "クレジット記録がありません",
+    "recharge": "チャージ",
+    "table": {
+      "trans_no": "取引番号",
+      "trans_type": "取引タイプ",
+      "credits": "クレジット",
+      "updated_at": "更新日時",
+      "status": "ステータス"
+    }
+  },
+  "api_keys": {
+    "title": "APIキー",
+    "tip": "APIキーを安全に保管し、漏洩を避けてください",
+    "no_api_keys": "APIキーがありません",
+    "create_api_key": "APIキーを作成",
+    "table": {
+      "name": "名前",
+      "key": "キー",
+      "created_at": "作成日時"
+    },
+    "form": {
+      "name": "名前",
+      "name_placeholder": "APIキー名",
+      "submit": "送信"
+    }
+  },
+  "blog": {
+    "title": "ブログ",
+    "description": "TwitterDownに関するニュース、リソース、アップデート",
+    "read_more_text": "続きを読む"
+  },
+  "my_invites": {
+    "title": "マイ招待",
+    "description": "招待記録を表示",
+    "no_invites": "招待記録が見つかりません",
+    "my_invite_link": "マイ招待リンク",
+    "edit_invite_link": "招待リンクを編集",
+    "copy_invite_link": "招待リンクをコピー",
+    "invite_code": "招待コード",
+    "invite_tip": "友達1人をTwitterDownの購入に招待すると、$50の報酬。",
+    "invite_balance": "招待報酬残高",
+    "total_invite_count": "総招待数",
+    "total_paid_count": "総支払い数",
+    "total_award_amount": "総報酬金額",
+    "update_invite_code": "招待コードを設定",
+    "update_invite_code_tip": "カスタム招待コードを入力",
+    "update_invite_button": "保存",
+    "no_orders": "TwitterDownを購入する前に他の人を招待することはできません",
+    "no_affiliates": "他の人を招待する権限がありません。許可を申請するためにお問い合わせください。",
+    "table": {
+      "invite_time": "招待時間",
+      "invite_user": "招待ユーザー",
+      "status": "ステータス",
+      "reward_percent": "報酬率",
+      "reward_amount": "報酬金額",
+      "pending": "保留中",
+      "completed": "完了"
+    }
+  },
+  "download_history": {
+    "title": "ダウンロード履歴",
+    "description": "動画ダウンロード記録を表示",
+    "no_history": "ダウンロード履歴が見つかりません",
+    "table": {
+      "download_no": "ダウンロード番号",
+      "file_name": "ファイル名",
+      "original_tweet": "元のツイート",
+      "video_resolution": "解像度",
+      "video_quality": "動画品質",
+      "file_size": "ファイルサイズ",
+      "credits_consumed": "使用クレジット",
+      "download_status": "ステータス",
+      "username": "Twitterユーザー",
+      "created_at": "ダウンロード時間"
+    },
+    "status": {
+      "completed": "完了",
+      "failed": "失敗"
+    }
+  },
+  "downloads": {
+    "single_download": "単一ダウンロード",
+    "batch_download": "一括ダウンロード",
+    "single_placeholder": "TwitterビデオのURLを貼り付け...",
+    "batch_placeholder": "1行に1つのTwitterビデオURLを入力、最大10個のURL...",
+    "start_download": "ダウンロード開始",
+    "batch_download_button": "一括ダウンロード",
+    "free_used_notice": "無料ダウンロードを使用済みです。",
+    "login_to_continue": "ログイン",
+    "continue_use": "して続行してください",
+    "free_user_tip": "任意のTwitter/XビデオURLを入力して高品質でダウンロード",
+    "batch_feature_title": "一括ダウンロード機能",
+    "batch_feature_description": "プレミアムにアップグレードして一括ダウンロード機能をアンロックし、複数のビデオURLを一度に処理",
+    "batch_processing": "一括処理",
+    "high_speed": "高速",
+    "unlimited": "無制限",
+    "view_pricing": "料金を見る",
+    "urls_count": "{count}個のURL入力済み",
+    "results": {
+      "title": "ダウンロード結果",
+      "batch_title": "一括ダウンロード結果",
+      "video_info": "動画情報",
+      "available_formats": "利用可能な形式",
+      "download_button": "ダウンロード",
+      "downloading": "ダウンロード中...",
+      "quality_hd": "HD",
+      "quality_sd": "SD",
+      "credits_required": "{credits}クレジット必要",
+      "credits_remaining": "残りクレジット: {credits}",
+      "available_credits": "利用可能クレジット",
+      "top_up_credits": "クレジットをチャージ",
+      "download_success": "ダウンロード成功",
+      "download_failed": "ダウンロード失敗",
+      "retry": "再試行",
+      "new_download": "新しいダウンロード",
+      "continue_download": "ダウンロードを続ける",
+      "file_size": "ファイルサイズ",
+      "resolution": "解像度",
+      "format": "形式",
+      "video_preview": "動画プレビュー",
+      "loading": "解析中...",
+      "parse_error": "解析失敗",
+      "invalid_url": "無効な動画URL",
+      "no_video_found": "動画が見つかりません",
+      "insufficient_credits": "クレジット不足、利用可能: {available}、必要: {required}",
+      "insufficient_credits_short": "不足: {available}/{required}",
+      "login_required": "ログインしてください",
+      "invalid_twitter_url": "無効なTwitter/X URL形式",
+      "no_urls_provided": "URLが提供されていません",
+      "invalid_twitter_urls": "{count}個の無効なTwitter/X URLが見つかりました",
+      "no_valid_urls": "有効なTwitter/X URLが見つかりません",
+      "batch_parse_error": "一括処理が失敗しました",
+      "successful_videos": "解析成功動画",
+      "failed_links": "失敗したリンク",
+      "success_count": "成功",
+      "failed_count": "失敗",
+      "total_count": "合計",
+      "view_original_tweet": "元のツイートを表示",
+      "cost_credits": "コスト",
+      "cost_format": "{credits}クレジット"
+    }
+  },
+  "api": {
+    "auth": {
+      "login_required": "まずログインしてください",
+      "login_required_download": "動画をダウンロードする前にログインしてください"
+    },
+    "credits": {
+      "insufficient": "クレジット不足、利用可能: {available}、必要: {required}",
+      "deduction_success": "クレジットが正常に差し引かれました",
+      "deduction_failed": "クレジット差し引きに失敗しました",
+      "deduction_error": "クレジット差し引きエラー",
+      "gift_success": "クレジットが正常に贈与されました",
+      "gift_failed": "クレジット贈与に失敗しました",
+      "balance_current": "現在の利用可能クレジット: {balance}",
+      "get_balance_failed": "クレジット残高の取得に失敗しました",
+      "get_history_failed": "クレジット履歴の取得に失敗しました"
+    },
+    "download": {
+      "missing_token": "トークンパラメータがありません",
+      "invalid_token": "無効なトークン",
+      "invalid_video_url": "無効な動画URL",
+      "video_fetch_failed": "動画取得に失敗しました: {status}",
+      "download_failed": "動画ダウンロードに失敗しました。もう一度お試しください",
+      "server_error": "内部サーバーエラー",
+      "get_history_failed": "ダウンロード履歴の取得に失敗しました"
+    },
+    "test": {
+      "invalid_action": "無効なアクションタイプ",
+      "test_failed": "クレジットシステムテストに失敗しました",
+      "download_record_success": "ダウンロード記録が正常に作成されました",
+      "download_record_failed": "ダウンロード記録の作成に失敗しました"
+    },
+    "batch": {
+      "max_urls_exceeded": "一括処理では最大{max}個のURLが許可されています",
+      "invalid_urls_found": "一括処理で無効なURLが見つかりました",
+      "no_valid_urls": "一括処理で有効なURLが見つかりませんでした"
+    }
+  }
+} 

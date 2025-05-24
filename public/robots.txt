@@ -1,4 +1,21 @@
 User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /auth/
+Disallow: /my-orders
+Disallow: /my-credits
+Disallow: /my-invites
+Disallow: /api-keys
+Disallow: /download-history
+Disallow: /download-result
+Disallow: /batch-download-result
 Disallow: /*?*q=
 Disallow: /privacy-policy
 Disallow: /terms-of-service
+
+# Sitemap
+Sitemap: https://TwitterDown.com/sitemap.xml
+
+# Crawl-delay for all bots
+Crawl-delay: 1

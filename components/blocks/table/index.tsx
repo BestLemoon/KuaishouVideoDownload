@@ -61,7 +61,11 @@ export default function ({
 
                   return (
                     <TableCell key={iidx} className={column.className}>
-                      {content}
+                      {column.allowHtml ? (
+                        <div dangerouslySetInnerHTML={{ __html: content }} />
+                      ) : (
+                        content
+                      )}
                     </TableCell>
                   );
                 })}

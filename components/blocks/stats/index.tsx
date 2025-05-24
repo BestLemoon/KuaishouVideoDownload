@@ -25,7 +25,7 @@ export default function Stats({ section }: { section: SectionType }) {
         <p className="text-center text-muted-foreground lg:text-lg">
           {section.description}
         </p>
-        <div className="w-full grid gap-10 md:grid-cols-3 lg:gap-0 mt-8">
+        <div className="w-full grid gap-6 md:grid-cols-3 lg:gap-8 mt-8">
           {section.items?.map((item, index) => {
             return (
               <div key={index} className="text-center">
