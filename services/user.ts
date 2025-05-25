@@ -94,16 +94,16 @@ export async function getUserInfo() {
  */
 export async function handleNewUserGift(user_uuid: string): Promise<boolean> {
   try {
-    // 新用户赠送100积分，有效期12个月
+    // 新用户赠送10积分，有效期12个月
     const success = await giftCredits(
       user_uuid,
-      100,
+      10,
       '新用户注册赠送积分',
       12
     );
 
     if (success) {
-      console.log(`[Credits] New user ${user_uuid} received 100 gift credits`);
+      console.log(`[Credits] New user ${user_uuid} received 10 gift credits`);
     } else {
       console.error(`[Credits] Failed to gift credits to new user ${user_uuid}`);
     }

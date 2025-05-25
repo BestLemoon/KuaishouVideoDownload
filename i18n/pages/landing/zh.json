@@ -236,7 +236,7 @@
         "description": "适合普通用户试用",
         "features_title": "包含",
         "features": [
-          "100积分（新用户免费赠送）",
+          "10积分（新用户免费赠送）",
           "高清视频下载（720p+）消耗2积分",
           "标清视频下载消耗1积分",
           "MP4格式下载",
@@ -260,7 +260,7 @@
         },
         "product_id": "basic",
         "product_name": "TwitterDown基础版",
-        "credits": 100,
+        "credits": 10,
         "valid_months": 9999
       },
       {

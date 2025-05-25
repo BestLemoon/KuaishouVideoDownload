@@ -236,7 +236,7 @@
           "description": "Perfekt für neue Benutzer zum Ausprobieren",
           "features_title": "Beinhaltet",
           "features": [
-            "100 Guthaben (kostenlos für neue Benutzer)",
+            "10 Guthaben (kostenlos für neue Benutzer)",
             "HD-Video-Downloads (720p+) kosten 2 Guthaben",
             "SD-Video-Downloads kosten 1 Guthaben",
             "MP4-Format-Downloads",
@@ -259,7 +259,7 @@
           },
           "product_id": "basic",
           "product_name": "TwitterDown Basic",
-          "credits": 100,
+          "credits": 10,
           "valid_months": 9999
         },
         {

@@ -235,7 +235,7 @@
         "description": "Perfect for new users to try",
         "features_title": "Includes",
         "features": [
-          "100 credits (free for new users)",
+          "10 credits (free for new users)",
           "HD video downloads (720p+) cost 2 credits",
           "SD video downloads cost 1 credit",
           "MP4 format downloads",
@@ -258,7 +258,7 @@
         },
         "product_id": "basic",
         "product_name": "TwitterDown Basic",
-        "credits": 100,
+        "credits": 10,
         "valid_months": 9999
       },
       {

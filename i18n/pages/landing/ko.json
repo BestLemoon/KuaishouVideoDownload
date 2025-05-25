@@ -235,7 +235,7 @@
           "description": "새로운 사용자가 시도하기에 완벽합니다",
           "features_title": "포함",
           "features": [
-            "100 크레딧 (신규 사용자 무료)",
+            "10 크레딧 (신규 사용자 무료)",
             "HD 비디오 다운로드(720p 이상) 2 크레딧 소모",
             "SD 비디오 다운로드 1 크레딧 소모",
             "MP4 형식 다운로드",
@@ -258,7 +258,7 @@
           },
           "product_id": "basic",
           "product_name": "TwitterDown 베이직",
-          "credits": 100,
+          "credits": 10,
           "valid_months": 9999
         },
         {

@@ -235,7 +235,7 @@
         "description": "Perfecto para que los nuevos usuarios prueben",
         "features_title": "Incluye",
         "features": [
-          "100 créditos (gratis para nuevos usuarios)",
+          "10 créditos (gratis para nuevos usuarios)",
           "Las descargas de video HD (720p+) cuestan 2 créditos",
           "Las descargas de video SD cuestan 1 crédito",
           "Descargas en formato MP4",
@@ -258,7 +258,7 @@
         },
         "product_id": "basic",
         "product_name": "TwitterDown Básico",
-        "credits": 100,
+        "credits": 10,
         "valid_months": 9999
       },
       {
