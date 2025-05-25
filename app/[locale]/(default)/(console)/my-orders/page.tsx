@@ -1,4 +1,4 @@
-export const runtime = "edge";
+
 
 import { getOrdersByPaidEmail, getOrdersByUserUuid } from "@/models/order";
 import { getUserEmail, getUserUuid } from "@/services/user";

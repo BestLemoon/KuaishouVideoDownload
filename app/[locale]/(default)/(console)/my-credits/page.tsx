@@ -1,4 +1,4 @@
-export const runtime = "edge";
+
 
 import Empty from "@/components/blocks/empty";
 import TableSlot from "@/components/console/slots/table";

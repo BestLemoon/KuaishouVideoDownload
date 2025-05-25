@@ -1,4 +1,4 @@
-export const runtime = "edge";
+
 
 import { RiDiscordFill, RiEmotionSadFill, RiGithubFill } from "react-icons/ri";
 import { getAffiliateSummary, getUserAffiliates } from "@/models/affiliate";

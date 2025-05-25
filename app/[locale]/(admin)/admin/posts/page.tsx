@@ -1,5 +1,3 @@
-export const runtime = "edge";
-
 import Dropdown from "@/components/blocks/table/dropdown";
 import { NavItem } from "@/types/blocks/base";
 import { Post } from "@/types/post";

@@ -1,5 +1,3 @@
-export const runtime = "edge";
-
 import { PostStatus, findPostBySlug, insertPost } from "@/models/post";
 import { localeNames, locales } from "@/i18n/locale";
 

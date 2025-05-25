@@ -1,4 +1,4 @@
-export const runtime = "edge";
+
 
 import { getUserDownloadHistory } from "@/models/credit";
 import { getUserUuid } from "@/services/user";

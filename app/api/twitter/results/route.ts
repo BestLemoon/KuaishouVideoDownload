@@ -1,4 +1,4 @@
-export const runtime = "edge";
+
 
 import { respData, respErr } from "@/lib/resp";
 import { decryptBatchData } from '@/lib/encryption';

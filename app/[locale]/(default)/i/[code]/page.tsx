@@ -1,7 +1,5 @@
 "use client";
 
-export const runtime = "edge";
-
 import { CacheKey } from "@/services/constant";
 import { cacheSet } from "@/lib/cache";
 import { getTimestamp } from "@/lib/time";

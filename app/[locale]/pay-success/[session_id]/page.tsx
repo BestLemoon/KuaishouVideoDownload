@@ -1,4 +1,4 @@
-export const runtime = "edge";
+
 import Stripe from "stripe";
 import { handleOrderSession } from "@/services/order";
 import { redirect } from "next/navigation";

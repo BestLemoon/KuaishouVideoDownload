@@ -1,4 +1,4 @@
-export const runtime = "edge";
+
 
 import { getUserEmail, getUserUuid } from "@/services/user";
 import { insertOrder, updateOrderSession } from "@/models/order";

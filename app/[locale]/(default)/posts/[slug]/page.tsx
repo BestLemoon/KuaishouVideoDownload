@@ -1,5 +1,3 @@
-export const runtime = "edge";
-
 import { PostStatus, findPostBySlug } from "@/models/post";
 
 import BlogDetail from "@/components/blocks/blog-detail";

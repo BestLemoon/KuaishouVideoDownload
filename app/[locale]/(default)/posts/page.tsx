@@ -1,5 +1,3 @@
-export const runtime = "edge";
-
 import Blog from "@/components/blocks/blog";
 import { Blog as BlogType } from "@/types/blocks/blog";
 import { getPostsByLocale } from "@/models/post";

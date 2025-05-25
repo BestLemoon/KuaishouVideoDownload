@@ -1,4 +1,4 @@
-export const runtime = "edge";
+
 
 import {
   LanguageModelV1,
