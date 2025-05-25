@@ -3,30 +3,32 @@
 import Empty from "@/components/blocks/empty";
 import TableSlot from "@/components/console/slots/table";
 import { Table as TableSlotType } from "@/types/slots/table";
-import { getCreditsByUserUuid } from "@/models/credit";
+import { getUserCreditHistory } from "@/models/credit";
 import { getTranslations } from "next-intl/server";
-import { getUserCredits } from "@/services/credit";
+import { getUserCreditBalance } from "@/models/credit";
 import { getUserUuid } from "@/services/user";
 import moment from "moment";
+import { redirect } from "next/navigation";
 
 export default async function () {
   const t = await getTranslations();
 
   const user_uuid = await getUserUuid();
 
+  const callbackUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/my-credits`;
   if (!user_uuid) {
-    return <Empty message="no auth" />;
+    redirect(`/auth/signin?callbackUrl=${encodeURIComponent(callbackUrl)}`);
   }
 
-  const data = await getCreditsByUserUuid(user_uuid, 1, 100);
+  const data = await getUserCreditHistory(user_uuid, 100, 0);
 
-  const userCredits = await getUserCredits(user_uuid);
+  const userCredits = await getUserCreditBalance(user_uuid);
 
   const table: TableSlotType = {
     title: t("my_credits.title"),
     tip: {
       title: t("my_credits.left_tip", {
-        left_credits: userCredits?.left_credits || 0,
+        left_credits: userCredits?.available_credits || 0,
       }),
     },
     toolbar: {

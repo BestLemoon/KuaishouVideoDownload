@@ -53,6 +53,8 @@
     "@types/cheerio": "^1.0.0",
     "@types/mdx": "^2.0.13",
     "@uiw/react-md-editor": "^4.0.5",
+    "@vercel/analytics": "^1.5.0",
+    "@vercel/speed-insights": "^1.2.0",
     "ai": "^4.1.64",
     "canvas-confetti": "^1.9.3",
     "cheerio": "^1.0.0",

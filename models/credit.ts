@@ -540,3 +540,31 @@ export async function getUserDownloadStats(user_uuid: string): Promise<{
     }
   }
 }
+
+/**
+ * 获取所有用户下载历史（管理后台使用）
+ */
+export async function getAllDownloadHistory(
+  limit: number = 50,
+  offset: number = 0
+): Promise<DownloadHistory[]> {
+  try {
+    const client = getSupabaseClient()
+    
+    const { data: records, error } = await client
+      .from('download_history')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .range(offset, offset + limit - 1)
+    
+    if (error) {
+      console.error('Failed to get all download history:', error)
+      return []
+    }
+    
+    return records || []
+  } catch (error) {
+    console.error('Failed to get all download history:', error)
+    return []
+  }
+}

@@ -52,6 +52,11 @@ export default async function AdminLayout({
           url: "/admin/posts",
           icon: "RiArticleLine",
         },
+        {
+          title: "Download History",
+          url: "/admin/download-history",
+          icon: "RiDownloadLine",
+        },
       ],
     },
     social: {
@@ -84,5 +89,5 @@ export default async function AdminLayout({
     },
   };
 
-  return <DashboardLayout sidebar={sidebar}>{children}</DashboardLayout>;
+  return await DashboardLayout({ sidebar, children });
 }
