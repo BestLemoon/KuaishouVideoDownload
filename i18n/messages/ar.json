@@ -177,6 +177,8 @@
       "video_preview": "معاينة الفيديو",
       "loading": "جاري التحليل...",
       "parse_error": "فشل التحليل",
+      "video_fetch_error": "فشل في جلب الفيديو من تويتر: {status}",
+      "unknown_error": "حدث خطأ غير معروف",
       "invalid_url": "رابط فيديو غير صالح",
       "no_video_found": "لم يتم العثور على فيديو",
       "insufficient_credits": "رصيد غير كافٍ، المتاح: {available}، المطلوب: {required}",
@@ -218,8 +220,10 @@
       "invalid_token": "رمز مميز غير صالح",
       "invalid_video_url": "رابط فيديو غير صالح",
       "video_fetch_failed": "فشل في جلب الفيديو: {status}",
+      "video_verification_failed": "فشل في التحقق من الفيديو",
       "download_failed": "فشل في تنزيل الفيديو، يرجى المحاولة مرة أخرى",
       "server_error": "خطأ داخلي في الخادم",
+      "unknown_error": "خطأ غير معروف",
       "get_history_failed": "فشل في الحصول على تاريخ التنزيل"
     },
     "test": {

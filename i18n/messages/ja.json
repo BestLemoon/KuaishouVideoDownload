@@ -177,6 +177,8 @@
       "video_preview": "動画プレビュー",
       "loading": "解析中...",
       "parse_error": "解析失敗",
+      "video_fetch_error": "Twitterから動画の取得に失敗しました: {status}",
+      "unknown_error": "不明なエラーが発生しました",
       "invalid_url": "無効な動画URL",
       "no_video_found": "動画が見つかりません",
       "insufficient_credits": "クレジット不足、利用可能: {available}、必要: {required}",
@@ -218,8 +220,10 @@
       "invalid_token": "無効なトークン",
       "invalid_video_url": "無効な動画URL",
       "video_fetch_failed": "動画取得に失敗しました: {status}",
+      "video_verification_failed": "動画検証に失敗しました",
       "download_failed": "動画ダウンロードに失敗しました。もう一度お試しください",
       "server_error": "内部サーバーエラー",
+      "unknown_error": "不明なエラー",
       "get_history_failed": "ダウンロード履歴の取得に失敗しました"
     },
     "test": {

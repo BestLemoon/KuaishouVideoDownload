@@ -82,7 +82,7 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
     return resolutionNumber >= 720 ? 2 : 1;
   };
 
-  const handleDownload = async (video: VideoInfo, result: BatchResult) => {
+  const handleDownload = async (video: VideoInfo, resultItem: BatchResult) => {
     if (!user) {
       setShowSignModal(true);
       return;
@@ -102,49 +102,64 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
     setDownloadingItems(prev => new Set(prev).add(downloadKey));
 
     try {
-      const response = await fetch(video.downloadUrl + 
-        `&original_url=${result.originalUrl}` +
-        `&username=${result.username}&status_id=${result.statusId}`, {
-        method: 'GET',
+      // 1. 调用API获取视频URL和文件名
+      const token = video.downloadUrl.split('token=')[1].split('&')[0];
+      const apiResponse = await fetch('/api/twitter/get-download-details', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token,
+          original_url: resultItem.originalUrl,
+          username: resultItem.username,
+          status_id: resultItem.statusId,
+        }),
       });
 
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Download failed:', response.status, errorText);
-        throw new Error(`HTTP ${response.status}: ${errorText}`);
+      if (!apiResponse.ok) {
+        const errorData = await apiResponse.json().catch(() => ({ message: t('parse_error') }));
+        throw new Error(errorData.message || `API Error: ${apiResponse.status}`);
+      }
+      
+      const result = await apiResponse.json();
+      if (result.code !== 0) {
+        throw new Error(result.message || t('parse_error'));
       }
 
-      // 获取文件名
-      const contentDisposition = response.headers.get('content-disposition');
-      const fileNameMatch = contentDisposition?.match(/filename="(.+)"/);
-      const fileName = fileNameMatch ? fileNameMatch[1] : `TwitterDown_${result.username}_${video.resolution}.mp4`;
+      const { videoUrl, filename, creditsRemaining } = result.data;
 
-      // 创建下载链接
-      const blob = await response.blob();
+      // 2. 前端直接 fetch 视频内容 (流量：Twitter -> 用户浏览器)
+      const videoBlobResponse = await fetch(videoUrl);
+      if (!videoBlobResponse.ok) {
+        throw new Error(t('video_fetch_error', { status: videoBlobResponse.status }));
+      }
+      const blob = await videoBlobResponse.blob();
+
+      // 3. 创建下载链接并触发下载
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = fileName;
+      link.download = filename; // 使用API提供的文件名
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
+      window.URL.revokeObjectURL(url); // 清理
 
-      // 更新积分余额
-      const creditsRemaining = response.headers.get('X-Credits-Remaining');
-      
-      if (creditsRemaining && userCredits) {
-        setUserCredits({
-          ...userCredits,
-          available_credits: parseInt(creditsRemaining)
-        });
+      // 更新积分
+      if (userCredits && creditsRemaining !== undefined) {
+        setUserCredits(prev => prev ? { ...prev, available_credits: creditsRemaining } : null);
       }
 
-      toast.success(t('download_success'));
+      toast.success(t('download_success'), {
+        description: `${filename} - ${video.quality} ${video.resolution}`
+      });
 
     } catch (error) {
       console.error('Download error:', error);
-      toast.error(t('download_failed'));
+      toast.error(t('download_failed'), {
+        description: error instanceof Error ? error.message : t('unknown_error') 
+      });
     } finally {
       setDownloadingItems(prev => {
         const newSet = new Set(prev);

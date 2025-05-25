@@ -1,6 +1,6 @@
 export const runtime = 'edge'
 
-import { respErr } from "@/lib/resp";
+import { respData, respErr } from "@/lib/resp";
 import { decryptVideoUrl } from '@/lib/encryption';
 import { consumeCredits, calculateRequiredCredits, createDownloadHistory, generateDownloadNo } from '@/models/credit';
 import { auth } from '@/auth';
@@ -10,30 +10,23 @@ import { getTranslations } from 'next-intl/server';
  * 从 URL 中提取文件名
  */
 function getFileName(url: string, resolution: string): string {
-  // 从原始 URL 中提取文件名
   const urlParts = url.split('/')
   let filename = urlParts[urlParts.length - 1].split('?')[0]
-  
-  // 移除文件扩展名
   const extension = filename.split('.').pop() || 'mp4'
   filename = filename.replace(`.${extension}`, '')
-  
-  // 添加网站名称前缀、分辨率和扩展名
   return `TwitterDown_${filename}_${resolution}.${extension}`
 }
 
 /**
- * GET /api/twitter/download - 下载视频（需要积分）
+ * POST /api/twitter/get-download-details - 验证权限并返回Twitter URL和文件名（零流量）
  */
-export async function GET(request: Request) {
+export async function POST(request: Request) {
   let t: any;
   
   try {
     t = await getTranslations('api');
-    const url = new URL(request.url);
+    const { token, original_url, username, status_id } = await request.json();
     
-    // 获取并验证 token
-    const token = url.searchParams.get('token');
     if (!token) {
       return respErr(t('download.missing_token'));
     }
@@ -94,94 +87,56 @@ export async function GET(request: Request) {
     // 生成文件名
     const filename = getFileName(videoInfo.url, videoInfo.resolution);
 
+    // 验证视频URL可访问性（HEAD请求）
     try {
-      // 获取视频内容
-      const videoResponse = await fetch(videoInfo.url, {
+      const headResponse = await fetch(videoInfo.url, {
+        method: 'HEAD',
         headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
         }
       });
 
-      if (!videoResponse.ok) {
-        throw new Error(t('download.video_fetch_failed', { status: videoResponse.status.toString() }));
+      if (!headResponse.ok) {
+        throw new Error(t('download.video_fetch_failed', { status: headResponse.status.toString() }));
       }
 
       // 记录下载历史
       const download_no = generateDownloadNo();
-      const contentLength = videoResponse.headers.get('content-length');
-      
-      // 从 URL 参数中获取原始推文信息（如果有的话）
-      const originalUrl = url.searchParams.get('original_url') || undefined;
-      const username = url.searchParams.get('username') || undefined;
-      const statusId = url.searchParams.get('status_id') || undefined;
+      const contentLength = headResponse.headers.get('content-length');
       
       await createDownloadHistory({
         download_no,
         user_uuid,
         video_url: videoInfo.url,
-        original_tweet_url: originalUrl,
+        original_tweet_url: original_url || undefined,
         video_resolution: videoInfo.resolution,
         video_quality: videoInfo.quality,
         file_name: filename,
         file_size: contentLength ? parseInt(contentLength) : undefined,
         credits_consumed: required_credits,
         download_status: 'completed',
-        username,
-        status_id: statusId,
+        username: username || undefined,
+        status_id: status_id || undefined,
         description: `下载${videoInfo.resolution}视频`
       });
-
-      // 设置响应头
-      const headers = new Headers({
-        'Content-Disposition': `attachment; filename="${filename}"`,
-        'Content-Type': 'video/mp4',
-        'Cache-Control': 'public, max-age=3600',
-        'X-Content-Type-Options': 'nosniff',
-        'X-Credits-Consumed': required_credits.toString(),
-        'X-Credits-Remaining': creditResult.balance?.available_credits?.toString() || '0',
-        'X-Download-No': download_no,
-      });
-      
-      // 如果视频源提供了内容长度，也设置它
-      if (contentLength) {
-        headers.set('Content-Length', contentLength);
-        headers.set('Accept-Ranges', 'bytes');
-      }
 
       console.log(`[Credits] User ${user_uuid} consumed ${required_credits} credits for ${videoInfo.resolution} video, remaining: ${creditResult.balance?.available_credits}`);
       console.log(`[Download] Download history recorded: ${download_no}`);
 
-      // 返回视频流
-      return new Response(videoResponse.body, {
-        headers,
-        status: 200
+      // 返回下载详情给前端
+      return respData({
+        videoUrl: videoInfo.url,
+        filename: filename,
+        creditsRemaining: creditResult.balance?.available_credits || 0,
       });
 
     } catch (error) {
-      console.error('视频下载错误:', error);
-      
-      // 记录失败的下载历史
-      const download_no = generateDownloadNo();
-      await createDownloadHistory({
-        download_no,
-        user_uuid,
-        video_url: videoInfo.url,
-        video_resolution: videoInfo.resolution,
-        video_quality: videoInfo.quality,
-        file_name: filename,
-        credits_consumed: required_credits,
-        download_status: 'failed',
-        description: `下载${videoInfo.resolution}视频失败: ${error instanceof Error ? error.message : '未知错误'}`
-      });
-      
-      return respErr(t('download.download_failed'));
+      console.error('Error verifying video URL:', error);
+      return respErr(t('download.video_verification_failed'));
     }
 
   } catch (error) {
-    console.error('下载处理错误:', error);
-    if (!t) {
-      t = await getTranslations('api');
-    }
-    return respErr(t('download.server_error'));
+    console.error('Error getting download details:', error);
+    return respErr(error instanceof Error ? error.message : t('download.unknown_error'));
   }
-}
+} 

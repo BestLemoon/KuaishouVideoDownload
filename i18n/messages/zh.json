@@ -177,6 +177,8 @@
       "video_preview": "视频预览",
       "loading": "解析中...",
       "parse_error": "解析失败",
+      "video_fetch_error": "从Twitter获取视频失败: {status}",
+      "unknown_error": "发生未知错误",
       "invalid_url": "无效的视频链接",
       "no_video_found": "未找到视频",
       "insufficient_credits": "积分不足，当前可用：{available}，需要：{required}",
@@ -218,8 +220,10 @@
       "invalid_token": "无效的 token",
       "invalid_video_url": "无效的视频 URL",
       "video_fetch_failed": "视频获取失败: {status}",
+      "video_verification_failed": "视频验证失败",
       "download_failed": "视频下载失败，请重试",
       "server_error": "服务器内部错误",
+      "unknown_error": "未知错误",
       "get_history_failed": "获取下载历史失败"
     },
     "test": {

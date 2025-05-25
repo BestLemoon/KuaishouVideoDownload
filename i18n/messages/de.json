@@ -177,6 +177,8 @@
       "video_preview": "Video-Vorschau",
       "loading": "Analysiere...",
       "parse_error": "Analyse fehlgeschlagen",
+      "video_fetch_error": "Fehler beim Abrufen des Videos von Twitter: {status}",
+      "unknown_error": "Ein unbekannter Fehler ist aufgetreten",
       "invalid_url": "Ungültige Video-URL",
       "no_video_found": "Kein Video gefunden",
       "insufficient_credits": "Unzureichende Credits, verfügbar: {available}, erforderlich: {required}",
@@ -218,8 +220,10 @@
       "invalid_token": "Ungültiger Token",
       "invalid_video_url": "Ungültige Video-URL",
       "video_fetch_failed": "Video-Abruf fehlgeschlagen: {status}",
+      "video_verification_failed": "Video-Verifizierung fehlgeschlagen",
       "download_failed": "Video-Download fehlgeschlagen, bitte versuchen Sie es erneut",
       "server_error": "Interner Serverfehler",
+      "unknown_error": "Unbekannter Fehler",
       "get_history_failed": "Download-Verlauf abrufen fehlgeschlagen"
     },
     "test": {

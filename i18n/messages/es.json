@@ -177,6 +177,8 @@
       "video_preview": "Vista previa del video",
       "loading": "Analizando...",
       "parse_error": "Error de análisis",
+      "video_fetch_error": "Error al obtener video de Twitter: {status}",
+      "unknown_error": "Ocurrió un error desconocido",
       "invalid_url": "URL de video inválida",
       "no_video_found": "No se encontró video",
       "insufficient_credits": "Créditos insuficientes, disponibles: {available}, requeridos: {required}",
@@ -218,8 +220,10 @@
       "invalid_token": "Token inválido",
       "invalid_video_url": "URL de video inválida",
       "video_fetch_failed": "Falló la obtención del video: {status}",
+      "video_verification_failed": "Falló la verificación del video",
       "download_failed": "Falló la descarga del video, por favor inténtalo de nuevo",
       "server_error": "Error interno del servidor",
+      "unknown_error": "Error desconocido",
       "get_history_failed": "Falló al obtener el historial de descargas"
     },
     "test": {

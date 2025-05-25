@@ -65,7 +65,7 @@ export async function POST(req: Request) {
         return {
           resolution: video.resolution,
           quality: video.quality,
-          downloadUrl: `/api/twitter/download?token=${token}`
+          downloadUrl: `/api/twitter/get-download-details?token=${token}`
           // 故意移除原始的 video.url，只保留必要信息
         };
       })

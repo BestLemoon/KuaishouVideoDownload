@@ -177,6 +177,8 @@
       "video_preview": "동영상 미리보기",
       "loading": "분석 중...",
       "parse_error": "분석 실패",
+      "video_fetch_error": "Twitter에서 동영상 가져오기 실패: {status}",
+      "unknown_error": "알 수 없는 오류가 발생했습니다",
       "invalid_url": "유효하지 않은 동영상 URL",
       "no_video_found": "동영상을 찾을 수 없음",
       "insufficient_credits": "크레딧 부족, 사용 가능: {available}, 필요: {required}",
@@ -218,8 +220,10 @@
       "invalid_token": "유효하지 않은 토큰",
       "invalid_video_url": "유효하지 않은 동영상 URL",
       "video_fetch_failed": "동영상 가져오기에 실패했습니다: {status}",
+      "video_verification_failed": "동영상 검증에 실패했습니다",
       "download_failed": "동영상 다운로드에 실패했습니다. 다시 시도해 주세요",
       "server_error": "내부 서버 오류",
+      "unknown_error": "알 수 없는 오류",
       "get_history_failed": "다운로드 기록 가져오기에 실패했습니다"
     },
     "test": {

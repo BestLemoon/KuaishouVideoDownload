@@ -86,7 +86,7 @@ export async function POST(req: Request) {
             
             return {
               ...video,
-              downloadUrl: `/api/twitter/download?token=${token}`
+              downloadUrl: `/api/twitter/get-download-details?token=${token}`
             };
           })
         );
