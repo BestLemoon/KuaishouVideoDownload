@@ -1,0 +1,241 @@
+{
+  "metadata": {
+    "title": "TwitterDown - 免費 Twitter 視頻下載器 | 在線下載推特視頻",
+    "description": "TwitterDown 是一個免費的在線 Twitter 視頻下載工具。高質量下載 Twitter 視頻、GIF 和圖片。快速、安全、易於使用。",
+    "keywords": "twitter 視頻下載器, 推特視頻下載, twitter 視頻下載, 推特 gif 下載器, 保存推特視頻"
+  },
+  "user": {
+    "sign_in": "登錄",
+    "sign_out": "退出登錄",
+    "credits": "額度",
+    "api_keys": "API 密鑰",
+    "my_orders": "我的訂單",
+    "download_history": "下載歷史",
+    "user_center": "用戶中心",
+    "admin_system": "管理後台"
+  },
+  "sign_modal": {
+    "sign_in_title": "登錄",
+    "sign_in_description": "登錄您的賬戶",
+    "sign_up_title": "注冊",
+    "sign_up_description": "創建新賬戶",
+    "email_title": "郵箱",
+    "email_placeholder": "請輸入您的郵箱",
+    "password_title": "密碼",
+    "password_placeholder": "請輸入您的密碼",
+    "forgot_password": "忘記密碼？",
+    "or": "或",
+    "continue": "繼續",
+    "no_account": "還沒有賬戶？",
+    "email_sign_in": "使用郵箱登錄",
+    "google_sign_in": "使用 Google 登錄",
+    "github_sign_in": "使用 GitHub 登錄",
+    "close_title": "關閉",
+    "cancel_title": "取消"
+  },
+  "my_orders": {
+    "title": "我的訂單",
+    "description": "在 TwitterDown 上購買的訂單。",
+    "no_orders": "未找到訂單",
+    "tip": "",
+    "activate_order": "激活訂單",
+    "actived": "已激活",
+    "join_discord": "加入 Discord",
+    "read_docs": "閱讀文檔",
+    "table": {
+      "order_no": "訂單號",
+      "email": "郵箱",
+      "product_name": "產品名稱",
+      "amount": "金額",
+      "paid_at": "支付時間",
+      "github_username": "GitHub 用戶名",
+      "status": "狀態"
+    }
+  },
+  "my_credits": {
+    "title": "我的積分",
+    "left_tip": "剩余積分: {left_credits}",
+    "no_credits": "沒有積分記錄",
+    "recharge": "充值",
+    "table": {
+      "trans_no": "交易號",
+      "trans_type": "交易類型",
+      "credits": "積分",
+      "updated_at": "更新時間",
+      "status": "狀態"
+    }
+  },
+  "api_keys": {
+    "title": "API 密鑰",
+    "tip": "請妥善保管您的 API 密鑰，避免泄露",
+    "no_api_keys": "沒有 API 密鑰",
+    "create_api_key": "創建 API 密鑰",
+    "table": {
+      "name": "名稱",
+      "key": "密鑰",
+      "created_at": "創建時間"
+    },
+    "form": {
+      "name": "名稱",
+      "name_placeholder": "API 密鑰名稱",
+      "submit": "提交"
+    }
+  },
+  "blog": {
+    "title": "博客",
+    "description": "關於 TwitterDown 的新聞、資源和更新",
+    "read_more_text": "閱讀更多"
+  },
+  "my_invites": {
+    "title": "我的邀請",
+    "description": "查看您的邀請記錄",
+    "no_invites": "未找到邀請記錄",
+    "my_invite_link": "我的邀請鏈接",
+    "edit_invite_link": "編輯邀請鏈接",
+    "copy_invite_link": "覆制邀請鏈接",
+    "invite_code": "邀請碼",
+    "invite_tip": "每邀請 1 位朋友購買 TwitterDown，獎勵 $50。",
+    "invite_balance": "邀請獎勵余額",
+    "total_invite_count": "總邀請人數",
+    "total_paid_count": "已充值人數",
+    "total_award_amount": "總獎勵金額",
+    "update_invite_code": "設置邀請碼",
+    "update_invite_code_tip": "輸入你的自定義邀請碼",
+    "update_invite_button": "保存",
+    "no_orders": "你需要先購買過 TwitterDown 才能邀請朋友",
+    "no_affiliates": "你暫無邀請朋友的權限，請聯系我們申請開通。",
+    "table": {
+      "invite_time": "邀請時間",
+      "invite_user": "邀請用戶",
+      "status": "狀態",
+      "reward_percent": "獎勵比例",
+      "reward_amount": "獎勵金額",
+      "pending": "已注冊，未支付",
+      "completed": "已支付"
+    }
+  },
+  "download_history": {
+    "title": "下載歷史",
+    "description": "查看您的視頻下載記錄",
+    "no_history": "暫無下載記錄",
+    "table": {
+      "download_no": "下載編號",
+      "file_name": "文件名",
+      "original_tweet": "原始 Tweet",
+      "video_resolution": "分辨率",
+      "video_quality": "視頻質量",
+      "file_size": "文件大小",
+      "credits_consumed": "消耗積分",
+      "download_status": "狀態",
+      "username": "Twitter 用戶",
+      "created_at": "下載時間"
+    },
+    "status": {
+      "completed": "成功",
+      "failed": "失敗"
+    }
+  },
+  "downloads": {
+    "single_download": "單個下載",
+    "batch_download": "批量下載",
+    "single_placeholder": "粘貼 Twitter 視頻鏈接...",
+    "batch_placeholder": "每行輸入一個 Twitter 視頻鏈接，最多支持 10 個鏈接...",
+    "start_download": "開始下載",
+    "batch_download_button": "批量下載",
+    "free_used_notice": "您已使用過免費下載，請",
+    "login_to_continue": "登錄",
+    "continue_use": "以繼續使用",
+    "free_user_tip": "輸入任意 Twitter/X 視頻鏈接即可下載高質量視頻",
+    "batch_feature_title": "批量下載功能",
+    "batch_feature_description": "升級到付費版本以解鎖批量下載功能，一次處理多個視頻鏈接",
+    "batch_processing": "批量處理",
+    "high_speed": "高速下載",
+    "unlimited": "無限制",
+    "view_pricing": "查看價格方案",
+    "urls_count": "已輸入 {count} 個鏈接",
+    "results": {
+      "title": "下載結果",
+      "batch_title": "批量下載結果",
+      "video_info": "視頻信息",
+      "available_formats": "可用格式",
+      "download_button": "下載",
+      "downloading": "下載中...",
+      "quality_hd": "高清",
+      "quality_sd": "標清",
+      "credits_required": "需要 {credits} 積分",
+      "credits_remaining": "剩余積分: {credits}",
+      "available_credits": "可用積分",
+      "top_up_credits": "充值積分",
+      "download_success": "下載成功",
+      "download_failed": "下載失敗",
+      "retry": "重試",
+      "new_download": "新建下載",
+      "continue_download": "繼續下載",
+      "file_size": "文件大小",
+      "resolution": "分辨率",
+      "format": "格式",
+      "video_preview": "視頻預覽",
+      "loading": "解析中...",
+      "parse_error": "解析失敗",
+      "video_fetch_error": "從Twitter獲取視頻失敗: {status}",
+      "unknown_error": "發生未知錯誤",
+      "invalid_url": "無效的視頻鏈接",
+      "no_video_found": "未找到視頻",
+      "insufficient_credits": "積分不足，當前可用：{available}，需要：{required}",
+      "insufficient_credits_short": "積分不足：{available}/{required}",
+      "login_required": "請登錄",
+      "invalid_twitter_url": "無效的Twitter/X鏈接格式",
+      "no_urls_provided": "未提供鏈接",
+      "invalid_twitter_urls": "發現{count}個無效的Twitter/X鏈接",
+      "no_valid_urls": "沒有找到有效的Twitter/X鏈接",
+      "batch_parse_error": "批量處理失敗",
+      "successful_videos": "成功解析的視頻",
+      "failed_links": "處理失敗的鏈接",
+      "success_count": "成功",
+      "failed_count": "失敗",
+      "total_count": "總計",
+      "view_original_tweet": "查看原推文",
+      "cost_credits": "費用",
+      "cost_format": "{credits} 積分"
+    }
+  },
+  "api": {
+    "auth": {
+      "login_required": "請先登錄",
+      "login_required_download": "請先登錄後再下載視頻"
+    },
+    "credits": {
+      "insufficient": "積分不足，當前可用積分：{available}，需要：{required}",
+      "deduction_success": "積分扣除成功",
+      "deduction_failed": "積分扣除失敗",
+      "deduction_error": "積分扣除異常",
+      "gift_success": "贈送積分成功",
+      "gift_failed": "贈送積分失敗",
+      "balance_current": "當前可用積分：{balance}",
+      "get_balance_failed": "獲取積分余額失敗",
+      "get_history_failed": "獲取積分記錄失敗"
+    },
+    "download": {
+      "missing_token": "缺少 token 參數",
+      "invalid_token": "無效的 token",
+      "invalid_video_url": "無效的視頻 URL",
+      "video_fetch_failed": "視頻獲取失敗: {status}",
+      "video_verification_failed": "視頻驗證失敗",
+      "download_failed": "視頻下載失敗，請重試",
+      "server_error": "服務器內部錯誤",
+      "unknown_error": "未知錯誤",
+      "get_history_failed": "獲取下載歷史失敗"
+    },
+    "test": {
+      "invalid_action": "無效的操作類型",
+      "test_failed": "積分系統測試失敗",
+      "download_record_success": "下載記錄創建成功",
+      "download_record_failed": "下載記錄創建失敗"
+    },
+    "batch": {
+      "max_urls_exceeded": "批量處理最多支持{max}個鏈接",
+      "invalid_urls_found": "批量處理中發現無效鏈接",
+      "no_valid_urls": "批量處理中沒有找到有效鏈接"
+    }
+  }
+}
