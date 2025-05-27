@@ -67,18 +67,42 @@
   },
   "api_keys": {
     "title": "API 密鑰",
-    "tip": "請妥善保管您的 API 密鑰，避免泄露",
+    "tip": "請妥善保管您的 API 密鑰，避免泄露，使用快捷指令可直接從App通過分享下載視頻",
+    "premium_only_tip": "API 功能僅限付費用戶使用，請升級到高級版以獲取 API 訪問權限",
     "no_api_keys": "沒有 API 密鑰",
     "create_api_key": "創建 API 密鑰",
+    "delete_api_key": "刪除 API 密鑰",
+    "upgrade_to_premium": "升級到高級版",
+    "view_api_docs": "查看 API 文件",
+    "apple_shortcut": "Apple 快捷指令",
     "table": {
       "name": "名稱",
       "key": "密鑰",
-      "created_at": "創建時間"
+      "created_at": "創建時間",
+      "actions": "操作"
     },
     "form": {
       "name": "名稱",
       "name_placeholder": "API 密鑰名稱",
       "submit": "提交"
+    },
+    "messages": {
+      "created_success": "API 密鑰創建成功"
+    },
+    "errors": {
+      "no_auth": "請先登錄",
+      "premium_required": "API 密鑰僅限付費用戶使用，請升級您的帳戶",
+      "invalid_params": "參數無效",
+      "create_failed": "創建 API 密鑰失敗：{error}"
+    },
+    "delete": {
+      "confirm_title": "刪除 API 密鑰",
+      "confirm_message": "確定要刪除此 API 密鑰嗎？此操作無法撤銷，將立即撤銷使用此密鑰的所有應用程序的訪問權限。",
+      "success_message": "API 密鑰刪除成功",
+      "error_message": "刪除 API 密鑰失敗",
+      "button_deleting": "刪除中...",
+      "button_delete": "刪除",
+      "button_cancel": "取消"
     }
   },
   "blog": {
@@ -117,7 +141,13 @@
   "download_history": {
     "title": "下載歷史",
     "description": "查看您的視頻下載記錄",
+    "description_free": "查看您最近 {count} 條下載記錄（免費版）",
     "no_history": "暫無下載記錄",
+    "upgrade_prompt": {
+      "title": "升級查看更多",
+      "message": "您有 {total} 條下載記錄，但免費用戶只能查看最近 {visible} 條記錄。",
+      "button": "立即升級"
+    },
     "table": {
       "download_no": "下載編號",
       "file_name": "文件名",
@@ -196,7 +226,35 @@
       "total_count": "總計",
       "view_original_tweet": "查看原推文",
       "cost_credits": "費用",
-      "cost_format": "{credits} 積分"
+      "cost_format": "{credits} 積分",
+      "cost_downloads": "費用",
+      "cost_format_downloads": "{downloads} 次下載",
+      "available_downloads": "可用下載次數",
+      "top_up_downloads": "充值下載次數",
+      "insufficient_downloads": "下載次數不足",
+      "insufficient_downloads_short": "次數不足：{available}",
+      "downloads_required": "需要 {downloads} 次下載",
+      "hd_download_requires_premium": "高清下載需要付費用戶",
+      "premium_required": "付費用戶專享",
+      "paid_user_only": "付費用戶專享",
+      "purchase_to_unlock_hd": "購買服務解鎖高清下載",
+      "download_thumbnail": "下載封面",
+      "thumbnail_download_success": "封面下載成功",
+      "thumbnail_download_failed": "封面下載失敗",
+      "thumbnail_fetch_error": "獲取封面失敗",
+      "no_thumbnail_available": "無可用封面",
+      "audio_extract": "音頻提取",
+      "audio_extract_description": "從視頻中提取音頻文件",
+      "extract_audio": "提取音頻",
+      "audio_quality": "音頻質量",
+      "high_quality": "高質量",
+      "audio_download_coming_soon": "音頻下載功能即將推出",
+      "audio_download_failed": "音頻下載失敗",
+      "paid_badge": "付費",
+      "paid_users_exclusive": "付費用戶專享",
+      "hd_requires_paid_user": "高清視頻下載需要付費用戶，請先購買服務",
+      "requires_one_download": "需要 1 次下載",
+      "one_download": "1 次下載"
     }
   },
   "api": {

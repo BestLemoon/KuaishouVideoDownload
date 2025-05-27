@@ -67,18 +67,42 @@
   },
   "api_keys": {
     "title": "Claves API",
-    "tip": "Mantén tu clave API segura para evitar filtraciones",
-    "no_api_keys": "No hay Claves API",
+    "tip": "Mantenga su clave API segura para evitar filtraciones, use Apple Shortcut para descargar videos directamente desde la App",
+    "premium_only_tip": "La funcionalidad API solo está disponible para usuarios premium. Actualice al plan premium para obtener acceso a la API",
+    "no_api_keys": "No hay claves API",
     "create_api_key": "Crear Clave API",
+    "delete_api_key": "Eliminar Clave API",
+    "upgrade_to_premium": "Actualizar a Premium",
+    "view_api_docs": "Ver Documentación API",
+    "apple_shortcut": "Apple Shortcut",
     "table": {
       "name": "Nombre",
       "key": "Clave",
-      "created_at": "Creado en"
+      "created_at": "Creado en",
+      "actions": "Acciones"
     },
     "form": {
       "name": "Nombre",
       "name_placeholder": "Nombre de la Clave API",
       "submit": "Enviar"
+    },
+    "messages": {
+      "created_success": "Clave API creada exitosamente"
+    },
+    "errors": {
+      "no_auth": "Por favor, inicia sesión primero",
+      "premium_required": "Las claves API solo están disponibles para usuarios premium. Por favor, actualiza tu cuenta",
+      "invalid_params": "Parámetros inválidos",
+      "create_failed": "Error al crear la clave API: {error}"
+    },
+    "delete": {
+      "confirm_title": "Eliminar Clave API",
+      "confirm_message": "¿Estás seguro de que quieres eliminar esta clave API? Esta acción no se puede deshacer y revocará inmediatamente el acceso para todas las aplicaciones que usen esta clave.",
+      "success_message": "Clave API eliminada exitosamente",
+      "error_message": "Error al eliminar la clave API",
+      "button_deleting": "Eliminando...",
+      "button_delete": "Eliminar",
+      "button_cancel": "Cancelar"
     }
   },
   "blog": {
@@ -117,7 +141,13 @@
   "download_history": {
     "title": "Historial de Descargas",
     "description": "Ver sus registros de descarga de videos",
+    "description_free": "Ver sus últimos {count} registros de descarga (Versión gratuita)",
     "no_history": "No se encontró historial de descargas",
+    "upgrade_prompt": {
+      "title": "Actualizar para Ver Más",
+      "message": "Tienes {total} registros de descarga, pero los usuarios gratuitos solo pueden ver los últimos {visible} registros.",
+      "button": "Actualizar Ahora"
+    },
     "table": {
       "download_no": "N° de Descarga",
       "file_name": "Nombre del Archivo",
@@ -196,7 +226,35 @@
       "total_count": "Total",
       "view_original_tweet": "Ver Tweet Original",
       "cost_credits": "Costo",
-      "cost_format": "{credits} créditos"
+      "cost_format": "{credits} créditos",
+      "cost_downloads": "Costo",
+      "cost_format_downloads": "{downloads} descargas",
+      "available_downloads": "Descargas disponibles",
+      "top_up_downloads": "Recargar descargas",
+      "insufficient_downloads": "Descargas insuficientes",
+      "insufficient_downloads_short": "Insuficientes: {available}",
+      "downloads_required": "Requiere {downloads} descargas",
+      "hd_download_requires_premium": "La descarga HD requiere usuarios premium",
+      "premium_required": "Exclusivo para usuarios premium",
+      "paid_user_only": "Solo para usuarios premium",
+      "purchase_to_unlock_hd": "Comprar servicio para desbloquear descarga HD",
+      "download_thumbnail": "Descargar miniatura",
+      "thumbnail_download_success": "Miniatura descargada exitosamente",
+      "thumbnail_download_failed": "Descarga de miniatura falló",
+      "thumbnail_fetch_error": "Error al obtener miniatura",
+      "no_thumbnail_available": "No hay miniatura disponible",
+      "audio_extract": "Extracción de audio",
+      "audio_extract_description": "Extraer archivo de audio del video",
+      "extract_audio": "Extraer audio",
+      "audio_quality": "Calidad de audio",
+      "high_quality": "Alta calidad",
+      "audio_download_coming_soon": "Función de descarga de audio próximamente",
+      "audio_download_failed": "Descarga de audio falló",
+      "paid_badge": "Premium",
+      "paid_users_exclusive": "Exclusivo para usuarios premium",
+      "hd_requires_paid_user": "La descarga de video HD requiere usuarios premium, por favor compre el servicio primero",
+      "requires_one_download": "Requiere 1 descarga",
+      "one_download": "1 descarga"
     }
   },
   "api": {

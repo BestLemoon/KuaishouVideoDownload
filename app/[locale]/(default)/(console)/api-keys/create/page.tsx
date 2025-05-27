@@ -9,7 +9,8 @@ import { Form as FormSlotType } from "@/types/slots/form";
 import { getIsoTimestr } from "@/lib/time";
 import { getNonceStr } from "@/lib/hash";
 import { getTranslations } from "next-intl/server";
-import { getUserUuid } from "@/services/user";
+import { getUserUuid, checkUserIsPremium } from "@/services/user";
+import { redirect } from "next/navigation";
 
 export default async function () {
   const t = await getTranslations();
@@ -17,6 +18,13 @@ export default async function () {
   const user_uuid = await getUserUuid();
   if (!user_uuid) {
     return <Empty message="no auth" />;
+  }
+
+  // 检查用户是否为付费用户
+  const isPremium = await checkUserIsPremium(user_uuid);
+  if (!isPremium) {
+    // 重定向到付费页面
+    redirect("/#pricing");
   }
 
   const form: FormSlotType = {
@@ -56,12 +64,21 @@ export default async function () {
 
         const { user_uuid } = passby;
         if (!user_uuid) {
-          throw new Error("no auth");
+          const t = await getTranslations();
+          throw new Error(t("api_keys.errors.no_auth"));
+        }
+
+        // 再次检查用户是否为付费用户
+        const isPremium = await checkUserIsPremium(user_uuid);
+        if (!isPremium) {
+          const t = await getTranslations();
+          throw new Error(t("api_keys.errors.premium_required"));
         }
 
         const title = data.get("title") as string;
         if (!title || !title.trim()) {
-          throw new Error("invalid params");
+          const t = await getTranslations();
+          throw new Error(t("api_keys.errors.invalid_params"));
         }
 
         const key = `sk-${getNonceStr(32)}`;
@@ -77,14 +94,16 @@ export default async function () {
         try {
           await insertApikey(apikey);
 
+          const t = await getTranslations();
           return {
             status: "success",
-            message: "apikey created",
+            message: t("api_keys.messages.created_success"),
             redirect_url: "/api-keys",
           };
         } catch (e: any) {
           console.error(e);
-          throw new Error("create api key failed: " + e.message);
+          const t = await getTranslations();
+          throw new Error(t("api_keys.errors.create_failed", { error: e.message }));
         }
       },
     },

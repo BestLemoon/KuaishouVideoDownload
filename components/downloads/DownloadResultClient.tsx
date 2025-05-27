@@ -33,6 +33,12 @@ interface UserCredits {
   expired_credits: number;
 }
 
+interface UserStatus {
+  isLoggedIn: boolean;
+  isPremium: boolean;
+  canUseFree: boolean;
+}
+
 interface DownloadResultClientProps {
   downloadData: ParsedData;
 }
@@ -43,11 +49,13 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
   const router = useRouter();
   
   const [userCredits, setUserCredits] = useState<UserCredits | null>(null);
+  const [userStatus, setUserStatus] = useState<UserStatus | null>(null);
   const [downloadingItems, setDownloadingItems] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     if (user) {
       fetchUserCredits();
+      fetchUserStatus();
     }
   }, [user]);
 
@@ -67,24 +75,62 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
     }
   };
 
-  const getRequiredCredits = (resolution: string): number => {
-    const resolutionNumber = parseInt(resolution.replace('p', ''));
-    return resolutionNumber >= 720 ? 2 : 1;
+  const fetchUserStatus = async () => {
+    try {
+      const response = await fetch('/api/user-status');
+      if (response.ok) {
+        const result = await response.json();
+        if (result.code === 0) {
+          setUserStatus(result.data);
+        } else {
+          setUserStatus({
+            isLoggedIn: false,
+            isPremium: false,
+            canUseFree: true
+          });
+        }
+      }
+    } catch (error) {
+      console.error('Failed to fetch user status:', error);
+      setUserStatus({
+        isLoggedIn: false,
+        isPremium: false,
+        canUseFree: true
+      });
+    }
   };
 
-  const handleDownload = async (video: VideoInfo) => {
+  // 判断是否为高清视频（只有最高清晰度的才算高清）
+  const isHighDefinition = (resolution: string, allVideos: VideoInfo[]): boolean => {
+    const resolutions = allVideos.map(v => parseInt(v.resolution.replace('p', '')));
+    const maxResolution = Math.max(...resolutions);
+    const currentResolution = parseInt(resolution.replace('p', ''));
+    return currentResolution === maxResolution;
+  };
+
+  // 检查用户是否可以下载高清视频（需要付费用户）
+  const canDownloadHD = (): boolean => {
+    if (!user || !userStatus) return false;
+    // 只有付费用户才能下载高清视频
+    return userStatus.isPremium;
+  };
+
+  const handleVideoDownload = async (video: VideoInfo) => {
     if (!user) {
       setShowSignModal(true);
       return;
     }
 
-    const requiredCredits = getRequiredCredits(video.resolution);
+    const isHD = isHighDefinition(video.resolution, downloadData.videos);
     
-    if (userCredits && userCredits.available_credits < requiredCredits) {
-      toast.error(t('insufficient_credits', {
-        available: userCredits.available_credits,
-        required: requiredCredits
-      }));
+    // 检查是否有权限下载高清视频
+    if (isHD && !canDownloadHD()) {
+      toast.error(t('hd_requires_paid_user'));
+      return;
+    }
+
+    if (userCredits && userCredits.available_credits < 1) {
+      toast.error(t('insufficient_downloads'));
       return;
     }
 
@@ -120,7 +166,6 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
       
       const { videoUrl, filename, creditsRemaining } = result.data;
 
-
       // 2. 前端直接 fetch 视频内容 (流量：Twitter -> 用户浏览器)
       const videoBlobResponse = await fetch(videoUrl);
       if (!videoBlobResponse.ok) {
@@ -138,7 +183,7 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url); // 清理
 
-      // 更新积分
+      // 更新下载次数
       if (userCredits && creditsRemaining !== undefined) {
         setUserCredits(prev => prev ? { ...prev, available_credits: creditsRemaining } : null);
       }
@@ -150,6 +195,146 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
     } catch (error) {
       console.error('Download error:', error);
       toast.error(t('download_failed'), {
+        description: error instanceof Error ? error.message : t('unknown_error')
+      });
+    } finally {
+      setDownloadingItems(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(downloadKey);
+        return newSet;
+      });
+    }
+  };
+
+  const handleThumbnailDownload = async () => {
+    if (!downloadData.thumbnail) {
+      toast.error(t('no_thumbnail_available'));
+      return;
+    }
+
+    if (!user) {
+      setShowSignModal(true);
+      return;
+    }
+
+    if (userCredits && userCredits.available_credits < 1) {
+      toast.error(t('insufficient_downloads'));
+      return;
+    }
+
+    const downloadKey = 'thumbnail';
+    setDownloadingItems(prev => new Set(prev).add(downloadKey));
+
+    try {
+      const response = await fetch(downloadData.thumbnail);
+      if (!response.ok) {
+        throw new Error(t('thumbnail_fetch_error'));
+      }
+      
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${downloadData.username}_${downloadData.statusId}_thumbnail.jpg`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+
+      toast.success(t('thumbnail_download_success'));
+
+    } catch (error) {
+      console.error('Thumbnail download error:', error);
+      toast.error(t('thumbnail_download_failed'));
+    } finally {
+      setDownloadingItems(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(downloadKey);
+        return newSet;
+      });
+    }
+  };
+
+  const handleAudioDownload = async () => {
+    if (!user) {
+      setShowSignModal(true);
+      return;
+    }
+
+    if (userCredits && userCredits.available_credits < 1) {
+      toast.error(t('insufficient_downloads'));
+      return;
+    }
+
+    const downloadKey = 'audio';
+    setDownloadingItems(prev => new Set(prev).add(downloadKey));
+    
+    try {
+      const apiResponse = await fetch('/api/twitter/get-audio-download', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          original_url: `https://x.com/${downloadData.username}/status/${downloadData.statusId}`,
+          username: downloadData.username,
+          status_id: downloadData.statusId,
+        }),
+      });
+
+      if (!apiResponse.ok) {
+        const errorData = await apiResponse.json().catch(() => ({ message: t('audio_download_failed') }));
+        throw new Error(errorData.message || `API Error: ${apiResponse.status}`);
+      }
+
+      const result = await apiResponse.json();
+      if (result.code !== 0) {
+        throw new Error(result.message || t('audio_download_failed'));
+      }
+      
+      const { audioBlob, audioUrl, filename, creditsRemaining } = result.data;
+
+      if (audioBlob) {
+        // 如果API返回了音频数据，直接下载
+        const blob = new Blob([new Uint8Array(audioBlob)], { type: 'audio/mpeg' });
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      } else if (audioUrl) {
+        // 如果API返回了URL，前端fetch下载
+        const audioResponse = await fetch(audioUrl);
+        if (!audioResponse.ok) {
+          throw new Error(t('audio_download_failed'));
+        }
+        
+        const blob = await audioResponse.blob();
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      }
+
+      // 更新积分余额
+      if (userCredits && creditsRemaining !== undefined) {
+        setUserCredits(prev => prev ? { ...prev, available_credits: creditsRemaining } : null);
+      }
+
+      toast.success(t('download_success'), {
+        description: `${filename} - Audio MP3`
+      });
+
+    } catch (error) {
+      console.error('Audio download error:', error);
+      toast.error(t('audio_download_failed'), {
         description: error instanceof Error ? error.message : t('unknown_error')
       });
     } finally {
@@ -218,7 +403,7 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
                   </p>
                 )}
                 
-                {/* Tweet link and Credits info */}
+                {/* Tweet link and Downloads info */}
                 <div className="flex items-center gap-6 text-sm">
                   <a 
                     href={`https://x.com/${downloadData.username}/status/${downloadData.statusId}`}
@@ -230,14 +415,39 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
                     View original post
                   </a>
                   
-                  {/* Credits info */}
+                  {/* Downloads info */}
                   {user && userCredits && (
                     <div className="flex items-center gap-1">
-                      <Icon name="RiCoinLine" className="w-4 h-4 text-yellow-500" />
-                      <span className="font-medium">{t('available_credits')}: {userCredits.available_credits}</span>
+                      <Icon name="RiDownloadLine" className="w-4 h-4 text-blue-500" />
+                      <span className="font-medium">{t('available_downloads')}: {userCredits.available_credits}</span>
                     </div>
                   )}
                 </div>
+
+                {/* Thumbnail Download Button */}
+                {downloadData.thumbnail && (
+                  <div className="pt-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={handleThumbnailDownload}
+                      disabled={downloadingItems.has('thumbnail') || !user || (userCredits?.available_credits || 0) < 1}
+                      className="text-xs"
+                    >
+                      {downloadingItems.has('thumbnail') ? (
+                        <>
+                          <Icon name="RiLoader4Line" className="w-3 h-3 mr-1 animate-spin" />
+                          {t('downloading')}
+                        </>
+                      ) : (
+                        <>
+                          <Icon name="RiImageLine" className="w-3 h-3 mr-1" />
+                          {t('download_thumbnail')}
+                        </>
+                      )}
+                    </Button>
+                  </div>
+                )}
               </div>
             </div>
           </CardContent>
@@ -252,27 +462,42 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className={`grid gap-6 ${
+              downloadData.videos.length + 1 <= 2 ? 'md:grid-cols-2' :
+              downloadData.videos.length + 1 <= 3 ? 'md:grid-cols-2 lg:grid-cols-3' :
+              downloadData.videos.length + 1 <= 4 ? 'md:grid-cols-2 lg:grid-cols-4' :
+              'md:grid-cols-2 lg:grid-cols-5'
+            }`}>
+              {/* Video Downloads */}
               {downloadData.videos.map((video, index) => {
-                const requiredCredits = getRequiredCredits(video.resolution);
+                const isHD = isHighDefinition(video.resolution, downloadData.videos);
                 const isDownloading = downloadingItems.has(video.downloadUrl);
-                const canDownload = !user || (userCredits && userCredits.available_credits >= requiredCredits);
+                const canDownload = user && (userCredits && userCredits.available_credits >= 1);
+                const canDownloadThisHD = canDownload && (isHD ? canDownloadHD() : true);
                 
                 return (
                   <Card key={index} className={`border-2 transition-all duration-200 ${
-                    canDownload 
+                    canDownloadThisHD 
                       ? 'hover:border-primary/50 hover:shadow-md' 
                       : 'opacity-75 border-muted'
                   }`}>
                     <CardContent className="p-6 space-y-4">
                       <div className="flex items-center justify-between">
-                        <Badge 
-                          variant={video.quality === 'HD' ? 'default' : 'secondary'}
-                          className={video.quality === 'HD' ? 'bg-gradient-to-r from-blue-500 to-purple-600' : ''}
-                        >
-                          <Icon name={video.quality === 'HD' ? 'RiHdLine' : 'RiSdCardLine'} className="w-3 h-3 mr-1" />
-                          {video.quality === 'HD' ? t('quality_hd') : t('quality_sd')}
-                        </Badge>
+                        <div className="flex items-center gap-2">
+                          <Badge 
+                            variant={isHD ? 'default' : 'secondary'}
+                            className={isHD ? 'bg-gradient-to-r from-blue-500 to-purple-600' : ''}
+                          >
+                            <Icon name={isHD ? 'RiHdLine' : 'RiSdCardLine'} className="w-3 h-3 mr-1" />
+                            {isHD ? t('quality_hd') : t('quality_sd')}
+                          </Badge>
+                          {isHD && !canDownloadHD() && (
+                            <Badge variant="outline" className="text-xs text-yellow-600 border-yellow-300">
+                              <Icon name="RiVipCrownLine" className="w-3 h-3 mr-1" />
+                              {t('paid_badge')}
+                            </Badge>
+                          )}
+                        </div>
                         <Badge variant="outline" className="font-mono text-sm">
                           {video.resolution}
                         </Badge>
@@ -288,19 +513,19 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
                           <span className="font-medium">MP4</span>
                         </div>
                         <div className="flex justify-between items-center">
-                          <span className="text-muted-foreground">{t('cost_credits')}:</span>
+                          <span className="text-muted-foreground">{t('cost_downloads')}:</span>
                           <div className="flex items-center gap-1">
-                            <Icon name="RiCoinLine" className="w-4 h-4 text-yellow-500" />
-                            <span className="font-medium">{t('cost_format', { credits: requiredCredits })}</span>
+                            <Icon name="RiDownloadLine" className="w-4 h-4 text-blue-500" />
+                            <span className="font-medium">{t('one_download')}</span>
                           </div>
                         </div>
                       </div>
                       
                       <Button 
                         className="w-full" 
-                        onClick={() => handleDownload(video)}
-                        disabled={isDownloading || !canDownload}
-                        variant={canDownload ? "default" : "secondary"}
+                        onClick={() => handleVideoDownload(video)}
+                        disabled={isDownloading || !canDownloadThisHD}
+                        variant={canDownloadThisHD ? "default" : "secondary"}
                         size="lg"
                       >
                         {isDownloading ? (
@@ -311,10 +536,14 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
                         ) : !canDownload ? (
                           <>
                             <Icon name="RiLockLine" className="w-4 h-4 mr-2" />
-                            {user ? t('insufficient_credits_short', { 
-                              available: userCredits?.available_credits || 0, 
-                              required: requiredCredits 
+                            {user ? t('insufficient_downloads_short', { 
+                              available: userCredits?.available_credits || 0
                             }) : t('login_required')}
+                          </>
+                        ) : isHD && !canDownloadHD() ? (
+                          <>
+                            <Icon name="RiLockLine" className="w-4 h-4 mr-2 text-yellow-500" />
+                            {t('paid_users_exclusive')}
                           </>
                         ) : (
                           <>
@@ -327,6 +556,72 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
                   </Card>
                 );
               })}
+
+              {/* Audio Download Card - Always last */}
+              <Card className={`border-2 transition-all duration-200 ${
+                user && (userCredits?.available_credits || 0) >= 1
+                  ? 'hover:border-primary/50 hover:shadow-md' 
+                  : 'opacity-75 border-muted'
+              }`}>
+                <CardContent className="p-6 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Badge variant="secondary" className="bg-gradient-to-r from-purple-500 to-pink-600 text-white">
+                        <Icon name="RiVolumeUpLine" className="w-3 h-3 mr-1" />
+                        Audio
+                      </Badge>
+                    </div>
+                    <Badge variant="outline" className="font-mono text-sm">
+                      MP3
+                    </Badge>
+                  </div>
+                  
+                  <div className="space-y-3 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">{t('format')}:</span>
+                      <span className="font-medium">MP3</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">{t('audio_quality')}:</span>
+                      <span className="font-medium">{t('high_quality')}</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-muted-foreground">{t('cost_downloads')}:</span>
+                      <div className="flex items-center gap-1">
+                        <Icon name="RiDownloadLine" className="w-4 h-4 text-blue-500" />
+                        <span className="font-medium">{t('one_download')}</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <Button 
+                    className="w-full" 
+                    onClick={handleAudioDownload}
+                    disabled={downloadingItems.has('audio') || !user || (userCredits?.available_credits || 0) < 1}
+                    variant={user && (userCredits?.available_credits || 0) >= 1 ? "default" : "secondary"}
+                    size="lg"
+                  >
+                    {downloadingItems.has('audio') ? (
+                      <>
+                        <Icon name="RiLoader4Line" className="w-4 h-4 mr-2 animate-spin" />
+                        {t('downloading')}
+                      </>
+                    ) : !user || (userCredits?.available_credits || 0) < 1 ? (
+                      <>
+                        <Icon name="RiLockLine" className="w-4 h-4 mr-2" />
+                        {user ? t('insufficient_downloads_short', { 
+                          available: userCredits?.available_credits || 0
+                        }) : t('login_required')}
+                      </>
+                    ) : (
+                      <>
+                        <Icon name="RiHeadphoneLine" className="w-4 h-4 mr-2" />
+                        {t('extract_audio')}
+                      </>
+                    )}
+                  </Button>
+                </CardContent>
+              </Card>
             </div>
           </CardContent>
         </Card>

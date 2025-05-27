@@ -12,33 +12,6 @@ import { Label } from "@/components/ui/label";
 import { loadStripe } from "@stripe/stripe-js";
 import { toast } from "sonner";
 import { useAppContext } from "@/contexts/app";
-import { useLocale } from "next-intl";
-
-// 格式化价格显示的辅助函数
-const formatPriceDisplay = (price: string, locale: string) => {
-  // 如果价格包含货币符号，分离数字和符号
-  const priceMatch = price.match(/^([¥$€£₹]?)(.+)$/);
-  if (priceMatch) {
-    const [, currency, amount] = priceMatch;
-    return {
-      currency: currency || "",
-      amount: amount,
-      fullPrice: price
-    };
-  }
-  
-  return {
-    currency: "",
-    amount: price,
-    fullPrice: price
-  };
-};
-
-// 根据语言获取货币符号位置（前置或后置）
-const getCurrencyPosition = (locale: string) => {
-  const prefixCurrencies = ["en", "zh", "ja", "ko"];
-  return prefixCurrencies.includes(locale) ? "prefix" : "suffix";
-};
 
 export default function Pricing({ pricing }: { pricing: PricingType }) {
   if (pricing.disabled) {
@@ -46,7 +19,6 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
   }
 
   const { user, setShowSignModal } = useAppContext();
-  const locale = useLocale();
 
   const [group, setGroup] = useState(pricing.groups?.[0]?.name);
   const [isLoading, setIsLoading] = useState(false);
@@ -120,12 +92,11 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
   };
 
   useEffect(() => {
-    if (pricing.items) {
-      setGroup(pricing.items[0].group);
-      setProductId(pricing.items[0].product_id);
-      setIsLoading(false);
+    if (pricing.groups && pricing.groups.length > 0) {
+      setGroup(pricing.groups[0].name);
     }
-  }, [pricing.items]);
+    setIsLoading(false);
+  }, [pricing.groups]);
 
   return (
     <section id={pricing.name} className="py-16">
@@ -138,21 +109,22 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
             {pricing.description}
           </p>
         </div>
-        <div className="flex flex-col items-center gap-2">
+        <div className="w-full flex flex-col items-center gap-2">
           {pricing.groups && pricing.groups.length > 0 && (
-            <div className="flex h-12 mb-12 items-center rounded-md bg-muted p-1 text-lg">
+            <div className="flex h-14 mb-12 items-center rounded-xl bg-gradient-to-r from-muted/80 to-muted border p-1.5 text-lg shadow-sm">
               <RadioGroup
                 value={group}
-                className={`h-full grid-cols-${pricing.groups.length}`}
+                className={`h-full grid-cols-${pricing.groups.length} gap-1`}
                 onValueChange={(value) => {
                   setGroup(value);
                 }}
               >
                 {pricing.groups.map((item, i) => {
+                  const isYearly = item.name === 'year';
                   return (
                     <div
                       key={i}
-                      className='h-full rounded-md transition-all has-[button[data-state="checked"]]:bg-white'
+                      className='h-full rounded-lg transition-all duration-200 has-[button[data-state="checked"]]:bg-white has-[button[data-state="checked"]]:shadow-md'
                     >
                       <RadioGroupItem
                         value={item.name || ""}
@@ -161,15 +133,15 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
                       />
                       <Label
                         htmlFor={item.name}
-                        className="flex h-full cursor-pointer items-center justify-center px-7 font-semibold text-muted-foreground peer-data-[state=checked]:text-primary"
+                        className="flex h-full cursor-pointer items-center justify-center px-8 font-semibold text-muted-foreground peer-data-[state=checked]:text-primary hover:text-primary/80 transition-colors relative"
                       >
-                        {item.title}
-                        {item.label && (
+                        {item.label}
+                        {item.badge && (
                           <Badge
                             variant="outline"
-                            className="border-primary bg-primary px-1.5 ml-1 text-primary-foreground"
+                            className="border-green-500 bg-green-500 px-2 py-0.5 ml-2 text-xs text-white font-medium"
                           >
-                            {item.label}
+                            {item.badge}
                           </Badge>
                         )}
                       </Label>
@@ -179,9 +151,18 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
               </RadioGroup>
             </div>
           )}
-          <div className="w-full mt-0 grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
+          <div
+            className={`w-full mt-0 grid gap-6 md:grid-cols-${
+              pricing.items?.filter(
+                (item) => !item.group || item.group === group
+              )?.length || 3
+            }`}
+          >
             {pricing.items?.map((item, index) => {
-              if (item.group && item.group !== group) {
+              // 如果没有groups，显示所有items
+              // 如果有groups但item没有group，总是显示（比如免费版）
+              // 如果有groups且item有group，只显示匹配的group
+              if (pricing.groups && pricing.groups.length > 0 && item.group && item.group !== group) {
                 return null;
               }
 
@@ -203,48 +184,31 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
                           </h3>
                         )}
                         <div className="flex-1"></div>
-                      </div>
-                      <div className="flex flex-col items-start gap-2 mb-6">
-                        {item.original_price && (
-                          <div className="flex items-center gap-1">
-                            <span className="text-lg text-muted-foreground font-medium line-through">
-                              {item.original_price}
-                            </span>
-                          </div>
+                        {item.label && (
+                          <Badge
+                            variant="outline"
+                            className="border-primary bg-primary px-1.5 text-primary-foreground"
+                          >
+                            {item.label}
+                          </Badge>
                         )}
-                        <div className="flex flex-col items-start">
-                          {item.price && (
-                            <div className="flex items-baseline gap-1 mb-1">
-                              {(() => {
-                                const { currency, amount } = formatPriceDisplay(item.price, locale);
-                                const currencyPosition = getCurrencyPosition(locale);
-                                
-                                return (
-                                  <>
-                                    {currencyPosition === "prefix" && currency && (
-                                      <span className="text-2xl font-bold text-primary">
-                                        {currency}
-                                      </span>
-                                    )}
-                                    <span className="text-4xl md:text-5xl font-bold leading-none">
-                                      {amount}
-                                    </span>
-                                    {currencyPosition === "suffix" && currency && (
-                                      <span className="text-2xl font-bold text-primary">
-                                        {currency}
-                                      </span>
-                                    )}
-                                  </>
-                                );
-                              })()}
-                            </div>
-                          )}
-                          {item.unit && (
-                            <span className="text-sm font-medium text-muted-foreground leading-tight max-w-full break-words">
-                              {item.unit}
-                            </span>
-                          )}
-                        </div>
+                      </div>
+                      <div className="flex items-end gap-2 mb-4">
+                        {item.original_price && (
+                          <span className="text-xl text-muted-foreground font-semibold line-through">
+                            {item.original_price}
+                          </span>
+                        )}
+                        {item.price && (
+                          <span className="text-5xl font-semibold">
+                            {item.price}
+                          </span>
+                        )}
+                        {item.unit && (
+                          <span className="block font-semibold">
+                            {item.unit}
+                          </span>
+                        )}
                       </div>
                       {item.description && (
                         <p className="text-muted-foreground">

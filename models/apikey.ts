@@ -56,3 +56,23 @@ export async function getUserUuidByApiKey(
 
   return data?.user_uuid;
 }
+
+export async function deleteApikey(
+  apiKeyId: string,
+  userUuid: string
+): Promise<boolean> {
+  const supabase = getSupabaseClient();
+  const { error } = await supabase
+    .from("apikeys")
+    .update({ status: ApikeyStatus.Deleted })
+    .eq("api_key", apiKeyId)
+    .eq("user_uuid", userUuid)
+    .eq("status", ApikeyStatus.Created);
+
+  if (error) {
+    console.error("Delete API key error:", error);
+    return false;
+  }
+
+  return true;
+}

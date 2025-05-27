@@ -67,18 +67,42 @@
   },
   "api_keys": {
     "title": "API Keys",
-    "tip": "Please keep your apikey safe to avoid leaks",
-    "no_api_keys": "No API Keys",
+    "tip": "Please keep your API keys secure and avoid sharing them, use Apple Shortcut to download videos directly from the App",
+    "premium_only_tip": "API features are only available for premium users. Please upgrade to get API access",
+    "no_api_keys": "No API keys",
     "create_api_key": "Create API Key",
+    "delete_api_key": "Delete API Key",
+    "upgrade_to_premium": "Upgrade to Premium",
+    "view_api_docs": "View API Docs",
+    "apple_shortcut": "Apple Shortcut",
     "table": {
       "name": "Name",
       "key": "Key",
-      "created_at": "Created At"
+      "created_at": "Created At",
+      "actions": "Actions"
     },
     "form": {
       "name": "Name",
       "name_placeholder": "API Key Name",
       "submit": "Submit"
+    },
+    "messages": {
+      "created_success": "API key created successfully"
+    },
+    "errors": {
+      "no_auth": "Please login first",
+      "premium_required": "API keys are only available to premium users. Please upgrade your account",
+      "invalid_params": "Invalid parameters",
+      "create_failed": "Failed to create API key: {error}"
+    },
+    "delete": {
+      "confirm_title": "Delete API Key",
+      "confirm_message": "Are you sure you want to delete this API key? This action cannot be undone and will immediately revoke access for all applications using this key.",
+      "success_message": "API key deleted successfully",
+      "error_message": "Failed to delete API key",
+      "button_deleting": "Deleting...",
+      "button_delete": "Delete",
+      "button_cancel": "Cancel"
     }
   },
   "blog": {
@@ -94,7 +118,7 @@
     "edit_invite_link": "Edit Invite Link",
     "copy_invite_link": "Copy Invite Link",
     "invite_code": "Invite Code",
-    "invite_tip": "Invite 1 friend to buy TwitterDown, reward $50.",
+    "invite_tip": "Invite 1 friend to buy TwitterDown, reward 10 downloads.",
     "invite_balance": "Invite Reward Balance",
     "total_invite_count": "Total Invite Count",
     "total_paid_count": "Total Paid Count",
@@ -117,7 +141,13 @@
   "download_history": {
     "title": "Download History",
     "description": "View your video download records",
+    "description_free": "View your recent {count} download records (Free version)",
     "no_history": "No download history found",
+    "upgrade_prompt": {
+      "title": "Upgrade to View More",
+      "message": "You have {total} download records, but free users can only view the latest {visible} records.",
+      "button": "Upgrade Now"
+    },
     "table": {
       "download_no": "Download No",
       "file_name": "File Name",
@@ -196,7 +226,35 @@
       "total_count": "Total",
       "view_original_tweet": "View Original Tweet",
       "cost_credits": "Cost",
-      "cost_format": "{credits} credits"
+      "cost_format": "{credits} credits",
+      "cost_downloads": "Cost",
+      "cost_format_downloads": "{downloads} downloads",
+      "available_downloads": "Available Downloads",
+      "top_up_downloads": "Top Up Downloads",
+      "insufficient_downloads": "Insufficient downloads",
+      "insufficient_downloads_short": "Insufficient: {available}",
+      "downloads_required": "Requires {downloads} downloads",
+      "hd_download_requires_premium": "HD download requires paid user",
+      "premium_required": "Paid Users Only",
+      "paid_user_only": "Paid Users Only",
+      "purchase_to_unlock_hd": "Purchase service to unlock HD download",
+      "download_thumbnail": "Download Thumbnail",
+      "thumbnail_download_success": "Thumbnail download successful",
+      "thumbnail_download_failed": "Thumbnail download failed",
+      "thumbnail_fetch_error": "Failed to fetch thumbnail",
+      "no_thumbnail_available": "No thumbnail available",
+      "audio_extract": "Audio Extract",
+      "audio_extract_description": "Extract audio file from video",
+      "extract_audio": "Extract Audio",
+      "audio_quality": "Audio Quality",
+      "high_quality": "High Quality",
+      "audio_download_coming_soon": "Audio download feature coming soon",
+      "audio_download_failed": "Audio download failed",
+      "paid_badge": "Paid",
+      "paid_users_exclusive": "Paid Users Only",
+      "hd_requires_paid_user": "HD video download requires paid user, please purchase service first",
+      "requires_one_download": "Requires 1 download",
+      "one_download": "1 download"
     }
   },
   "api": {

@@ -67,18 +67,42 @@
   },
   "api_keys": {
     "title": "API-Schlüssel",
-    "tip": "Bitte bewahren Sie Ihren API-Schlüssel sicher auf, um Lecks zu vermeiden",
+    "tip": "Bewahren Sie Ihren API-Schlüssel sicher auf, um Lecks zu vermeiden, verwenden Sie Apple Shortcut, um Videos direkt aus der App herunterzuladen",
+    "premium_only_tip": "API-Funktionen sind nur für Premium-Benutzer verfügbar. Bitte upgraden Sie auf den Premium-Plan, um API-Zugriff zu erhalten",
     "no_api_keys": "Keine API-Schlüssel",
-    "create_api_key": "API-Schlüssel Erstellen",
+    "create_api_key": "API-Schlüssel erstellen",
+    "delete_api_key": "API-Schlüssel löschen",
+    "upgrade_to_premium": "Auf Premium upgraden",
+    "view_api_docs": "API-Dokumentation anzeigen",
+    "apple_shortcut": "Apple Shortcut",
     "table": {
       "name": "Name",
       "key": "Schlüssel",
-      "created_at": "Erstellt am"
+      "created_at": "Erstellt am",
+      "actions": "Aktionen"
     },
     "form": {
       "name": "Name",
-      "name_placeholder": "API-Schlüssel Name",
-      "submit": "Senden"
+      "name_placeholder": "API-Schlüssel-Name",
+      "submit": "Absenden"
+    },
+    "messages": {
+      "created_success": "API-Schlüssel erfolgreich erstellt"
+    },
+    "errors": {
+      "no_auth": "Bitte zuerst anmelden",
+      "premium_required": "API-Schlüssel sind nur für Premium-Benutzer verfügbar. Bitte upgraden Sie Ihr Konto",
+      "invalid_params": "Ungültige Parameter",
+      "create_failed": "Fehler beim Erstellen des API-Schlüssels: {error}"
+    },
+    "delete": {
+      "confirm_title": "API-Schlüssel löschen",
+      "confirm_message": "Sind Sie sicher, dass Sie diesen API-Schlüssel löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden und wird sofort den Zugriff für alle Anwendungen widerrufen, die diesen Schlüssel verwenden.",
+      "success_message": "API-Schlüssel erfolgreich gelöscht",
+      "error_message": "Fehler beim Löschen des API-Schlüssels",
+      "button_deleting": "Wird gelöscht...",
+      "button_delete": "Löschen",
+      "button_cancel": "Abbrechen"
     }
   },
   "blog": {
@@ -117,7 +141,13 @@
   "download_history": {
     "title": "Download-Verlauf",
     "description": "Ihre Video-Download-Aufzeichnungen anzeigen",
+    "description_free": "Ihre letzten {count} Download-Aufzeichnungen anzeigen (Kostenlose Version)",
     "no_history": "Kein Download-Verlauf gefunden",
+    "upgrade_prompt": {
+      "title": "Upgrade für mehr Anzeigen",
+      "message": "Sie haben {total} Download-Aufzeichnungen, aber kostenlose Benutzer können nur die letzten {visible} Aufzeichnungen anzeigen.",
+      "button": "Jetzt upgraden"
+    },
     "table": {
       "download_no": "Download-Nr.",
       "file_name": "Dateiname",
@@ -196,7 +226,35 @@
       "total_count": "Gesamt",
       "view_original_tweet": "Original-Tweet anzeigen",
       "cost_credits": "Kosten",
-      "cost_format": "{credits} Credits"
+      "cost_format": "{credits} Credits",
+      "cost_downloads": "Kosten",
+      "cost_format_downloads": "{downloads} Downloads",
+      "available_downloads": "Verfügbare Downloads",
+      "top_up_downloads": "Downloads aufladen",
+      "insufficient_downloads": "Unzureichende Downloads",
+      "insufficient_downloads_short": "Unzureichend: {available}",
+      "downloads_required": "Benötigt {downloads} Downloads",
+      "hd_download_requires_premium": "HD-Download erfordert Premium-Benutzer",
+      "premium_required": "Premium-Benutzer exklusiv",
+      "paid_user_only": "Nur für Premium-Benutzer",
+      "purchase_to_unlock_hd": "Service kaufen um HD-Download freizuschalten",
+      "download_thumbnail": "Thumbnail herunterladen",
+      "thumbnail_download_success": "Thumbnail erfolgreich heruntergeladen",
+      "thumbnail_download_failed": "Thumbnail-Download fehlgeschlagen",
+      "thumbnail_fetch_error": "Thumbnail-Abruf fehlgeschlagen",
+      "no_thumbnail_available": "Kein Thumbnail verfügbar",
+      "audio_extract": "Audio-Extraktion",
+      "audio_extract_description": "Audiodatei aus Video extrahieren",
+      "extract_audio": "Audio extrahieren",
+      "audio_quality": "Audioqualität",
+      "high_quality": "Hohe Qualität",
+      "audio_download_coming_soon": "Audio-Download-Funktion kommt bald",
+      "audio_download_failed": "Audio-Download fehlgeschlagen",
+      "paid_badge": "Premium",
+      "paid_users_exclusive": "Exklusiv für Premium-Benutzer",
+      "hd_requires_paid_user": "HD-Video-Download erfordert Premium-Benutzer, bitte Service zuerst kaufen",
+      "requires_one_download": "Benötigt 1 Download",
+      "one_download": "1 Download"
     }
   },
   "api": {

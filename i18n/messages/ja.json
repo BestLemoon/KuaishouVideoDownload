@@ -66,19 +66,43 @@
     }
   },
   "api_keys": {
-    "title": "APIキー",
-    "tip": "APIキーを安全に保管し、漏洩を避けてください",
-    "no_api_keys": "APIキーがありません",
-    "create_api_key": "APIキーを作成",
+    "title": "API キー",
+    "tip": "API キーを安全に保管してください、Appから直接ビデオをダウンロードするためにApple Shortcutを使用してください",
+    "premium_only_tip": "API 機能はプレミアムユーザーのみ利用可能です。API アクセスを取得するためにプレミアムプランにアップグレードしてください",
+    "no_api_keys": "API キーがありません",
+    "create_api_key": "API キーを作成",
+    "delete_api_key": "API キーを削除",
+    "upgrade_to_premium": "プレミアムにアップグレード",
+    "view_api_docs": "API ドキュメントを表示",
+    "apple_shortcut": "Apple Shortcut",
     "table": {
       "name": "名前",
       "key": "キー",
-      "created_at": "作成日時"
+      "created_at": "作成日時",
+      "actions": "アクション"
     },
     "form": {
       "name": "名前",
-      "name_placeholder": "APIキー名",
+      "name_placeholder": "API キー名",
       "submit": "送信"
+    },
+    "messages": {
+      "created_success": "API キーが正常に作成されました"
+    },
+    "errors": {
+      "no_auth": "まずログインしてください",
+      "premium_required": "API キーはプレミアムユーザーのみ利用可能です。アカウントをアップグレードしてください",
+      "invalid_params": "無効なパラメータ",
+      "create_failed": "API キーの作成に失敗しました: {error}"
+    },
+    "delete": {
+      "confirm_title": "API キーを削除",
+      "confirm_message": "この API キーを削除してもよろしいですか？この操作は元に戻すことができず、このキーを使用しているすべてのアプリケーションのアクセスが即座に取り消されます。",
+      "success_message": "API キーが正常に削除されました",
+      "error_message": "API キーの削除に失敗しました",
+      "button_deleting": "削除中...",
+      "button_delete": "削除",
+      "button_cancel": "キャンセル"
     }
   },
   "blog": {
@@ -117,7 +141,13 @@
   "download_history": {
     "title": "ダウンロード履歴",
     "description": "動画ダウンロード記録を表示",
+    "description_free": "最新の{count}件のダウンロード記録を表示（無料版）",
     "no_history": "ダウンロード履歴が見つかりません",
+    "upgrade_prompt": {
+      "title": "アップグレードして全て表示",
+      "message": "{total}件のダウンロード記録がありますが、無料ユーザーは最新の{visible}件のみ表示できます。",
+      "button": "今すぐアップグレード"
+    },
     "table": {
       "download_no": "ダウンロード番号",
       "file_name": "ファイル名",
@@ -196,7 +226,35 @@
       "total_count": "合計",
       "view_original_tweet": "元のツイートを表示",
       "cost_credits": "コスト",
-      "cost_format": "{credits}クレジット"
+      "cost_format": "{credits}クレジット",
+      "cost_downloads": "コスト",
+      "cost_format_downloads": "{downloads}ダウンロード",
+      "available_downloads": "利用可能ダウンロード",
+      "top_up_downloads": "ダウンロードをチャージ",
+      "insufficient_downloads": "ダウンロード不足",
+      "insufficient_downloads_short": "不足: {available}",
+      "downloads_required": "{downloads}ダウンロード必要",
+      "hd_download_requires_premium": "HDダウンロードはプレミアムユーザーが必要",
+      "premium_required": "プレミアムユーザー専用",
+      "paid_user_only": "有料ユーザー専用",
+      "purchase_to_unlock_hd": "HDダウンロードを解除するためにサービスを購入",
+      "download_thumbnail": "サムネイルをダウンロード",
+      "thumbnail_download_success": "サムネイルダウンロード成功",
+      "thumbnail_download_failed": "サムネイルダウンロード失敗",
+      "thumbnail_fetch_error": "サムネイル取得失敗",
+      "no_thumbnail_available": "利用可能なサムネイルなし",
+      "audio_extract": "音声抽出",
+      "audio_extract_description": "動画から音声ファイルを抽出",
+      "extract_audio": "音声を抽出",
+      "audio_quality": "音声品質",
+      "high_quality": "高品質",
+      "audio_download_coming_soon": "音声ダウンロード機能は近日公開",
+      "audio_download_failed": "音声ダウンロード失敗",
+      "paid_badge": "有料",
+      "paid_users_exclusive": "有料ユーザー専用",
+      "hd_requires_paid_user": "HD動画ダウンロードは有料ユーザーが必要です。まずサービスを購入してください",
+      "requires_one_download": "1ダウンロード必要",
+      "one_download": "1ダウンロード"
     }
   },
   "api": {

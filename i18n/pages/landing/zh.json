@@ -226,136 +226,190 @@
   },
   "pricing": {
     "name": "pricing",
-    "label": "积分套餐",
-    "title": "选择适合您的积分套餐",
-    "description": "基于积分的使用模式，高清视频2积分，标清视频1积分。",
-    "groups": [],
+    "label": "价格方案",
+    "title": "选择适合您的价格方案",
+    "description": "灵活的价格方案，满足不同用户的需求。专业版和商业版支持月付和年付。",
+    "groups": [
+      {
+        "name": "month",
+        "label": "月付"
+      },
+      {
+        "name": "year",
+        "label": "年付",
+        "badge": "立省17%"
+      }
+    ],
     "items": [
       {
-        "title": "基础版",
-        "description": "适合普通用户试用",
+        "title": "免费版",
+        "description": "普通用户试用，满足基本下载需求",
         "features_title": "包含",
         "features": [
-          "10积分（新用户免费赠送）",
-          "高清视频下载（720p+）消耗2积分",
-          "标清视频下载消耗1积分",
-          "MP4格式下载",
-          "基本下载历史",
+          "每月10次标清视频下载",
+          "普通下载速度",
+          "基础下载历史记录（最近3条）",
           "网页应用访问",
-          "永久有效"
+          "无法使用批量下载",
+          "无法访问API",
+          "无法获得iOS快捷方式"
         ],
-        "interval": "one-time",
+        "interval": "month",
         "amount": 0,
         "cn_amount": 0,
         "currency": "CNY",
-        "price": "免费",
+        "price": "¥0",
         "original_price": "",
-        "unit": "积分",
+        "unit": "/ 月",
         "is_featured": false,
-        "tip": "新用户免费获得",
+        "tip": "适合基本使用",
         "button": {
           "title": "免费开始",
           "url": "/zh#usage",
           "icon": "RiDownloadCloud2Fill"
         },
-        "product_id": "basic",
-        "product_name": "TwitterDown基础版",
-        "credits": 10,
-        "valid_months": 9999
+        "product_id": "free",
+        "product_name": "TwitterDown免费版",
+        "credits": 0,
+        "valid_months": 1
       },
       {
-        "title": "标准积分包",
-        "description": "适合经常使用的用户",
-        "label": "热门",
+        "title": "专业版",
+        "description": "经常下载视频的个人用户、内容创作者",
+        "label": "✨ 最受欢迎",
         "features_title": "包含",
-        "features": [          
-          "500积分",
-          "高清视频约250次下载",
-          "标清视频约500次下载",
-          "永久有效",
-          "批量下载功能",
-          "优先下载速度"
+        "features": [
+          "每月150次高清/标清视频下载额度",
+          "高清视频下载（720p+, 1080p及更高）",
+          "批量下载功能（一次性下载多个视频链接）",
+          "更快的下载速度（优先处理队列）",
+          "完整的下载历史记录",
+          "推文多媒体一键打包下载",
+          "下载视频的封面图",
+          "iOS快捷方式支持",
+          "优先体验新功能"
         ],
-        "interval": "one-time",
-        "amount": 999,
-        "cn_amount": 999,
+        "interval": "month",
+        "amount": 1990,
+        "cn_amount": 1990,
         "currency": "CNY",
-        "price": "¥9.99",
-        "original_price": "¥19.99",
-        "unit": "积分包",
+        "price": "¥19.9",
+        "original_price": "",
+        "unit": "/ 月",
         "is_featured": true,
         "tip": "最受欢迎的选择",
         "button": {
-          "title": "购买标准包",
+          "title": "升级到专业版",
           "url": "/zh#pricing",
           "icon": "RiVipCrownLine"
         },
-        "product_id": "standard",
-        "product_name": "TwitterDown标准积分包",
-        "credits": 500,
-        "valid_months": 9999
+        "product_id": "pro_monthly",
+        "product_name": "TwitterDown专业版（月付）",
+        "credits": 150,
+        "valid_months": 1,
+        "group": "month"
       },
       {
-        "title": "专业积分包",
-        "description": "适合重度用户和创作者",
+        "title": "专业版",
+        "description": "经常下载视频的个人用户、内容创作者",
+        "label": "✨ 最受欢迎",
         "features_title": "包含",
         "features": [
-          "2000积分",
-          "高清视频约1000次下载",
-          "标清视频约2000次下载",
-          "永久有效",
-          "API访问权限",
-          "优先客户支持"
+          "每月150次高清/标清视频下载额度",
+          "高清视频下载（720p+, 1080p及更高）",
+          "批量下载功能（一次性下载多个视频链接）",
+          "更快的下载速度（优先处理队列）",
+          "完整的下载历史记录",
+          "推文多媒体一键打包下载",
+          "下载视频的封面图",
+          "iOS快捷方式支持",
+          "优先体验新功能"
         ],
-        "interval": "one-time",
-        "amount": 2999,
-        "cn_amount": 2999,
+        "interval": "year",
+        "amount": 19900,
+        "cn_amount": 19900,
         "currency": "CNY",
-        "price": "¥29.99",
-        "original_price": "¥59.99",
-        "unit": "积分包",
-        "is_featured": false,
-        "tip": "最超值的选择",
+        "price": "¥199",
+        "original_price": "¥239",
+        "unit": "/ 年",
+        "is_featured": true,
+        "tip": "相当于¥16.58/月，立省约17%",
         "button": {
-          "title": "购买专业包",
+          "title": "升级到专业版",
+          "url": "/zh#pricing",
+          "icon": "RiVipCrownLine"
+        },
+        "product_id": "pro_yearly",
+        "product_name": "TwitterDown专业版（年付）",
+        "credits": 1800,
+        "valid_months": 12,
+        "group": "year"
+      },
+      {
+        "title": "商业版",
+        "description": "需要API进行批量化、自动化操作的开发者、企业和重度用户",
+        "features_title": "包含",
+        "features": [
+          "包含专业版所有功能",
+          "完整的API访问权限",
+          "每月高达5,000次API调用额度",
+          "专属技术支持（更快的响应速度）",
+          "更高的并发下载数",
+          "iOS快捷方式支持",
+          "可根据需求定制更高用量的企业方案"
+        ],
+        "interval": "month",
+        "amount": 24900,
+        "cn_amount": 24900,
+        "currency": "CNY",
+        "price": "¥249",
+        "original_price": "",
+        "unit": "/ 月",
+        "is_featured": false,
+        "tip": "适合企业和开发者",
+        "button": {
+          "title": "获取商业版权限",
           "url": "/zh#pricing",
           "icon": "RiBriefcase4Line"
         },
-        "product_id": "professional",
-        "product_name": "TwitterDown专业积分包",
-        "credits": 2000,
-        "valid_months": 9999
+        "product_id": "business_monthly",
+        "product_name": "TwitterDown商业版（月付）",
+        "credits": 5000,
+        "valid_months": 1,
+        "group": "month"
       },
       {
-        "title": "企业积分包",
-        "description": "适合企业和开发者",
+        "title": "商业版",
+        "description": "需要API进行批量化、自动化操作的开发者、企业和重度用户",
         "features_title": "包含",
         "features": [
-          "10000积分",
-          "高清视频约5000次下载",
-          "标清视频约10000次下载",
-          "永久有效",
-          "完整API访问",
-          "专属技术支持"
+          "包含专业版所有功能",
+          "完整的API访问权限",
+          "每月高达5,000次API调用额度",
+          "专属技术支持（更快的响应速度）",
+          "更高的并发下载数",
+          "iOS快捷方式支持",
+          "可根据需求定制更高用量的企业方案"
         ],
-        "interval": "one-time",
-        "amount": 9999,
-        "cn_amount": 9999,
+        "interval": "year",
+        "amount": 249000,
+        "cn_amount": 249000,
         "currency": "CNY",
-        "price": "¥99.99",
-        "original_price": "¥199.99",
-        "unit": "积分包",
+        "price": "¥2490",
+        "original_price": "¥2988",
+        "unit": "/ 年",
         "is_featured": false,
-        "tip": "企业级服务",
+        "tip": "相当于¥207.5/月，立省约17%",
         "button": {
-          "title": "购买企业包",
+          "title": "获取商业版权限",
           "url": "/zh#pricing",
-          "icon": "RiBuilding4Line"
+          "icon": "RiBriefcase4Line"
         },
-        "product_id": "enterprise",
-        "product_name": "TwitterDown企业积分包",
-        "credits": 10000,
-        "valid_months": 9999
+        "product_id": "business_yearly",
+        "product_name": "TwitterDown商业版（年付）",
+        "credits": 60000,
+        "valid_months": 12,
+        "group": "year"
       }
     ]
   },
@@ -479,7 +533,6 @@
       "url": "/"
     },
     "copyright": "© 2025 • TwitterDown 保留所有权利。",
-   
     "social": {
       "items": [
         {
@@ -488,7 +541,6 @@
           "url": "https://twitter.com/Real_Jewel_AI",
           "target": "_blank"
         },
-        
         {
           "title": "邮箱",
           "icon": "RiMailLine",

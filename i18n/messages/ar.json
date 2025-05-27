@@ -67,18 +67,42 @@
   },
   "api_keys": {
     "title": "مفاتيح API",
-    "tip": "يرجى الحفاظ على مفتاح API الخاص بك آمناً لتجنب التسريبات",
+    "tip": "يرجى الحفاظ على مفتاح API الخاص بك آمناً لتجنب التسريبات، استخدم Apple Shortcut لتنزيل الفيديوهات مباشرة من التطبيق",
+    "premium_only_tip": "وظائف API متاحة فقط للمستخدمين المميزين. يرجى الترقية إلى الخطة المميزة للوصول إلى ميزات API",
     "no_api_keys": "لا توجد مفاتيح API",
     "create_api_key": "إنشاء مفتاح API",
+    "delete_api_key": "حذف مفتاح API",
+    "upgrade_to_premium": "الترقية إلى المميز",
+    "view_api_docs": "عرض توثيق API",
+    "apple_shortcut": "Apple Shortcut",
     "table": {
       "name": "الاسم",
       "key": "المفتاح",
-      "created_at": "تاريخ الإنشاء"
+      "created_at": "تاريخ الإنشاء",
+      "actions": "الإجراءات"
     },
     "form": {
       "name": "الاسم",
       "name_placeholder": "اسم مفتاح API",
       "submit": "إرسال"
+    },
+    "messages": {
+      "created_success": "تم إنشاء مفتاح API بنجاح"
+    },
+    "errors": {
+      "no_auth": "يرجى تسجيل الدخول أولاً",
+      "premium_required": "مفاتيح API متاحة فقط للمستخدمين المميزين. يرجى ترقية حسابك",
+      "invalid_params": "معاملات غير صالحة",
+      "create_failed": "فشل في إنشاء مفتاح API: {error}"
+    },
+    "delete": {
+      "confirm_title": "حذف مفتاح API",
+      "confirm_message": "هل أنت متأكد من أنك تريد حذف مفتاح API هذا؟ لا يمكن التراجع عن هذا الإجراء وسيؤدي إلى إلغاء الوصول فوراً لجميع التطبيقات التي تستخدم هذا المفتاح.",
+      "success_message": "تم حذف مفتاح API بنجاح",
+      "error_message": "فشل في حذف مفتاح API",
+      "button_deleting": "جاري الحذف...",
+      "button_delete": "حذف",
+      "button_cancel": "إلغاء"
     }
   },
   "blog": {
@@ -117,7 +141,13 @@
   "download_history": {
     "title": "تاريخ التنزيل",
     "description": "عرض سجلات تنزيل الفيديو الخاصة بك",
+    "description_free": "عرض آخر {count} سجلات تنزيل (النسخة المجانية)",
     "no_history": "لم يتم العثور على تاريخ تنزيل",
+    "upgrade_prompt": {
+      "title": "الترقية لعرض المزيد",
+      "message": "لديك {total} سجل تنزيل، ولكن المستخدمين المجانيين يمكنهم عرض آخر {visible} سجلات فقط.",
+      "button": "ترقية الآن"
+    },
     "table": {
       "download_no": "رقم التنزيل",
       "file_name": "اسم الملف",
@@ -196,7 +226,35 @@
       "total_count": "المجموع",
       "view_original_tweet": "عرض التغريدة الأصلية",
       "cost_credits": "التكلفة",
-      "cost_format": "{credits} رصيد"
+      "cost_format": "{credits} رصيد",
+      "cost_downloads": "التكلفة",
+      "cost_format_downloads": "{downloads} تحميل",
+      "available_downloads": "التحميلات المتاحة",
+      "top_up_downloads": "شحن التحميلات",
+      "insufficient_downloads": "تحميلات غير كافية",
+      "insufficient_downloads_short": "غير كافٍ: {available}",
+      "downloads_required": "يتطلب {downloads} تحميل",
+      "hd_download_requires_premium": "التحميل عالي الجودة يتطلب مستخدمين مميزين",
+      "premium_required": "حصري للمستخدمين المميزين",
+      "paid_user_only": "للمستخدمين المدفوعين فقط",
+      "purchase_to_unlock_hd": "شراء الخدمة لإلغاء قفل التحميل عالي الجودة",
+      "download_thumbnail": "تحميل الصورة المصغرة",
+      "thumbnail_download_success": "تم تحميل الصورة المصغرة بنجاح",
+      "thumbnail_download_failed": "فشل تحميل الصورة المصغرة",
+      "thumbnail_fetch_error": "فشل في جلب الصورة المصغرة",
+      "no_thumbnail_available": "لا توجد صورة مصغرة متاحة",
+      "audio_extract": "استخراج الصوت",
+      "audio_extract_description": "استخراج ملف الصوت من الفيديو",
+      "extract_audio": "استخراج الصوت",
+      "audio_quality": "جودة الصوت",
+      "high_quality": "جودة عالية",
+      "audio_download_coming_soon": "ميزة تحميل الصوت قريباً",
+      "audio_download_failed": "فشل تحميل الصوت",
+      "paid_badge": "مدفوع",
+      "paid_users_exclusive": "حصري للمستخدمين المدفوعين",
+      "hd_requires_paid_user": "تحميل الفيديو عالي الجودة يتطلب مستخدمين مدفوعين، يرجى شراء الخدمة أولاً",
+      "requires_one_download": "يتطلب تحميل واحد",
+      "one_download": "تحميل واحد"
     }
   },
   "api": {

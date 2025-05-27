@@ -67,18 +67,42 @@
   },
   "api_keys": {
     "title": "API 키",
-    "tip": "API 키를 안전하게 보관하여 유출을 방지하세요",
+    "tip": "API 키를 안전하게 보관하세요, 단축키를 사용하여 App에서 바로 동영상을 다운로드하세요",
+    "premium_only_tip": "API 기능은 프리미엄 사용자만 이용할 수 있습니다. API 액세스를 받으려면 프리미엄 플랜으로 업그레이드하세요",
     "no_api_keys": "API 키가 없습니다",
     "create_api_key": "API 키 생성",
+    "delete_api_key": "API 키 삭제",
+    "upgrade_to_premium": "프리미엄으로 업그레이드",
+    "view_api_docs": "API 문서 보기",
+    "apple_shortcut": "Apple 단축키",
     "table": {
       "name": "이름",
       "key": "키",
-      "created_at": "생성일"
+      "created_at": "생성일",
+      "actions": "작업"
     },
     "form": {
       "name": "이름",
       "name_placeholder": "API 키 이름",
       "submit": "제출"
+    },
+    "messages": {
+      "created_success": "API 키가 성공적으로 생성되었습니다"
+    },
+    "errors": {
+      "no_auth": "먼저 로그인하세요",
+      "premium_required": "API 키는 프리미엄 사용자만 이용할 수 있습니다. 계정을 업그레이드하세요",
+      "invalid_params": "잘못된 매개변수",
+      "create_failed": "API 키 생성에 실패했습니다: {error}"
+    },
+    "delete": {
+      "confirm_title": "API 키 삭제",
+      "confirm_message": "이 API 키를 삭제하시겠습니까? 이 작업은 취소할 수 없으며 이 키를 사용하는 모든 애플리케이션의 액세스가 즉시 취소됩니다.",
+      "success_message": "API 키가 성공적으로 삭제되었습니다",
+      "error_message": "API 키 삭제에 실패했습니다",
+      "button_deleting": "삭제 중...",
+      "button_delete": "삭제",
+      "button_cancel": "취소"
     }
   },
   "blog": {
@@ -117,7 +141,13 @@
   "download_history": {
     "title": "다운로드 기록",
     "description": "동영상 다운로드 기록 보기",
+    "description_free": "최근 {count}개의 다운로드 기록 보기 (무료 버전)",
     "no_history": "다운로드 기록을 찾을 수 없습니다",
+    "upgrade_prompt": {
+      "title": "업그레이드하여 더 보기",
+      "message": "{total}개의 다운로드 기록이 있지만, 무료 사용자는 최근 {visible}개의 기록만 볼 수 있습니다.",
+      "button": "지금 업그레이드"
+    },
     "table": {
       "download_no": "다운로드 번호",
       "file_name": "파일명",
@@ -196,7 +226,35 @@
       "total_count": "총",
       "view_original_tweet": "원래 트윗 보기",
       "cost_credits": "비용",
-      "cost_format": "{credits} 크레딧"
+      "cost_format": "{credits} 크레딧",
+      "cost_downloads": "비용",
+      "cost_format_downloads": "{downloads} 다운로드",
+      "available_downloads": "사용 가능한 다운로드",
+      "top_up_downloads": "다운로드 충전",
+      "insufficient_downloads": "다운로드 부족",
+      "insufficient_downloads_short": "부족: {available}",
+      "downloads_required": "{downloads} 다운로드 필요",
+      "hd_download_requires_premium": "HD 다운로드는 프리미엄 사용자가 필요",
+      "premium_required": "프리미엄 사용자 전용",
+      "paid_user_only": "유료 사용자 전용",
+      "purchase_to_unlock_hd": "HD 다운로드 잠금 해제를 위해 서비스 구매",
+      "download_thumbnail": "썸네일 다운로드",
+      "thumbnail_download_success": "썸네일 다운로드 성공",
+      "thumbnail_download_failed": "썸네일 다운로드 실패",
+      "thumbnail_fetch_error": "썸네일 가져오기 실패",
+      "no_thumbnail_available": "사용 가능한 썸네일 없음",
+      "audio_extract": "오디오 추출",
+      "audio_extract_description": "비디오에서 오디오 파일 추출",
+      "extract_audio": "오디오 추출",
+      "audio_quality": "오디오 품질",
+      "high_quality": "고품질",
+      "audio_download_coming_soon": "오디오 다운로드 기능 곧 출시",
+      "audio_download_failed": "오디오 다운로드 실패",
+      "paid_badge": "유료",
+      "paid_users_exclusive": "유료 사용자 전용",
+      "hd_requires_paid_user": "HD 비디오 다운로드는 유료 사용자가 필요합니다. 먼저 서비스를 구매하세요",
+      "requires_one_download": "1 다운로드 필요",
+      "one_download": "1 다운로드"
     }
   },
   "api": {

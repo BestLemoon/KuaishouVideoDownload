@@ -45,6 +45,12 @@ interface UserCredits {
   expired_credits: number;
 }
 
+interface UserStatus {
+  isLoggedIn: boolean;
+  isPremium: boolean;
+  canUseFree: boolean;
+}
+
 interface BatchDownloadResultClientProps {
   batchData: BatchData;
 }
@@ -55,11 +61,13 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
   const router = useRouter();
   
   const [userCredits, setUserCredits] = useState<UserCredits | null>(null);
+  const [userStatus, setUserStatus] = useState<UserStatus | null>(null);
   const [downloadingItems, setDownloadingItems] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     if (user) {
       fetchUserCredits();
+      fetchUserStatus();
     }
   }, [user]);
 
@@ -77,9 +85,44 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
     }
   };
 
-  const getRequiredCredits = (resolution: string): number => {
-    const resolutionNumber = parseInt(resolution.replace('p', ''));
-    return resolutionNumber >= 720 ? 2 : 1;
+  const fetchUserStatus = async () => {
+    try {
+      const response = await fetch('/api/user-status');
+      if (response.ok) {
+        const result = await response.json();
+        if (result.code === 0) {
+          setUserStatus(result.data);
+        } else {
+          setUserStatus({
+            isLoggedIn: false,
+            isPremium: false,
+            canUseFree: true
+          });
+        }
+      }
+    } catch (error) {
+      console.error('Failed to fetch user status:', error);
+      setUserStatus({
+        isLoggedIn: false,
+        isPremium: false,
+        canUseFree: true
+      });
+    }
+  };
+
+  // 判断是否为高清视频（只有最高清晰度的才算高清）
+  const isHighDefinition = (resolution: string, allVideos: VideoInfo[]): boolean => {
+    const resolutions = allVideos.map(v => parseInt(v.resolution.replace('p', '')));
+    const maxResolution = Math.max(...resolutions);
+    const currentResolution = parseInt(resolution.replace('p', ''));
+    return currentResolution === maxResolution;
+  };
+
+  // 检查用户是否可以下载高清视频（需要付费用户）
+  const canDownloadHD = (): boolean => {
+    if (!user || !userStatus) return false;
+    // 只有付费用户才能下载高清视频
+    return userStatus.isPremium;
   };
 
   const handleDownload = async (video: VideoInfo, resultItem: BatchResult) => {
@@ -88,13 +131,16 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
       return;
     }
 
-    const requiredCredits = getRequiredCredits(video.resolution);
+    const isHD = isHighDefinition(video.resolution, resultItem.videos);
     
-    if (userCredits && userCredits.available_credits < requiredCredits) {
-      toast.error(t('insufficient_credits', {
-        available: userCredits.available_credits,
-        required: requiredCredits
-      }));
+    // 检查是否有权限下载高清视频
+    if (isHD && !canDownloadHD()) {
+      toast.error(t('hd_requires_paid_user'));
+      return;
+    }
+
+    if (userCredits && userCredits.available_credits < 1) {
+      toast.error(t('insufficient_downloads'));
       return;
     }
 
@@ -146,7 +192,7 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url); // 清理
 
-      // 更新积分
+      // 更新下载次数
       if (userCredits && creditsRemaining !== undefined) {
         setUserCredits(prev => prev ? { ...prev, available_credits: creditsRemaining } : null);
       }
@@ -159,6 +205,146 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
       console.error('Download error:', error);
       toast.error(t('download_failed'), {
         description: error instanceof Error ? error.message : t('unknown_error') 
+      });
+    } finally {
+      setDownloadingItems(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(downloadKey);
+        return newSet;
+      });
+    }
+  };
+
+  const handleThumbnailDownload = async (result: BatchResult) => {
+    if (!result.thumbnail) {
+      toast.error(t('no_thumbnail_available'));
+      return;
+    }
+
+    if (!user) {
+      setShowSignModal(true);
+      return;
+    }
+
+    if (userCredits && userCredits.available_credits < 1) {
+      toast.error(t('insufficient_downloads'));
+      return;
+    }
+
+    const downloadKey = `thumbnail-${result.statusId}`;
+    setDownloadingItems(prev => new Set(prev).add(downloadKey));
+
+    try {
+      const response = await fetch(result.thumbnail);
+      if (!response.ok) {
+        throw new Error(t('thumbnail_fetch_error'));
+      }
+      
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${result.username}_${result.statusId}_thumbnail.jpg`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+
+      toast.success(t('thumbnail_download_success'));
+
+    } catch (error) {
+      console.error('Thumbnail download error:', error);
+      toast.error(t('thumbnail_download_failed'));
+    } finally {
+      setDownloadingItems(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(downloadKey);
+        return newSet;
+      });
+    }
+  };
+
+  const handleAudioDownload = async (result: BatchResult) => {
+    if (!user) {
+      setShowSignModal(true);
+      return;
+    }
+
+    if (userCredits && userCredits.available_credits < 1) {
+      toast.error(t('insufficient_downloads'));
+      return;
+    }
+
+    const downloadKey = `audio-${result.statusId}`;
+    setDownloadingItems(prev => new Set(prev).add(downloadKey));
+    
+    try {
+      const apiResponse = await fetch('/api/twitter/get-audio-download', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          original_url: result.originalUrl,
+          username: result.username,
+          status_id: result.statusId,
+        }),
+      });
+
+      if (!apiResponse.ok) {
+        const errorData = await apiResponse.json().catch(() => ({ message: t('audio_download_failed') }));
+        throw new Error(errorData.message || `API Error: ${apiResponse.status}`);
+      }
+
+      const apiResult = await apiResponse.json();
+      if (apiResult.code !== 0) {
+        throw new Error(apiResult.message || t('audio_download_failed'));
+      }
+      
+      const { audioBlob, audioUrl, filename, creditsRemaining } = apiResult.data;
+
+      if (audioBlob) {
+        // 如果API返回了音频数据，直接下载
+        const blob = new Blob([new Uint8Array(audioBlob)], { type: 'audio/mpeg' });
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      } else if (audioUrl) {
+        // 如果API返回了URL，前端fetch下载
+        const audioResponse = await fetch(audioUrl);
+        if (!audioResponse.ok) {
+          throw new Error(t('audio_download_failed'));
+        }
+        
+        const blob = await audioResponse.blob();
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      }
+
+      // 更新积分余额
+      if (userCredits && creditsRemaining !== undefined) {
+        setUserCredits(prev => prev ? { ...prev, available_credits: creditsRemaining } : null);
+      }
+
+      toast.success(t('download_success'), {
+        description: `${filename} - Audio MP3`
+      });
+
+    } catch (error) {
+      console.error('Audio download error:', error);
+      toast.error(t('audio_download_failed'), {
+        description: error instanceof Error ? error.message : t('unknown_error')
       });
     } finally {
       setDownloadingItems(prev => {
@@ -205,12 +391,12 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
           <Card className="mb-6">
             <CardContent className="flex items-center justify-between p-4">
               <div className="flex items-center gap-2">
-                <Icon name="RiCoinLine" className="w-5 h-5 text-yellow-500" />
-                <span className="font-medium">{t('available_credits')}: {userCredits.available_credits}</span>
+                <Icon name="RiDownloadLine" className="w-5 h-5 text-blue-500" />
+                <span className="font-medium">{t('available_downloads')}: {userCredits.available_credits}</span>
               </div>
               <Button variant="outline" size="sm" onClick={() => window.location.href = '/#pricing'}>
                 <Icon name="RiAddLine" className="w-4 h-4 mr-1" />
-                {t('top_up_credits')}
+                {t('top_up_downloads')}
               </Button>
             </CardContent>
           </Card>
@@ -257,30 +443,54 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
                         </p>
                       )}
                       
-                      {/* Tweet link */}
-                      <a 
-                        href={result.originalUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-1 text-xs text-primary hover:underline"
-                      >
-                        <Icon name="RiExternalLinkLine" className="w-3 h-3" />
-                        {t('view_original_tweet')}
-                      </a>
+                      {/* Tweet link and Actions */}
+                      <div className="flex items-center gap-4 text-xs">
+                        <a 
+                          href={result.originalUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1 text-primary hover:underline"
+                        >
+                          <Icon name="RiExternalLinkLine" className="w-3 h-3" />
+                          {t('view_original_tweet')}
+                        </a>
+                        
+                        {/* Thumbnail Download Button */}
+                        {result.thumbnail && (
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleThumbnailDownload(result)}
+                            disabled={downloadingItems.has(`thumbnail-${result.statusId}`) || !user || (userCredits?.available_credits || 0) < 1}
+                            className="h-6 px-2 text-xs"
+                          >
+                            <Icon name="RiImageLine" className="w-3 h-3 mr-1" />
+                            {t('download_thumbnail')}
+                          </Button>
+                        )}
+                        
+                       
+                      </div>
                     </div>
                   </div>
                 </CardHeader>
 
                 <CardContent>
-                  <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+                  <div className={`grid gap-3 ${
+                    result.videos.length + 1 <= 2 ? 'md:grid-cols-2' :
+                    result.videos.length + 1 <= 3 ? 'md:grid-cols-2 lg:grid-cols-3' :
+                    result.videos.length + 1 <= 4 ? 'md:grid-cols-2 lg:grid-cols-4' :
+                    'md:grid-cols-2 lg:grid-cols-5'
+                  }`}>
                     {result.videos.map((video, videoIndex) => {
-                      const requiredCredits = getRequiredCredits(video.resolution);
+                      const isHD = isHighDefinition(video.resolution, result.videos);
                       const isDownloading = downloadingItems.has(video.downloadUrl);
-                      const canDownload = !user || (userCredits && userCredits.available_credits >= requiredCredits);
+                      const canDownload = user && (userCredits && userCredits.available_credits >= 1);
+                      const canDownloadThisHD = canDownload && (isHD ? canDownloadHD() : true);
                       
                       return (
                         <Card key={videoIndex} className={`border-2 transition-all duration-200 ${
-                          canDownload 
+                          canDownloadThisHD 
                             ? 'hover:border-primary/50 hover:shadow-md' 
                             : 'opacity-75 border-muted'
                         }`}>
@@ -289,19 +499,26 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
                               <div className="space-y-1">
                                 <div className="flex items-center gap-2">
                                   <span className="font-medium text-lg">{video.resolution}</span>
-                                  <Badge variant={video.quality === 'HD' ? 'default' : 'secondary'}>
-                                    {video.quality}
+                                  <Badge variant={isHD ? 'default' : 'secondary'} className={isHD ? 'bg-gradient-to-r from-blue-500 to-purple-600' : ''}>
+                                    <Icon name={isHD ? 'RiHdLine' : 'RiSdCardLine'} className="w-3 h-3 mr-1" />
+                                    {isHD ? t('quality_hd') : t('quality_sd')}
                                   </Badge>
+                                  {isHD && !canDownloadHD() && (
+                                    <Badge variant="outline" className="text-xs text-yellow-600 border-yellow-300">
+                                      <Icon name="RiVipCrownLine" className="w-3 h-3 mr-1" />
+                                      {t('paid_badge')}
+                                    </Badge>
+                                  )}
                                 </div>
                                 <p className="text-sm text-muted-foreground">
-                                  {t('credits_required', { credits: requiredCredits })}
+                                  {t('requires_one_download')}
                                 </p>
                               </div>
                             </div>
                             
                             <Button
                               onClick={() => handleDownload(video, result)}
-                              disabled={!canDownload || isDownloading}
+                              disabled={!canDownloadThisHD || isDownloading}
                               className="w-full"
                               size="sm"
                             >
@@ -313,11 +530,16 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
                               ) : !canDownload ? (
                                 <>
                                   <Icon name="RiLockLine" className="w-4 h-4 mr-2" />
-                                  {user ? t('insufficient_credits_short', { 
-                                    available: userCredits?.available_credits || 0, 
-                                    required: requiredCredits 
+                                  {user ? t('insufficient_downloads_short', { 
+                                    available: userCredits?.available_credits || 0
                                   }) : t('login_required')}
                                 </>
+                              ) : isHD && !canDownloadHD() ? (
+                                <>
+                                  <Icon name="RiLockLine" className="w-4 h-4 mr-2 text-yellow-500" />
+                                  {t('paid_users_exclusive')}
+                                </>
+                              
                               ) : (
                                 <>
                                   <Icon name="RiDownloadCloud2Fill" className="w-4 h-4 mr-2" />
@@ -329,6 +551,56 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
                         </Card>
                       );
                     })}
+
+                    {/* Audio Download Card - Always last */}
+                    <Card className={`border-2 transition-all duration-200 ${
+                      user && (userCredits?.available_credits || 0) >= 1
+                        ? 'hover:border-primary/50 hover:shadow-md' 
+                        : 'opacity-75 border-muted'
+                    }`}>
+                      <CardContent className="p-4 space-y-3">
+                        <div className="flex items-center justify-between">
+                          <div className="space-y-1">
+                            <div className="flex items-center gap-2">
+                              <span className="font-medium text-lg">MP3</span>
+                              <Badge variant="secondary" className="bg-gradient-to-r from-purple-500 to-pink-600 text-white">
+                                <Icon name="RiVolumeUpLine" className="w-3 h-3 mr-1" />
+                                Audio
+                              </Badge>
+                            </div>
+                            <p className="text-sm text-muted-foreground">
+                              {t('requires_one_download')}
+                            </p>
+                          </div>
+                        </div>
+                        
+                        <Button
+                          onClick={() => handleAudioDownload(result)}
+                          disabled={downloadingItems.has(`audio-${result.statusId}`) || !user || (userCredits?.available_credits || 0) < 1}
+                          className="w-full"
+                          size="sm"
+                        >
+                          {downloadingItems.has(`audio-${result.statusId}`) ? (
+                            <>
+                              <Icon name="RiLoader4Line" className="w-4 h-4 mr-2 animate-spin" />
+                              {t('downloading')}
+                            </>
+                          ) : !user || (userCredits?.available_credits || 0) < 1 ? (
+                            <>
+                              <Icon name="RiLockLine" className="w-4 h-4 mr-2" />
+                              {user ? t('insufficient_downloads_short', { 
+                                available: userCredits?.available_credits || 0
+                              }) : t('login_required')}
+                            </>
+                          ) : (
+                            <>
+                              <Icon name="RiHeadphoneLine" className="w-4 h-4 mr-2" />
+                              {t('extract_audio')}
+                            </>
+                          )}
+                        </Button>
+                      </CardContent>
+                    </Card>
                   </div>
                 </CardContent>
               </Card>

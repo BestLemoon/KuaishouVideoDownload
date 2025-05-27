@@ -1,7 +1,7 @@
 
 
 import { getUserDownloadHistory } from "@/models/credit";
-import { getUserUuid } from "@/services/user";
+import { getUserUuid, checkUserIsPremium } from "@/services/user";
 
 import { TableColumn } from "@/types/blocks/table";
 import TableSlot from "@/components/console/slots/table";
@@ -9,7 +9,7 @@ import { Table as TableSlotType } from "@/types/slots/table";
 import { getTranslations } from "next-intl/server";
 import moment from "moment";
 import { redirect } from "next/navigation";
-
+ 
 export async function generateMetadata({
   params,
 }: {
@@ -43,8 +43,14 @@ export default async function () {
     redirect(`/auth/signin?callbackUrl=${encodeURIComponent(callbackUrl)}`);
   }
 
+  // 检查用户是否为付费用户
+  const isPremium = await checkUserIsPremium(user_uuid);
+  
   // 获取用户下载历史
   const downloadHistory = await getUserDownloadHistory(user_uuid, 50, 0);
+  
+  // 免费版只显示最近3条记录
+  const displayHistory = isPremium ? downloadHistory : downloadHistory.slice(0, 3);
 
   // 格式化文件大小
   const formatFileSize = (bytes: number | null | undefined): string => {
@@ -107,11 +113,40 @@ export default async function () {
 
   const table: TableSlotType = {
     title: t("download_history.title"),
-    description: t("download_history.description"),
+    description: isPremium 
+      ? t("download_history.description")
+      : t("download_history.description_free", { count: 3 }),
     columns: columns,
-    data: downloadHistory,
+    data: displayHistory,
     empty_message: t("download_history.no_history"),
   };
 
-  return <TableSlot {...table} />;
+  return (
+    <div>
+      <TableSlot {...table} />
+      {!isPremium && downloadHistory.length > 3 && (
+        <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="text-lg font-medium text-blue-900">
+                {t("download_history.upgrade_prompt.title")}
+              </h3>
+              <p className="text-blue-700">
+                {t("download_history.upgrade_prompt.message", { 
+                  total: downloadHistory.length,
+                  visible: 3 
+                })}
+              </p>
+            </div>
+            <a
+              href="/pricing"
+              className="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors"
+            >
+              {t("download_history.upgrade_prompt.button")}
+            </a>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 } 

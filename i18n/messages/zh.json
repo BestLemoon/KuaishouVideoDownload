@@ -67,18 +67,42 @@
   },
   "api_keys": {
     "title": "API 密钥",
-    "tip": "请妥善保管您的 API 密钥，避免泄露",
+    "tip": "请妥善保管您的 API 密钥，避免泄露，使用快捷指令可直接从App通过分享下载视频",
+    "premium_only_tip": "API 功能仅限付费用户使用，请升级到高级版以获取 API 访问权限",
     "no_api_keys": "没有 API 密钥",
     "create_api_key": "创建 API 密钥",
+    "delete_api_key": "删除 API 密钥",
+    "upgrade_to_premium": "升级到高级版",
+    "view_api_docs": "查看 API 文档",
+    "apple_shortcut": "Apple 快捷指令",
     "table": {
       "name": "名称",
       "key": "密钥",
-      "created_at": "创建时间"
+      "created_at": "创建时间",
+      "actions": "操作"
     },
     "form": {
       "name": "名称",
       "name_placeholder": "API 密钥名称",
       "submit": "提交"
+    },
+    "messages": {
+      "created_success": "API 密钥创建成功"
+    },
+    "errors": {
+      "no_auth": "请先登录",
+      "premium_required": "API 密钥仅限付费用户使用，请升级您的账户",
+      "invalid_params": "参数无效",
+      "create_failed": "创建 API 密钥失败：{error}"
+    },
+    "delete": {
+      "confirm_title": "删除 API 密钥",
+      "confirm_message": "确定要删除此 API 密钥吗？此操作无法撤销，将立即撤销使用此密钥的所有应用程序的访问权限。",
+      "success_message": "API 密钥删除成功",
+      "error_message": "删除 API 密钥失败",
+      "button_deleting": "删除中...",
+      "button_delete": "删除",
+      "button_cancel": "取消"
     }
   },
   "blog": {
@@ -94,7 +118,7 @@
     "edit_invite_link": "编辑邀请链接",
     "copy_invite_link": "复制邀请链接",
     "invite_code": "邀请码",
-    "invite_tip": "每邀请 1 位朋友购买 TwitterDown，奖励 $50。",
+    "invite_tip": "每邀请 1 位朋友购买 TwitterDown，奖励 10 次下载。",
     "invite_balance": "邀请奖励余额",
     "total_invite_count": "总邀请人数",
     "total_paid_count": "已充值人数",
@@ -117,7 +141,13 @@
   "download_history": {
     "title": "下载历史",
     "description": "查看您的视频下载记录",
+    "description_free": "查看您最近 {count} 条下载记录（免费版）",
     "no_history": "暂无下载记录",
+    "upgrade_prompt": {
+      "title": "升级查看更多",
+      "message": "您有 {total} 条下载记录，但免费用户只能查看最近 {visible} 条记录。",
+      "button": "立即升级"
+    },
     "table": {
       "download_no": "下载编号",
       "file_name": "文件名",
@@ -196,7 +226,35 @@
       "total_count": "总计",
       "view_original_tweet": "查看原推文",
       "cost_credits": "费用",
-      "cost_format": "{credits} 积分"
+      "cost_format": "{credits} 积分",
+      "cost_downloads": "费用",
+      "cost_format_downloads": "{downloads} 次下载",
+      "available_downloads": "可用下载次数",
+      "top_up_downloads": "充值下载次数",
+      "insufficient_downloads": "下载次数不足",
+      "insufficient_downloads_short": "次数不足：{available}",
+      "downloads_required": "需要 {downloads} 次下载",
+      "hd_download_requires_premium": "高清下载需要付费用户",
+      "premium_required": "付费用户专享",
+      "paid_user_only": "付费用户专享",
+      "purchase_to_unlock_hd": "购买服务解锁高清下载",
+      "download_thumbnail": "下载封面",
+      "thumbnail_download_success": "封面下载成功",
+      "thumbnail_download_failed": "封面下载失败",
+      "thumbnail_fetch_error": "获取封面失败",
+      "no_thumbnail_available": "无可用封面",
+      "audio_extract": "音频提取",
+      "audio_extract_description": "从视频中提取音频文件",
+      "extract_audio": "提取音频",
+      "audio_quality": "音频质量",
+      "high_quality": "高质量",
+      "audio_download_coming_soon": "音频下载功能即将推出",
+      "audio_download_failed": "音频下载失败",
+      "paid_badge": "付费",
+      "paid_users_exclusive": "付费用户专享",
+      "hd_requires_paid_user": "高清视频下载需要付费用户，请先购买服务",
+      "requires_one_download": "需要 1 次下载",
+      "one_download": "1 次下载"
     }
   },
   "api": {

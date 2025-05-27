@@ -223,134 +223,187 @@
       }
     ]
   },
-  "pricing": {
-    "name": "pricing",
-    "label": "Paquetes de Créditos",
-    "title": "Elige el Paquete de Créditos Adecuado",
-    "description": "Modelo de uso basado en créditos: los videos HD (720p+) cuestan 2 créditos, los videos SD cuestan 1 crédito.",
-    "groups": [],
-    "items": [
-      {
-        "title": "Básico",
-        "description": "Perfecto para que los nuevos usuarios prueben",
-        "features_title": "Incluye",
-        "features": [
-          "10 créditos (gratis para nuevos usuarios)",
-          "Las descargas de video HD (720p+) cuestan 2 créditos",
-          "Las descargas de video SD cuestan 1 crédito",
-          "Descargas en formato MP4",
-          "Historial de descargas básico",
-          "Acceso a la aplicación web",
-          "Validez permanente"
-        ],
-        "interval": "one-time",
-        "amount": 0,
-        "currency": "USD",
-        "price": "Gratis",
-        "original_price": "",
-        "unit": "créditos",
-        "is_featured": false,
-        "tip": "Gratis para nuevos usuarios",
-        "button": {
-          "title": "Empezar Gratis",
-          "url": "/#usage",
-          "icon": "RiDownloadCloud2Fill"
+      "pricing": {
+      "name": "pricing",
+      "label": "Planes de Precios",
+      "title": "Elige tu Plan de Precios",
+      "description": "Planes de precios flexibles para satisfacer diferentes necesidades de usuarios. Los planes Pro y Business soportan facturación mensual y anual.",
+      "groups": [
+        {
+          "name": "month",
+          "label": "Mensual"
         },
-        "product_id": "basic",
-        "product_name": "TwitterDown Básico",
-        "credits": 10,
-        "valid_months": 9999
-      },
+        {
+          "name": "year",
+          "label": "Anual",
+          "badge": "Ahorra 17%"
+        }
+      ],
+    "items": [
+              {
+          "title": "Plan Gratuito",
+          "description": "Para usuarios ocasionales que quieren probar las funciones básicas de descarga",
+          "features_title": "Incluye",
+          "features": [
+            "10 descargas de videos SD por mes",
+            "Velocidad de descarga estándar",
+            "Historial de descarga básico (últimos 5 registros)",
+            "Acceso a la aplicación web",
+            "Sin descarga por lotes",
+            "Sin acceso a API",
+            "Sin atajos de iOS"
+          ],
+          "interval": "month",
+          "amount": 0,
+          "currency": "USD",
+          "price": "$0",
+          "original_price": "",
+          "unit": "/ mes",
+          "is_featured": false,
+          "tip": "Perfecto para uso básico",
+          "button": {
+            "title": "Empezar Gratis",
+            "url": "/#usage",
+            "icon": "RiDownloadCloud2Fill"
+          },
+          "product_id": "free",
+          "product_name": "Plan Gratuito TwitterDown",
+          "credits": 0,
+          "valid_months": 1
+        },
       {
-        "title": "Paquete de Créditos Estándar",
-        "description": "Para usuarios regulares",
-        "label": "Popular",
+        "title": "Plan Pro",
+        "description": "Para individuos y creadores de contenido que descargan videos frecuentemente",
+        "label": "✨ Más Popular",
         "features_title": "Incluye",
         "features": [
-          "500 créditos",
-          "Aproximadamente 250 descargas de video HD",
-          "Aproximadamente 500 descargas de video SD",
-          "Validez permanente",
-          "Función de descarga por lotes",
-          "Velocidad de descarga prioritaria"
+          "150 descargas de videos HD/SD por mes",
+          "Descargas de videos HD (720p+, 1080p y superior)",
+          "Función de descarga por lotes (múltiples enlaces de video a la vez)",
+          "Velocidad de descarga más rápida (cola de procesamiento prioritario)",
+          "Historial de descarga completo",
+          "Descarga de paquete multimedia de tweet en un clic",
+          "Descarga de miniaturas de video",
+          "Soporte de atajos de iOS",
+          "Acceso prioritario a nuevas funciones"
         ],
-        "interval": "one-time",
-                  "amount": 199,
-          "currency": "USD",
-          "price": "$1.99",
-          "original_price": "$3.99",
-          "unit": "paquete",
+        "interval": "month",
+        "amount": 299,
+        "currency": "USD",
+        "price": "$2.99",
+        "original_price": "",
+        "unit": "/ mes",
         "is_featured": true,
         "tip": "La opción más popular",
         "button": {
-          "title": "Obtener Paquete Estándar",
+          "title": "Actualizar a Pro",
           "url": "/#pricing",
           "icon": "RiVipCrownLine"
         },
-        "product_id": "standard",
-        "product_name": "Paquete de Créditos Estándar de TwitterDown",
-        "credits": 500,
-        "valid_months": 9999
+        "product_id": "pro_monthly",
+        "product_name": "Plan Pro TwitterDown (Mensual)",
+        "credits": 150,
+        "valid_months": 1,
+        "group": "month"
       },
       {
-        "title": "Paquete de Créditos Profesional",
-        "description": "Para usuarios intensivos y creadores",
+        "title": "Plan Pro",
+        "description": "Para individuos y creadores de contenido que descargan videos frecuentemente",
+        "label": "✨ Más Popular",
         "features_title": "Incluye",
         "features": [
-          "2000 créditos",
-          "Aproximadamente 1000 descargas de video HD",
-          "Aproximadamente 2000 descargas de video SD",
-          "Validez permanente",
-          "Acceso a la API",
-          "Soporte al cliente prioritario"
+          "150 descargas de videos HD/SD por mes",
+          "Descargas de videos HD (720p+, 1080p y superior)",
+          "Función de descarga por lotes (múltiples enlaces de video a la vez)",
+          "Velocidad de descarga más rápida (cola de procesamiento prioritario)",
+          "Historial de descarga completo",
+          "Descarga de paquete multimedia de tweet en un clic",
+          "Descarga de miniaturas de video",
+          "Soporte de atajos de iOS",
+          "Acceso prioritario a nuevas funciones"
         ],
-        "interval": "one-time",
-                  "amount": 599,
-          "currency": "USD",
-          "price": "$5.99",
-          "original_price": "$11.99",
-          "unit": "paquete",
-        "is_featured": false,
-        "tip": "La mejor relación calidad-precio",
+        "interval": "year",
+        "amount": 2999,
+        "currency": "USD",
+        "price": "$29.99",
+        "original_price": "$35.88",
+        "unit": "/ año",
+        "is_featured": true,
+        "tip": "Equivale a $2.50/mes, ahorra aproximadamente 17%",
         "button": {
-          "title": "Obtener Paquete Profesional",
+          "title": "Actualizar a Pro",
+          "url": "/#pricing",
+          "icon": "RiVipCrownLine"
+        },
+        "product_id": "pro_yearly",
+        "product_name": "Plan Pro TwitterDown (Anual)",
+        "credits": 1800,
+        "valid_months": 12,
+        "group": "year"
+      },
+      {
+        "title": "Plan Business",
+        "description": "Para desarrolladores, empresas y usuarios avanzados que necesitan API para operaciones por lotes y automatizadas",
+        "features_title": "Incluye",
+        "features": [
+          "Todas las funciones del plan Pro incluidas",
+          "Acceso completo a la API",
+          "Hasta 5,000 llamadas API por mes",
+          "Soporte técnico dedicado (respuesta más rápida)",
+          "Descargas simultáneas más altas",
+          "Soporte de atajos de iOS",
+          "Planes empresariales personalizados disponibles para mayor uso"
+        ],
+        "interval": "month",
+        "amount": 3499,
+        "currency": "USD",
+        "price": "$34.99",
+        "original_price": "",
+        "unit": "/ mes",
+        "is_featured": false,
+        "tip": "Perfecto para empresas y desarrolladores",
+        "button": {
+          "title": "Obtener Acceso Business",
           "url": "/#pricing",
           "icon": "RiBriefcase4Line"
         },
-        "product_id": "professional",
-        "product_name": "Paquete de Créditos Profesional de TwitterDown",
-        "credits": 2000,
-        "valid_months": 9999
+        "product_id": "business_monthly",
+        "product_name": "Plan Business TwitterDown (Mensual)",
+        "credits": 5000,
+        "valid_months": 1,
+        "group": "month"
       },
       {
-        "title": "Paquete de Créditos Empresarial",
-        "description": "Para empresas y desarrolladores",
+        "title": "Plan Business",
+        "description": "Para desarrolladores, empresas y usuarios avanzados que necesitan API para operaciones por lotes y automatizadas",
         "features_title": "Incluye",
         "features": [
-          "10000 créditos",
-          "Aproximadamente 5000 descargas de video HD",
-          "Aproximadamente 10000 descargas de video SD",
-          "Validez permanente",
+          "Todas las funciones del plan Pro incluidas",
           "Acceso completo a la API",
-          "Soporte técnico dedicado"
+          "Hasta 5,000 llamadas API por mes",
+          "Soporte técnico dedicado (respuesta más rápida)",
+          "Descargas simultáneas más altas",
+          "Soporte de atajos de iOS",
+          "Planes empresariales personalizados disponibles para mayor uso"
         ],
-        "interval": "one-time",
-                  "amount": 1999,
-          "currency": "USD",
-          "price": "$19.99",
-          "original_price": "$39.99",
-          "unit": "paquete",
+        "interval": "year",
+        "amount": 34999,
+        "currency": "USD",
+        "price": "$349.99",
+        "original_price": "$419.88",
+        "unit": "/ año",
         "is_featured": false,
-        "tip": "Servicio de nivel empresarial",
+        "tip": "Equivale a $29.17/mes, ahorra aproximadamente 17%",
         "button": {
-          "title": "Obtener Paquete Empresarial",
+          "title": "Obtener Acceso Business",
           "url": "/#pricing",
-          "icon": "RiBuilding4Line"
+          "icon": "RiBriefcase4Line"
         },
-        "product_id": "enterprise",
-        "product_name": "Paquete de Créditos Empresarial de TwitterDown",
-        "credits": 10000,
-        "valid_months": 9999
+        "product_id": "business_yearly",
+        "product_name": "Plan Business TwitterDown (Anual)",
+        "credits": 60000,
+        "valid_months": 12,
+        "group": "year"
       }
     ]
   },

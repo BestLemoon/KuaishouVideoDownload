@@ -5,6 +5,7 @@ export interface PricingGroup {
   title?: string;
   description?: string;
   label?: string;
+  badge?: string;
 }
 
 export interface PricingItem {
