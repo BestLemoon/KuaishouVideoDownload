@@ -65,6 +65,13 @@ export default async function RootLayout({
             }
           `}
         </Script>
+        {/* Google AdSense */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1744086161935729"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </head>
       <body
         className={cn(

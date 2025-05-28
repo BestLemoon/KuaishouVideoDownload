@@ -67,20 +67,23 @@ export default function Footer({ footer }: { footer: FooterType }) {
             </div>
           </div>
           <div className="mt-8 flex flex-col justify-between gap-4 border-t pt-8 text-center text-sm font-medium text-muted-foreground lg:flex-row lg:items-center lg:text-left">
-            {footer.copyright && (
-              <p>
-                {footer.copyright}
-                {process.env.NEXT_PUBLIC_SHOW_POWERED_BY === "false" ? null : (
-                  <a
-                    href="https://shipany.ai"
-                    target="_blank"
-                    className="px-2 text-primary"
-                  >
-                    build with ShipAny
-                  </a>
-                )}
-              </p>
-            )}
+            <div className="flex items-center gap-4 justify-start">
+              {footer.copyright && (
+                <p className="m-0">
+                  {footer.copyright}
+                  {process.env.NEXT_PUBLIC_SHOW_POWERED_BY === "false" ? null : (
+                    <a
+                      href="https://shipany.ai"
+                      target="_blank"
+                      className="px-2 text-primary"
+                    >
+                      build with ShipAny
+                    </a>
+                  )}
+                </p>
+              )}
+              <a href="https://startupfa.me/s/twitterdown?utm_source=twitterdown.com" target="_blank"><img src="https://startupfa.me/badges/featured/default-small.webp" alt="Featured on Startup Fame" width="224" height="36" /></a>
+            </div>
 
             {footer.agreement && (
               <ul className="flex justify-center gap-4 lg:justify-start">
