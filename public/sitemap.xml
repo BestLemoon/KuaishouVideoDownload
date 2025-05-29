@@ -102,52 +102,118 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Blog Pages -->
   <url>
-    <loc>https://TwitterDown.com/en/blog</loc>
+    <loc>https://TwitterDown.com/en/posts</loc>
     <lastmod>2024-12-24T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://TwitterDown.com/zh/blog</loc>
+    <loc>https://TwitterDown.com/zh/posts</loc>
     <lastmod>2024-12-24T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://TwitterDown.com/es/blog</loc>
+    <loc>https://TwitterDown.com/es/posts</loc>
     <lastmod>2024-12-24T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://TwitterDown.com/fr/blog</loc>
+    <loc>https://TwitterDown.com/fr/posts</loc>
     <lastmod>2024-12-24T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://TwitterDown.com/de/blog</loc>
+    <loc>https://TwitterDown.com/de/posts</loc>
     <lastmod>2024-12-24T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://TwitterDown.com/ja/blog</loc>
+    <loc>https://TwitterDown.com/ja/posts</loc>
     <lastmod>2024-12-24T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://TwitterDown.com/ko/blog</loc>
+    <loc>https://TwitterDown.com/ko/posts</loc>
     <lastmod>2024-12-24T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://TwitterDown.com/ar/blog</loc>
+    <loc>https://TwitterDown.com/ar/posts</loc>
     <lastmod>2024-12-24T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <!-- Blog Articles -->
+  <!-- How to download twitter videos -->
+  <url>
+    <loc>https://TwitterDown.com/en/posts/how-to-download-twitter-videos-free-twitterdown</loc>
+    <lastmod>2024-12-24T10:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <!-- API Documentation Articles -->
+  <url>
+    <loc>https://TwitterDown.com/en/posts/twitterdown-api-doc-en</loc>
+    <lastmod>2024-12-24T10:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://TwitterDown.com/zh/posts/twitterdown-api-doc-zh</loc>
+    <lastmod>2024-12-24T10:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://TwitterDown.com/es/posts/twitterdown-api-doc-es</loc>
+    <lastmod>2024-12-24T10:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://TwitterDown.com/fr/posts/twitterdown-api-doc-fr</loc>
+    <lastmod>2024-12-24T10:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://TwitterDown.com/de/posts/twitterdown-api-doc-de</loc>
+    <lastmod>2024-12-24T10:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://TwitterDown.com/ja/posts/twitterdown-api-doc-ja</loc>
+    <lastmod>2024-12-24T10:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://TwitterDown.com/ko/posts/twitterdown-api-doc-ko</loc>
+    <lastmod>2024-12-24T10:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://TwitterDown.com/ar/posts/twitterdown-api-doc-ar</loc>
+    <lastmod>2024-12-24T10:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://TwitterDown.com/zh/posts/twitterdown-api-doc-zh-tw</loc>
+    <lastmod>2024-12-24T10:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>

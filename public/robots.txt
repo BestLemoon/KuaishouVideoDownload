@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+Allow: /posts/
+Allow: /posts/*
 Disallow: /api/
 Disallow: /admin/
 Disallow: /auth/
