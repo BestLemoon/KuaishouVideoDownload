@@ -4,6 +4,27 @@ import { Table as TableSlotType } from "@/types/slots/table";
 import { getAllDownloadHistory } from "@/models/credit";
 import { findUserByUuid } from "@/models/user";
 import moment from "moment";
+import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+
+export async function generateMetadata({ params: promiseParams }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await promiseParams;
+  // const t = await getTranslations({ locale, namespace: "AdminDownloadHistory" });
+
+  let canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/admin/download-history`;
+
+  if (locale !== "en") {
+    canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/${locale}/admin/download-history`;
+  }
+
+  return {
+    // title: t("title"),
+    // description: t("description"),
+    alternates: {
+      canonical: canonicalUrl,
+    },
+  };
+}
 
 export default async function () {
   // 获取所有用户下载历史

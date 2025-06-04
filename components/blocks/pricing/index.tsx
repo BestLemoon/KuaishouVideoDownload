@@ -93,10 +93,14 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
 
   useEffect(() => {
     if (pricing.groups && pricing.groups.length > 0) {
-      setGroup(pricing.groups[0].name);
+      // 默认显示年付tab（如果存在），否则显示第一个
+      const yearGroup = pricing.groups.find(g => g.name === 'year');
+      setGroup(yearGroup ? yearGroup.name : pricing.groups[0].name);
     }
     setIsLoading(false);
   }, [pricing.groups]);
+
+
 
   return (
     <section id={pricing.name} className="py-16">
@@ -169,12 +173,24 @@ export default function Pricing({ pricing }: { pricing: PricingType }) {
               return (
                 <div
                   key={index}
-                  className={`rounded-lg p-6 ${
+                  className={`rounded-lg p-6 relative ${
                     item.is_featured
-                      ? "border-primary border-2 bg-card text-card-foreground"
+                      ? "border-primary border-2 bg-card text-card-foreground shadow-xl"
                       : "border-muted border"
                   }`}
                 >
+                  {/* 限时优惠角标 */}
+                  {item.is_featured && item.label?.includes("限时") && (
+                    <div className="absolute -top-3 -right-3 bg-gradient-to-r from-red-500 to-pink-500 text-white px-3 py-1 rounded-full text-xs font-bold transform rotate-12 shadow-lg">
+                      限时优惠
+                    </div>
+                  )}
+                  {item.is_featured && item.label?.includes("FREE") && (
+                    <div className="absolute -top-3 -right-3 bg-gradient-to-r from-red-500 to-pink-500 text-white px-3 py-1 rounded-full text-xs font-bold transform rotate-12 shadow-lg">
+                      LIMITED
+                    </div>
+                  )}
+                  
                   <div className="flex h-full flex-col justify-between gap-5">
                     <div>
                       <div className="flex items-center gap-2 mb-4">

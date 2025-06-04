@@ -1,0 +1,23 @@
+<svg width="180" height="53" viewBox="0 0 180 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="180" height="53" rx="6" fill="#000000"/>
+  
+  <!-- iOS Shortcuts icon -->
+  <g transform="translate(8, 8)">
+    <rect width="37" height="37" rx="8" fill="#007AFF"/>
+    <g transform="translate(4, 4)">
+      <!-- Shortcuts icon -->
+      <rect x="6" y="6" width="19" height="6" rx="3" fill="white"/>
+      <rect x="6" y="14" width="19" height="6" rx="3" fill="white"/>
+      <rect x="6" y="22" width="19" height="6" rx="3" fill="white"/>
+      <!-- Connection lines -->
+      <circle cx="28" cy="9" r="2" fill="white"/>
+      <circle cx="28" cy="17" r="2" fill="white"/>
+      <circle cx="28" cy="25" r="2" fill="white"/>
+    </g>
+  </g>
+  
+  <!-- Text -->
+  <text x="52" y="16" fill="white" font-family="Arial, sans-serif" font-size="9" font-weight="400">Get on</text>
+  <text x="52" y="30" fill="white" font-family="Arial, sans-serif" font-size="13" font-weight="500">iOS Shortcuts</text>
+</svg> 

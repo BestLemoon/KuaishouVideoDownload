@@ -1,5 +1,3 @@
-
-
 import { ApikeyStatus, insertApikey } from "@/models/apikey";
 
 import { Apikey } from "@/types/apikey";
@@ -11,6 +9,25 @@ import { getNonceStr } from "@/lib/hash";
 import { getTranslations } from "next-intl/server";
 import { getUserUuid, checkUserIsPremium } from "@/services/user";
 import { redirect } from "next/navigation";
+import { Metadata } from "next";
+
+export async function generateMetadata({ params: promiseParams }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await promiseParams;
+  const t = await getTranslations();
+
+  let canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/api-keys/create`;
+
+  if (locale !== "en") {
+    canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/${locale}/api-keys/create`;
+  }
+
+  return {
+    title: t("api_keys.create_api_key_meta_title") || t("api_keys.create_api_key"),
+    alternates: {
+      canonical: canonicalUrl,
+    },
+  };
+}
 
 export default async function () {
   const t = await getTranslations();
