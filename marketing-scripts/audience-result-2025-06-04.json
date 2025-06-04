@@ -1,0 +1,515 @@
+{
+  "timestamp": "2025-06-04T10:33:23.216802",
+  "audienceId": "3f4ff163-1d9b-4416-aa42-39810cf87226",
+  "audienceName": "TwitterDown",
+  "totalUsers": 100,
+  "addedContacts": 100,
+  "failedContacts": 0,
+  "skippedContacts": 0,
+  "newContacts": 100,
+  "broadcastId": "6b8858a4-d002-4c15-9015-76893c861931",
+  "broadcastSent": false,
+  "sendId": null,
+  "results": [
+    {
+      "email": "bdy8688@gmail.com",
+      "success": true,
+      "contactId": "e0bb2450-586d-422b-ab7a-a41561e04d5f"
+    },
+    {
+      "email": "tomonarikvse121@gmail.com",
+      "success": true,
+      "contactId": "d3330415-420f-49fe-ade2-e3f224912988"
+    },
+    {
+      "email": "wawqwlwq@gmail.com",
+      "success": true,
+      "contactId": "48b2afa6-b386-4954-8ac5-59f51ec7f805"
+    },
+    {
+      "email": "wow96301090@gmail.com",
+      "success": true,
+      "contactId": "e0ed6210-18d1-4930-9879-957056ca4d9d"
+    },
+    {
+      "email": "zhihaoshi076@gmail.com",
+      "success": true,
+      "contactId": "a8cddca2-ea00-4026-8ac2-60cacb428265"
+    },
+    {
+      "email": "dehuidiz@gmail.com",
+      "success": true,
+      "contactId": "a7491177-a031-4b5d-99a0-75e7a908f3fd"
+    },
+    {
+      "email": "liuxiansheng7895@gmail.com",
+      "success": true,
+      "contactId": "0ef07269-2951-461c-a00c-232b6af90394"
+    },
+    {
+      "email": "chongguoshanxixgs@126.com",
+      "success": true,
+      "contactId": "fc366b07-fc22-431e-8184-2604e4192aa0"
+    },
+    {
+      "email": "jiajun1986@gmail.com",
+      "success": true,
+      "contactId": "af79501f-e275-4252-9413-344998f92a6c"
+    },
+    {
+      "email": "lcl020419@gmail.com",
+      "success": true,
+      "contactId": "7d946d5e-007a-4a94-b331-81ed39a3eb30"
+    },
+    {
+      "email": "kyleshining@sina.cn",
+      "success": true,
+      "contactId": "609d583a-626d-45a8-8462-eb79ee496fc2"
+    },
+    {
+      "email": "fsn414@gmail.com",
+      "success": true,
+      "contactId": "c68a0508-43b8-457b-9070-43417ea49ccd"
+    },
+    {
+      "email": "zhounan2000@gmail.com",
+      "success": true,
+      "contactId": "a902c39b-4050-45bf-88d2-d7f7d4423f75"
+    },
+    {
+      "email": "wenfu723@gmail.com",
+      "success": true,
+      "contactId": "82dd5fd7-96ab-4d86-893a-e6626dcc282a"
+    },
+    {
+      "email": "huangchaolv@gmail.com",
+      "success": true,
+      "contactId": "995209ad-d69f-40ed-9725-4df7b81f10fe"
+    },
+    {
+      "email": "1809352886@qq.com",
+      "success": true,
+      "contactId": "caf21959-b810-431b-9df5-2fbb8c61d9d9"
+    },
+    {
+      "email": "mandy05261003@gmail.com",
+      "success": true,
+      "contactId": "5989a170-e245-4558-b1f5-a5408ccbd8a7"
+    },
+    {
+      "email": "zanchenn1215@gmail.com",
+      "success": true,
+      "contactId": "6c3b2b0a-b263-4dc7-ba1e-222f09755692"
+    },
+    {
+      "email": "3510029909a@gmail.com",
+      "success": true,
+      "contactId": "946f17cc-b378-43f7-88ad-d1a09c3faa40"
+    },
+    {
+      "email": "loyalyonggang@gmail.com",
+      "success": true,
+      "contactId": "ec33307e-35bc-4b50-8b52-6516774fe372"
+    },
+    {
+      "email": "jinlige123@gmail.com",
+      "success": true,
+      "contactId": "bcc53888-e703-4832-9513-a2605c29ea8d"
+    },
+    {
+      "email": "oooboxvip@gmail.com",
+      "success": true,
+      "contactId": "8a3c0f45-218e-4efc-bae7-756ea0c278f5"
+    },
+    {
+      "email": "1198177803@qq.com",
+      "success": true,
+      "contactId": "7be20352-723c-45d8-8140-242e1ba92056"
+    },
+    {
+      "email": "w1821429006@gmail.com",
+      "success": true,
+      "contactId": "b6583d16-79f3-48de-aad7-59afb6294d21"
+    },
+    {
+      "email": "szafachoroszko307@gmail.com",
+      "success": true,
+      "contactId": "3420f950-c82e-4e1a-a9fd-164a50895bbe"
+    },
+    {
+      "email": "wuzhenghang17@gmail.com",
+      "success": true,
+      "contactId": "680942f0-87da-44f2-b07d-9e2fba119a8d"
+    },
+    {
+      "email": "1457977513@qq.com",
+      "success": true,
+      "contactId": "ed66f836-50a6-4bed-8c83-40176d53f77c"
+    },
+    {
+      "email": "rvdhj@icloud.com",
+      "success": true,
+      "contactId": "a399cdf5-c13f-4ea3-b65f-66bbb29e7b60"
+    },
+    {
+      "email": "2504767238@qq.com",
+      "success": true,
+      "contactId": "06b8cc06-6147-48a8-99f5-d7215a45c32e"
+    },
+    {
+      "email": "1006344137@qq.com",
+      "success": true,
+      "contactId": "d64e0f4d-1d74-455e-8eb0-9f3bab9b0fc9"
+    },
+    {
+      "email": "huangtantian@gmail.com",
+      "success": true,
+      "contactId": "4dfb64d7-c033-437f-bac0-bb8d8e31bf57"
+    },
+    {
+      "email": "yic74625@gmail.com",
+      "success": true,
+      "contactId": "50cc7155-85e9-4952-989f-e2b2945f82de"
+    },
+    {
+      "email": "3123421782@qq.com",
+      "success": true,
+      "contactId": "eeb36156-3707-43ca-be61-b0756165cbfa"
+    },
+    {
+      "email": "szgrxsc@gmail.com",
+      "success": true,
+      "contactId": "3c649cd4-bb54-4495-b49d-60ff3fee468c"
+    },
+    {
+      "email": "joshuasea950@gmail.com",
+      "success": true,
+      "contactId": "10819104-54b6-4e90-9a1d-7c52972c522f"
+    },
+    {
+      "email": "1483298655@qq.com",
+      "success": true,
+      "contactId": "a9d9f8f4-6b83-4a07-ae86-7acf406fdf0f"
+    },
+    {
+      "email": "wuyanglive@gmail.com",
+      "success": true,
+      "contactId": "4beaebeb-7391-4a54-a597-60484fcce3ad"
+    },
+    {
+      "email": "yang87810@gmail.com",
+      "success": true,
+      "contactId": "336a5fe3-e5a6-492f-b946-9f93d70fafaf"
+    },
+    {
+      "email": "niannian.yt@gmail.com",
+      "success": true,
+      "contactId": "86b89daa-8634-4c25-ba0c-14395ef13f95"
+    },
+    {
+      "email": "erciyuan5211314@gmail.com",
+      "success": true,
+      "contactId": "265b32bc-e40c-4f05-b2d5-9b52f77a21d4"
+    },
+    {
+      "email": "gindoki1010@gmail.com",
+      "success": true,
+      "contactId": "0fb3c791-6909-415c-b6ab-2deb17da6387"
+    },
+    {
+      "email": "zhanghaiz62@gmail.com",
+      "success": true,
+      "contactId": "5439962c-cb10-4403-a5ff-7a1f0cf7666c"
+    },
+    {
+      "email": "106124028@gm.asia.edu.tw",
+      "success": true,
+      "contactId": "b4aa6dbd-d22b-46d4-97a5-dc148feee551"
+    },
+    {
+      "email": "zhongxiaolai879@gmail.com",
+      "success": true,
+      "contactId": "97e837fd-fc8e-4b10-9e80-5fd0b2eb3656"
+    },
+    {
+      "email": "lql540849547@gmail.com",
+      "success": true,
+      "contactId": "a035bb00-05c1-4a0d-b448-d94ca2da21c4"
+    },
+    {
+      "email": "evoltmadeinmars@gmail.com",
+      "success": true,
+      "contactId": "615e36f5-8ab1-489a-ae0d-9ff8f5b9abf3"
+    },
+    {
+      "email": "sylarcheung0106@gmail.com",
+      "success": true,
+      "contactId": "1c4dd759-4570-4015-8855-c9a95beb2817"
+    },
+    {
+      "email": "cym19970212@gmail.com",
+      "success": true,
+      "contactId": "70836ba7-8cd7-43d7-a7e4-ccb2aa1473c8"
+    },
+    {
+      "email": "z6m8n7ljw@gmail.com",
+      "success": true,
+      "contactId": "4d8ab5ce-ae9a-4129-9545-c432a9750aa7"
+    },
+    {
+      "email": "scwqd@qq.com",
+      "success": true,
+      "contactId": "3d3b49b2-6910-4b24-8902-145e13cc51af"
+    },
+    {
+      "email": "396820715@qq.com",
+      "success": true,
+      "contactId": "60da5eb3-c9a7-436d-99a3-6533dbafa43c"
+    },
+    {
+      "email": "41003634@qq.com",
+      "success": true,
+      "contactId": "a40e57ae-dff0-4710-a07d-444389fe8e16"
+    },
+    {
+      "email": "zeroask1717@gmail.com",
+      "success": true,
+      "contactId": "54141d9b-a0f4-48e5-88aa-e1a257e59e17"
+    },
+    {
+      "email": "zc543050921@gmail.com",
+      "success": true,
+      "contactId": "3080301f-af5a-456e-a30b-877d453ba1a2"
+    },
+    {
+      "email": "gamenewsdailyoffical@gmail.com",
+      "success": true,
+      "contactId": "a7473e50-b035-4ce6-b752-6ad8abee3ea1"
+    },
+    {
+      "email": "jasonjjy1@gmail.com",
+      "success": true,
+      "contactId": "913d6ab6-5101-48cf-963f-7779eb7edfc1"
+    },
+    {
+      "email": "aimeglgedisonc@gmail.com",
+      "success": true,
+      "contactId": "f71db342-d61b-43b7-8999-d51fbca98991"
+    },
+    {
+      "email": "3288643979@qq.com",
+      "success": true,
+      "contactId": "53a1920b-4f76-43c3-9231-98047ef7acd0"
+    },
+    {
+      "email": "1004696122az@gmail.com",
+      "success": true,
+      "contactId": "70f3e974-3e5d-4773-a2c1-ba58270dcf3e"
+    },
+    {
+      "email": "wodemaya666999@gmail.com",
+      "success": true,
+      "contactId": "913c144b-e67b-436d-9a05-c8a3eda3226a"
+    },
+    {
+      "email": "ding16855@gmail.com",
+      "success": true,
+      "contactId": "c035e8af-12f1-481e-8d82-fb1e921bcaba"
+    },
+    {
+      "email": "lh258885@gmail.com",
+      "success": true,
+      "contactId": "08f5c3ab-9335-4c50-b133-051f5ccebeed"
+    },
+    {
+      "email": "sxx1780439134@gmail.com",
+      "success": true,
+      "contactId": "da2b393f-1e17-4872-9ade-0083fe15575a"
+    },
+    {
+      "email": "shelyoungtion@gmail.com",
+      "success": true,
+      "contactId": "e48e799e-7e4c-4d6c-ab16-a40cda9b1d34"
+    },
+    {
+      "email": "zx198388@gmail.com",
+      "success": true,
+      "contactId": "382d6e8e-4483-4296-98e4-e3410fa57f22"
+    },
+    {
+      "email": "linxin9811@gmail.com",
+      "success": true,
+      "contactId": "9abadf60-0a6d-45ab-bb1c-017828548d35"
+    },
+    {
+      "email": "kimbobbi7@gmail.com",
+      "success": true,
+      "contactId": "4fcb1290-fe65-47c2-a771-ade297367922"
+    },
+    {
+      "email": "342788465@qq.com",
+      "success": true,
+      "contactId": "72f66be3-c992-4ca8-aea2-c79ec48c31c5"
+    },
+    {
+      "email": "w201215562@gmail.com",
+      "success": true,
+      "contactId": "dab869dc-3421-4c88-9d2b-13e073d4f368"
+    },
+    {
+      "email": "wutsing0612@gmail.com",
+      "success": true,
+      "contactId": "106f6dc2-69c0-48a9-8357-cc501222122f"
+    },
+    {
+      "email": "enditufa@gmail.com",
+      "success": true,
+      "contactId": "d38936ea-5bfb-4eca-a8f0-132baa772d0f"
+    },
+    {
+      "email": "mxyac110@gmail.com",
+      "success": true,
+      "contactId": "cefbbc6e-532b-4fa1-8aaf-90c1fdc08668"
+    },
+    {
+      "email": "2391771176qq.com@gmail.com",
+      "success": true,
+      "contactId": "1b659f0b-a59f-4ea0-bb46-f200a1c10af3"
+    },
+    {
+      "email": "wenwenzhang733@gmail.com",
+      "success": true,
+      "contactId": "b6864627-a58f-474b-93b6-5d28d03e00ee"
+    },
+    {
+      "email": "liuxiaoxu375@gmail.com",
+      "success": true,
+      "contactId": "dc57c196-5cc4-475e-89d0-fe64b42c1ffa"
+    },
+    {
+      "email": "zmnfdfjr@gmail.com",
+      "success": true,
+      "contactId": "e4a0caa1-35d4-4a5f-8ace-ffadb4371e91"
+    },
+    {
+      "email": "1181886398@qq.com",
+      "success": true,
+      "contactId": "6f4da0b9-6bd3-4235-8ad3-a1d80cc5bb54"
+    },
+    {
+      "email": "1628281228@qq.com",
+      "success": true,
+      "contactId": "eeeb53a0-f42d-474b-b8ee-994c924e5e34"
+    },
+    {
+      "email": "zhaoshuo6868@gmail.com",
+      "success": true,
+      "contactId": "be51cb5f-25f5-45a7-8835-d0a4f39a423b"
+    },
+    {
+      "email": "tina11nananananana@gmail.com",
+      "success": true,
+      "contactId": "1f508ee7-daa8-4e65-a905-694353314e38"
+    },
+    {
+      "email": "rebing19820911@gmail.com",
+      "success": true,
+      "contactId": "cc578037-38ab-43c0-b725-7d7449caa5b4"
+    },
+    {
+      "email": "px613425@gmail.com",
+      "success": true,
+      "contactId": "52338dca-50f6-46ae-b578-f9c30e2ceec1"
+    },
+    {
+      "email": "tu374785957@gmail.com",
+      "success": true,
+      "contactId": "88fb3ba4-1386-4130-9959-299e8644a52c"
+    },
+    {
+      "email": "526836208@qq.com",
+      "success": true,
+      "contactId": "1d9900aa-65bf-42be-a747-235df9209f88"
+    },
+    {
+      "email": "1293257657@qq.com",
+      "success": true,
+      "contactId": "8a43970c-df6c-4674-afb5-27643a0b2a12"
+    },
+    {
+      "email": "750465976@qq.com",
+      "success": true,
+      "contactId": "109cefc9-e6a6-45c5-8fe0-767ed315f37c"
+    },
+    {
+      "email": "lamzt666@gmail.com",
+      "success": true,
+      "contactId": "ca901eeb-afce-4cef-8014-a0f6818a11ab"
+    },
+    {
+      "email": "jc1997111@gmail.com",
+      "success": true,
+      "contactId": "76de2032-6a26-45a2-a1fd-9c4eccda18f1"
+    },
+    {
+      "email": "1513135991@qq.com",
+      "success": true,
+      "contactId": "e2a03bcc-a988-457d-aa03-378046e058fa"
+    },
+    {
+      "email": "2972539402@qq.com",
+      "success": true,
+      "contactId": "8dedecd9-d50b-49d1-b483-c250fdca8163"
+    },
+    {
+      "email": "hsw3918@gmail.com",
+      "success": true,
+      "contactId": "0550d629-3f77-489e-a835-64c563fa3e07"
+    },
+    {
+      "email": "xiaoyemiao55@gmail.com",
+      "success": true,
+      "contactId": "55cad0a9-3457-452e-a190-0b84425d8b88"
+    },
+    {
+      "email": "gaohan8011@gmail.com",
+      "success": true,
+      "contactId": "583b7244-c0ed-472f-943c-809d20e149d1"
+    },
+    {
+      "email": "thanehwang@gmail.com",
+      "success": true,
+      "contactId": "41dd6a81-d275-4d69-bbe9-071025097cec"
+    },
+    {
+      "email": "qiuqianyi1023@gmail.com",
+      "success": true,
+      "contactId": "6af26a80-5e12-4421-800f-b816f9a1a6c8"
+    },
+    {
+      "email": "645883165@qq.com",
+      "success": true,
+      "contactId": "7a64e1b8-0e0e-4bc5-a9c6-5c3d6ae3910c"
+    },
+    {
+      "email": "saraskpop7@gmail.com",
+      "success": true,
+      "contactId": "58912448-9d7b-4f72-a14d-877f16a53061"
+    },
+    {
+      "email": "zhangbanxia510@gmail.com",
+      "success": true,
+      "contactId": "76ff9df2-16a5-4436-85d5-f2f98a8ccdd3"
+    },
+    {
+      "email": "zzimo146@gmail.com",
+      "success": true,
+      "contactId": "02cde7e6-32a0-43c9-8406-aba0ba1c6034"
+    },
+    {
+      "email": "dearstar2@gmail.com",
+      "success": true,
+      "contactId": "1faeb638-93a0-4317-93b9-5c7f7b597388"
+    }
+  ]
+}

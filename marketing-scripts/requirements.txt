@@ -1,0 +1,18 @@
+# TwitterDown Marketing Scripts - Python Dependencies
+
+# Resend Python SDK
+resend>=2.0.0
+
+# Supabase Python client
+supabase>=2.0.0
+
+# Standard library modules (已包含在Python中，无需安装):
+# - os
+# - json
+# - sys
+# - re
+# - time
+# - pathlib
+# - datetime
+# - asyncio
+# - subprocess 
