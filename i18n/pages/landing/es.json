@@ -74,7 +74,23 @@
       }
     ],
     "show_happy_users": true,
-    "show_badge": false
+    "show_badge": false,
+    "badges": [
+      {
+        "title": "Chrome Web Store",
+        "alt": "Disponible en Chrome Web Store",
+        "src": "/imgs/badges/chromewebstore.png",
+        "url": "https://chromewebstore.google.com/detail/twitterdown-%E5%8A%A9%E6%89%8B/ahgcdehhlnimoledkibalbdhnecfojbl",
+        "target": "_blank"
+      },
+      {
+        "title": "Atajos de iOS",
+        "alt": "Obtener en Atajos de iOS",
+        "src": "/imgs/badges/iosshortcuts.png",
+        "url": "https://www.icloud.com/shortcuts/6c3b6d66235c4febb60744f3e6dc3a93",
+        "target": "_blank"
+      }
+    ]
   },
   "introduce": {
     "name": "introduce",

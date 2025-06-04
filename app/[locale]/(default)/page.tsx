@@ -33,7 +33,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: pageTitle,
+    // 不设置 title，使用 layout 中的 default title
     description: pageDescription,
     alternates: {
       canonical: canonicalUrl,

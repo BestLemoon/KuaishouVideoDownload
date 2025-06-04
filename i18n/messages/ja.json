@@ -67,6 +67,8 @@
   },
   "api_keys": {
     "title": "API キー",
+    "meta_title": "API キー管理 - TwitterDown",
+    "create_api_key_meta_title": "API キー作成 - TwitterDown",
     "tip": "API キーを安全に保管してください、Appから直接ビデオをダウンロードするためにApple Shortcutを使用してください",
     "premium_only_tip": "API 機能はプレミアムユーザーのみ利用可能です。API アクセスを取得するためにプレミアムプランにアップグレードしてください",
     "no_api_keys": "API キーがありません",
@@ -256,6 +258,12 @@
       "requires_one_download": "1ダウンロード必要",
       "one_download": "1ダウンロード"
     }
+  },
+  "download_result": {
+    "title": "ダウンロード結果 - TwitterDown"
+  },
+  "batch_download_result": {
+    "title": "一括ダウンロード結果 - TwitterDown"
   },
   "api": {
     "auth": {

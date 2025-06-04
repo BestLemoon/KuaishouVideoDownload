@@ -72,10 +72,26 @@
           "target": "_self",
           "variant": "outline"
         }
-      ],
-      "show_happy_users": true,
-      "show_badge": false
-    },
+          ],
+    "show_happy_users": true,
+    "show_badge": false,
+    "badges": [
+      {
+        "title": "Chrome Web Store",
+        "alt": "متوفر على Chrome Web Store",
+        "src": "/imgs/badges/chromewebstore.png",
+        "url": "https://chromewebstore.google.com/detail/twitterdown-%E5%8A%A9%E6%89%8B/ahgcdehhlnimoledkibalbdhnecfojbl",
+        "target": "_blank"
+      },
+      {
+        "title": "اختصارات iOS",
+        "alt": "احصل عليه من اختصارات iOS",
+        "src": "/imgs/badges/iosshortcuts.png",
+        "url": "https://www.icloud.com/shortcuts/6c3b6d66235c4febb60744f3e6dc3a93",
+        "target": "_blank"
+      }
+    ]
+  },
     "introduce": {
       "name": "introduce",
       "title": "ما هو TwitterDown؟",

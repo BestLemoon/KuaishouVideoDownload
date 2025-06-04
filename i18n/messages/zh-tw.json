@@ -67,6 +67,8 @@
   },
   "api_keys": {
     "title": "API 密鑰",
+    "meta_title": "API 密鑰管理 - TwitterDown",
+    "create_api_key_meta_title": "創建 API 密鑰 - TwitterDown",
     "tip": "請妥善保管您的 API 密鑰，避免泄露，使用快捷指令可直接從App通過分享下載視頻",
     "premium_only_tip": "API 功能僅限付費用戶使用，請升級到高級版以獲取 API 訪問權限",
     "no_api_keys": "沒有 API 密鑰",
@@ -256,6 +258,12 @@
       "requires_one_download": "需要 1 次下載",
       "one_download": "1 次下載"
     }
+  },
+  "download_result": {
+    "title": "下載結果 - TwitterDown"
+  },
+  "batch_download_result": {
+    "title": "批量下載結果 - TwitterDown"
   },
   "api": {
     "auth": {
