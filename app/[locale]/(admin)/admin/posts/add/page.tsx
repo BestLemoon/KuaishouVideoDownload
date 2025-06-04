@@ -8,6 +8,27 @@ import { Post } from "@/types/post";
 import { getIsoTimestr } from "@/lib/time";
 import { getUserInfo } from "@/services/user";
 import { getUuid } from "@/lib/hash";
+import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+
+export async function generateMetadata({ params: promiseParams }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await promiseParams;
+  // const t = await getTranslations({ locale, namespace: "AdminAddPost" });
+
+  let canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/admin/posts/add`;
+
+  if (locale !== "en") {
+    canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/${locale}/admin/posts/add`;
+  }
+
+  return {
+    // title: t("title"),
+    // description: t("description"),
+    alternates: {
+      canonical: canonicalUrl,
+    },
+  };
+}
 
 export default async function () {
   const user = await getUserInfo();

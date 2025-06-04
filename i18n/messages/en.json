@@ -67,6 +67,8 @@
   },
   "api_keys": {
     "title": "API Keys",
+    "meta_title": "API Keys Management - TwitterDown", 
+    "create_api_key_meta_title": "Create API Key - TwitterDown",
     "tip": "Please keep your API keys secure and avoid sharing them, use Apple Shortcut to download videos directly from the App",
     "premium_only_tip": "API features are only available for premium users. Please upgrade to get API access",
     "no_api_keys": "No API keys",
@@ -256,6 +258,12 @@
       "requires_one_download": "Requires 1 download",
       "one_download": "1 download"
     }
+  },
+  "download_result": {
+    "title": "Download Result - TwitterDown"
+  },
+  "batch_download_result": {
+    "title": "Batch Download Result - TwitterDown"
   },
   "api": {
     "auth": {

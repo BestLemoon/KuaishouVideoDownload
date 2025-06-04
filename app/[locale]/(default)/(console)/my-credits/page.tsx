@@ -1,5 +1,3 @@
-
-
 import Empty from "@/components/blocks/empty";
 import TableSlot from "@/components/console/slots/table";
 import { Table as TableSlotType } from "@/types/slots/table";
@@ -9,6 +7,25 @@ import { getUserCreditBalance } from "@/models/credit";
 import { getUserUuid } from "@/services/user";
 import moment from "moment";
 import { redirect } from "next/navigation";
+import { Metadata } from "next";
+
+export async function generateMetadata({ params: promiseParams }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await promiseParams;
+  const t = await getTranslations();
+
+  let canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/my-credits`;
+
+  if (locale !== "en") {
+    canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/${locale}/my-credits`;
+  }
+
+  return {
+    title: t("my_credits.title"),
+    alternates: {
+      canonical: canonicalUrl,
+    },
+  };
+}
 
 export default async function () {
   const t = await getTranslations();

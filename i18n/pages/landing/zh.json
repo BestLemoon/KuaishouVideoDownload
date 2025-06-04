@@ -53,7 +53,7 @@
     "description": "TwitterDown是下载Twitter视频的最快方式。<br/>只需点击几下，即可保存和分享您喜爱的Twitter内容。",
     "announcement": {
       "label": "新功能",
-      "title": "🎉 现已支持iOS快捷方式快速下载",
+      "title": "🎉 专业版限时免费一年！",
       "url": "/zh#pricing"
     },
     "tip": "🔥 全新重构，完全免费开始使用",
@@ -74,7 +74,23 @@
       }
     ],
     "show_happy_users": true,
-    "show_badge": false
+    "show_badge": false,
+    "badges": [
+      {
+        "title": "Chrome网上应用店",
+        "alt": "Chrome网上应用店下载",
+        "src": "/imgs/badges/chromewebstore.png",
+        "url": "https://chrome.google.com/webstore/detail/twitterdown",
+        "target": "_blank"
+      },
+      {
+        "title": "iOS快捷方式",
+        "alt": "获取iOS快捷方式",
+        "src": "/imgs/badges/iosshortcuts.png",
+        "url": "https://www.icloud.com/shortcuts/6c3b6d66235c4febb60744f3e6dc3a93",
+        "target": "_blank"
+      }
+    ]
   },
   "introduce": {
     "name": "introduce",
@@ -296,7 +312,7 @@
         "price": "¥9.9",
         "original_price": "¥19.9",
         "unit": "/ 月",
-        "is_featured": true,
+        "is_featured": false,
         "tip": "最受欢迎的选择",
         "button": {
           "title": "升级到专业版",
@@ -312,7 +328,7 @@
       {
         "title": "专业版",
         "description": "经常下载视频的个人用户、内容创作者",
-        "label": "✨ 最受欢迎",
+        "label": "🔥 限时免费一年",
         "features_title": "包含",
         "features": [
           "每月150次高清/标清视频下载额度",
@@ -329,13 +345,13 @@
         "amount": 9900,
         "cn_amount": 9900,
         "currency": "CNY",
-        "price": "¥99",
-        "original_price": "¥199",
+        "price": "免费",
+        "original_price": "¥99",
         "unit": "/ 年",
         "is_featured": true,
-        "tip": "相当于¥16.58/月，立省约17%",
+        "tip": "限时免费一年",
         "button": {
-          "title": "升级到专业版",
+          "title": "立即免费获取一年",
           "url": "/zh#pricing",
           "icon": "RiVipCrownLine"
         },

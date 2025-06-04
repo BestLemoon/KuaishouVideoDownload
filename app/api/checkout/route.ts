@@ -22,6 +22,9 @@ export async function POST(req: Request) {
       cancel_url,
     } = await req.json();
 
+    // 调试日志
+    console.log("Checkout request:", { product_id, interval, currency, amount });
+
     if (!cancel_url) {
       cancel_url = `${
         process.env.NEXT_PUBLIC_PAY_CANCEL_URL ||
@@ -105,9 +108,38 @@ export async function POST(req: Request) {
 
     const stripe = new Stripe(process.env.STRIPE_PRIVATE_KEY || "");
 
-    let options: Stripe.Checkout.SessionCreateParams = {
-      payment_method_types: ["card"],
-      line_items: [
+    // 根据产品类型确定使用Stripe产品价格ID还是动态创建价格
+    let line_items;
+    let discounts: Stripe.Checkout.SessionCreateParams.Discount[] = [];
+
+    // Pro plan映射到Stripe预设价格ID
+    if (product_id === "pro_yearly" || product_id === "pro_monthly") {
+      const priceId = product_id === "pro_yearly" 
+        ? "price_1RVqR9HNlhKITw99o8lmias9"  // 年付价格ID
+        : "price_1RVqQoHNlhKITw990AmaUHSU"; // 月付价格ID
+      
+      console.log(`Mapping ${product_id} to Stripe price: ${priceId}`);
+      
+      line_items = [
+        {
+          price: priceId,  // 直接使用预设的价格ID
+          quantity: 1,
+        },
+      ];
+
+      // 只对年付的pro plan应用推广码
+      if (product_id === "pro_yearly") {
+        discounts = [
+          {
+            promotion_code: "promo_1RVrJgHNlhKITw99JXXSh4oM",
+          },
+        ];
+        console.log("Applying promotion code for pro_yearly");
+      }
+    } else {
+      // 其他产品使用动态价格创建
+      console.log(`Using dynamic pricing for product: ${product_id}`);
+      line_items = [
         {
           price_data: {
             currency: currency,
@@ -123,8 +155,13 @@ export async function POST(req: Request) {
           },
           quantity: 1,
         },
-      ],
-      allow_promotion_codes: true,
+      ];
+    }
+
+    let options: Stripe.Checkout.SessionCreateParams = {
+      payment_method_types: ["card"],
+      line_items: line_items,
+      discounts: discounts,
       metadata: {
         project: process.env.NEXT_PUBLIC_PROJECT_NAME || "",
         product_name: product_name,

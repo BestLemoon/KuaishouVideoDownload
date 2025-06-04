@@ -11,6 +11,7 @@ import Showcase from "@/components/blocks/showcase";
 import Stats from "@/components/blocks/stats";
 import Testimonial from "@/components/blocks/testimonial";
 import { getLandingPage } from "@/services/page";
+import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({
   params,
@@ -18,6 +19,13 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  const t = await getTranslations();
+
+  const pageTitle = t("metadata.title") || "TwitterDown";
+  const pageDescription = t("metadata.description") || "Download Twitter videos quickly and easily.";
+  const siteName = t("metadata.title") || "TwitterDown";
+  const ogImageUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/og-preview.png`;
+
   let canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}`;
 
   if (locale !== "en") {
@@ -25,8 +33,36 @@ export async function generateMetadata({
   }
 
   return {
+    title: pageTitle,
+    description: pageDescription,
     alternates: {
       canonical: canonicalUrl,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+    openGraph: {
+      title: pageTitle,
+      description: pageDescription,
+      url: canonicalUrl,
+      siteName: siteName,
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${pageTitle} Preview`,
+        },
+      ],
+      type: "website",
+      locale: locale,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: pageTitle,
+      description: pageDescription,
+      images: [ogImageUrl],
     },
   };
 }

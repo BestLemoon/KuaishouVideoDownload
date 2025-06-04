@@ -105,7 +105,7 @@
 
   <!-- Blog Pages -->
   <url>
-    <loc>https://TwitterDown.com/en/posts</loc>
+    <loc>https://TwitterDown.com/posts</loc>
     <lastmod>2024-12-24T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -156,14 +156,14 @@
   <!-- Blog Articles -->
   <!-- How to download twitter videos -->
   <url>
-    <loc>https://TwitterDown.com/en/posts/how-to-download-twitter-videos-free-twitterdown</loc>
+    <loc>https://TwitterDown.com/posts/how-to-download-twitter-videos-free-twitterdown</loc>
     <lastmod>2024-12-24T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <!-- API Documentation Articles -->
   <url>
-    <loc>https://TwitterDown.com/en/posts/twitterdown-api-doc-en</loc>
+    <loc>https://TwitterDown.com/posts/twitterdown-api-doc-en</loc>
     <lastmod>2024-12-24T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

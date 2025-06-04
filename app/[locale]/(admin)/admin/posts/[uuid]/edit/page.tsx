@@ -13,13 +13,40 @@ import { Form as FormSlotType } from "@/types/slots/form";
 import { Post } from "@/types/post";
 import { getIsoTimestr } from "@/lib/time";
 import { getUserInfo } from "@/services/user";
+import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+
+export async function generateMetadata(
+  { params: promiseParams }: 
+  { params: Promise<{ locale: string; uuid: string }> }
+): Promise<Metadata> {
+  const { locale, uuid } = await promiseParams;
+  // const t = await getTranslations({ locale, namespace: "AdminEditPost" });
+
+  let canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/admin/posts/${uuid}/edit`;
+
+  if (locale !== "en") {
+    canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/${locale}/admin/posts/${uuid}/edit`;
+  }
+
+  // You might want to fetch the post title for the metadata title
+  // const post = await findPostByUuid(uuid);
+
+  return {
+    // title: post ? post.title : t("defaultTitle"), 
+    // description: t("description"),
+    alternates: {
+      canonical: canonicalUrl,
+    },
+  };
+}
 
 export default async function ({
   params,
 }: {
-  params: Promise<{ uuid: string }>;
+  params: Promise<{ uuid: string; locale: string }>;
 }) {
-  const { uuid } = await params;
+  const { uuid, locale } = await params;
   const user = await getUserInfo();
   if (!user || !user.uuid) {
     return <Empty message="no auth" />;

@@ -8,6 +8,14 @@ export interface Announcement {
   target?: string;
 }
 
+export interface Badge {
+  title?: string;
+  alt?: string;
+  src?: string;
+  url?: string;
+  target?: string;
+}
+
 export interface Hero {
   name?: string;
   disabled?: boolean;
@@ -20,4 +28,5 @@ export interface Hero {
   tip?: string;
   show_happy_users?: boolean;
   show_badge?: boolean;
+  badges?: Badge[];
 }

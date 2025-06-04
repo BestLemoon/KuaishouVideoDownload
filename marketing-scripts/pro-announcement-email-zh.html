@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 一年Pro功能免费使用！</title>
+    <style>
+        /* Reset styles */
+        body, table, td, p, a, li, blockquote {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        table, td {
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+        
+        /* Main styles */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background-color: white;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo img {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .announcement-box {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin: 30px 0;
+            border: 3px solid #fdcb6e;
+        }
+        
+        .announcement-box h2 {
+            margin: 0 0 10px;
+            font-size: 24px;
+            color: #2d3436;
+            font-weight: 700;
+        }
+        
+        .announcement-box p {
+            margin: 0;
+            font-size: 16px;
+            color: #636e72;
+        }
+        
+        .features {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .features h3 {
+            margin: 0 0 20px;
+            font-size: 20px;
+            color: #2d3436;
+            text-align: center;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .feature-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background-color: #00b894;
+            border-radius: 50%;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .cta-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+            color: white;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 18px;
+            box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+            transition: transform 0.2s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 184, 148, 0.4);
+        }
+        
+        .tools-section {
+            background-color: #f1f3f4;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .tools-grid {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .tool-item {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            min-width: 140px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tool-icon {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 10px;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+        
+        .footer {
+            background-color: #2d3436;
+            color: #b2bec3;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #74b9ff;
+            text-decoration: none;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 8px;
+            background-color: #636e72;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            width: 36px;
+            height: 36px;
+            line-height: 20px;
+        }
+        
+        /* Responsive */
+        @media only screen and (max-width: 600px) {
+            .email-container {
+                width: 100% !important;
+            }
+            
+            .content {
+                padding: 20px 15px !important;
+            }
+            
+            .header {
+                padding: 30px 15px !important;
+            }
+            
+            .header h1 {
+                font-size: 24px !important;
+            }
+            
+            .announcement-box {
+                padding: 20px !important;
+            }
+            
+            .tools-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <img src="{{WEBSITE_URL}}/logo.png" alt="TwitterDown Logo">
+            </div>
+            <h1>🎉 来自TwitterDown的激动人心消息！</h1>
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+            <p style="font-size: 18px; margin-bottom: 20px;">亲爱的 {{USER_NAME}}，</p>
+            
+            <p style="font-size: 16px; margin-bottom: 30px;">
+                我们有一些<strong>令人兴奋的消息</strong>要与您分享！作为我们社区的重要成员，
+                您已被选中接受一份特别的礼物。
+            </p>
+            
+            <!-- Announcement Box -->
+            <div class="announcement-box">
+                <h2>🎁 整整一年的Pro功能完全免费！</h2>
+                <p>没错 - 您现在可以免费使用所有Pro功能整整一年！</p>
+            </div>
+            
+            <!-- Features -->
+            <div class="features">
+                <h3>🚀 您的新Pro权益包括：</h3>
+                <ul class="feature-list">
+                    <li>
+                        <div class="feature-icon">✓</div>
+                        <div><strong>每月150次下载</strong> - 每月可下载多达150个Twitter视频</div>
+                    </li>
+                    <li>
+                        <div class="feature-icon">✓</div>
+                        <div><strong>高清下载</strong> - 获得最佳视频质量</div>
+                    </li>
+                    <li>
+                        <div class="feature-icon">✓</div>
+                        <div><strong>API访问权限</strong> - 将TwitterDown集成到您自己的应用程序中</div>
+                    </li>
+                    <li>
+                        <div class="feature-icon">✓</div>
+                        <div><strong>优先客服支持</strong> - 需要帮助时更快获得回复</div>
+                    </li>
+                    <li>
+                        <div class="feature-icon">✓</div>
+                        <div><strong>批量下载</strong> - 一次下载多个视频</div>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- CTA Button -->
+            <div class="cta-section">
+                <a href="{{WEBSITE_URL}}" class="cta-button">
+                    🚀 立即开始使用Pro功能
+                </a>
+            </div>
+            
+            <!-- Tools Section -->
+            <div class="tools-section">
+                <h3 style="text-align: center; margin-bottom: 20px; color: #2d3436;">
+                    📱 全新下载方式
+                </h3>
+                <p style="text-align: center; margin-bottom: 20px; color: #636e72;">
+                    我们推出了全新的工具，让下载Twitter视频变得更加简单：
+                </p>
+                <div class="tools-grid">
+                    <div class="tool-item">
+                        <div class="tool-icon">📱</div>
+                        <h4 style="margin: 0 0 5px; font-size: 16px;">iOS快捷指令</h4>
+                        <p style="margin: 0; font-size: 14px; color: #636e72;">直接在iPhone上下载</p>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-icon">🌐</div>
+                        <h4 style="margin: 0 0 5px; font-size: 16px;">Chrome扩展</h4>
+                        <p style="margin: 0; font-size: 14px; color: #636e72;">在Twitter上一键下载</p>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="font-size: 16px; margin-top: 30px;">
+                此次升级是我们对TwitterDown社区成员的<strong>感谢</strong>。
+                我们期待看到您使用这些增强功能创造出精彩的内容！
+            </p>
+            
+            <p style="font-size: 16px;">
+                如果您有任何问题或需要帮助开始使用，请直接回复此邮件 - 我们随时为您提供帮助！
+            </p>
+            
+            <p style="font-size: 16px; margin-top: 30px;">
+                此致敬礼，<br>
+                <strong>TwitterDown团队</strong>
+            </p>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            
+            <p style="margin: 10px 0; font-size: 14px;">
+                <a href="{{WEBSITE_URL}}">TwitterDown.com</a> - 最好的Twitter视频下载工具
+            </p>
+            
+            <p style="margin: 10px 0; font-size: 12px; color: #8e9aaf;">
+                您收到此邮件是因为您是TwitterDown的重要用户。<br>
+                如果您不希望再收到此类更新，可以<a href="{{UNSUBSCRIBE_URL}}" style="color: #74b9ff;">取消订阅</a>。
+            </p>
+        </div>
+    </div>
+</body>
+</html> 

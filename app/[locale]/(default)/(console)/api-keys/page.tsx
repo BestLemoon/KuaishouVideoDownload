@@ -6,6 +6,25 @@ import { getUserApikeys } from "@/models/apikey";
 import { getUserUuid, checkUserIsPremium } from "@/services/user";
 import moment from "moment";
 import DeleteButton from "./delete-button";
+import { Metadata } from "next";
+
+export async function generateMetadata({ params: promiseParams }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await promiseParams;
+  const t = await getTranslations();
+
+  let canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/api-keys`;
+
+  if (locale !== "en") {
+    canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/${locale}/api-keys`;
+  }
+
+  return {
+    title: t("api_keys.title"),
+    alternates: {
+      canonical: canonicalUrl,
+    },
+  };
+}
 
 export default async function ({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -41,14 +60,7 @@ export default async function ({ params }: { params: Promise<{ locale: string }>
           title: t("api_keys.create_api_key"),
           url: "/api-keys/create",
           icon: "RiAddLine",
-        },
-        {
-          title: t("api_keys.apple_shortcut"),
-          url: "https://www.icloud.com/shortcuts/340ba136f09d42b183509ca8a14b9319",
-          icon: "RiAppleLine",
-          variant: "outline" as const,
-          target: "_blank",
-        },
+        }
       ] : [
         {
           title: t("api_keys.view_api_docs"),
@@ -62,13 +74,6 @@ export default async function ({ params }: { params: Promise<{ locale: string }>
           url: "/#pricing",
           icon: "RiVipCrown2Line",
           variant: "default" as const,
-        },
-        {
-          title: t("api_keys.apple_shortcut"),
-          url: "https://www.icloud.com/shortcuts/340ba136f09d42b183509ca8a14b9319",
-          icon: "RiAppleLine",
-          variant: "outline" as const,
-          target: "_blank",
         },
       ],
     },

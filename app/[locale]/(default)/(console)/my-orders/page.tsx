@@ -1,5 +1,3 @@
-
-
 import { getOrdersByPaidEmail, getOrdersByUserUuid } from "@/models/order";
 import { getUserEmail, getUserUuid } from "@/services/user";
 
@@ -9,6 +7,25 @@ import { Table as TableSlotType } from "@/types/slots/table";
 import { getTranslations } from "next-intl/server";
 import moment from "moment";
 import { redirect } from "next/navigation";
+import { Metadata } from "next";
+
+export async function generateMetadata({ params: promiseParams }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await promiseParams;
+  const t = await getTranslations();
+
+  let canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/my-orders`;
+
+  if (locale !== "en") {
+    canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/${locale}/my-orders`;
+  }
+
+  return {
+    title: t("my_orders.title"),
+    alternates: {
+      canonical: canonicalUrl,
+    },
+  };
+}
 
 export default async function () {
   const t = await getTranslations();

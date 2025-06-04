@@ -26,13 +26,60 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations();
 
+  const siteName = t("metadata.title") || "TwitterDown";
+  const defaultDescription = t("metadata.description") || "Download Twitter videos quickly and easily.";
+  const defaultKeywords = t("metadata.keywords") || "twitter, video, download, twitterdown";
+  const defaultOgImage = `${process.env.NEXT_PUBLIC_WEB_URL}/og-preview.png`; // Assuming logo.png is in public folder
+
   return {
-    title: {
-      template: `%s | ${t("metadata.title")}`,
-      default: t("metadata.title") || "",
+    metadataBase: new URL(process.env.NEXT_PUBLIC_WEB_URL || "https://twitterdown.com"),
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_WEB_URL}/${locale}`,
     },
-    description: t("metadata.description") || "",
-    keywords: t("metadata.keywords") || "",
+    title: {
+      template: `%s | ${siteName}`,
+      default: siteName,
+    },
+    description: defaultDescription,
+    keywords: defaultKeywords,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+    openGraph: {
+      title: { 
+        template: `%s | ${siteName}`,
+        default: siteName,
+      },
+      description: defaultDescription,
+      siteName: siteName,
+      images: [
+        {
+          url: defaultOgImage,
+          width: 512, // Provide actual width of logo.png if known, otherwise a generic one
+          height: 512, // Provide actual height of logo.png if known
+          alt: `${siteName} Logo`,
+        },
+      ],
+      locale: locale,
+      type: "website", // Default type, can be overridden by pages like 'article' for blog posts
+    },
+    twitter: {
+      card: "summary_large_image", // Default card type
+      title: { 
+        template: `%s | ${siteName}`,
+        default: siteName,
+      },
+      description: defaultDescription,
+      images: [defaultOgImage], // Twitter can also use an array of image URLs
+    },
   };
 }
 

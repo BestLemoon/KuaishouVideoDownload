@@ -33,6 +33,7 @@ export default function Hero({ hero }: { hero: HeroType }) {
               />
             </div>
           )}
+          
           <div className="text-center">
             {hero.announcement && (
               <a
@@ -73,6 +74,36 @@ export default function Hero({ hero }: { hero: HeroType }) {
               <p className="mt-8 text-md text-muted-foreground">{hero.tip}</p>
             )}
             {hero.show_happy_users && <HappyUsers />}
+            
+            {/* Badges section - positioned after happy users */}
+            {hero.badges && hero.badges.length > 0 && (
+              <div className="flex items-center justify-center gap-3 mt-6 flex-wrap">
+                {hero.badges.map((badge, index) => (
+                  badge.url ? (
+                    <a
+                      key={index}
+                      href={badge.url}
+                      target={badge.target || "_blank"}
+                      rel="noopener noreferrer"
+                      className="transition-transform hover:scale-105"
+                    >
+                      <img
+                        src={badge.src}
+                        alt={badge.alt || badge.title}
+                        className="h-12 object-cover rounded-md"
+                      />
+                    </a>
+                  ) : (
+                    <img
+                      key={index}
+                      src={badge.src}
+                      alt={badge.alt || badge.title}
+                      className="h-12 object-cover rounded-md"
+                    />
+                  )
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </section>

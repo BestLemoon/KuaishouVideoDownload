@@ -1,0 +1,18 @@
+<svg width="180" height="53" viewBox="0 0 180 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="180" height="53" rx="6" fill="#000000"/>
+  
+  <!-- Chrome icon -->
+  <g transform="translate(8, 8)">
+    <circle cx="18.5" cy="18.5" r="16" fill="white"/>
+    <circle cx="18.5" cy="18.5" r="10" fill="#4285F4"/>
+    <circle cx="18.5" cy="18.5" r="5" fill="white"/>
+    <path d="M18.5 2.5 L31.5 18.5 L18.5 34.5 Z" fill="#34A853"/>
+    <path d="M2.5 18.5 L18.5 2.5 L34.5 18.5 Z" fill="#FBBC04"/>
+    <path d="M18.5 34.5 L2.5 18.5 L18.5 2.5 Z" fill="#EA4335"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="45" y="16" fill="white" font-family="Arial, sans-serif" font-size="9" font-weight="400">Available on the</text>
+  <text x="45" y="30" fill="white" font-family="Arial, sans-serif" font-size="13" font-weight="500">Chrome Web Store</text>
+</svg> 
