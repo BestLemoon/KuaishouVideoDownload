@@ -67,6 +67,8 @@
   },
   "api_keys": {
     "title": "مفاتيح API",
+    "meta_title": "إدارة مفاتيح API - TwitterDown",
+    "create_api_key_meta_title": "إنشاء مفتاح API - TwitterDown",
     "tip": "يرجى الحفاظ على مفتاح API الخاص بك آمناً لتجنب التسريبات، استخدم Apple Shortcut لتنزيل الفيديوهات مباشرة من التطبيق",
     "premium_only_tip": "وظائف API متاحة فقط للمستخدمين المميزين. يرجى الترقية إلى الخطة المميزة للوصول إلى ميزات API",
     "no_api_keys": "لا توجد مفاتيح API",
@@ -256,6 +258,12 @@
       "requires_one_download": "يتطلب تحميل واحد",
       "one_download": "تحميل واحد"
     }
+  },
+  "download_result": {
+    "title": "نتيجة التحميل - TwitterDown"
+  },
+  "batch_download_result": {
+    "title": "نتائج التحميل المجمع - TwitterDown"
   },
   "api": {
     "auth": {

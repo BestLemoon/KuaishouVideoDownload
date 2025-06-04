@@ -67,6 +67,8 @@
   },
   "api_keys": {
     "title": "Claves API",
+    "meta_title": "Gestión de Claves API - TwitterDown",
+    "create_api_key_meta_title": "Crear Clave API - TwitterDown",
     "tip": "Mantenga su clave API segura para evitar filtraciones, use Apple Shortcut para descargar videos directamente desde la App",
     "premium_only_tip": "La funcionalidad API solo está disponible para usuarios premium. Actualice al plan premium para obtener acceso a la API",
     "no_api_keys": "No hay claves API",
@@ -256,6 +258,12 @@
       "requires_one_download": "Requiere 1 descarga",
       "one_download": "1 descarga"
     }
+  },
+  "download_result": {
+    "title": "Resultado de Descarga - TwitterDown"
+  },
+  "batch_download_result": {
+    "title": "Resultado de Descarga por Lotes - TwitterDown"
   },
   "api": {
     "auth": {

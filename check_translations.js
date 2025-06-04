@@ -2,8 +2,8 @@ const fs = require('fs');
 const path = require('path');
 
 // 读取中英文基准文件
-const zhData = JSON.parse(fs.readFileSync('i18n/pages/landing/zh.json', 'utf8'));
-const enData = JSON.parse(fs.readFileSync('i18n/pages/landing/en.json', 'utf8'));
+const zhData = JSON.parse(fs.readFileSync('i18n/messages/zh.json', 'utf8'));
+const enData = JSON.parse(fs.readFileSync('i18n/messages/en.json', 'utf8'));
 
 // 提取所有key的递归函数
 function extractKeys(obj, prefix = '') {
@@ -47,7 +47,7 @@ const missingReport = {};
 languageFiles.forEach(file => {
   const langCode = file.replace('.json', '');
   try {
-    const langData = JSON.parse(fs.readFileSync(`i18n/pages/landing/${file}`, 'utf8'));
+    const langData = JSON.parse(fs.readFileSync(`i18n/messages/${file}`, 'utf8'));
     const langKeys = new Set(extractKeys(langData));
     
     const missing = [...baseKeys].filter(key => !langKeys.has(key));

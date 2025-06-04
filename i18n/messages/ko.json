@@ -67,6 +67,8 @@
   },
   "api_keys": {
     "title": "API 키",
+    "meta_title": "API 키 관리 - TwitterDown",
+    "create_api_key_meta_title": "API 키 생성 - TwitterDown",
     "tip": "API 키를 안전하게 보관하세요, 단축키를 사용하여 App에서 바로 동영상을 다운로드하세요",
     "premium_only_tip": "API 기능은 프리미엄 사용자만 이용할 수 있습니다. API 액세스를 받으려면 프리미엄 플랜으로 업그레이드하세요",
     "no_api_keys": "API 키가 없습니다",
@@ -256,6 +258,12 @@
       "requires_one_download": "1 다운로드 필요",
       "one_download": "1 다운로드"
     }
+  },
+  "download_result": {
+    "title": "다운로드 결과 - TwitterDown"
+  },
+  "batch_download_result": {
+    "title": "일괄 다운로드 결과 - TwitterDown"
   },
   "api": {
     "auth": {

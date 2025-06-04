@@ -74,7 +74,23 @@
       }
     ],
     "show_happy_users": true,
-    "show_badge": false
+    "show_badge": false,
+    "badges": [
+      {
+        "title": "Chrome線上應用程式商店",
+        "alt": "Chrome線上應用程式商店下載",
+        "src": "/imgs/badges/chromewebstore.png",
+        "url": "https://chromewebstore.google.com/detail/twitterdown-%E5%8A%A9%E6%89%8B/ahgcdehhlnimoledkibalbdhnecfojbl",
+        "target": "_blank"
+      },
+      {
+        "title": "iOS捷徑",
+        "alt": "取得iOS捷徑",
+        "src": "/imgs/badges/iosshortcuts.png",
+        "url": "https://www.icloud.com/shortcuts/6c3b6d66235c4febb60744f3e6dc3a93",
+        "target": "_blank"
+      }
+    ]
   },
   "introduce": {
     "name": "introduce",
