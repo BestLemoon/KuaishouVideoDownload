@@ -131,7 +131,7 @@ export async function POST(req: Request) {
       if (product_id === "pro_yearly") {
         discounts = [
           {
-            promotion_code: "promo_1RVrJgHNlhKITw99JXXSh4oM",
+            promotion_code: "promo_1RWSRlHNlhKITw992MDMNlQO",
           },
         ];
         console.log("Applying promotion code for pro_yearly");
