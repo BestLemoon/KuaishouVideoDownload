@@ -44,44 +44,17 @@ export async function POST(request: Request) {
       return respErr(t('download.invalid_video_url'));
     }
 
-    // 用户认证检查
+    // 获取用户会话（用于记录下载历史，可选）
     const session = await auth();
-    if (!session?.user) {
-      return respErr(t('auth.login_required_download'));
-    }
-
-    // 获取用户UUID
-    let user_uuid = session.user.uuid;
-    if (!user_uuid && session.user.email) {
-      const { findUserByEmail } = await import('@/models/user');
-      const user = await findUserByEmail(session.user.email);
-      user_uuid = user?.uuid;
-    }
+    let user_uuid = null;
     
-    if (!user_uuid) {
-      return respErr(t('auth.login_required_download'));
-    }
-
-    // 计算所需积分
-    const required_credits = calculateRequiredCredits(videoInfo.resolution);
-    
-    // 扣除积分
-    const creditResult = await consumeCredits(
-      user_uuid,
-      required_credits,
-      `下载${videoInfo.resolution}视频`,
-      videoInfo.resolution,
-      videoInfo.url
-    );
-
-    if (!creditResult.success) {
-      if (creditResult.messageKey) {
-        const message = creditResult.messageKey === 'credits.insufficient' && creditResult.params
-          ? t(creditResult.messageKey, creditResult.params)
-          : t(creditResult.messageKey);
-        return respErr(message);
+    if (session?.user) {
+      user_uuid = session.user.uuid;
+      if (!user_uuid && session.user.email) {
+        const { findUserByEmail } = await import('@/models/user');
+        const user = await findUserByEmail(session.user.email);
+        user_uuid = user?.uuid;
       }
-      return respErr(creditResult.message || t('credits.deduction_failed'));
     }
 
     // 生成文件名
@@ -100,34 +73,37 @@ export async function POST(request: Request) {
         throw new Error(t('download.video_fetch_failed', { status: headResponse.status.toString() }));
       }
 
-      // 记录下载历史
-      const download_no = generateDownloadNo();
-      const contentLength = headResponse.headers.get('content-length');
-      
-      await createDownloadHistory({
-        download_no,
-        user_uuid,
-        video_url: videoInfo.url,
-        original_tweet_url: original_url || undefined,
-        video_resolution: videoInfo.resolution,
-        video_quality: videoInfo.quality,
-        file_name: filename,
-        file_size: contentLength ? parseInt(contentLength) : undefined,
-        credits_consumed: required_credits,
-        download_status: 'completed',
-        username: username || undefined,
-        status_id: status_id || undefined,
-        description: `下载${videoInfo.resolution}视频`
-      });
+      // 记录下载历史（仅当用户已登录时）
+      if (user_uuid) {
+        const download_no = generateDownloadNo();
+        const contentLength = headResponse.headers.get('content-length');
+        
+        await createDownloadHistory({
+          download_no,
+          user_uuid,
+          video_url: videoInfo.url,
+          original_tweet_url: original_url || undefined,
+          video_resolution: videoInfo.resolution,
+          video_quality: videoInfo.quality,
+          file_name: filename,
+          file_size: contentLength ? parseInt(contentLength) : undefined,
+          credits_consumed: 0, // 免费下载，无积分消耗
+          download_status: 'completed',
+          username: username || undefined,
+          status_id: status_id || undefined,
+          description: `免费下载${videoInfo.resolution}视频`
+        });
 
-      console.log(`[Credits] User ${user_uuid} consumed ${required_credits} credits for ${videoInfo.resolution} video, remaining: ${creditResult.balance?.available_credits}`);
-      console.log(`[Download] Download history recorded: ${download_no}`);
+        console.log(`[Download] Download history recorded: ${download_no} for user ${user_uuid}`);
+      } else {
+        console.log(`[Download] Anonymous download - ${videoInfo.resolution} video`);
+      }
 
       // 返回下载详情给前端
       return respData({
         videoUrl: videoInfo.url,
         filename: filename,
-        creditsRemaining: creditResult.balance?.available_credits || 0,
+        creditsRemaining: 0, // 免费模式下不显示积分
       });
 
     } catch (error) {

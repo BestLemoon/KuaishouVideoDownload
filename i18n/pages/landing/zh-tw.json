@@ -53,7 +53,7 @@
     "description": "TwitterDown是下載Twitter視頻的最快方式。<br/>只需點擊幾下，即可保存和分享您喜愛的Twitter內容。",
     "announcement": {
       "label": "新功能",
-      "title": "🎉 專業版限時免費一年！",
+      "title": "🎉 TwitterDown 現在完全免費！無需登錄即可使用",
       "url": "/zh-tw#pricing"
     },
     "tip": "🔥 全新重構，完全免費開始使用",
@@ -87,7 +87,7 @@
         "title": "iOS捷徑",
         "alt": "取得iOS捷徑",
         "src": "/imgs/badges/iosshortcuts.png",
-        "url": "https://www.icloud.com/shortcuts/6c3b6d66235c4febb60744f3e6dc3a93",
+        "url": "https://www.icloud.com/shortcuts/993ab7c1ef39448da4bee1bac546075b",
         "target": "_blank"
       }
     ]
@@ -242,185 +242,122 @@
   },
   "pricing": {
     "name": "pricing",
-    "label": "付費方案",
-    "title": "選擇適合您的方案",
-    "description": "靈活的價格方案，滿足不同用戶的需求。專業版和商業版支援月度和年度付款。",
+    "label": "功能對比",
+    "title": "完全免費使用，只有API訪問需要付費",
+    "description": "所有影片下載功能完全免費，無需註冊即可使用。只有開發者API訪問需要訂閱。",
     "groups": [
       {
-        "name": "month",
-        "label": "月繳"
+        "name": "individual",
+        "label": "個人用戶"
       },
       {
-        "name": "year",
-        "label": "年繳",
-        "badge": "節省17%"
+        "name": "developer",
+        "label": "開發者"
       }
     ],
     "items": [
       {
-        "title": "免費方案",
-        "description": "適合想要試用基本下載功能的休閒用戶",
-        "features_title": "包含",
+        "title": "免費功能",
+        "description": "所有用戶都可以免費享受的完整下載功能",
+        "label": "🎉 完全免費",
+        "features_title": "包含功能",
         "features": [
-          "每月 10 次標清影片下載",
-          "標準下載速度",
-          "基本下載記錄 (最近 5 筆)",
-          "可使用網頁應用程式",
-          "無批次下載功能",
-          "無 API 存取權限",
-          "無 iOS 捷徑"
+          "無限次數單個影片下載",
+          "無限次數批量影片下載",
+          "所有畫質影片下載（720p、1080p、4K等）",
+          "影片縮圖下載",
+          "音頻提取下載（MP3格式）",
+          "推文多媒體打包下載",
+          "iOS捷徑支援",
+          "無需註冊即可使用",
+          "登入用戶可保存下載歷史"
         ],
         "interval": "month",
         "amount": 0,
         "currency": "USD",
-        "price": "$0",
+        "price": "免費",
         "original_price": "",
-        "unit": "/ 月",
-        "is_featured": false,
-        "tip": "適合基本使用",
+        "unit": "",
+        "is_featured": true,
+        "tip": "永久免費，無任何限制",
         "button": {
-          "title": "免費開始",
+          "title": "立即開始使用",
           "url": "/#usage",
           "icon": "RiDownloadCloud2Fill"
         },
         "product_id": "free",
-        "product_name": "TwitterDown 免費方案",
+        "product_name": "TwitterDown免費功能",
         "credits": 0,
-        "valid_months": 1
-      },
-      {
-        "title": "專業方案",
-        "description": "適合經常下載影片的個人和內容創作者",
-        "label": "✨ 最受歡迎",
-        "features_title": "包含",
-        "features": [
-          "每月 150 次高清/標清影片下載",
-          "高清影片下載 (720p+, 1080p 及以上)",
-          "批次下載功能 (一次處理多個影片連結)",
-          "更快的下載速度 (優先處理佇列)",
-          "完整的下載記錄",
-          "一鍵下載推文多媒體包",
-          "下載影片縮圖",
-          "支援 iOS 捷徑",
-          "優先體驗新功能"
-        ],
-        "interval": "month",
-        "amount": 99,
-        "currency": "USD",
-        "price": "$0.99",
-        "original_price": "$2.99",
-        "unit": "/ 月",
-        "is_featured": true,
-        "tip": "最受歡迎的選擇",
-        "button": {
-          "title": "升級到專業版",
-          "url": "/#pricing",
-          "icon": "RiVipCrownLine"
-        },
-        "product_id": "pro_monthly",
-        "product_name": "TwitterDown 專業方案 (月繳)",
-        "credits": 150,
         "valid_months": 1,
-        "group": "month"
+        "group": "individual"
       },
       {
-        "title": "專業方案",
-        "description": "適合經常下載影片的個人和內容創作者",
-        "label": "✨ 最受歡迎",
-        "features_title": "包含",
+        "title": "API 開發者方案",
+        "description": "為需要程式化存取的開發者和企業提供 API 介面",
+        "features_title": "包含功能",
         "features": [
-          "每月 150 次高清/標清影片下載",
-          "高清影片下載 (720p+, 1080p 及以上)",
-          "批次下載功能 (一次處理多個影片連結)",
-          "更快的下載速度 (優先處理佇列)",
-          "完整的下載記錄",
-          "一鍵下載推文多媒體包",
-          "下載影片縮圖",
-          "支援 iOS 捷徑",
-          "優先體驗新功能"
-        ],
-        "interval": "year",
-        "amount": 990,
-        "currency": "USD",
-        "price": "$9.9",
-        "original_price": "$19.9",
-        "unit": "/ 年",
-        "is_featured": true,
-        "tip": "相當於每月 $2.50，節省約 17%",
-        "button": {
-          "title": "升級到專業版",
-          "url": "/#pricing",
-          "icon": "RiVipCrownLine"
-        },
-        "product_id": "pro_yearly",
-        "product_name": "TwitterDown 專業方案 (年繳)",
-        "credits": 1800,
-        "valid_months": 12,
-        "group": "year"
-      },
-      {
-        "title": "商業方案",
-        "description": "適合需要 API 進行批次和自動化操作的開發者、企業和進階用戶",
-        "features_title": "包含",
-        "features": [
-          "包含所有專業方案功能",
-          "完整的 API 存取權限",
-          "每月高達 5,000 次 API 呼叫",
-          "專屬技術支援 (更快速回應)",
-          "更高的同時下載數量",
-          "支援 iOS 捷徑",
-          "可為更高用量提供客製化企業方案"
+          "包含所有免費功能",
+          "RESTful API 存取",
+          "每月 5,000 次 API 呼叫",
+          "完整的 API 文件和程式碼範例",
+          "JSON 格式資料回傳",
+          "批次處理 API 端點",
+          "專屬技術支援",
+          "更高的請求頻率限制",
+          "伺服器優先處理佇列"
         ],
         "interval": "month",
-        "amount": 3499,
+        "amount": 999,
         "currency": "USD",
-        "price": "$34.99",
+        "price": "$9.99",
         "original_price": "",
         "unit": "/ 月",
         "is_featured": false,
-        "tip": "適合企業和開發者",
+        "tip": "適合開發者和企業整合",
         "button": {
-          "title": "取得商業版存取權",
+          "title": "訂閱 API 服務",
           "url": "/#pricing",
-          "icon": "RiBriefcase4Line"
+          "icon": "RiCodeBoxLine"
         },
-        "product_id": "business_monthly",
-        "product_name": "TwitterDown 商業方案 (月繳)",
+        "product_id": "api_monthly",
+        "product_name": "TwitterDown API 開發者方案 (月繳)",
         "credits": 5000,
         "valid_months": 1,
-        "group": "month"
+        "group": "developer"
       },
       {
-        "title": "商業方案",
-        "description": "適合需要 API 進行批次和自動化操作的開發者、企業和進階用戶",
-        "features_title": "包含",
+        "title": "API 開發者方案",
+        "description": "為需要程式化存取的開發者和企業提供 API 介面",
+        "features_title": "包含功能",
         "features": [
-          "包含所有專業方案功能",
-          "完整的 API 存取權限",
-          "每月高達 5,000 次 API 呼叫",
-          "專屬技術支援 (更快速回應)",
-          "更高的同時下載數量",
-          "支援 iOS 捷徑",
-          "可為更高用量提供客製化企業方案"
+          "包含所有免費功能",
+          "RESTful API 存取",
+          "每月 5,000 次 API 呼叫",
+          "完整的 API 文件和程式碼範例",
+          "JSON 格式資料回傳",
+          "批次處理 API 端點",
+          "專屬技術支援",
+          "更高的請求頻率限制",
+          "伺服器優先處理佇列"
         ],
         "interval": "year",
-        "amount": 34999,
+        "amount": 9999,
         "currency": "USD",
-        "price": "$349.99",
-        "original_price": "$419.88",
+        "price": "$99.99",
+        "original_price": "$119.88",
         "unit": "/ 年",
         "is_featured": false,
-        "tip": "相當於每月 $29.17，節省約 17%",
+        "tip": "每年節省 $19.89，相當於 $8.33/月",
         "button": {
-          "title": "取得商業版存取權",
+          "title": "訂閱 API 服務",
           "url": "/#pricing",
-          "icon": "RiBriefcase4Line"
+          "icon": "RiCodeBoxLine"
         },
-        "product_id": "business_yearly",
-        "product_name": "TwitterDown 商業方案 (年繳)",
+        "product_id": "api_yearly",
+        "product_name": "TwitterDown API 開發者方案 (年繳)",
         "credits": 60000,
         "valid_months": 12,
-        "group": "year"
+        "group": "developer"
       }
     ]
   },
@@ -442,7 +379,7 @@
       {
         "title": "陳明",
         "label": "數字營銷專家",
-        "description": "專業版的批量下載功能對我們的營銷團隊來說是一個遊戲規則改變者。我們可以輕松存檔多個視頻進行分析。",
+        "description": "TwitterDown 的免費批次下載功能對我們的營銷團隊來說是遊戲規則的改變者。我們可以輕鬆存檔多個影片進行分析，而且完全免費。",
         "image": {
           "src": "/imgs/users/2.png"
         }
@@ -501,7 +438,7 @@
       },
       {
         "title": "我可以下載的視頻數量有限制嗎？",
-        "description": "免費用戶每天可以下載最多5個視頻。專業版用戶可以進行批量下載。商業版用戶享受完全無限下載，沒有任何限制。"
+        "description": "TwitterDown 完全免費且無限制下載！所有用戶都可以無限制地下載任意數量的影片，無論是單次下載還是批次下載，都支援所有清晰度（720p、1080p、4K等）。"
       },
       {
         "title": "我可以下載私人Twitter視頻嗎？",

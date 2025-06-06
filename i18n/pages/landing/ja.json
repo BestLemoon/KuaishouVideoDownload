@@ -53,7 +53,7 @@
       "description": "TwitterDownはTwitter動画をダウンロードする最速の方法です。<br/>数クリックでお気に入りのTwitterコンテンツを保存して共有できます。",
       "announcement": {
         "label": "NEW",
-        "title": "🎉 Proバージョンが1年間無料！",
+        "title": "🎉 TwitterDownは今も無料です！",
         "url": "/#pricing"
       },
       "tip": "🔥 新しいバージョン、完全に無料で開始できます",
@@ -87,7 +87,7 @@
         "title": "iOSショートカット",
         "alt": "iOSショートカットで利用可能",
         "src": "/imgs/badges/iosshortcuts.png",
-        "url": "https://www.icloud.com/shortcuts/6c3b6d66235c4febb60744f3e6dc3a93",
+        "url": "https://www.icloud.com/shortcuts/993ab7c1ef39448da4bee1bac546075b",
         "target": "_blank"
       }
     ]
@@ -241,185 +241,122 @@
     },
     "pricing": {
       "name": "pricing",
-      "label": "料金プラン",
-      "title": "料金プランを選択",
-      "description": "さまざまなユーザーのニーズに対応する柔軟な料金プラン。ProプランとBusinessプランは月額・年額支払いに対応。",
+      "label": "機能比較",
+      "title": "完全無料で使用、API アクセスのみ有料",
+      "description": "すべての動画ダウンロード機能は完全無料で、登録不要です。開発者向けAPIアクセスのみサブスクリプションが必要です。",
       "groups": [
         {
-          "name": "month",
-          "label": "月額"
+          "name": "individual",
+          "label": "個人ユーザー"
         },
         {
-          "name": "year",
-          "label": "年額",
-          "badge": "17%節約"
+          "name": "developer",
+          "label": "開発者"
         }
       ],
       "items": [
         {
-          "title": "無料プラン",
-          "description": "基本的なダウンロード機能をお試しいただけるカジュアルユーザー向け",
-          "features_title": "含まれるもの",
+          "title": "無料機能",
+          "description": "すべてのユーザーが無料で楽しめる完全なダウンロード機能",
+          "label": "🎉 完全無料",
+          "features_title": "含まれる機能",
           "features": [
-            "月10回のSD動画ダウンロード",
-            "標準ダウンロード速度",
-            "基本的なダウンロード履歴（最新5件）",
-            "ウェブアプリアクセス",
-            "バッチダウンロード不可",
-            "APIアクセス不可",
-            "iOSショートカット不可"
+            "無制限の単一動画ダウンロード",
+            "無制限のバッチ動画ダウンロード",
+            "すべての画質の動画ダウンロード（720p、1080p、4K等）",
+            "動画サムネイルダウンロード",
+            "音声抽出ダウンロード（MP3形式）",
+            "ツイートマルチメディアパッケージダウンロード",
+            "iOSショートカットサポート",
+            "登録不要",
+            "ログインユーザーのダウンロード履歴"
           ],
           "interval": "month",
           "amount": 0,
           "currency": "USD",
-          "price": "$0",
+          "price": "無料",
           "original_price": "",
-          "unit": "/ 月",
-          "is_featured": false,
-          "tip": "基本利用に最適",
+          "unit": "",
+          "is_featured": true,
+          "tip": "永久無料、制限なし",
           "button": {
-            "title": "無料で開始",
+            "title": "今すぐ使用開始",
             "url": "/#usage",
             "icon": "RiDownloadCloud2Fill"
           },
           "product_id": "free",
-          "product_name": "TwitterDown 無料プラン",
+          "product_name": "TwitterDown 無料機能",
           "credits": 0,
-          "valid_months": 1
-        },
-        {
-          "title": "Proプラン",
-          "description": "頻繁に動画をダウンロードする個人やコンテンツクリエイター向け",
-          "label": "✨ 最も人気",
-          "features_title": "含まれるもの",
-          "features": [
-            "月150回のHD/SD動画ダウンロード",
-            "HD動画ダウンロード（720p+、1080p以上）",
-            "バッチダウンロード機能（複数の動画リンクを一度に）",
-            "高速ダウンロード（優先処理キュー）",
-            "完全なダウンロード履歴",
-            "ツイートマルチメディア一括パッケージダウンロード",
-            "動画サムネイルダウンロード",
-            "iOSショートカットサポート",
-            "新機能への優先アクセス"
-          ],
-          "interval": "month",
-          "amount": 99,
-          "currency": "USD",
-          "price": "$0.99",
-          "original_price": "$2.99",
-          "unit": "/ 月",
-          "is_featured": true,
-          "tip": "最も人気のある選択肢",
-          "button": {
-            "title": "Proにアップグレード",
-            "url": "/#pricing",
-            "icon": "RiVipCrownLine"
-          },
-          "product_id": "pro_monthly",
-          "product_name": "TwitterDown Proプラン（月額）",
-          "credits": 150,
           "valid_months": 1,
-          "group": "month"
+          "group": "individual"
         },
         {
-          "title": "Proプラン",
-          "description": "頻繁に動画をダウンロードする個人やコンテンツクリエイター向け",
-          "label": "✨ 最も人気",
-          "features_title": "含まれるもの",
+          "title": "API開発者版",
+          "description": "プログラマティックアクセスが必要な開発者や企業向けのAPIインターフェース",
+          "features_title": "含まれる機能",
           "features": [
-            "月150回のHD/SD動画ダウンロード",
-            "HD動画ダウンロード（720p+、1080p以上）",
-            "バッチダウンロード機能（複数の動画リンクを一度に）",
-            "高速ダウンロード（優先処理キュー）",
-            "完全なダウンロード履歴",
-            "ツイートマルチメディア一括パッケージダウンロード",
-            "動画サムネイルダウンロード",
-            "iOSショートカットサポート",
-            "新機能への優先アクセス"
-          ],
-          "interval": "year",
-          "amount": 990,
-          "currency": "USD",
-          "price": "$9.9",
-          "original_price": "$19.9",
-          "unit": "/ 年",
-          "is_featured": true,
-          "tip": "月額$2.50相当、約17%節約",
-          "button": {
-            "title": "Proにアップグレード",
-            "url": "/#pricing",
-            "icon": "RiVipCrownLine"
-          },
-          "product_id": "pro_yearly",
-          "product_name": "TwitterDown Proプラン（年額）",
-          "credits": 1800,
-          "valid_months": 12,
-          "group": "year"
-        },
-        {
-          "title": "Businessプラン",
-          "description": "バッチ・自動化操作にAPIが必要な開発者、企業、パワーユーザー向け",
-          "features_title": "含まれるもの",
-          "features": [
-            "Proプランの全機能を含む",
-            "完全なAPIアクセス",
-            "月最大5,000回のAPI呼び出し",
-            "専用技術サポート（迅速な対応）",
-            "より高い同時ダウンロード数",
-            "iOSショートカットサポート",
-            "より高い使用量に対応するカスタムエンタープライズプラン"
+            "すべての無料機能が含まれます",
+            "RESTful APIアクセス",
+            "月5,000回のAPI呼び出し",
+            "完全なAPIドキュメントとサンプルコード",
+            "JSON形式データ返却",
+            "バッチ処理APIエンドポイント",
+            "専用技術サポート",
+            "高いリクエストレート制限",
+            "優先サーバー処理キュー"
           ],
           "interval": "month",
-          "amount": 3499,
+          "amount": 999,
           "currency": "USD",
-          "price": "$34.99",
+          "price": "$9.99",
           "original_price": "",
           "unit": "/ 月",
           "is_featured": false,
-          "tip": "企業や開発者に最適",
+          "tip": "開発者や企業統合に最適",
           "button": {
-            "title": "Businessアクセスを取得",
+            "title": "APIサービスを購読",
             "url": "/#pricing",
-            "icon": "RiBriefcase4Line"
+            "icon": "RiCodeBoxLine"
           },
-          "product_id": "business_monthly",
-          "product_name": "TwitterDown Businessプラン（月額）",
+          "product_id": "api_monthly",
+          "product_name": "TwitterDown API開発者版（月額）",
           "credits": 5000,
           "valid_months": 1,
-          "group": "month"
+          "group": "developer"
         },
         {
-          "title": "Businessプラン",
-          "description": "バッチ・自動化操作にAPIが必要な開発者、企業、パワーユーザー向け",
-          "features_title": "含まれるもの",
+          "title": "API開発者版",
+          "description": "プログラマティックアクセスが必要な開発者や企業向けのAPIインターフェース",
+          "features_title": "含まれる機能",
           "features": [
-            "Proプランの全機能を含む",
-            "完全なAPIアクセス",
-            "月最大5,000回のAPI呼び出し",
-            "専用技術サポート（迅速な対応）",
-            "より高い同時ダウンロード数",
-            "iOSショートカットサポート",
-            "より高い使用量に対応するカスタムエンタープライズプラン"
+            "すべての無料機能が含まれます",
+            "RESTful APIアクセス",
+            "月5,000回のAPI呼び出し",
+            "完全なAPIドキュメントとサンプルコード",
+            "JSON形式データ返却",
+            "バッチ処理APIエンドポイント",
+            "専用技術サポート",
+            "高いリクエストレート制限",
+            "優先サーバー処理キュー"
           ],
           "interval": "year",
-          "amount": 34999,
+          "amount": 9999,
           "currency": "USD",
-          "price": "$349.99",
-          "original_price": "$419.88",
+          "price": "$99.99",
+          "original_price": "$119.88",
           "unit": "/ 年",
           "is_featured": false,
-          "tip": "月額$29.17相当、約17%節約",
+          "tip": "年間$19.89節約、月額$8.33相当",
           "button": {
-            "title": "Businessアクセスを取得",
+            "title": "APIサービスを購読",
             "url": "/#pricing",
-            "icon": "RiBriefcase4Line"
+            "icon": "RiCodeBoxLine"
           },
-          "product_id": "business_yearly",
-          "product_name": "TwitterDown Businessプラン（年額）",
+          "product_id": "api_yearly",
+          "product_name": "TwitterDown API開発者版（年額）",
           "credits": 60000,
           "valid_months": 12,
-          "group": "year"
+          "group": "developer"
         }
       ]
     },
@@ -500,7 +437,7 @@
         },
         {
           "title": "ダウンロードできる動画の数に制限はありますか？",
-          "description": "無料ユーザーは1日あたり最大5本の動画をダウンロードできます。Proユーザーは一括ダウンロードを実行できます。ビジネスユーザーは制限なしで完全に無制限のダウンロードを楽しむことができます。"
+          "description": "一切制限なし！すべてのユーザーは無制限の単一動画とバッチダウンロードができ、すべての解像度（720p、1080p、4Kなど）をサポートします。APIアクセスのみ有料サブスクリプションが必要です。"
         },
         {
           "title": "プライベートなTwitter動画をダウンロードできますか？",

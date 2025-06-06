@@ -126,23 +126,6 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
   };
 
   const handleDownload = async (video: VideoInfo, resultItem: BatchResult) => {
-    if (!user) {
-      setShowSignModal(true);
-      return;
-    }
-
-    const isHD = isHighDefinition(video.resolution, resultItem.videos);
-    
-    // 检查是否有权限下载高清视频
-    if (isHD && !canDownloadHD()) {
-      toast.error(t('hd_requires_paid_user'));
-      return;
-    }
-
-    if (userCredits && userCredits.available_credits < 1) {
-      toast.error(t('insufficient_downloads'));
-      return;
-    }
 
     const downloadKey = video.downloadUrl;
     setDownloadingItems(prev => new Set(prev).add(downloadKey));
@@ -221,16 +204,6 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
       return;
     }
 
-    if (!user) {
-      setShowSignModal(true);
-      return;
-    }
-
-    if (userCredits && userCredits.available_credits < 1) {
-      toast.error(t('insufficient_downloads'));
-      return;
-    }
-
     const downloadKey = `thumbnail-${result.statusId}`;
     setDownloadingItems(prev => new Set(prev).add(downloadKey));
 
@@ -265,15 +238,6 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
   };
 
   const handleAudioDownload = async (result: BatchResult) => {
-    if (!user) {
-      setShowSignModal(true);
-      return;
-    }
-
-    if (userCredits && userCredits.available_credits < 1) {
-      toast.error(t('insufficient_downloads'));
-      return;
-    }
 
     const downloadKey = `audio-${result.statusId}`;
     setDownloadingItems(prev => new Set(prev).add(downloadKey));
@@ -386,21 +350,7 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
           </Badge>
         </div>
 
-        {/* User Credits */}
-        {user && userCredits && (
-          <Card className="mb-6">
-            <CardContent className="flex items-center justify-between p-4">
-              <div className="flex items-center gap-2">
-                <Icon name="RiDownloadLine" className="w-5 h-5 text-blue-500" />
-                <span className="font-medium">{t('available_downloads')}: {userCredits.available_credits}</span>
-              </div>
-              <Button variant="outline" size="sm" onClick={() => window.location.href = '/#pricing'}>
-                <Icon name="RiAddLine" className="w-4 h-4 mr-1" />
-                {t('top_up_downloads')}
-              </Button>
-            </CardContent>
-          </Card>
-        )}
+
 
         {/* Successful Results */}
         {batchData.results.length > 0 && (
@@ -461,7 +411,7 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
                             variant="ghost"
                             size="sm"
                             onClick={() => handleThumbnailDownload(result)}
-                            disabled={downloadingItems.has(`thumbnail-${result.statusId}`) || !user || (userCredits?.available_credits || 0) < 1}
+                            disabled={downloadingItems.has(`thumbnail-${result.statusId}`)}
                             className="h-6 px-2 text-xs"
                           >
                             <Icon name="RiImageLine" className="w-3 h-3 mr-1" />
@@ -485,8 +435,8 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
                     {result.videos.map((video, videoIndex) => {
                       const isHD = isHighDefinition(video.resolution, result.videos);
                       const isDownloading = downloadingItems.has(video.downloadUrl);
-                      const canDownload = user && (userCredits && userCredits.available_credits >= 1);
-                      const canDownloadThisHD = canDownload && (isHD ? canDownloadHD() : true);
+                      const canDownload = true;
+                      const canDownloadThisHD = true;
                       
                       return (
                         <Card key={videoIndex} className={`border-2 transition-all duration-200 ${
@@ -503,22 +453,17 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
                                     <Icon name={isHD ? 'RiHdLine' : 'RiSdCardLine'} className="w-3 h-3 mr-1" />
                                     {isHD ? t('quality_hd') : t('quality_sd')}
                                   </Badge>
-                                  {isHD && !canDownloadHD() && (
-                                    <Badge variant="outline" className="text-xs text-yellow-600 border-yellow-300">
-                                      <Icon name="RiVipCrownLine" className="w-3 h-3 mr-1" />
-                                      {t('paid_badge')}
-                                    </Badge>
-                                  )}
+
                                 </div>
                                 <p className="text-sm text-muted-foreground">
-                                  {t('requires_one_download')}
+                                  {t('format')}: MP4
                                 </p>
                               </div>
                             </div>
                             
                             <Button
                               onClick={() => handleDownload(video, result)}
-                              disabled={!canDownloadThisHD || isDownloading}
+                              disabled={isDownloading}
                               className="w-full"
                               size="sm"
                             >
@@ -527,19 +472,6 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
                                   <Icon name="RiLoader4Line" className="w-4 h-4 mr-2 animate-spin" />
                                   {t('downloading')}
                                 </>
-                              ) : !canDownload ? (
-                                <>
-                                  <Icon name="RiLockLine" className="w-4 h-4 mr-2" />
-                                  {user ? t('insufficient_downloads_short', { 
-                                    available: userCredits?.available_credits || 0
-                                  }) : t('login_required')}
-                                </>
-                              ) : isHD && !canDownloadHD() ? (
-                                <>
-                                  <Icon name="RiLockLine" className="w-4 h-4 mr-2 text-yellow-500" />
-                                  {t('paid_users_exclusive')}
-                                </>
-                              
                               ) : (
                                 <>
                                   <Icon name="RiDownloadCloud2Fill" className="w-4 h-4 mr-2" />
@@ -553,11 +485,7 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
                     })}
 
                     {/* Audio Download Card - Always last */}
-                    <Card className={`border-2 transition-all duration-200 ${
-                      user && (userCredits?.available_credits || 0) >= 1
-                        ? 'hover:border-primary/50 hover:shadow-md' 
-                        : 'opacity-75 border-muted'
-                    }`}>
+                    <Card className="border-2 transition-all duration-200 hover:border-primary/50 hover:shadow-md">
                       <CardContent className="p-4 space-y-3">
                         <div className="flex items-center justify-between">
                           <div className="space-y-1">
@@ -569,14 +497,14 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
                               </Badge>
                             </div>
                             <p className="text-sm text-muted-foreground">
-                              {t('requires_one_download')}
+                              {t('format')}: MP3
                             </p>
                           </div>
                         </div>
                         
                         <Button
                           onClick={() => handleAudioDownload(result)}
-                          disabled={downloadingItems.has(`audio-${result.statusId}`) || !user || (userCredits?.available_credits || 0) < 1}
+                          disabled={downloadingItems.has(`audio-${result.statusId}`)}
                           className="w-full"
                           size="sm"
                         >
@@ -584,13 +512,6 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
                             <>
                               <Icon name="RiLoader4Line" className="w-4 h-4 mr-2 animate-spin" />
                               {t('downloading')}
-                            </>
-                          ) : !user || (userCredits?.available_credits || 0) < 1 ? (
-                            <>
-                              <Icon name="RiLockLine" className="w-4 h-4 mr-2" />
-                              {user ? t('insufficient_downloads_short', { 
-                                available: userCredits?.available_credits || 0
-                              }) : t('login_required')}
                             </>
                           ) : (
                             <>

@@ -59,22 +59,17 @@ export async function POST(request: Request) {
       return respErr(t('download.invalid_video_url'));
     }
 
-    // 用户认证检查
+    // 获取用户会话（用于记录下载历史，可选）
     const session = await auth();
-    if (!session?.user) {
-      return respErr(t('auth.login_required_download'));
-    }
-
-    // 获取用户UUID
-    let user_uuid = session.user.uuid;
-    if (!user_uuid && session.user.email) {
-      const { findUserByEmail } = await import('@/models/user');
-      const user = await findUserByEmail(session.user.email);
-      user_uuid = user?.uuid;
-    }
+    let user_uuid = null;
     
-    if (!user_uuid) {
-      return respErr(t('auth.login_required_download'));
+    if (session?.user) {
+      user_uuid = session.user.uuid;
+      if (!user_uuid && session.user.email) {
+        const { findUserByEmail } = await import('@/models/user');
+        const user = await findUserByEmail(session.user.email);
+        user_uuid = user?.uuid;
+      }
     }
 
     // 获取视频信息
@@ -89,25 +84,7 @@ export async function POST(request: Request) {
       return respErr(t('download.no_video_found'));
     }
 
-    // 扣除积分（音频下载也需要1个积分）
-    const required_credits = 1;
-    const creditResult = await consumeCredits(
-      user_uuid,
-      required_credits,
-      '下载音频',
-      'MP3',
-      lowestQualityVideo.url
-    );
-
-    if (!creditResult.success) {
-      if (creditResult.messageKey) {
-        const message = creditResult.messageKey === 'credits.insufficient' && creditResult.params
-          ? t(creditResult.messageKey, creditResult.params)
-          : t(creditResult.messageKey);
-        return respErr(message);
-      }
-      return respErr(creditResult.message || t('credits.deduction_failed'));
-    }
+    // 免费音频下载，无需扣除积分
 
     // 生成音频文件名
     const tweetId = status_id || original_url.split('/status/')[1]?.split('?')[0] || 'audio';
@@ -119,26 +96,29 @@ export async function POST(request: Request) {
     // 构建音频下载URL
     const audioDownloadUrl = `https://s1.twcdn.net/download-mp3?file=${jwtToken}`;
 
-    // 记录下载历史
-    const download_no = generateDownloadNo();
-    await createDownloadHistory({
-      download_no,
-      user_uuid,
-      video_url: lowestQualityVideo.url,
-      original_tweet_url: original_url,
-      video_resolution: 'MP3',
-      video_quality: 'Audio',
-      file_name: audioFilename,
-      file_size: undefined, // 音频文件大小未知
-      credits_consumed: required_credits,
-      download_status: 'completed',
-      username: username || undefined,
-      status_id: status_id || undefined,
-      description: '下载音频'
-    });
+    // 记录下载历史（仅当用户已登录时）
+    if (user_uuid) {
+      const download_no = generateDownloadNo();
+      await createDownloadHistory({
+        download_no,
+        user_uuid,
+        video_url: lowestQualityVideo.url,
+        original_tweet_url: original_url,
+        video_resolution: 'MP3',
+        video_quality: 'Audio',
+        file_name: audioFilename,
+        file_size: undefined, // 音频文件大小未知
+        credits_consumed: 0, // 免费下载，无积分消耗
+        download_status: 'completed',
+        username: username || undefined,
+        status_id: status_id || undefined,
+        description: '免费下载音频'
+      });
 
-    console.log(`[Credits] User ${user_uuid} consumed ${required_credits} credits for audio download, remaining: ${creditResult.balance?.available_credits}`);
-    console.log(`[Download] Audio download history recorded: ${download_no}`);
+      console.log(`[Download] Audio download history recorded: ${download_no} for user ${user_uuid}`);
+    } else {
+      console.log(`[Download] Anonymous audio download`);
+    }
 
     // 尝试直接下载音频并返回blob
     try {
@@ -157,7 +137,7 @@ export async function POST(request: Request) {
       return respData({
         audioBlob: Array.from(new Uint8Array(audioBlob)),
         filename: audioFilename,
-        creditsRemaining: creditResult.balance?.available_credits || 0,
+        creditsRemaining: 0, // 免费模式下不显示积分
       });
 
     } catch (error) {
@@ -166,7 +146,7 @@ export async function POST(request: Request) {
       return respData({
         audioUrl: audioDownloadUrl,
         filename: audioFilename,
-        creditsRemaining: creditResult.balance?.available_credits || 0,
+        creditsRemaining: 0, // 免费模式下不显示积分
       });
     }
 

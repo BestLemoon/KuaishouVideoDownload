@@ -53,7 +53,7 @@
       "description": "TwitterDown은 트위터 비디오를 다운로드하는 가장 빠른 방법입니다.<br/>몇 번의 클릭만으로 좋아하는 트위터 콘텐츠를 저장하고 공유하세요.",
       "announcement": {
         "label": "새로운 기능",
-        "title": "🎉 Pro 버전 1년간 무료!",
+        "title": "🎉 TwitterDown 이제 완전 무료! 로그인 없이 사용 가능",
         "url": "/#pricing"
       },
       "tip": "🔥 새로운 버전, 완전히 무료로 시작",
@@ -87,7 +87,7 @@
         "title": "iOS 단축어",
         "alt": "iOS 단축어에서 이용 가능",
         "src": "/imgs/badges/iosshortcuts.png",
-        "url": "https://www.icloud.com/shortcuts/6c3b6d66235c4febb60744f3e6dc3a93",
+        "url": "https://www.icloud.com/shortcuts/993ab7c1ef39448da4bee1bac546075b",
         "target": "_blank"
       }
     ]
@@ -241,185 +241,122 @@
     },
     "pricing": {
       "name": "pricing",
-      "label": "요금제",
-      "title": "요금제를 선택하세요",
-      "description": "다양한 사용자 요구에 맞는 유연한 요금제. Pro 및 Business 플랜은 월간 및 연간 결제를 지원합니다.",
+      "label": "기능 비교",
+      "title": "완전 무료 사용, API 액세스만 유료",
+      "description": "모든 비디오 다운로드 기능이 완전 무료이며, 등록이 필요하지 않습니다. 개발자용 API 액세스만 구독이 필요합니다.",
       "groups": [
         {
-          "name": "month",
-          "label": "월간"
+          "name": "individual",
+          "label": "개인 사용자"
         },
         {
-          "name": "year",
-          "label": "연간",
-          "badge": "17% 절약"
+          "name": "developer",
+          "label": "개발자"
         }
       ],
       "items": [
         {
-          "title": "무료 플랜",
-          "description": "기본 다운로드 기능을 체험하고 싶은 일반 사용자용",
-          "features_title": "포함",
+          "title": "무료 기능",
+          "description": "모든 사용자가 무료로 즐길 수 있는 완전한 다운로드 기능",
+          "label": "🎉 완전 무료",
+          "features_title": "포함된 기능",
           "features": [
-            "월 10회 SD 동영상 다운로드",
-            "표준 다운로드 속도",
-            "기본 다운로드 기록 (최근 5개 기록)",
-            "웹 앱 액세스",
-            "일괄 다운로드 불가",
-            "API 액세스 불가",
-            "iOS 단축어 불가"
+            "무제한 개별 비디오 다운로드",
+            "무제한 일괄 비디오 다운로드",
+            "모든 화질의 비디오 다운로드 (720p, 1080p, 4K 등)",
+            "비디오 썸네일 다운로드",
+            "오디오 추출 다운로드 (MP3 형식)",
+            "트윗 멀티미디어 패키지 다운로드",
+            "iOS 단축어 지원",
+            "등록 필요 없음",
+            "로그인한 사용자의 다운로드 기록"
           ],
           "interval": "month",
-          "amount": 0,  
+          "amount": 0,
           "currency": "USD",
-          "price": "$0",
+          "price": "무료",
           "original_price": "",
-          "unit": "/ 월",
-          "is_featured": false,
-          "tip": "기본 사용에 완벽",
+          "unit": "",
+          "is_featured": true,
+          "tip": "영구 무료, 제한 없음",
           "button": {
-            "title": "무료로 시작하기",
+            "title": "지금 사용 시작",
             "url": "/#usage",
             "icon": "RiDownloadCloud2Fill"
           },
           "product_id": "free",
-          "product_name": "TwitterDown 무료 플랜",
+          "product_name": "TwitterDown 무료 기능",
           "credits": 0,
-          "valid_months": 1
-        },
-        {
-          "title": "Pro 플랜",
-          "description": "동영상을 자주 다운로드하는 개인 및 콘텐츠 크리에이터용",
-          "label": "✨ 가장 인기",
-          "features_title": "포함",
-          "features": [
-            "월 150회 HD/SD 동영상 다운로드",
-            "HD 동영상 다운로드 (720p+, 1080p 이상)",
-            "일괄 다운로드 기능 (여러 동영상 링크를 한 번에)",
-            "더 빠른 다운로드 속도 (우선 처리 대기열)",
-            "완전한 다운로드 기록",
-            "트윗 멀티미디어 원클릭 패키지 다운로드",
-            "동영상 썸네일 다운로드",
-            "iOS 단축어 지원",
-            "새로운 기능에 대한 우선 액세스"
-          ],
-          "interval": "month",
-          "amount": 99,
-          "currency": "USD",
-          "price": "$0.99",
-          "original_price": "$2.99",
-          "unit": "/ 월",
-          "is_featured": true,
-          "tip": "가장 인기 있는 선택",
-          "button": {
-            "title": "Pro로 업그레이드",
-            "url": "/#pricing",
-            "icon": "RiVipCrownLine"
-          },
-          "product_id": "pro_monthly",
-          "product_name": "TwitterDown Pro 플랜 (월간)",
-          "credits": 150,
           "valid_months": 1,
-          "group": "month"
+          "group": "individual"
         },
         {
-          "title": "Pro 플랜",
-          "description": "동영상을 자주 다운로드하는 개인 및 콘텐츠 크리에이터용",
-          "label": "✨ 가장 인기",
-          "features_title": "포함",
+          "title": "API 개발자 플랜",
+          "description": "프로그래밍 방식 액세스가 필요한 개발자와 기업을 위한 API 인터페이스",
+          "features_title": "포함된 기능",
           "features": [
-            "월 150회 HD/SD 동영상 다운로드",
-            "HD 동영상 다운로드 (720p+, 1080p 이상)",
-            "일괄 다운로드 기능 (여러 동영상 링크를 한 번에)",
-            "더 빠른 다운로드 속도 (우선 처리 대기열)",
-            "완전한 다운로드 기록",
-            "트윗 멀티미디어 원클릭 패키지 다운로드",
-            "동영상 썸네일 다운로드",
-            "iOS 단축어 지원",
-            "새로운 기능에 대한 우선 액세스"
-          ],
-          "interval": "year",
-          "amount": 990,
-          "currency": "USD",
-          "price": "$9.9",
-          "original_price": "$19.9",
-          "unit": "/ 년",
-          "is_featured": true,
-          "tip": "월 $2.50 상당, 약 17% 절약",
-          "button": {
-            "title": "Pro로 업그레이드",
-            "url": "/#pricing",
-            "icon": "RiVipCrownLine"
-          },
-          "product_id": "pro_yearly",
-          "product_name": "TwitterDown Pro 플랜 (연간)",
-          "credits": 1800,
-          "valid_months": 12,
-          "group": "year"
-        },
-        {
-          "title": "Business 플랜",
-          "description": "일괄 및 자동화 작업을 위해 API가 필요한 개발자, 기업 및 파워 유저용",
-          "features_title": "포함",
-          "features": [
-            "Pro 플랜의 모든 기능 포함",
-            "완전한 API 액세스",
-            "월 최대 5,000회 API 호출",
-            "전담 기술 지원 (더 빠른 응답)",
-            "더 높은 동시 다운로드",
-            "iOS 단축어 지원",
-            "더 높은 사용량을 위한 맞춤형 엔터프라이즈 플랜 제공"
+            "모든 무료 기능 포함",
+            "RESTful API 액세스",
+            "월 5,000회 API 호출",
+            "완전한 API 문서 및 샘플 코드",
+            "JSON 형식 데이터 반환",
+            "배치 처리 API 엔드포인트",
+            "전담 기술 지원",
+            "높은 요청 속도 제한",
+            "우선 서버 처리 대기열"
           ],
           "interval": "month",
-          "amount": 3499,
+          "amount": 999,
           "currency": "USD",
-          "price": "$34.99",
+          "price": "$9.99",
           "original_price": "",
           "unit": "/ 월",
           "is_featured": false,
-          "tip": "기업 및 개발자에게 완벽",
+          "tip": "개발자 및 기업 통합에 완벽",
           "button": {
-            "title": "Business 액세스 받기",
+            "title": "API 서비스 구독",
             "url": "/#pricing",
-            "icon": "RiBriefcase4Line"
+            "icon": "RiCodeBoxLine"
           },
-          "product_id": "business_monthly",
-          "product_name": "TwitterDown Business 플랜 (월간)",
+          "product_id": "api_monthly",
+          "product_name": "TwitterDown API 개발자 플랜 (월간)",
           "credits": 5000,
           "valid_months": 1,
-          "group": "month"
+          "group": "developer"
         },
         {
-          "title": "Business 플랜",
-          "description": "일괄 및 자동화 작업을 위해 API가 필요한 개발자, 기업 및 파워 유저용",
-          "features_title": "포함",
+          "title": "API 개발자 플랜",
+          "description": "프로그래밍 방식 액세스가 필요한 개발자와 기업을 위한 API 인터페이스",
+          "features_title": "포함된 기능",
           "features": [
-            "Pro 플랜의 모든 기능 포함",
-            "완전한 API 액세스",
-            "월 최대 5,000회 API 호출",
-            "전담 기술 지원 (더 빠른 응답)",
-            "더 높은 동시 다운로드",
-            "iOS 단축어 지원",
-            "더 높은 사용량을 위한 맞춤형 엔터프라이즈 플랜 제공"
+            "모든 무료 기능 포함",
+            "RESTful API 액세스",
+            "월 5,000회 API 호출",
+            "완전한 API 문서 및 샘플 코드",
+            "JSON 형식 데이터 반환",
+            "배치 처리 API 엔드포인트",
+            "전담 기술 지원",
+            "높은 요청 속도 제한",
+            "우선 서버 처리 대기열"
           ],
           "interval": "year",
-          "amount": 34999,
+          "amount": 9999,
           "currency": "USD",
-          "price": "$349.99",
-          "original_price": "$419.88",
+          "price": "$99.99",
+          "original_price": "$119.88",
           "unit": "/ 년",
           "is_featured": false,
-          "tip": "월 $29.17 상당, 약 17% 절약",
+          "tip": "연간 $19.89 절약, 월 $8.33 상당",
           "button": {
-            "title": "Business 액세스 받기",
+            "title": "API 서비스 구독",
             "url": "/#pricing",
-            "icon": "RiBriefcase4Line"
+            "icon": "RiCodeBoxLine"
           },
-          "product_id": "business_yearly",
-          "product_name": "TwitterDown Business 플랜 (연간)",
+          "product_id": "api_yearly",
+          "product_name": "TwitterDown API 개발자 플랜 (연간)",
           "credits": 60000,
           "valid_months": 12,
-          "group": "year"
+          "group": "developer"
         }
       ]
     },
@@ -500,7 +437,7 @@
         },
         {
           "title": "다운로드할 수 있는 비디오 수에 제한이 있나요?",
-          "description": "무료 사용자는 하루에 최대 5개의 비디오를 다운로드할 수 있습니다. Pro 사용자는 일괄 다운로드를 수행할 수 있습니다. 비즈니스 사용자는 제한 없이 완전히 무제한 다운로드를 즐길 수 있습니다."
+          "description": "무제한! 모든 사용자는 무제한 다운로드를 수행할 수 있으며, 모든 해상도(720p, 1080p, 4K 등)를 지원합니다. API 액세스가 필요한 사용자는 유료 플랜이 필요합니다."
         },
         {
           "title": "비공개 트위터 비디오를 다운로드할 수 있나요?",

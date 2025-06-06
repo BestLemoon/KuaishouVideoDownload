@@ -53,7 +53,7 @@
       "description": "TwitterDown ist der schnellste Weg, um Twitter-Videos herunterzuladen.<br/>Speichern und teilen Sie Ihre Lieblingsinhalte von Twitter mit nur wenigen Klicks.",
       "announcement": {
         "label": "NEU",
-        "title": "🎉 Pro-Version KOSTENLOS für ein Jahr!",
+        "title": "🎉 TwitterDown ist jetzt komplett kostenlos!",
         "url": "/#pricing"
       },
       "tip": "🔥 neue Version, komplett kostenlos zum Start",
@@ -87,7 +87,7 @@
         "title": "iOS-Kurzbefehle",
         "alt": "In iOS-Kurzbefehlen verfügbar",
         "src": "/imgs/badges/iosshortcuts.png",
-        "url": "https://www.icloud.com/shortcuts/6c3b6d66235c4febb60744f3e6dc3a93",
+        "url": "https://www.icloud.com/shortcuts/993ab7c1ef39448da4bee1bac546075b",
         "target": "_blank"
       }
     ]
@@ -242,185 +242,122 @@
     },
     "pricing": {
       "name": "pricing",
-      "label": "Preispläne",
-      "title": "Wählen Sie Ihren Preisplan",
-      "description": "Flexible Preispläne für verschiedene Benutzerbedürfnisse. Pro- und Business-Pläne unterstützen monatliche und jährliche Abrechnung.",
+      "label": "Funktionsvergleich",
+      "title": "Völlig Kostenlos zu Verwenden, Nur API-Zugriff Erfordert Zahlung",
+      "description": "Alle Video-Download-Funktionen sind völlig kostenlos, keine Registrierung erforderlich. Nur der Entwickler-API-Zugriff erfordert ein Abonnement.",
       "groups": [
         {
-          "name": "month",
-          "label": "Monatlich"
+          "name": "individual",
+          "label": "Einzelne Benutzer"
         },
         {
-          "name": "year",
-          "label": "Jährlich",
-          "badge": "17% sparen"
+          "name": "developer",
+          "label": "Entwickler"
         }
       ],
       "items": [
         {
-          "title": "Kostenloser Plan",
-          "description": "Für gelegentliche Nutzer zum Ausprobieren grundlegender Download-Funktionen",
-          "features_title": "Beinhaltet",
+          "title": "Kostenlose Funktionen",
+          "description": "Vollständige Download-Funktionalität, die alle Benutzer kostenlos genießen können",
+          "label": "🎉 Völlig Kostenlos",
+          "features_title": "Enthaltene Funktionen",
           "features": [
-            "10 SD-Video-Downloads pro Monat",
-            "Standard-Download-Geschwindigkeit",
-            "Grundlegender Download-Verlauf (letzte 5 Einträge)",
-            "Web-App-Zugriff",
-            "Kein Batch-Download",
-            "Kein API-Zugriff",
-            "Keine iOS-Shortcuts"
+            "Unbegrenzte einzelne Video-Downloads",
+            "Unbegrenzte Batch-Video-Downloads",
+            "Alle Qualitäts-Video-Downloads (720p, 1080p, 4K, etc.)",
+            "Video-Thumbnail-Downloads",
+            "Audio-Extraktions-Downloads (MP3-Format)",
+            "Tweet-Multimedia-Paket-Downloads",
+            "iOS-Shortcuts-Unterstützung",
+            "Keine Registrierung erforderlich",
+            "Download-Verlauf für angemeldete Benutzer"
           ],
           "interval": "month",
           "amount": 0,
           "currency": "USD",
-          "price": "$0",
+          "price": "Kostenlos",
           "original_price": "",
-          "unit": "/ Monat",
-          "is_featured": false,
-          "tip": "Perfekt für grundlegende Nutzung",
+          "unit": "",
+          "is_featured": true,
+          "tip": "Für immer kostenlos, keine Einschränkungen",
           "button": {
-            "title": "Kostenlos starten",
+            "title": "Jetzt Verwenden Beginnen",
             "url": "/#usage",
             "icon": "RiDownloadCloud2Fill"
           },
           "product_id": "free",
-          "product_name": "TwitterDown Kostenloser Plan",
+          "product_name": "TwitterDown Kostenlose Funktionen",
           "credits": 0,
-          "valid_months": 1
-        },
-        {
-          "title": "Pro Plan",
-          "description": "Für Einzelpersonen und Content-Ersteller, die häufig Videos herunterladen",
-          "label": "✨ Beliebteste Wahl",
-          "features_title": "Beinhaltet",
-          "features": [
-            "150 HD/SD-Video-Downloads pro Monat",
-            "HD-Video-Downloads (720p+, 1080p und höher)",
-            "Batch-Download-Funktion (mehrere Video-Links auf einmal)",
-            "Schnellere Download-Geschwindigkeit (prioritäre Verarbeitungsqueue)",
-            "Vollständiger Download-Verlauf",
-            "Tweet-Multimedia Ein-Klick-Paket-Download",
-            "Video-Thumbnails herunterladen",
-            "iOS-Shortcuts-Unterstützung",
-            "Prioritärer Zugang zu neuen Funktionen"
-          ],
-          "interval": "month",
-          "amount": 99,
-          "currency": "USD",
-          "price": "$0.99",
-          "original_price": "$2.99",
-          "unit": "/ Monat",
-          "is_featured": true,
-          "tip": "Beliebteste Wahl",
-          "button": {
-            "title": "Auf Pro upgraden",
-            "url": "/#pricing",
-            "icon": "RiVipCrownLine"
-          },
-          "product_id": "pro_monthly",
-          "product_name": "TwitterDown Pro Plan (Monatlich)",
-          "credits": 150,
           "valid_months": 1,
-          "group": "month"
+          "group": "individual"
         },
         {
-          "title": "Pro Plan",
-          "description": "Für Einzelpersonen und Content-Ersteller, die häufig Videos herunterladen",
-          "label": "✨ Beliebteste Wahl",
-          "features_title": "Beinhaltet",
+          "title": "API-Entwicklerplan",
+          "description": "API-Schnittstelle für Entwickler und Unternehmen, die programmatischen Zugriff benötigen",
+          "features_title": "Enthaltene Funktionen",
           "features": [
-            "150 HD/SD-Video-Downloads pro Monat",
-            "HD-Video-Downloads (720p+, 1080p und höher)",
-            "Batch-Download-Funktion (mehrere Video-Links auf einmal)",
-            "Schnellere Download-Geschwindigkeit (prioritäre Verarbeitungsqueue)",
-            "Vollständiger Download-Verlauf",
-            "Tweet-Multimedia Ein-Klick-Paket-Download",
-            "Video-Thumbnails herunterladen",
-            "iOS-Shortcuts-Unterstützung",
-            "Prioritärer Zugang zu neuen Funktionen"
-          ],
-          "interval": "year",
-          "amount": 990,
-          "currency": "USD",
-          "price": "$9.9",
-          "original_price": "$19.9",
-          "unit": "/ Jahr",
-          "is_featured": true,
-          "tip": "Entspricht $2.50/Monat, sparen Sie etwa 17%",
-          "button": {
-            "title": "Auf Pro upgraden",
-            "url": "/#pricing",
-            "icon": "RiVipCrownLine"
-          },
-          "product_id": "pro_yearly",
-          "product_name": "TwitterDown Pro Plan (Jährlich)",
-          "credits": 1800,
-          "valid_months": 12,
-          "group": "year"
-        },
-        {
-          "title": "Business Plan",
-          "description": "Für Entwickler, Unternehmen und Power-User, die API für Batch- und automatisierte Operationen benötigen",
-          "features_title": "Beinhaltet",
-          "features": [
-            "Alle Pro Plan Funktionen enthalten",
-            "Vollständiger API-Zugriff",
-            "Bis zu 5.000 API-Aufrufe pro Monat",
-            "Dedizierter technischer Support (schnellere Antwort)",
-            "Höhere gleichzeitige Downloads",
-            "iOS-Shortcuts-Unterstützung",
-            "Benutzerdefinierte Enterprise-Pläne für höhere Nutzung verfügbar"
+            "Alle kostenlosen Funktionen enthalten",
+            "RESTful API-Zugriff",
+            "5.000 API-Aufrufe pro Monat",
+            "Vollständige API-Dokumentation und Beispielcode",
+            "JSON-Format-Datenrückgabe",
+            "Batch-Verarbeitungs-API-Endpunkte",
+            "Dedizierter technischer Support",
+            "Höhere Anfrage-Rate-Limits",
+            "Prioritäts-Server-Verarbeitungsqueue"
           ],
           "interval": "month",
-          "amount": 3499,
+          "amount": 999,
           "currency": "USD",
-          "price": "$34.99",
+          "price": "$9.99",
           "original_price": "",
           "unit": "/ Monat",
           "is_featured": false,
-          "tip": "Perfekt für Unternehmen und Entwickler",
+          "tip": "Perfekt für Entwickler und Unternehmensintegration",
           "button": {
-            "title": "Business-Zugang erhalten",
+            "title": "API-Service abonnieren",
             "url": "/#pricing",
-            "icon": "RiBriefcase4Line"
+            "icon": "RiCodeBoxLine"
           },
-          "product_id": "business_monthly",
-          "product_name": "TwitterDown Business Plan (Monatlich)",
+          "product_id": "api_monthly",
+          "product_name": "TwitterDown API-Entwicklerplan (Monatlich)",
           "credits": 5000,
           "valid_months": 1,
-          "group": "month"
+          "group": "developer"
         },
         {
-          "title": "Business Plan",
-          "description": "Für Entwickler, Unternehmen und Power-User, die API für Batch- und automatisierte Operationen benötigen",
-          "features_title": "Beinhaltet",
+          "title": "API-Entwicklerplan",
+          "description": "API-Schnittstelle für Entwickler und Unternehmen, die programmatischen Zugriff benötigen",
+          "features_title": "Enthaltene Funktionen",
           "features": [
-            "Alle Pro Plan Funktionen enthalten",
-            "Vollständiger API-Zugriff",
-            "Bis zu 5.000 API-Aufrufe pro Monat",
-            "Dedizierter technischer Support (schnellere Antwort)",
-            "Höhere gleichzeitige Downloads",
-            "iOS-Shortcuts-Unterstützung",
-            "Benutzerdefinierte Enterprise-Pläne für höhere Nutzung verfügbar"
+            "Alle kostenlosen Funktionen enthalten",
+            "RESTful API-Zugriff",
+            "5.000 API-Aufrufe pro Monat",
+            "Vollständige API-Dokumentation und Beispielcode",
+            "JSON-Format-Datenrückgabe",
+            "Batch-Verarbeitungs-API-Endpunkte",
+            "Dedizierter technischer Support",
+            "Höhere Anfrage-Rate-Limits",
+            "Prioritäts-Server-Verarbeitungsqueue"
           ],
           "interval": "year",
-          "amount": 34999,
+          "amount": 9999,
           "currency": "USD",
-          "price": "$349.99",
-          "original_price": "$419.88",
+          "price": "$99.99",
+          "original_price": "$119.88",
           "unit": "/ Jahr",
           "is_featured": false,
-          "tip": "Entspricht $29.17/Monat, sparen Sie etwa 17%",
+          "tip": "Sparen Sie $19.89 jährlich, entspricht $8.33/Monat",
           "button": {
-            "title": "Business-Zugang erhalten",
+            "title": "API-Service abonnieren",
             "url": "/#pricing",
-            "icon": "RiBriefcase4Line"
+            "icon": "RiCodeBoxLine"
           },
-          "product_id": "business_yearly",
-          "product_name": "TwitterDown Business Plan (Jährlich)",
+          "product_id": "api_yearly",
+          "product_name": "TwitterDown API-Entwicklerplan (Jährlich)",
           "credits": 60000,
           "valid_months": 12,
-          "group": "year"
+          "group": "developer"
         }
       ]
     },
@@ -501,7 +438,7 @@
         },
         {
           "title": "Gibt es ein Limit, wie viele Videos ich herunterladen kann?",
-          "description": "Kostenlose Benutzer können bis zu 5 Videos pro Tag herunterladen. Pro-Benutzer können Batch-Downloads durchführen. Geschäftsbenutzer genießen komplett unbegrenzte Downloads ohne Einschränkungen."
+          "description": "Überhaupt keine Limits! Alle Benutzer können unbegrenzt einzelne Videos und Batch-Downloads herunterladen, unterstützt alle Auflösungen (720p, 1080p, 4K, etc.). Nur API-Zugriff erfordert ein bezahltes Abonnement."
         },
         {
           "title": "Kann ich private Twitter-Videos herunterladen?",
