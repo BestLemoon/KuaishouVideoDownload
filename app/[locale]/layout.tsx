@@ -8,6 +8,7 @@ import { Metadata } from "next";
 import { NextAuthSessionProvider } from "@/auth/session";
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "@/providers/theme";
+import { PostHogProvider } from "@/providers/PostHogProvider";
 import { cn } from "@/lib/utils";
 import Script from "next/script";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -126,17 +127,19 @@ export default async function RootLayout({
           fontSans.variable
         )}
       >
-        <NextIntlClientProvider messages={messages}>
-          <NextAuthSessionProvider>
-            <AppContextProvider>
-              <ThemeProvider attribute="class" disableTransitionOnChange>
-                {children}
-                <SpeedInsights />
-                <Analytics />
-              </ThemeProvider>
-            </AppContextProvider>
-          </NextAuthSessionProvider>
-        </NextIntlClientProvider>
+        <PostHogProvider>
+          <NextIntlClientProvider messages={messages}>
+            <NextAuthSessionProvider>
+              <AppContextProvider>
+                <ThemeProvider attribute="class" disableTransitionOnChange>
+                  {children}
+                  <SpeedInsights />
+                  <Analytics />
+                </ThemeProvider>
+              </AppContextProvider>
+            </NextAuthSessionProvider>
+          </NextIntlClientProvider>
+        </PostHogProvider>
       </body>
     </html>
   );
