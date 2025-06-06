@@ -116,23 +116,6 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
   };
 
   const handleVideoDownload = async (video: VideoInfo) => {
-    if (!user) {
-      setShowSignModal(true);
-      return;
-    }
-
-    const isHD = isHighDefinition(video.resolution, downloadData.videos);
-    
-    // 检查是否有权限下载高清视频
-    if (isHD && !canDownloadHD()) {
-      toast.error(t('hd_requires_paid_user'));
-      return;
-    }
-
-    if (userCredits && userCredits.available_credits < 1) {
-      toast.error(t('insufficient_downloads'));
-      return;
-    }
 
     const downloadKey = video.downloadUrl;
     setDownloadingItems(prev => new Set(prev).add(downloadKey));
@@ -256,15 +239,6 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
   };
 
   const handleAudioDownload = async () => {
-    if (!user) {
-      setShowSignModal(true);
-      return;
-    }
-
-    if (userCredits && userCredits.available_credits < 1) {
-      toast.error(t('insufficient_downloads'));
-      return;
-    }
 
     const downloadKey = 'audio';
     setDownloadingItems(prev => new Set(prev).add(downloadKey));
@@ -415,13 +389,7 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
                     View original post
                   </a>
                   
-                  {/* Downloads info */}
-                  {user && userCredits && (
-                    <div className="flex items-center gap-1">
-                      <Icon name="RiDownloadLine" className="w-4 h-4 text-blue-500" />
-                      <span className="font-medium">{t('available_downloads')}: {userCredits.available_credits}</span>
-                    </div>
-                  )}
+
                 </div>
 
                 {/* Thumbnail Download Button */}
@@ -431,7 +399,7 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
                       variant="outline"
                       size="sm"
                       onClick={handleThumbnailDownload}
-                      disabled={downloadingItems.has('thumbnail') || !user || (userCredits?.available_credits || 0) < 1}
+                      disabled={downloadingItems.has('thumbnail')}
                       className="text-xs"
                     >
                       {downloadingItems.has('thumbnail') ? (
@@ -472,15 +440,11 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
               {downloadData.videos.map((video, index) => {
                 const isHD = isHighDefinition(video.resolution, downloadData.videos);
                 const isDownloading = downloadingItems.has(video.downloadUrl);
-                const canDownload = user && (userCredits && userCredits.available_credits >= 1);
-                const canDownloadThisHD = canDownload && (isHD ? canDownloadHD() : true);
+                const canDownload = true;
+                const canDownloadThisHD = true;
                 
                 return (
-                  <Card key={index} className={`border-2 transition-all duration-200 ${
-                    canDownloadThisHD 
-                      ? 'hover:border-primary/50 hover:shadow-md' 
-                      : 'opacity-75 border-muted'
-                  }`}>
+                  <Card key={index} className="border-2 transition-all duration-200 hover:border-primary/50 hover:shadow-md">
                     <CardContent className="p-6 space-y-4">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
@@ -491,12 +455,7 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
                             <Icon name={isHD ? 'RiHdLine' : 'RiSdCardLine'} className="w-3 h-3 mr-1" />
                             {isHD ? t('quality_hd') : t('quality_sd')}
                           </Badge>
-                          {isHD && !canDownloadHD() && (
-                            <Badge variant="outline" className="text-xs text-yellow-600 border-yellow-300">
-                              <Icon name="RiVipCrownLine" className="w-3 h-3 mr-1" />
-                              {t('paid_badge')}
-                            </Badge>
-                          )}
+
                         </div>
                         <Badge variant="outline" className="font-mono text-sm">
                           {video.resolution}
@@ -512,38 +471,19 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
                           <span className="text-muted-foreground">{t('format')}:</span>
                           <span className="font-medium">MP4</span>
                         </div>
-                        <div className="flex justify-between items-center">
-                          <span className="text-muted-foreground">{t('cost_downloads')}:</span>
-                          <div className="flex items-center gap-1">
-                            <Icon name="RiDownloadLine" className="w-4 h-4 text-blue-500" />
-                            <span className="font-medium">{t('one_download')}</span>
-                          </div>
-                        </div>
+
                       </div>
                       
                       <Button 
                         className="w-full" 
                         onClick={() => handleVideoDownload(video)}
-                        disabled={isDownloading || !canDownloadThisHD}
-                        variant={canDownloadThisHD ? "default" : "secondary"}
+                        disabled={isDownloading}
                         size="lg"
                       >
                         {isDownloading ? (
                           <>
                             <Icon name="RiLoader4Line" className="w-4 h-4 mr-2 animate-spin" />
                             {t('downloading')}
-                          </>
-                        ) : !canDownload ? (
-                          <>
-                            <Icon name="RiLockLine" className="w-4 h-4 mr-2" />
-                            {user ? t('insufficient_downloads_short', { 
-                              available: userCredits?.available_credits || 0
-                            }) : t('login_required')}
-                          </>
-                        ) : isHD && !canDownloadHD() ? (
-                          <>
-                            <Icon name="RiLockLine" className="w-4 h-4 mr-2 text-yellow-500" />
-                            {t('paid_users_exclusive')}
                           </>
                         ) : (
                           <>
@@ -558,11 +498,7 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
               })}
 
               {/* Audio Download Card - Always last */}
-              <Card className={`border-2 transition-all duration-200 ${
-                user && (userCredits?.available_credits || 0) >= 1
-                  ? 'hover:border-primary/50 hover:shadow-md' 
-                  : 'opacity-75 border-muted'
-              }`}>
+              <Card className="border-2 transition-all duration-200 hover:border-primary/50 hover:shadow-md">
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
@@ -585,33 +521,19 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
                       <span className="text-muted-foreground">{t('audio_quality')}:</span>
                       <span className="font-medium">{t('high_quality')}</span>
                     </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-muted-foreground">{t('cost_downloads')}:</span>
-                      <div className="flex items-center gap-1">
-                        <Icon name="RiDownloadLine" className="w-4 h-4 text-blue-500" />
-                        <span className="font-medium">{t('one_download')}</span>
-                      </div>
-                    </div>
+
                   </div>
                   
                   <Button 
                     className="w-full" 
                     onClick={handleAudioDownload}
-                    disabled={downloadingItems.has('audio') || !user || (userCredits?.available_credits || 0) < 1}
-                    variant={user && (userCredits?.available_credits || 0) >= 1 ? "default" : "secondary"}
+                    disabled={downloadingItems.has('audio')}
                     size="lg"
                   >
                     {downloadingItems.has('audio') ? (
                       <>
                         <Icon name="RiLoader4Line" className="w-4 h-4 mr-2 animate-spin" />
                         {t('downloading')}
-                      </>
-                    ) : !user || (userCredits?.available_credits || 0) < 1 ? (
-                      <>
-                        <Icon name="RiLockLine" className="w-4 h-4 mr-2" />
-                        {user ? t('insufficient_downloads_short', { 
-                          available: userCredits?.available_credits || 0
-                        }) : t('login_required')}
                       </>
                     ) : (
                       <>

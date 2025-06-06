@@ -12,11 +12,8 @@ export async function POST(req: Request) {
   try {
     const t = await getTranslations('api');
     
-    // 用户认证检查
+    // 获取用户会话（可选）
     const session = await auth();
-    if (!session?.user) {
-      return respErr(t('auth.login_required'));
-    }
 
     const { token } = await req.json();
     
@@ -24,7 +21,7 @@ export async function POST(req: Request) {
       return respErr('Token is required');
     }
 
-    console.log(`[Batch Results] Fetching batch results for user ${session.user.email}`);
+    console.log(`[Batch Results] Fetching batch results for user ${session?.user?.email || 'anonymous'}`);
 
     // 解密批量数据
     const batchData = await decryptBatchData(token);

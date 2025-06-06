@@ -18,11 +18,8 @@ export async function POST(req: Request) {
   try {
     const t = await getTranslations('api');
     
-    // 用户认证检查（批量下载需要登录）
+    // 获取用户会话（可选，用于保存历史记录）
     const session = await auth();
-    if (!session?.user) {
-      return respErr(t('auth.login_required'));
-    }
 
     const { urls } = await req.json();
     
@@ -47,7 +44,7 @@ export async function POST(req: Request) {
       return respErr(t('batch.no_valid_urls'));
     }
 
-    console.log(`[Batch] Processing ${validation.valid.length} URLs for user ${session.user.email}`);
+    console.log(`[Batch] Processing ${validation.valid.length} URLs for user ${session?.user?.email || 'anonymous'}`);
 
     // 批量处理URL
     const results = [];

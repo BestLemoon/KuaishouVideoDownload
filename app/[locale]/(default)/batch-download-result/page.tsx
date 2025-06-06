@@ -29,12 +29,6 @@ export async function generateMetadata({ params: promiseParams }: { params: Prom
 }
 
 export default async function BatchDownloadResult({ searchParams }: BatchDownloadResultPageProps) {
-  // 服务器端认证检查
-  const session = await auth();
-  if (!session?.user) {
-    redirect('/auth/signin');
-  }
-
   const params = await searchParams;
   const token = params.token;
   if (!token) {
