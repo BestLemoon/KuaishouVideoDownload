@@ -1,0 +1,383 @@
+#!/usr/bin/env python3
+"""
+GitHub Actions 自动博客文章生成脚本
+"""
+import os
+import requests
+import time
+import random
+from datetime import datetime
+from google.generativeai import configure, GenerativeModel
+from supabase import create_client, Client
+import uuid
+
+# 环境变量配置
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+SUPABASE_URL = os.getenv('SUPABASE_URL')
+SUPABASE_SERVICE_ROLE_KEY = os.getenv('SUPABASE_SERVICE_ROLE_KEY')
+UNSPLASH_ACCESS_KEY = os.getenv('UNSPLASH_ACCESS_KEY')
+SITE_URL = os.getenv('NEXT_PUBLIC_WEB_URL', 'https://twitterdown.com')
+
+# 初始化服务
+configure(api_key=GEMINI_API_KEY)
+supabase: Client = create_client(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
+
+def get_unsplash_image(query="twitter"):
+    """从Unsplash获取图片"""
+    try:
+        if not UNSPLASH_ACCESS_KEY:
+            return "https://images.unsplash.com/photo-1611605698335-8b1569810432?w=800&q=80"
+        
+        headers = {"Authorization": f"Client-ID {UNSPLASH_ACCESS_KEY}"}
+        response = requests.get(
+            f"https://api.unsplash.com/search/photos?query={query}&per_page=30&orientation=landscape",
+            headers=headers,
+            timeout=10
+        )
+        
+        if response.status_code == 200:
+            data = response.json()
+            if data.get('results'):
+                photo = random.choice(data['results'])
+                return f"{photo['urls']['regular']}?w=800&q=80"
+                
+        return "https://images.unsplash.com/photo-1611605698335-8b1569810432?w=800&q=80"
+    except Exception as e:
+        print(f"获取Unsplash图片失败: {e}")
+        return "https://images.unsplash.com/photo-1611605698335-8b1569810432?w=800&q=80"
+
+def generate_topics(language, count=5):
+    """生成文章题目"""
+    model = GenerativeModel("gemini-2.5-flash-preview-05-20")
+    
+    prompt = f"""作为一位专业的SEO内容策划师，请为TwitterDown（Twitter视频下载工具）生成{count}个高质量的博客文章题目。
+
+要求：
+- 语言：{language}
+- 每个题目都要与Twitter、视频下载、社交媒体相关
+- 题目要有搜索价值和用户关注度
+- 避免重复和相似的题目
+- 确保题目适合SEO优化
+
+请直接输出{count}个题目，每行一个，不要编号：
+"""
+    
+    try:
+        result = model.generate_content(prompt)
+        topics = [line.strip() for line in result.text.strip().split('\n') if line.strip()]
+        return topics[:count]
+    except Exception as e:
+        print(f"生成{language}题目失败: {e}")
+        return []
+
+def extract_delimiter_content(text, start_delimiter, end_delimiter):
+    """提取分隔符之间的内容"""
+    start_index = text.find(start_delimiter)
+    if start_index == -1:
+        return None
+    start_index += len(start_delimiter)
+    
+    end_index = text.find(end_delimiter, start_index)
+    if end_index == -1:
+        return None
+        
+    return text[start_index:end_index].strip()
+
+def generate_slug(title):
+    """生成URL友好的slug"""
+    import re
+    slug = title.lower()
+    slug = re.sub(r'[^\w\s-]', '', slug)
+    slug = re.sub(r'[-\s]+', '-', slug)
+    return slug.strip('-')
+
+def generate_unique_slug(base_slug, locale):
+    """生成唯一的slug"""
+    slug = base_slug
+    counter = 1
+    
+    while True:
+        result = supabase.table("posts").select("slug").eq("slug", slug).eq("locale", locale).execute()
+        if not result.data:
+            break
+        slug = f"{base_slug}-{counter}"
+        counter += 1
+        
+    return slug
+
+def generate_article(topic, language, locale):
+    """生成单篇文章"""
+    try:
+        print(f"正在生成{language}文章: {topic}")
+        
+        # 获取现有文章作为内链参考
+        existing_posts = supabase.table("posts").select("title, slug, locale").eq("status", "online").eq("locale", locale).limit(10).execute()
+        
+        internal_links_text = ""
+        if existing_posts.data:
+            if locale == "en":
+                internal_links_text = "\n## Existing Articles (for internal linking):\n"
+                for post in existing_posts.data:
+                    url = f"{SITE_URL}/posts/{post['slug']}"
+                    internal_links_text += f"- [{post['title']}]({url})\n"
+            else:
+                internal_links_text = "\n## 现有文章列表（用于内链参考）：\n"
+                for post in existing_posts.data:
+                    url = f"{SITE_URL}/zh/posts/{post['slug']}"
+                    internal_links_text += f"- [{post['title']}]({url})\n"
+
+        model = GenerativeModel("gemini-2.5-flash-preview-05-20")
+        
+        if locale == "en":
+            prompt = f"""You are a professional SEO content creator specializing in TwitterDown (Twitter video downloader) related content.
+
+## Task
+Please create a high-quality SEO blog article for this topic: {topic}
+
+## Requirements
+- Article length: 1000-1500 words
+- Language: English
+- Natural, fluent writing style that avoids AI-generated traces
+- Use Markdown format
+- Include proper heading structure (H1, H2, H3)
+- Must include at least 3 internal links to our existing related articles
+- Include 2-3 high-quality external links (to authoritative websites)
+- SEO optimized with naturally integrated relevant keywords
+
+{internal_links_text}
+
+## Internal Link Requirements
+- Must naturally insert at least 3 links to the above existing articles within the content
+- Internal links should be relevant to the article content and naturally integrated into paragraphs
+- Use descriptive anchor text, not just "click here"
+- Link format: [anchor text](URL)
+
+## External Link Requirements
+- Include 2-3 links to authoritative websites
+- External links should be related to Twitter, video downloading, social media
+- Add appropriate context for external links
+
+## Output Format
+Use the following delimiter format:
+
+===TITLE_START===
+[SEO-optimized title, max 60 characters]
+===TITLE_END===
+
+===SLUG_START===
+[URL-friendly slug]
+===SLUG_END===
+
+===DESCRIPTION_START===
+[Meta description, 150-160 characters, engaging summary]
+===DESCRIPTION_END===
+
+===CONTENT_START===
+[Complete article content in Markdown format, must include at least 3 internal links and 2-3 external links]
+===CONTENT_END===
+
+Please generate natural, fluent content that avoids obvious AI-generated traces:
+
+(Internal note for uniqueness: {int(time.time())})"""
+        else:
+            prompt = f"""你是一位资深的SEO文章创作者，专注于 TwitterDown（Twitter视频下载器）相关内容创作。
+
+## 任务
+请为以下题目创作一篇高质量的SEO博客文章：{topic}
+
+## 要求
+- 文章长度：1000-1500字
+- 语言：中文
+- 自然流畅的写作风格，避免AI生成的痕迹
+- 使用Markdown格式
+- 包含合适的标题结构（H1、H2、H3）
+- 必须包含至少3个内部链接到我们现有的相关文章
+- 包含2-3个高质量的外部链接（指向权威网站）
+- SEO优化，自然融入相关关键词
+
+{internal_links_text}
+
+## 内链要求
+- 必须在内容中自然插入至少3个指向上述现有文章的链接
+- 内链应与文章内容相关，自然融入到段落中
+- 使用描述性锚文本，不要只是"点击这里"
+- 链接格式：[锚文本](URL)
+
+## 外链要求
+- 包含2-3个指向权威网站的链接
+- 外链应与Twitter、视频下载、社交媒体相关
+- 为外链添加适当的上下文
+
+## 输出格式
+使用以下分隔符格式：
+
+===TITLE_START===
+[SEO优化的标题，最多60个字符]
+===TITLE_END===
+
+===SLUG_START===
+[URL友好的slug]
+===SLUG_END===
+
+===DESCRIPTION_START===
+[元描述，150-160字符，吸引人的摘要]
+===DESCRIPTION_END===
+
+===CONTENT_START===
+[完整的文章内容，Markdown格式，必须包含至少3个内链和2-3个外链]
+===CONTENT_END===
+
+请生成自然、流畅的内容，避免明显的AI生成痕迹：
+
+(内部唯一性标识: {int(time.time())})"""
+
+        result = model.generate_content(prompt)
+        text = result.text
+        
+        if not text:
+            raise Exception("AI未能生成有效内容")
+
+        # 解析生成的内容
+        title = extract_delimiter_content(text, "===TITLE_START===", "===TITLE_END===") or topic
+        slug = extract_delimiter_content(text, "===SLUG_START===", "===SLUG_END===") or generate_slug(title)
+        description = extract_delimiter_content(text, "===DESCRIPTION_START===", "===DESCRIPTION_END===") or f"关于{title}的详细指南"
+        content = extract_delimiter_content(text, "===CONTENT_START===", "===CONTENT_END===") or text
+
+        # 生成唯一slug
+        final_slug = generate_unique_slug(slug, locale)
+
+        # 获取封面图片
+        cover_url = get_unsplash_image("twitter")
+
+        # 为文章添加随机的时间偏移，让发布时间更自然
+        publish_time = datetime.now()
+        random_hours_back = random.randint(1, 72)
+        random_minutes_back = random.randint(1, 60)
+        publish_time = publish_time.replace(hour=max(0, publish_time.hour - random_hours_back % 24))
+        publish_time = publish_time.replace(minute=max(0, publish_time.minute - random_minutes_back % 60))
+
+        # 插入到数据库
+        post_uuid = str(uuid.uuid4())
+        insert_data = {
+            "uuid": post_uuid,
+            "slug": final_slug,
+            "title": title,
+            "description": description,
+            "content": content,
+            "cover_url": cover_url,
+            "created_at": publish_time.isoformat(),
+            "updated_at": publish_time.isoformat(),
+            "status": "online",
+            "locale": locale,
+            "author_name": "TwitterDown Team",
+            "author_avatar_url": "https://www.twitterdown.com/logo.png"
+        }
+
+        result = supabase.table("posts").insert(insert_data).execute()
+        
+        if result.data:
+            print(f"✅ {language}文章生成成功: {title}")
+            return {
+                "success": True,
+                "topic": topic,
+                "title": title,
+                "uuid": post_uuid,
+                "slug": final_slug,
+                "cover_url": cover_url,
+            }
+        else:
+            raise Exception("数据库插入失败")
+
+    except Exception as e:
+        print(f"❌ {language}文章生成失败 '{topic}': {e}")
+        return {
+            "success": False,
+            "topic": topic,
+            "error": str(e),
+        }
+
+def main():
+    """主函数"""
+    print("🚀 开始执行每日自动文章生成任务")
+    
+    results = {
+        "chinese": {"success": 0, "failure": 0, "topics": [], "results": []},
+        "english": {"success": 0, "failure": 0, "topics": [], "results": []}
+    }
+
+    # 生成中文文章
+    try:
+        print("📝 生成中文题目...")
+        chinese_topics = generate_topics("Chinese", 5)
+        results["chinese"]["topics"] = chinese_topics
+        
+        print("🇨🇳 开始生成中文文章...")
+        for topic in chinese_topics:
+            result = generate_article(topic, "Chinese", "zh")
+            results["chinese"]["results"].append(result)
+            
+            if result["success"]:
+                results["chinese"]["success"] += 1
+            else:
+                results["chinese"]["failure"] += 1
+            
+            # 延迟避免API限制
+            time.sleep(2)
+            
+        print(f"✅ 中文文章生成完成：成功 {results['chinese']['success']} 篇，失败 {results['chinese']['failure']} 篇")
+    except Exception as e:
+        print(f"❌ 中文文章生成失败: {e}")
+        results["chinese"]["failure"] = 5
+
+    # 等待避免API限制
+    time.sleep(5)
+
+    # 生成英文文章
+    try:
+        print("📝 生成英文题目...")
+        english_topics = generate_topics("English", 5)
+        results["english"]["topics"] = english_topics
+        
+        print("🇺🇸 开始生成英文文章...")
+        for topic in english_topics:
+            result = generate_article(topic, "English", "en")
+            results["english"]["results"].append(result)
+            
+            if result["success"]:
+                results["english"]["success"] += 1
+            else:
+                results["english"]["failure"] += 1
+            
+            # 延迟避免API限制
+            time.sleep(2)
+            
+        print(f"✅ 英文文章生成完成：成功 {results['english']['success']} 篇，失败 {results['english']['failure']} 篇")
+    except Exception as e:
+        print(f"❌ 英文文章生成失败: {e}")
+        results["english"]["failure"] = 5
+
+    total_success = results["chinese"]["success"] + results["english"]["success"]
+    total_failure = results["chinese"]["failure"] + results["english"]["failure"]
+
+    print(f"🎉 每日文章生成任务完成：总计成功 {total_success} 篇，失败 {total_failure} 篇")
+
+    # 记录任务执行日志到数据库
+    try:
+        log_data = {
+            "execution_date": datetime.now().date().isoformat(),
+            "chinese_success": results["chinese"]["success"],
+            "chinese_failure": results["chinese"]["failure"],
+            "english_success": results["english"]["success"],
+            "english_failure": results["english"]["failure"],
+            "total_success": total_success,
+            "total_failure": total_failure,
+            "created_at": datetime.now().isoformat()
+        }
+        supabase.table("auto_generation_logs").insert(log_data).execute()
+    except Exception as log_error:
+        print(f"日志记录失败（不影响主要功能）: {log_error}")
+
+    return results
+
+if __name__ == "__main__":
+    main() 
