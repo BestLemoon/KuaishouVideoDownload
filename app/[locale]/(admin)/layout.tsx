@@ -57,6 +57,11 @@ export default async function AdminLayout({
           url: "/admin/download-history",
           icon: "RiDownloadLine",
         },
+        {
+          title: "SEO Blog Generator",
+          url: "/admin/seo-blog-generator",
+          icon: "RiRobotLine",
+        },
       ],
     },
     social: {
