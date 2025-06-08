@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 import { toast } from "sonner";
-import { Loader2, RefreshCw, FileText, Globe, Database, Settings } from "lucide-react";
+import { Loader2, RefreshCw, FileText, Globe, Database, Settings, Zap, Brain, Search } from "lucide-react";
 
 interface TopicSuggestion {
   title: string;
@@ -24,6 +24,8 @@ export default function SEOBlogGeneratorPage() {
   const [batchLanguage, setBatchLanguage] = useState("Chinese");
   const [concurrency, setConcurrency] = useState(3);
   const [batchResults, setBatchResults] = useState<any[]>([]);
+  const [keywordResults, setKeywordResults] = useState<any>(null);
+  const [keywordLanguage, setKeywordLanguage] = useState("English");
   
   const handleGenerateTopics = async () => {
     setLoading(true);
@@ -228,6 +230,80 @@ export default function SEOBlogGeneratorPage() {
     }
   };
 
+  const handleKeywordDrivenGenerate = async () => {
+    setLoading(true);
+    setKeywordResults(null);
+    
+    try {
+      const response = await fetch("/api/seo-blog/keyword-driven-generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+          language: keywordLanguage,
+          generateArticles: false // 只生成关键词和题目，不直接生成文章
+        }),
+      });
+      
+      const data = await response.json();
+      if (data.success) {
+        setKeywordResults(data);
+        toast.success("成功", {
+          description: `关键词驱动分析完成：${data.summary.seedKeywordsCount}个种子词 → ${data.summary.expandedKeywordsCount}个扩展词 → ${data.summary.totalTopicsCount}个文章题目`,
+        });
+      } else {
+        throw new Error(data.error);
+      }
+    } catch (error) {
+      toast.error("错误", {
+        description: `关键词驱动生成失败: ${error}`,
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGenerateFromKeywordTopics = async () => {
+    if (!keywordResults || !keywordResults.step3_categorizedTopics) {
+      toast.error("错误", {
+        description: "请先进行关键词驱动分析",
+      });
+      return;
+    }
+
+    setLoading(true);
+    
+    try {
+      // 合并所有分类的题目
+      const allTopics = Object.values(keywordResults.step3_categorizedTopics).flat() as string[];
+      
+      const response = await fetch("/api/seo-blog/batch-generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+          topics: allTopics,
+          language: keywordLanguage,
+          concurrency: 2 // 关键词生成的文章使用较低并发
+        }),
+      });
+      
+      const data = await response.json();
+      if (data.success) {
+        setBatchResults(data.results);
+        toast.success("成功", {
+          description: `关键词驱动文章生成完成：${data.summary.message}`,
+        });
+      } else {
+        throw new Error(data.error);
+      }
+    } catch (error) {
+      toast.error("错误", {
+        description: `关键词驱动文章生成失败: ${error}`,
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="container mx-auto p-6 space-y-6">
       <div className="flex items-center space-x-2">
@@ -235,6 +311,104 @@ export default function SEOBlogGeneratorPage() {
         <h1 className="text-3xl font-bold">SEO 博客生成器</h1>
         <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded">包含内链优化</span>
       </div>
+
+      {/* 🔥 关键词驱动智能生成 (推荐功能) */}
+      <Card className="border-orange-200 bg-orange-50">
+        <CardHeader>
+          <CardTitle className="flex items-center space-x-2 text-orange-800">
+            <Zap className="h-5 w-5" />
+            <span>🔥 关键词驱动智能生成 (推荐)</span>
+            <span className="text-xs bg-orange-200 text-orange-800 px-2 py-1 rounded-full">NEW</span>
+          </CardTitle>
+          <CardDescription className="text-orange-700">
+            🧠 AI生成种子关键词 → 🔍 Google自动完成扩展 → 📝 分类生成文章题目 → ✍️ 批量生成优化文章
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <Label htmlFor="keywordLanguage">目标语言</Label>
+              <Select value={keywordLanguage} onValueChange={setKeywordLanguage}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="English">English</SelectItem>
+                  <SelectItem value="Chinese">中文</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="flex items-end">
+              <Button onClick={handleKeywordDrivenGenerate} disabled={loading} className="w-full">
+                {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Brain className="mr-2 h-4 w-4" />}
+                开始关键词分析
+              </Button>
+            </div>
+          </div>
+
+          {keywordResults && (
+            <div className="space-y-4">
+              <div className="p-4 bg-white rounded-lg border border-orange-200">
+                <h4 className="font-semibold text-orange-800 mb-3">📊 关键词分析结果</h4>
+                
+                {/* 统计摘要 */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                  <div className="text-center p-3 bg-blue-50 rounded border">
+                    <div className="text-2xl font-bold text-blue-600">{keywordResults.summary.seedKeywordsCount}</div>
+                    <div className="text-xs text-blue-600">种子关键词</div>
+                  </div>
+                  <div className="text-center p-3 bg-green-50 rounded border">
+                    <div className="text-2xl font-bold text-green-600">{keywordResults.summary.expandedKeywordsCount}</div>
+                    <div className="text-xs text-green-600">扩展关键词</div>
+                  </div>
+                  <div className="text-center p-3 bg-purple-50 rounded border">
+                    <div className="text-2xl font-bold text-purple-600">{keywordResults.summary.totalTopicsCount}</div>
+                    <div className="text-xs text-purple-600">文章题目</div>
+                  </div>
+                  <div className="text-center p-3 bg-orange-50 rounded border">
+                    <div className="text-2xl font-bold text-orange-600">4</div>
+                    <div className="text-xs text-orange-600">内容分类</div>
+                  </div>
+                </div>
+
+                {/* 分类题目展示 */}
+                <div className="space-y-3">
+                  {Object.entries(keywordResults.step3_categorizedTopics).map(([category, topics]) => (
+                    <div key={category} className="border rounded p-3">
+                      <h5 className="font-medium text-sm mb-2">
+                        {category === 'search_keywords' && '🔍 搜索型关键词文章'}
+                        {category === 'tutorial_lists' && '📘 教程型/列表型文章'}
+                        {category === 'bilingual_content' && '🌍 中英文对照内容'}
+                        {category === 'ab_test_keywords' && '🧪 A/B测试型关键词'}
+                        <span className="ml-2 text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                          {(topics as string[]).length} 篇
+                        </span>
+                      </h5>
+                      <div className="text-xs text-gray-600 space-y-1">
+                        {(topics as string[]).slice(0, 2).map((topic, index) => (
+                          <div key={index} className="truncate">• {topic}</div>
+                        ))}
+                        {(topics as string[]).length > 2 && (
+                          <div className="text-gray-400">... 还有 {(topics as string[]).length - 2} 个题目</div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <Button 
+                  onClick={handleGenerateFromKeywordTopics} 
+                  disabled={loading} 
+                  className="w-full mt-4 bg-orange-600 hover:bg-orange-700"
+                >
+                  {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <FileText className="mr-2 h-4 w-4" />}
+                  生成所有关键词文章 ({keywordResults.summary.totalTopicsCount} 篇)
+                </Button>
+              </div>
+            </div>
+          )}
+        </CardContent>
+      </Card>
 
       {/* 步骤1：题目生成区域 */}
       <Card>
