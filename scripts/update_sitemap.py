@@ -49,27 +49,51 @@ def generate_sitemap(posts):
     """生成完整的sitemap.xml内容"""
     existing_urls, _ = read_existing_sitemap()
     
+    # 支持的语言列表
+    languages = ['zh', 'es', 'fr', 'de', 'ja', 'ko', 'ar']
+    
     # 基础URL列表（主要页面）
     base_urls = [
-        f"{SITE_URL}/",
-        f"{SITE_URL}/zh/",
-        f"{SITE_URL}/pricing",
-        f"{SITE_URL}/zh/pricing",
+        # 主页和语言版本
+        f"{SITE_URL}/",  # 英文主页（默认）
+    ]
+    
+    # 添加各语言主页
+    for lang in languages:
+        base_urls.append(f"{SITE_URL}/{lang}")
+    
+    # 添加其他基础页面
+    base_urls.extend([
         f"{SITE_URL}/privacy-policy",
         f"{SITE_URL}/terms-of-service",
-    ]
+    ])
+    
+    # 添加各语言的posts路由页面
+    base_urls.append(f"{SITE_URL}/posts")  # 英文posts页面
+    for lang in languages:
+        base_urls.append(f"{SITE_URL}/{lang}/posts")
     
     # 生成sitemap头部
     sitemap_content = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
 
     # 添加基础页面
-    for url in base_urls:
+    for i, url in enumerate(base_urls):
+        # 主页优先级最高
+        if url == f"{SITE_URL}/":
+            priority = "1.0"
+        # 语言主页次之
+        elif url in [f"{SITE_URL}/{lang}" for lang in languages]:
+            priority = "0.9"
+        # 其他基础页面
+        else:
+            priority = "0.8"
+            
         sitemap_content += f'''
   <url>
     <loc>{url}</loc>
     <lastmod>{datetime.now().date().isoformat()}</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <priority>{priority}</priority>
   </url>'''
 
     # 添加文章页面
@@ -82,7 +106,7 @@ def generate_sitemap(posts):
         if not slug:
             continue
             
-        # 构建文章URL
+        # 构建文章URL - 英文是默认语言，不需要/en前缀
         if locale == "en":
             url = f"{SITE_URL}/posts/{slug}"
         else:
@@ -139,8 +163,10 @@ def main():
     
     # 写入sitemap文件
     if write_sitemap(sitemap_content):
+        # 计算总URL数量：基础页面(1主页 + 7语言页面 + 2其他页面 + 1英文posts + 7语言posts) + 文章数量
+        total_base_urls = 1 + 7 + 2 + 1 + 7  # 18个基础页面
         print(f"✅ Sitemap更新成功！添加了 {new_urls_added} 个新URL")
-        print(f"Sitemap包含总计 {len(posts) + 6} 个URL（包括基础页面）")
+        print(f"Sitemap包含总计 {len(posts) + total_base_urls} 个URL（包括基础页面）")
         return True
     else:
         print("❌ Sitemap更新失败")
