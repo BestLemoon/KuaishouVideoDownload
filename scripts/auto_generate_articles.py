@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 """
-GitHub Actions 自动博客文章生成脚本
+GitHub Actions 自动博客文章生成脚本 - 关键词驱动版本
 """
 import os
 import requests
 import time
 import random
+import re
 from datetime import datetime
 from google.generativeai import configure, GenerativeModel
 from supabase import create_client, Client
 import uuid
+from typing import List, Dict, Any
 
 # 环境变量配置
 GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
@@ -46,29 +48,321 @@ def get_unsplash_image(query="twitter"):
         print(f"获取Unsplash图片失败: {e}")
         return "https://images.unsplash.com/photo-1611605698335-8b1569810432?w=800&q=80"
 
-def generate_topics(language, count=5):
-    """生成文章题目"""
+def generate_seed_keywords(language: str, count: int = 8) -> List[str]:
+    """生成种子关键词"""
     model = GenerativeModel("gemini-2.5-flash-preview-05-20")
     
-    prompt = f"""作为一位专业的SEO内容策划师，请为TwitterDown（Twitter视频下载工具）生成{count}个高质量的博客文章题目。
+    prompt = f"""你是一位专业的SEO关键词研究专家，专注于Twitter视频下载相关的关键词研究。
 
-要求：
-- 语言：{language}
-- 每个题目都要与Twitter、视频下载、社交媒体相关
-- 题目要有搜索价值和用户关注度
-- 避免重复和相似的题目
-- 确保题目适合SEO优化
+## 任务
+请为TwitterDown（Twitter视频下载器）生成{count}个高价值的种子关键词。
 
-请直接输出{count}个题目，每行一个，不要编号：
-"""
-    
+## 关键词类型要求
+请生成以下类型的关键词：
+1. 🔍 搜索型关键词（用户直接搜索需求）
+2. 📱 设备相关关键词（iPhone, Android, mobile等）
+3. 📊 功能型关键词（batch download, HD quality等）
+4. 💡 解决方案型关键词（how to, best way等）
+5. 🌍 竞品和比较关键词（vs, alternative等）
+
+## 目标语言
+{language}
+
+## 输出要求
+- 直接输出{count}个关键词
+- 每行一个关键词
+- 不包含编号或符号
+- 关键词应该具有搜索价值
+- 避免过于宽泛或过于细分的词
+
+请开始生成：
+
+(唯一性标识: {int(time.time())})"""
+
     try:
         result = model.generate_content(prompt)
-        topics = [line.strip() for line in result.text.strip().split('\n') if line.strip()]
-        return topics[:count]
+        if not result.text:
+            raise ValueError("AI未能生成种子关键词")
+        
+        # 解析关键词
+        keywords = []
+        lines = result.text.strip().split('\n')
+        for line in lines:
+            line = line.strip()
+            if line and not line.startswith('#') and not line.startswith('-'):
+                # 清理可能的编号和符号
+                keyword = re.sub(r'^\d+\.?\s*', '', line)
+                keyword = re.sub(r'^[•\-\*]\s*', '', keyword)
+                keyword = keyword.strip('"').strip("'").strip()
+                if keyword and len(keyword) > 2:
+                    keywords.append(keyword)
+        
+        # 确保返回指定数量
+        keywords = keywords[:count]
+        print(f"✅ 生成了{len(keywords)}个{language}种子关键词")
+        return keywords if keywords else get_default_seed_keywords(language, count)
+        
     except Exception as e:
-        print(f"生成{language}题目失败: {e}")
+        print(f"❌ 种子关键词生成失败: {e}")
+        return get_default_seed_keywords(language, count)
+
+def get_default_seed_keywords(language: str, count: int) -> List[str]:
+    """获取默认种子关键词"""
+    if "chinese" in language.lower() or "中文" in language:
+        default_keywords = [
+            "twitter视频下载",
+            "推特视频保存", 
+            "社交媒体视频下载",
+            "twitter下载器",
+            "视频下载工具",
+            "twitter保存",
+            "推特视频",
+            "下载twitter"
+        ]
+    else:
+        default_keywords = [
+            "twitter video downloader",
+            "download twitter video",
+            "twitter video download",
+            "twitter downloader",
+            "save twitter video",
+            "twitter video saver",
+            "download from twitter",
+            "twitter media download"
+        ]
+    
+    return default_keywords[:count]
+
+def get_google_suggestions(keyword: str, max_suggestions: int = 8) -> List[str]:
+    """使用Google自动完成API获取关键词建议"""
+    try:
+        url = "http://suggestqueries.google.com/complete/search"
+        params = {
+            'client': 'firefox',
+            'q': keyword
+        }
+        
+        print(f"🔍 获取'{keyword}'的Google自动完成建议...")
+        
+        response = requests.get(url, params=params, timeout=10)
+        response.raise_for_status()
+        
+        suggestions_data = response.json()
+        if len(suggestions_data) >= 2 and isinstance(suggestions_data[1], list):
+            suggestions = suggestions_data[1][:max_suggestions]
+            
+            # 过滤和清理建议
+            filtered_suggestions = []
+            for suggestion in suggestions:
+                if isinstance(suggestion, str) and suggestion.strip():
+                    # 移除Unicode转义字符
+                    clean_suggestion = suggestion.encode().decode('unicode_escape')
+                    filtered_suggestions.append(clean_suggestion)
+            
+            print(f"✅ 获取到{len(filtered_suggestions)}个自动完成建议")
+            return filtered_suggestions
+        else:
+            print("⚠️ 没有获取到有效的自动完成建议")
+            return []
+            
+    except Exception as e:
+        print(f"❌ 获取Google自动完成建议失败: {e}")
         return []
+
+def expand_keywords_with_google(seed_keywords: List[str], max_per_keyword: int = 6) -> Dict[str, List[str]]:
+    """使用Google自动完成扩展种子关键词"""
+    expanded_keywords = {}
+    
+    print(f"\n🚀 开始扩展{len(seed_keywords)}个种子关键词...")
+    
+    for i, keyword in enumerate(seed_keywords, 1):
+        print(f"\n进度: {i}/{len(seed_keywords)} - 处理: {keyword}")
+        
+        suggestions = get_google_suggestions(keyword, max_per_keyword)
+        if suggestions:
+            expanded_keywords[keyword] = suggestions
+        
+        # 避免请求过于频繁
+        if i < len(seed_keywords):
+            time.sleep(1)  # 1秒延迟
+    
+    return expanded_keywords
+
+def generate_categorized_topics_by_keywords(expanded_keywords: Dict[str, List[str]], language: str) -> Dict[str, List[str]]:
+    """根据扩展的关键词，按分类生成文章题目"""
+    model = GenerativeModel("gemini-2.5-flash-preview-05-20")
+    
+    # 将所有关键词合并成一个列表用于AI分析
+    all_keywords = []
+    for seed_keyword, suggestions in expanded_keywords.items():
+        all_keywords.append(seed_keyword)
+        all_keywords.extend(suggestions)
+    
+    # 去重
+    unique_keywords = list(set(all_keywords))
+    keywords_text = '\n'.join(f"- {kw}" for kw in unique_keywords[:50])  # 限制关键词数量
+    
+    prompt = f"""你是一位专业的SEO内容策略师，专注于TwitterDown（Twitter视频下载器）相关的内容创作。
+
+## 任务
+基于以下扩展关键词，按照指定类别生成文章题目建议。
+
+## 可用关键词：
+{keywords_text}
+
+## 文章类别要求：
+
+### 🔍 搜索型关键词文章（每日3篇）
+- 针对用户搜索意图，长尾关键词为主
+- 如"how to download Twitter video on iPhone"
+- 解决具体用户问题的文章
+需要生成：3个题目
+
+### 📘 教程型/列表型文章（每日1篇）  
+- 增加分享率，适合内部链接
+- 如"Top 5 Twitter Video Downloaders 2025"
+- 比较、排行、完整指南类型
+需要生成：1个题目
+
+### 🌍 中英文对照内容（每日2-5篇）
+- 一键双语输出，适配中英文流量，提升页面密度
+- 同一主题的中英文版本
+需要生成：2个题目（同一主题，但请同时提供中英文版本）
+
+### 🧪 A/B测试型冷启动关键词（每日1-2篇）
+- 每天试验冷门关键词，观察有无意外流量  
+- 探索性的、新颖的角度
+需要生成：1个题目
+
+## 语言要求
+{language}
+
+## 输出格式
+请使用以下格式：
+
+===SEARCH_KEYWORDS_START===
+[3个搜索型文章题目，每行一个]
+===SEARCH_KEYWORDS_END===
+
+===TUTORIAL_LISTS_START===
+[1个教程型/列表型文章题目]
+===TUTORIAL_LISTS_END===
+
+===BILINGUAL_CONTENT_START===
+[2个双语文章题目，格式：中文题目 | English Title]
+===BILINGUAL_CONTENT_END===
+
+===AB_TEST_KEYWORDS_START===
+[1个A/B测试型文章题目]
+===AB_TEST_KEYWORDS_END===
+
+请确保所有题目都与提供的关键词相关，具有SEO价值：
+
+(唯一性标识: {int(time.time())})"""
+
+    try:
+        result = model.generate_content(prompt)
+        if not result.text:
+            raise ValueError("AI未能生成分类文章题目")
+        
+        # 解析分类题目
+        categories = {
+            'search_keywords': extract_category_topics(result.text, "===SEARCH_KEYWORDS_START===", "===SEARCH_KEYWORDS_END==="),
+            'tutorial_lists': extract_category_topics(result.text, "===TUTORIAL_LISTS_START===", "===TUTORIAL_LISTS_END==="),
+            'bilingual_content': extract_category_topics(result.text, "===BILINGUAL_CONTENT_START===", "===BILINGUAL_CONTENT_END==="),
+            'ab_test_keywords': extract_category_topics(result.text, "===AB_TEST_KEYWORDS_START===", "===AB_TEST_KEYWORDS_END===")
+        }
+        
+        print(f"✅ 成功生成分类文章题目:")
+        for category, topics in categories.items():
+            print(f"   {category}: {len(topics)}个题目")
+        
+        return categories
+        
+    except Exception as e:
+        print(f"❌ 分类文章题目生成失败: {e}")
+        return get_default_category_topics(language)
+
+def extract_category_topics(content: str, start_delimiter: str, end_delimiter: str) -> List[str]:
+    """从分隔符中提取分类题目"""
+    try:
+        start_idx = content.find(start_delimiter)
+        end_idx = content.find(end_delimiter)
+        
+        if start_idx != -1 and end_idx != -1 and end_idx > start_idx:
+            start_idx += len(start_delimiter)
+            section_content = content[start_idx:end_idx].strip()
+            
+            # 解析题目
+            topics = []
+            lines = section_content.split('\n')
+            for line in lines:
+                line = line.strip()
+                if line and not line.startswith('#') and not line.startswith('==='):
+                    # 清理编号和符号
+                    topic = re.sub(r'^\d+\.?\s*', '', line)
+                    topic = re.sub(r'^[•\-\*]\s*', '', topic)
+                    topic = topic.strip()
+                    if topic:
+                        topics.append(topic)
+            
+            return topics
+        
+        return []
+        
+    except Exception:
+        return []
+
+def get_default_category_topics(language: str) -> Dict[str, List[str]]:
+    """获取默认分类题目"""
+    if "chinese" in language.lower() or "中文" in language:
+        return {
+            'search_keywords': [
+                "如何在iPhone上下载Twitter视频",
+                "Twitter视频下载器哪个最好用",
+                "免费下载Twitter视频的方法"
+            ],
+            'tutorial_lists': [
+                "2025年最佳Twitter视频下载工具TOP5"
+            ],
+            'bilingual_content': [
+                "Twitter视频下载完整指南 | Complete Twitter Video Download Guide",
+                "批量下载Twitter视频方法 | How to Bulk Download Twitter Videos"
+            ],
+            'ab_test_keywords': [
+                "Twitter视频下载的法律问题解析"
+            ]
+        }
+    else:
+        return {
+            'search_keywords': [
+                "How to download Twitter videos on iPhone",
+                "Best Twitter video downloader 2024",
+                "Free Twitter video download methods"
+            ],
+            'tutorial_lists': [
+                "Top 5 Twitter Video Downloaders 2025"
+            ],
+            'bilingual_content': [
+                "Complete Twitter Video Download Guide | Twitter视频下载完整指南",
+                "How to Bulk Download Twitter Videos | 批量下载Twitter视频方法"
+            ],
+            'ab_test_keywords': [
+                "Legal aspects of Twitter video downloading"
+            ]
+        }
+
+def build_keywords_context(expanded_keywords: Dict[str, List[str]]) -> str:
+    """构建关键词上下文字符串"""
+    context_lines = []
+    context_lines.append("相关关键词集合:")
+    
+    for seed, suggestions in expanded_keywords.items():
+        context_lines.append(f"• {seed}")
+        for suggestion in suggestions[:5]:  # 每个种子词最多5个建议
+            context_lines.append(f"  - {suggestion}")
+    
+    return '\n'.join(context_lines)
 
 def extract_delimiter_content(text, start_delimiter, end_delimiter):
     """提取分隔符之间的内容"""
@@ -105,7 +399,7 @@ def generate_unique_slug(base_slug, locale):
         
     return slug
 
-def generate_article(topic, language, locale):
+def generate_article(topic, language, locale, keywords_context=""):
     """生成单篇文章"""
     try:
         print(f"正在生成{language}文章: {topic}")
@@ -128,6 +422,21 @@ def generate_article(topic, language, locale):
 
         model = GenerativeModel("gemini-2.5-flash-preview-05-20")
         
+        # 构建关键词上下文
+        keywords_section = ""
+        if keywords_context:
+            keywords_section = f"""
+
+## 关键词优化指导
+基于以下相关关键词优化你的内容：
+{keywords_context}
+
+**关键词使用要求：**
+- 自然地将这些关键词融入文章中
+- 在标题、小标题和正文中合理分布关键词
+- 确保关键词使用不影响内容的自然性和可读性
+- 优先使用长尾关键词和语义相关的词汇"""
+        
         if locale == "en":
             prompt = f"""You are a professional SEO content creator specializing in TwitterDown (Twitter video downloader) related content.
 
@@ -145,6 +454,8 @@ Please create a high-quality SEO blog article for this topic: {topic}
 - SEO optimized with naturally integrated relevant keywords
 
 {internal_links_text}
+
+{keywords_section}
 
 ## Internal Link Requirements
 - Must naturally insert at least 3 links to the above existing articles within the content
@@ -196,6 +507,8 @@ Please generate natural, fluent content that avoids obvious AI-generated traces:
 - SEO优化，自然融入相关关键词
 
 {internal_links_text}
+
+{keywords_section}
 
 ## 内链要求
 - 必须在内容中自然插入至少3个指向上述现有文章的链接
@@ -296,70 +609,133 @@ Please generate natural, fluent content that avoids obvious AI-generated traces:
             "error": str(e),
         }
 
+def generate_keyword_driven_articles(language: str, locale: str) -> Dict[str, Any]:
+    """关键词驱动的文章生成流程"""
+    try:
+        print(f"\n🎯 开始{language}关键词驱动的内容生成流程...")
+        
+        # 步骤1: 生成种子关键词
+        print(f"\n📊 步骤1: 生成{language}种子关键词")
+        seed_keywords = generate_seed_keywords(language, 6)
+        
+        if not seed_keywords:
+            print(f"❌ {language}种子关键词生成失败")
+            return {"success": 0, "failure": 0, "topics": [], "results": []}
+        
+        print(f"🔑 {language}种子关键词:")
+        for i, keyword in enumerate(seed_keywords, 1):
+            print(f"   {i}. {keyword}")
+        
+        # 步骤2: 使用Google自动完成扩展关键词
+        print(f"\n🔍 步骤2: 扩展{language}关键词")
+        expanded_keywords = expand_keywords_with_google(seed_keywords, 5)
+        
+        print(f"\n📈 {language}扩展后的关键词集合:")
+        total_keywords = 0
+        for seed, suggestions in expanded_keywords.items():
+            print(f"   🌱 {seed}: {len(suggestions)}个建议")
+            total_keywords += len(suggestions)
+        print(f"   总计: {len(seed_keywords)}个种子关键词 → {total_keywords}个扩展关键词")
+        
+        # 步骤3: 基于关键词生成分类文章题目
+        print(f"\n📝 步骤3: 生成{language}分类文章题目")
+        categorized_topics = generate_categorized_topics_by_keywords(expanded_keywords, language)
+        
+        print(f"\n📚 {language}生成的分类文章题目:")
+        all_topics = []
+        for category, topics in categorized_topics.items():
+            print(f"   📂 {category}: {len(topics)}个题目")
+            for topic in topics:
+                print(f"      • {topic}")
+                all_topics.append((category, topic))
+        
+        # 步骤4: 执行文章生成
+        print(f"\n🚀 步骤4: 开始生成{language}文章...")
+        
+        # 构建关键词上下文
+        keywords_context = build_keywords_context(expanded_keywords)
+        
+        results = []
+        success_count = 0
+        failure_count = 0
+        
+        for category, topic in all_topics:
+            # 处理双语题目
+            if category == 'bilingual_content' and '|' in topic:
+                # 分离中英文题目
+                if locale == "zh":
+                    topic_to_use = topic.split('|')[0].strip()  # 中文部分
+                else:
+                    topic_to_use = topic.split('|')[1].strip()  # 英文部分
+            else:
+                topic_to_use = topic
+            
+            print(f"\n📝 生成文章: {topic_to_use} (分类: {category})")
+            result = generate_article(topic_to_use, language, locale, keywords_context)
+            results.append(result)
+            
+            if result["success"]:
+                success_count += 1
+                print(f"✅ 成功: {result['title']}")
+            else:
+                failure_count += 1
+                print(f"❌ 失败: {result.get('error', '未知错误')}")
+            
+            # 延迟避免API限制
+            time.sleep(3)
+        
+        print(f"\n🎉 {language}关键词驱动生成完成!")
+        print(f"   📊 种子关键词: {len(seed_keywords)} 个")
+        print(f"   🔍 扩展关键词: {total_keywords} 个")
+        print(f"   📝 成功生成文章: {success_count} 篇")
+        print(f"   ❌ 失败: {failure_count} 篇")
+        
+        return {
+            "success": success_count,
+            "failure": failure_count,
+            "topics": [topic for _, topic in all_topics],
+            "results": results,
+            "seed_keywords": seed_keywords,
+            "expanded_keywords": expanded_keywords,
+            "categorized_topics": categorized_topics
+        }
+        
+    except Exception as e:
+        print(f"❌ {language}关键词驱动生成失败: {e}")
+        return {"success": 0, "failure": 0, "topics": [], "results": []}
+
 def main():
-    """主函数"""
-    print("🚀 开始执行每日自动文章生成任务")
+    """主函数 - 关键词驱动版本"""
+    print("🚀 开始执行每日关键词驱动文章生成任务")
+    print("=" * 60)
     
     results = {
-        "chinese": {"success": 0, "failure": 0, "topics": [], "results": []},
-        "english": {"success": 0, "failure": 0, "topics": [], "results": []}
+        "chinese": {},
+        "english": {}
     }
 
     # 生成中文文章
-    try:
-        print("📝 生成中文题目...")
-        chinese_topics = generate_topics("Chinese", 5)
-        results["chinese"]["topics"] = chinese_topics
-        
-        print("🇨🇳 开始生成中文文章...")
-        for topic in chinese_topics:
-            result = generate_article(topic, "Chinese", "zh")
-            results["chinese"]["results"].append(result)
-            
-            if result["success"]:
-                results["chinese"]["success"] += 1
-            else:
-                results["chinese"]["failure"] += 1
-            
-            # 延迟避免API限制
-            time.sleep(2)
-            
-        print(f"✅ 中文文章生成完成：成功 {results['chinese']['success']} 篇，失败 {results['chinese']['failure']} 篇")
-    except Exception as e:
-        print(f"❌ 中文文章生成失败: {e}")
-        results["chinese"]["failure"] = 5
-
+    print("\n🇨🇳 开始中文关键词驱动生成...")
+    results["chinese"] = generate_keyword_driven_articles("Chinese (Simplified)", "zh")
+    
     # 等待避免API限制
+    print("\n⏳ 等待5秒，避免API限制...")
     time.sleep(5)
 
     # 生成英文文章
-    try:
-        print("📝 生成英文题目...")
-        english_topics = generate_topics("English", 5)
-        results["english"]["topics"] = english_topics
-        
-        print("🇺🇸 开始生成英文文章...")
-        for topic in english_topics:
-            result = generate_article(topic, "English", "en")
-            results["english"]["results"].append(result)
-            
-            if result["success"]:
-                results["english"]["success"] += 1
-            else:
-                results["english"]["failure"] += 1
-            
-            # 延迟避免API限制
-            time.sleep(2)
-            
-        print(f"✅ 英文文章生成完成：成功 {results['english']['success']} 篇，失败 {results['english']['failure']} 篇")
-    except Exception as e:
-        print(f"❌ 英文文章生成失败: {e}")
-        results["english"]["failure"] = 5
+    print("\n🇺🇸 开始英文关键词驱动生成...")
+    results["english"] = generate_keyword_driven_articles("English", "en")
 
+    # 总结
     total_success = results["chinese"]["success"] + results["english"]["success"]
     total_failure = results["chinese"]["failure"] + results["english"]["failure"]
 
-    print(f"🎉 每日文章生成任务完成：总计成功 {total_success} 篇，失败 {total_failure} 篇")
+    print(f"\n🎉 每日关键词驱动文章生成任务完成!")
+    print("=" * 60)
+    print(f"📊 总体统计:")
+    print(f"   🇨🇳 中文: 成功 {results['chinese']['success']} 篇，失败 {results['chinese']['failure']} 篇")
+    print(f"   🇺🇸 英文: 成功 {results['english']['success']} 篇，失败 {results['english']['failure']} 篇")
+    print(f"   📝 总计: 成功 {total_success} 篇，失败 {total_failure} 篇")
 
     # 记录任务执行日志到数据库
     try:
@@ -371,13 +747,46 @@ def main():
             "english_failure": results["english"]["failure"],
             "total_success": total_success,
             "total_failure": total_failure,
+            "generation_method": "keyword_driven",
             "created_at": datetime.now().isoformat()
         }
         supabase.table("auto_generation_logs").insert(log_data).execute()
+        print(f"✅ 执行日志已记录到数据库")
     except Exception as log_error:
-        print(f"日志记录失败（不影响主要功能）: {log_error}")
+        print(f"⚠️ 日志记录失败（不影响主要功能）: {log_error}")
 
     return results
 
 if __name__ == "__main__":
-    main() 
+    import sys
+    
+    # 支持命令行参数
+    if len(sys.argv) > 1:
+        command = sys.argv[1].lower()
+        
+        if command == "keywords":
+            # 关键词驱动模式
+            language = sys.argv[2] if len(sys.argv) > 2 else "both"
+            
+            print("🚀 启动关键词驱动文章生成模式")
+            print(f"🌍 目标语言: {language}")
+            
+            if language.lower() in ["chinese", "zh", "中文"]:
+                print("\n🇨🇳 仅生成中文内容...")
+                result = generate_keyword_driven_articles("Chinese (Simplified)", "zh")
+                print(f"✅ 中文生成完成: 成功 {result['success']} 篇")
+            elif language.lower() in ["english", "en", "英文"]:
+                print("\n🇺🇸 仅生成英文内容...")
+                result = generate_keyword_driven_articles("English", "en")
+                print(f"✅ 英文生成完成: 成功 {result['success']} 篇")
+            else:
+                # 默认生成双语
+                main()
+        else:
+            print(f"❌ 未知命令: {command}")
+            print("💡 可用命令:")
+            print("   python auto_generate_articles.py keywords [language]")
+            print("   language 可选值: chinese/zh/中文, english/en/英文, both(默认)")
+    else:
+        # 默认执行关键词驱动的双语生成
+        main() 
