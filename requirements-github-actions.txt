@@ -1,0 +1,12 @@
+# GitHub Actions Python Dependencies
+# 用于自动博客生成和sitemap更新
+
+# AI and API dependencies
+google-generativeai==0.8.3
+requests==2.31.0
+
+# Database and backend
+supabase==2.9.1
+
+# Utilities
+python-dotenv==1.0.1 
