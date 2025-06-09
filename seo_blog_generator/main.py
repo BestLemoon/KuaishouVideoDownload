@@ -8,12 +8,14 @@ SEO Blog Generator for TwitterDown
 import sys
 import os
 import subprocess
+from datetime import datetime
 from config import *
 from database import DatabaseManager
 from content_generator import ContentGenerator
 from image_downloader import ImageDownloader
 from sitemap_updater import SitemapUpdater
 from keyword_generator import KeywordGenerator
+from language_detector import LanguageDetector
 
 class SEOBlogGenerator:
     def __init__(self):
@@ -28,6 +30,7 @@ class SEOBlogGenerator:
         self.image_downloader = ImageDownloader()
         self.sitemap_updater = SitemapUpdater()
         self.keyword_generator = KeywordGenerator()
+        self.language_detector = LanguageDetector()
         
         print("✅ 所有模块初始化完成")
         print(f"📄 已读取 sitemap，包含 {len(self.content_generator.sitemap_content['existing_posts'])} 个博客文章")
@@ -263,6 +266,81 @@ class SEOBlogGenerator:
             print(f"❌ 关键词驱动生成失败: {e}")
             return []
     
+    def multilingual_keyword_generation(self, keywords_file_path="keywords_gsc.txt"):
+        """基于关键词文件的多语言文章生成"""
+        try:
+            print(f"\n🌍 开始多语言关键词驱动生成...")
+            print(f"📂 关键词文件: {keywords_file_path}")
+            
+            # 加载和分析关键词
+            keywords = self.language_detector.load_keywords_from_file(keywords_file_path)
+            if not keywords:
+                print("❌ 未找到有效关键词")
+                return []
+            
+            print(f"📝 总计加载关键词: {len(keywords)} 个")
+            
+            # 按语言分组关键词
+            language_keywords = self.language_detector.filter_keywords_by_supported_languages(keywords)
+            
+            print(f"\n🌐 发现的语言分布:")
+            for locale, kws in language_keywords.items():
+                language_name = self.language_detector.supported_locales[locale]
+                print(f"   {language_name} ({locale}): {len(kws)} 个关键词")
+                print(f"      示例: {', '.join(kws[:3])}")
+            
+            # 为每种语言生成文章
+            all_results = []
+            for locale, kws in language_keywords.items():
+                if len(kws) < 3:  # 关键词太少跳过
+                    continue
+                
+                language_name = self.language_detector.supported_locales[locale]
+                print(f"\n📝 为 {language_name} 生成文章...")
+                
+                # 从关键词中选择主题
+                import random
+                selected_keywords = random.sample(kws, min(len(kws), 3))
+                
+                for keyword in selected_keywords:
+                    # 生成针对该关键词的文章主题
+                    topic_templates = {
+                        'en': f"Complete Guide to {keyword}: Tips and Best Practices",
+                        'zh': f"{keyword}完整指南：实用技巧和最佳实践",
+                        'ko': f"{keyword} 완전 가이드: 팁과 모범 사례",
+                        'de': f"Vollständiger Leitfaden zu {keyword}: Tipps und Best Practices",
+                        'ar': f"الدليل الكامل لـ {keyword}: نصائح وأفضل الممارسات"
+                    }
+                    
+                    topic = topic_templates.get(locale, f"Complete Guide to {keyword}")
+                    
+                    # 构建关键词上下文
+                    keywords_context = f"目标关键词: {keyword}\n相关关键词: {', '.join(kws[:10])}"
+                    
+                    print(f"   生成文章: {topic}")
+                    
+                    result = self.generate_single_article(
+                        topic=topic,
+                        language=language_name,
+                        locale=locale,
+                        keywords_context=keywords_context
+                    )
+                    
+                    if result:
+                        all_results.append(result)
+                        print(f"   ✅ 成功生成: {result['title']}")
+                    
+                    # 添加延迟避免API限制
+                    import time
+                    time.sleep(3)
+            
+            print(f"\n✅ 多语言生成完成! 总计生成 {len(all_results)} 篇文章")
+            return all_results
+            
+        except Exception as e:
+            print(f"❌ 多语言生成失败: {e}")
+            return []
+    
     def _build_keywords_context(self, expanded_keywords):
         """构建关键词上下文字符串"""
         context_lines = []
@@ -321,13 +399,15 @@ class SEOBlogGenerator:
             print("3. 生成双语文章（中英文）")
             print("4. 批量生成文章")
             print("5. 🔥 关键词驱动智能生成 (推荐)")
-            print("6. 验证 sitemap")
-            print("7. 部署到 Vercel")
-            print("8. 查看文章列表")
-            print("9. 从数据库更新 Sitemap")
+            print("6. 🌍 多语言关键词驱动生成")
+            print("7. 🤖 智能GSC博客生成器 (NEW)")
+            print("8. 验证 sitemap")
+            print("9. 部署到 Vercel")
+            print("10. 查看文章列表")
+            print("11. 从数据库更新 Sitemap")
             print("0. 退出")
             
-            choice = input("\n请输入选项 (0-9): ").strip()
+            choice = input("\n请输入选项 (0-11): ").strip()
             
             if choice == "0":
                 print("👋 再见!")
@@ -343,12 +423,16 @@ class SEOBlogGenerator:
             elif choice == "5":
                 self.handle_keyword_driven_generation()
             elif choice == "6":
-                self.sitemap_updater.validate_sitemap()
+                self.handle_multilingual_keyword_generation()
             elif choice == "7":
-                self.deploy_to_vercel()
+                self.handle_smart_gsc_generation()
             elif choice == "8":
-                self.show_articles_list()
+                self.sitemap_updater.validate_sitemap()
             elif choice == "9":
+                self.deploy_to_vercel()
+            elif choice == "10":
+                self.show_articles_list()
+            elif choice == "11":
                 self.sitemap_updater.update_sitemap_from_db()
             else:
                 print("❌ 无效选项，请重新选择")
@@ -517,6 +601,179 @@ class SEOBlogGenerator:
             print(f"   🇨🇳 中文: {len(zh_results)} 篇")
         else:
             print("❌ 无效选择，返回主菜单")
+    
+    def handle_multilingual_keyword_generation(self):
+        """处理多语言关键词驱动生成"""
+        print("\n🌍 多语言关键词驱动生成模式")
+        print("=" * 50)
+        print("这个模式将:")
+        print("1. 📊 分析GSC关键词文件")
+        print("2. 🌐 识别并分组不同语言的关键词")
+        print("3. 📝 为每种语言生成对应的文章")
+        print("4. 💾 自动保存到数据库对应的locale")
+        
+        # 询问关键词文件路径
+        keywords_file = input(f"\n关键词文件路径 (默认: keywords_gsc.txt): ").strip()
+        if not keywords_file:
+            keywords_file = "keywords_gsc.txt"
+        
+        # 检查文件是否存在
+        if not os.path.exists(keywords_file):
+            print(f"❌ 文件不存在: {keywords_file}")
+            return
+        
+        confirm = input(f"\n确认开始多语言生成? (y/N): ").strip().lower()
+        if confirm != 'y':
+            print("❌ 已取消")
+            return
+        
+        try:
+            results = self.multilingual_keyword_generation(keywords_file)
+            
+            if results:
+                print(f"\n🎉 多语言生成成功完成!")
+                print(f"📊 总计生成: {len(results)} 篇文章")
+                
+                # 按语言分组显示结果
+                language_groups = {}
+                for result in results:
+                    locale = result.get('locale', 'unknown')
+                    if locale not in language_groups:
+                        language_groups[locale] = []
+                    language_groups[locale].append(result)
+                
+                for locale, articles in language_groups.items():
+                    language_name = self.language_detector.supported_locales.get(locale, locale)
+                    print(f"\n🌍 {language_name} ({locale}): {len(articles)} 篇")
+                    for article in articles:
+                        print(f"   📄 {article['title']}")
+                        print(f"      🔗 /posts/{article['slug']}")
+            else:
+                print("❌ 没有生成任何文章")
+                
+        except Exception as e:
+            print(f"❌ 多语言生成失败: {e}")
+    
+    def handle_smart_gsc_generation(self):
+        """处理智能GSC博客生成"""
+        print("\n🤖 智能GSC博客生成器")
+        print("=" * 50)
+        print("这个模式将:")
+        print("1. 📊 分析GSC数据，筛选符合条件的关键词")
+        print("2. 🔍 按语言分组和排序关键词")
+        print("3. 🤖 AI直接基于关键词生成优化标题")
+        print("4. 📝 生成针对性SEO优化文章")
+        print("5. 💾 自动保存到对应locale数据库")
+        
+        # 检查CSV文件
+        csv_file = "查询数.csv"
+        if not os.path.exists(csv_file):
+            csv_file = input(f"\nGSC CSV文件未找到，请输入文件路径: ").strip()
+            if not os.path.exists(csv_file):
+                print(f"❌ 文件不存在: {csv_file}")
+                return
+        
+        print(f"\n📂 使用GSC文件: {csv_file}")
+        
+        # 询问筛选条件
+        print(f"\n⚙️ 设置筛选条件:")
+        min_impressions = input("最小展示量 (默认10): ").strip()
+        min_impressions = int(min_impressions) if min_impressions.isdigit() else 10
+        
+        min_rank = input("最小排名 (默认4): ").strip()
+        min_rank = float(min_rank) if min_rank.replace('.', '').isdigit() else 4.0
+        
+        max_rank = input("最大排名 (默认10): ").strip()
+        max_rank = float(max_rank) if max_rank.replace('.', '').isdigit() else 10.0
+        
+        print(f"\n🎯 筛选条件: 展示量>{min_impressions}, 排名{min_rank}-{max_rank}")
+        
+        # 选择生成模式
+        print(f"\n📋 选择生成模式:")
+        print("1. 🔍 仅分析数据，不生成文章")
+        print("2. 🎯 为优先级语言生成文章 (英文+中文+韩文)")
+        print("3. 🌍 为所有语言生成文章")
+        print("4. 🔤 为指定语言生成文章")
+        
+        mode_choice = input("请选择模式 (1-4): ").strip()
+        
+        try:
+            from smart_gsc_generator import SmartGSCGenerator
+            generator = SmartGSCGenerator(csv_file)
+            
+            if mode_choice == "1":
+                # 仅分析
+                generator.run_analysis_only()
+                
+            elif mode_choice == "2":
+                # 优先级语言
+                articles_count = input("每种语言生成文章数量 (默认3): ").strip()
+                articles_count = int(articles_count) if articles_count.isdigit() else 3
+                
+                if generator.analyze_gsc_data(min_impressions, min_rank, max_rank):
+                    results = generator.generate_priority_articles(articles_per_language=articles_count)
+                    self._print_gsc_generation_summary(results)
+                    
+            elif mode_choice == "3":
+                # 所有语言
+                articles_count = input("每种语言生成文章数量 (默认2): ").strip()
+                articles_count = int(articles_count) if articles_count.isdigit() else 2
+                
+                if generator.analyze_gsc_data(min_impressions, min_rank, max_rank):
+                    results = generator.generate_articles_for_all_languages(articles_count)
+                    self._print_gsc_generation_summary(results)
+                    
+            elif mode_choice == "4":
+                # 指定语言
+                if generator.analyze_gsc_data(min_impressions, min_rank, max_rank):
+                    available_languages = set(kw['language_code'] for kw in generator.filtered_keywords)
+                    print(f"可用语言: {', '.join(available_languages)}")
+                    
+                    lang_code = input("请输入语言代码: ").strip()
+                    if lang_code not in available_languages:
+                        print("❌ 无效的语言代码")
+                        return
+                    
+                    articles_count = input("生成文章数量 (默认5): ").strip()
+                    articles_count = int(articles_count) if articles_count.isdigit() else 5
+                    
+                    results = generator.generate_articles_by_language(lang_code, articles_count)
+                    if results:
+                        results_dict = {lang_code: results}
+                        self._print_gsc_generation_summary(results_dict)
+            else:
+                print("❌ 无效选择")
+                
+        except ImportError:
+            print("❌ 智能GSC生成器模块未找到")
+        except Exception as e:
+            print(f"❌ 智能GSC生成失败: {e}")
+    
+    def _print_gsc_generation_summary(self, results):
+        """打印GSC生成结果摘要"""
+        if not results:
+            print("\n❌ 没有生成任何文章")
+            return
+        
+        print(f"\n🎉 GSC智能生成完成!")
+        print("=" * 40)
+        
+        total_articles = 0
+        for lang_code, articles in results.items():
+            total_articles += len(articles)
+            lang_name = articles[0].get('language_name', lang_code) if articles else lang_code
+            print(f"\n🌍 {lang_name} ({lang_code}): {len(articles)} 篇")
+            
+            for article in articles:
+                keyword = article.get('source_keyword', 'N/A')
+                rank = article.get('keyword_rank', 'N/A')
+                impressions = article.get('keyword_impressions', 'N/A')
+                print(f"   📄 {article['title']}")
+                print(f"      🔑 关键词: {keyword} (排名: {rank}, 展示: {impressions})")
+                print(f"      🔗 /posts/{article['slug']}")
+        
+        print(f"\n✅ 总计成功生成: {total_articles} 篇文章")
+        print(f"⏰ 生成时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     
     def show_articles_list(self):
         """显示文章列表"""

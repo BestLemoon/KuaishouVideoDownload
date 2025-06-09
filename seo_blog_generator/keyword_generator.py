@@ -58,8 +58,7 @@ class KeywordGenerator:
                 generation_config=genai.types.GenerationConfig(
                     temperature=0.8,
                     top_k=40,
-                    top_p=0.9,
-                    max_output_tokens=1024,
+                    top_p=0.9
                 )
             )
             
@@ -225,8 +224,7 @@ class KeywordGenerator:
                 generation_config=genai.types.GenerationConfig(
                     temperature=0.8,
                     top_k=40,
-                    top_p=0.9,
-                    max_output_tokens=2048,
+                    top_p=0.9
                 )
             )
             

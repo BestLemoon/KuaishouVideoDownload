@@ -43,3 +43,4 @@ Makefile
 wrangler.toml
 supabase
 chrome-extension/
+seo_blog_generator/.env

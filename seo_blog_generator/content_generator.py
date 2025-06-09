@@ -131,6 +131,87 @@ class ContentGenerator:
         else:
             return default_topics_en[:count]
     
+    def generate_title_from_keyword(self, keyword: str, language: str, rank: float, impressions: int) -> str:
+        """基于关键词生成博客标题"""
+        try:
+            language_names = {
+                'en': 'English',
+                'zh': 'Chinese (Simplified)',
+                'ko': 'Korean',
+                'ja': 'Japanese',
+                'de': 'German',
+                'ar': 'Arabic',
+                'fr': 'French',
+                'es': 'Spanish',
+                'zh-tw': 'Chinese (Traditional)'
+            }
+            
+            language_name = language_names.get(language, 'English')
+            
+            title_prompt = f"""你是一位资深的SEO内容策划师，专注于TwitterDown相关内容。
+
+## 任务
+基于以下GSC数据中的关键词，为TwitterDown生成一个高质量的SEO博客标题。
+
+## 关键词信息
+- 关键词: "{keyword}"
+- 当前排名: {rank}
+- 展示量: {impressions}
+- 目标语言: {language_name}
+
+## TwitterDown背景
+TwitterDown是专业的Twitter视频下载器，提供免费、快速、高质量的视频下载服务。
+
+## 要求
+1. 标题必须自然地包含目标关键词"{keyword}"
+2. 标题应该吸引用户点击，解决用户需求
+3. 符合SEO最佳实践
+4. 适合{language_name}语言用户的表达习惯
+5. 标题长度控制在60字符以内
+6. 确保与TwitterDown业务相关
+7. 标题应该实用、有价值，能帮助用户
+
+## 现有内容（避免重复）
+{chr(10).join([f"- {url.split('/')[-1]}" for url in self.sitemap_content['existing_posts'][:5]])}
+
+## 输出格式
+请直接输出一个标题，不要解释，不要编号：
+
+(内部注释: {time.time()})"""
+
+            print(f"📝 为关键词 '{keyword}' 生成标题...")
+            
+            response = self.model.generate_content(
+                title_prompt,
+                generation_config=genai.types.GenerationConfig(
+                    temperature=0.7,
+                    top_k=30,
+                    top_p=0.9,
+                )
+            )
+            
+            if not response.candidates or response.candidates[0].finish_reason != 1:
+                print(f"⚠️ API响应异常，使用备选标题")
+                return self._generate_fallback_title(keyword, language_name)
+            
+            title = response.text.strip()
+            title = re.sub(r'^\d+\.?\s*', '', title)  # 移除可能的编号
+            title = title.replace('"', '').replace("'", '')  # 移除引号
+            
+            print(f"✅ 生成标题: {title}")
+            return title
+            
+        except Exception as e:
+            print(f"❌ 标题生成失败: {e}")
+            return self._generate_fallback_title(keyword, language_name)
+    
+    def _generate_fallback_title(self, keyword: str, language_name: str) -> str:
+        """生成备选标题"""
+        if language_name in ['Chinese (Simplified)', 'Chinese (Traditional)']:
+            return f"{keyword}完整指南：专业方法和实用技巧"
+        else:
+            return f"Complete Guide to {keyword}: Expert Methods and Tips"
+    
     def _read_sitemap(self):
         """读取 sitemap.xml 内容"""
         try:
@@ -287,8 +368,7 @@ Please generate a comprehensive, SEO-optimized article about this topic followin
                 generation_config=genai.types.GenerationConfig(
                     temperature=0.7,
                     top_k=40,
-                    top_p=0.95,
-                    max_output_tokens=4096,
+                    top_p=0.95
                 )
             )
             
