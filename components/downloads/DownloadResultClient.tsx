@@ -10,6 +10,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import Icon from "@/components/icon";
 import { useAppContext } from "@/contexts/app";
 import { toast } from "sonner";
+import GoogleAdSense from "@/components/analytics/GoogleAdSense";
 
 interface VideoInfo {
   url: string;
@@ -325,8 +326,10 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
   };
 
   return (
-    <div className="container py-12">
-      <div className="w-full max-w-6xl mx-auto space-y-6">
+    <>
+      <GoogleAdSense />
+      <div className="container py-12">
+        <div className="w-full max-w-6xl mx-auto space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -549,5 +552,6 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
         </Card>
       </div>
     </div>
+    </>
   );
 } 
