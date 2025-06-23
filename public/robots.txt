@@ -13,11 +13,6 @@ Disallow: /download-history
 Disallow: /download-result
 Disallow: /batch-download-result
 Disallow: /*?*q=
-Disallow: /privacy-policy
-Disallow: /terms-of-service
 
 # Sitemap
 Sitemap: https://TwitterDown.com/sitemap.xml
-
-# Crawl-delay for all bots
-Crawl-delay: 1
