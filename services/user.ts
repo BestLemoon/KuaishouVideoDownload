@@ -178,7 +178,7 @@ export async function checkUserIsPremium(user_uuid: string): Promise<boolean> {
 
       for (const order of orders) {
         console.log('[Service] checkUserIsPremium - 检查订单:', {
-          id: order.id,
+          order_no: order.order_no,
           status: order.status,
           interval: order.interval,
           expired_at: order.expired_at
