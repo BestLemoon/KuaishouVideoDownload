@@ -36,6 +36,11 @@ export async function saveUser(user: User) {
 
 export async function getUserUuid() {
   try {
+    // 在静态渲染时直接返回空字符串，避免动态服务器使用错误
+    if (typeof window === 'undefined' && process.env.NODE_ENV === 'production') {
+      return "";
+    }
+
     console.log('[Service] getUserUuid - 开始获取用户UUID');
     let user_uuid = "";
 
@@ -64,19 +69,36 @@ export async function getUserUuid() {
     console.log('[Service] getUserUuid - 最终返回UUID:', user_uuid ? '已获取' : '未获取');
     return user_uuid;
   } catch (error) {
+    // 如果是动态服务器使用错误，静默处理
+    if (error instanceof Error && error.message.includes('Dynamic server usage')) {
+      console.log('[Service] getUserUuid - 静态渲染时跳过用户UUID获取');
+      return "";
+    }
     console.error('[Service] getUserUuid - 获取用户UUID失败:', error);
     return "";
   }
 }
 
 export async function getBearerToken() {
-  const h = await headers();
-  const auth = h.get("Authorization");
-  if (!auth) {
+  try {
+    // 检查是否在构建时或静态渲染环境中
+    if (typeof window === 'undefined' && process.env.NODE_ENV === 'production') {
+      // 在构建时返回空字符串，避免访问headers
+      return "";
+    }
+
+    const h = await headers();
+    const auth = h.get("Authorization");
+    if (!auth) {
+      return "";
+    }
+
+    return auth.replace("Bearer ", "");
+  } catch (error) {
+    // 如果在静态渲染时调用，headers()会抛出错误，我们捕获并返回空字符串
+    console.log('[Service] getBearerToken - 静态渲染时跳过header检查');
     return "";
   }
-
-  return auth.replace("Bearer ", "");
 }
 
 export async function getUserEmail() {

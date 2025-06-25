@@ -5,9 +5,18 @@ import { getTranslations } from "next-intl/server";
 import { getUserInfo } from "@/services/user";
 import { redirect } from "next/navigation";
 
+// 强制动态渲染，避免静态生成时的错误
+export const dynamic = 'force-dynamic';
+
 export default async function ({ children }: { children: ReactNode }) {
-  const userInfo = await getUserInfo();
-  if (!userInfo || !userInfo.email) {
+  try {
+    const userInfo = await getUserInfo();
+    if (!userInfo || !userInfo.email) {
+      redirect("/auth/signin");
+    }
+  } catch (error) {
+    // 如果获取用户信息失败，重定向到登录页
+    console.error('[Layout] Console layout - 获取用户信息失败:', error);
     redirect("/auth/signin");
   }
 
