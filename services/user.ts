@@ -35,25 +35,38 @@ export async function saveUser(user: User) {
 }
 
 export async function getUserUuid() {
-  let user_uuid = "";
+  try {
+    console.log('[Service] getUserUuid - 开始获取用户UUID');
+    let user_uuid = "";
 
-  const token = await getBearerToken();
+    const token = await getBearerToken();
+    console.log('[Service] getUserUuid - Bearer token:', token ? '已获取' : '未获取');
 
-  if (token) {
-    // api key
-    if (token.startsWith("sk-")) {
-      const user_uuid = await getUserUuidByApiKey(token);
-
-      return user_uuid || "";
+    if (token) {
+      // api key
+      if (token.startsWith("sk-")) {
+        console.log('[Service] getUserUuid - 使用API Key获取用户UUID');
+        const user_uuid = await getUserUuidByApiKey(token);
+        console.log('[Service] getUserUuid - API Key用户UUID:', user_uuid ? '已获取' : '未获取');
+        return user_uuid || "";
+      }
     }
-  }
 
-  const session = await auth();
-  if (session && session.user && session.user.uuid) {
-    user_uuid = session.user.uuid;
-  }
+    console.log('[Service] getUserUuid - 尝试从session获取用户UUID');
+    const session = await auth();
+    console.log('[Service] getUserUuid - Session状态:', session ? '已获取' : '未获取');
 
-  return user_uuid;
+    if (session && session.user && session.user.uuid) {
+      user_uuid = session.user.uuid;
+      console.log('[Service] getUserUuid - Session用户UUID:', user_uuid ? '已获取' : '未获取');
+    }
+
+    console.log('[Service] getUserUuid - 最终返回UUID:', user_uuid ? '已获取' : '未获取');
+    return user_uuid;
+  } catch (error) {
+    console.error('[Service] getUserUuid - 获取用户UUID失败:', error);
+    return "";
+  }
 }
 
 export async function getBearerToken() {
@@ -145,38 +158,59 @@ export async function checkUserGiftReceived(user_uuid: string): Promise<boolean>
 
 export async function checkUserIsPremium(user_uuid: string): Promise<boolean> {
   try {
+    console.log('[Service] checkUserIsPremium - 开始检查用户Premium状态:', user_uuid);
+
     if (!user_uuid) {
+      console.log('[Service] checkUserIsPremium - 用户UUID为空，返回false');
       return false;
     }
 
     // Check if user has any paid orders
+    console.log('[Service] checkUserIsPremium - 查询用户订单');
     const { getOrdersByUserUuid } = await import("@/models/order");
     const orders = await getOrdersByUserUuid(user_uuid);
-    
+    console.log('[Service] checkUserIsPremium - 用户订单数量:', orders ? orders.length : 0);
+
     if (orders && orders.length > 0) {
       // User has paid orders, check if any are still valid
       const now = new Date();
+      console.log('[Service] checkUserIsPremium - 检查订单有效性，当前时间:', now.toISOString());
+
       for (const order of orders) {
+        console.log('[Service] checkUserIsPremium - 检查订单:', {
+          id: order.id,
+          status: order.status,
+          interval: order.interval,
+          expired_at: order.expired_at
+        });
+
         if (order.status === 'paid') {
           // For one-time purchases, consider them premium
           if (order.interval === 'one-time') {
+            console.log('[Service] checkUserIsPremium - 找到一次性付费订单，返回true');
             return true;
           }
-          
+
           // For subscriptions, check if not expired
           if (order.expired_at) {
             const expiredAt = new Date(order.expired_at);
+            console.log('[Service] checkUserIsPremium - 订阅到期时间:', expiredAt.toISOString());
             if (expiredAt > now) {
+              console.log('[Service] checkUserIsPremium - 订阅未过期，返回true');
               return true;
+            } else {
+              console.log('[Service] checkUserIsPremium - 订阅已过期');
             }
           }
         }
       }
     }
 
+    console.log('[Service] checkUserIsPremium - 未找到有效的付费订单，返回false');
     return false;
   } catch (e) {
-    console.log("check user is premium failed: ", e);
+    console.error("[Service] checkUserIsPremium - 检查用户Premium状态失败:", e);
+    console.error("[Service] checkUserIsPremium - 错误堆栈:", e instanceof Error ? e.stack : 'No stack trace');
     return false;
   }
 }

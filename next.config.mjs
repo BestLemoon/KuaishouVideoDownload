@@ -20,6 +20,12 @@ const nextConfig = {
   output: "standalone",
   reactStrictMode: false,
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+  experimental: {
+    // 禁用 Link 组件的自动 prefetch
+    linkNoPreload: true,
+    // 禁用 touchstart 事件的 prefetch
+    linkNoTouchStart: true,
+  },
   images: {
     remotePatterns: [
       {

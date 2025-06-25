@@ -46,11 +46,7 @@ interface UserCredits {
   expired_credits: number;
 }
 
-interface UserStatus {
-  isLoggedIn: boolean;
-  isPremium: boolean;
-  canUseFree: boolean;
-}
+
 
 interface BatchDownloadResultClientProps {
   batchData: BatchData;
@@ -60,15 +56,13 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
   const { user, setShowSignModal } = useAppContext();
   const t = useTranslations('downloads.results');
   const router = useRouter();
-  
+
   const [userCredits, setUserCredits] = useState<UserCredits | null>(null);
-  const [userStatus, setUserStatus] = useState<UserStatus | null>(null);
   const [downloadingItems, setDownloadingItems] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     if (user) {
       fetchUserCredits();
-      fetchUserStatus();
     }
   }, [user]);
 
@@ -86,30 +80,7 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
     }
   };
 
-  const fetchUserStatus = async () => {
-    try {
-      const response = await fetch('/api/user-status');
-      if (response.ok) {
-        const result = await response.json();
-        if (result.code === 0) {
-          setUserStatus(result.data);
-        } else {
-          setUserStatus({
-            isLoggedIn: false,
-            isPremium: false,
-            canUseFree: true
-          });
-        }
-      }
-    } catch (error) {
-      console.error('Failed to fetch user status:', error);
-      setUserStatus({
-        isLoggedIn: false,
-        isPremium: false,
-        canUseFree: true
-      });
-    }
-  };
+
 
   // 判断是否为高清视频（只有最高清晰度的才算高清）
   const isHighDefinition = (resolution: string, allVideos: VideoInfo[]): boolean => {
@@ -119,12 +90,7 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
     return currentResolution === maxResolution;
   };
 
-  // 检查用户是否可以下载高清视频（需要付费用户）
-  const canDownloadHD = (): boolean => {
-    if (!user || !userStatus) return false;
-    // 只有付费用户才能下载高清视频
-    return userStatus.isPremium;
-  };
+
 
   const handleDownload = async (video: VideoInfo, resultItem: BatchResult) => {
 

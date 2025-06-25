@@ -11,69 +11,7 @@ import { saveUser } from "@/services/user";
 
 let providers: Provider[] = [];
 
-// Google One Tap Auth
-if (
-  process.env.NEXT_PUBLIC_AUTH_GOOGLE_ONE_TAP_ENABLED === "true" &&
-  process.env.NEXT_PUBLIC_AUTH_GOOGLE_ID
-) {
-  providers.push(
-    CredentialsProvider({
-      id: "google-one-tap",
-      name: "google-one-tap",
-
-      credentials: {
-        credential: { type: "text" },
-      },
-
-      async authorize(credentials, req) {
-        const googleClientId = process.env.NEXT_PUBLIC_AUTH_GOOGLE_ID;
-        if (!googleClientId) {
-          console.log("invalid google auth config");
-          return null;
-        }
-
-        const token = credentials!.credential;
-
-        const response = await fetch(
-          "https://oauth2.googleapis.com/tokeninfo?id_token=" + token
-        );
-        if (!response.ok) {
-          console.log("Failed to verify token");
-          return null;
-        }
-
-        const payload = await response.json();
-        if (!payload) {
-          console.log("invalid payload from token");
-          return null;
-        }
-
-        const {
-          email,
-          sub,
-          given_name,
-          family_name,
-          email_verified,
-          picture: image,
-        } = payload;
-        if (!email) {
-          console.log("invalid email in payload");
-          return null;
-        }
-
-        const user = {
-          id: sub,
-          name: [given_name, family_name].join(" "),
-          email,
-          image,
-          emailVerified: email_verified ? new Date() : null,
-        };
-
-        return user;
-      },
-    })
-  );
-}
+// Google One Tap Auth已被移除以减少不必要的API调用
 
 // Google Auth
 if (
@@ -111,8 +49,7 @@ export const providerMap = providers
     } else {
       return { id: provider.id, name: provider.name };
     }
-  })
-  .filter((provider) => provider.id !== "google-one-tap");
+  });
 
 export const authOptions: NextAuthConfig = {
   providers,
