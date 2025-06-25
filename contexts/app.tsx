@@ -13,7 +13,6 @@ import { CacheKey } from "@/services/constant";
 import { ContextValue } from "@/types/context";
 import { User } from "@/types/user";
 import moment from "moment";
-import useOneTapLogin from "@/hooks/useOneTapLogin";
 import { useSession } from "next-auth/react";
 
 const AppContext = createContext({} as ContextValue);
@@ -21,12 +20,7 @@ const AppContext = createContext({} as ContextValue);
 export const useAppContext = () => useContext(AppContext);
 
 export const AppContextProvider = ({ children }: { children: ReactNode }) => {
-  if (
-    process.env.NEXT_PUBLIC_AUTH_GOOGLE_ONE_TAP_ENABLED === "true" &&
-    process.env.NEXT_PUBLIC_AUTH_GOOGLE_ID
-  ) {
-    useOneTapLogin();
-  }
+  // One Tap登录功能已被移除以减少不必要的API调用
 
   const { data: session } = useSession();
 

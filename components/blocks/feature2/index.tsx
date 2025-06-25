@@ -12,7 +12,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import Fade from "embla-carousel-fade";
@@ -28,18 +28,39 @@ export default function Feature2({ section }: { section: SectionType }) {
 
   const [api, setApi] = useState<CarouselApi>();
   const [currentAccordion, setCurrentAccordion] = useState("1");
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  useEffect(() => {
-    api?.scrollTo(+currentAccordion - 1);
-    const interval = setInterval(() => {
+  // 清理定时器的函数
+  const clearCurrentInterval = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  }, []);
+
+  // 启动定时器的函数
+  const startInterval = useCallback(() => {
+    clearCurrentInterval();
+    intervalRef.current = setInterval(() => {
       setCurrentAccordion((prev) => {
         const next = parseInt(prev) + 1;
         return next > 3 ? "1" : next.toString();
       });
     }, DURATION);
+  }, [clearCurrentInterval]);
 
-    return () => clearInterval(interval);
+  // 处理API变化
+  useEffect(() => {
+    if (api) {
+      api.scrollTo(+currentAccordion - 1);
+    }
   }, [api, currentAccordion]);
+
+  // 只在组件挂载时启动定时器
+  useEffect(() => {
+    startInterval();
+    return clearCurrentInterval;
+  }, [startInterval, clearCurrentInterval]);
 
   return (
     <section id={section.name} className="py-32">

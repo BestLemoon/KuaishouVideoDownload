@@ -26,8 +26,9 @@ export default function DownloadTabs({}: DownloadTabsProps = {}) {
   const [batchUrls, setBatchUrls] = useState("");
   const [canUseFree, setCanUseFree] = useState(true);
   const [freeDownloadCount, setFreeDownloadCount] = useState(0);
-  const [isPremiumUser, setIsPremiumUser] = useState(false);
-  
+
+
+
   // 新增状态
   const [isLoading, setIsLoading] = useState(false);
   const [isBatchLoading, setIsBatchLoading] = useState(false);
@@ -41,27 +42,8 @@ export default function DownloadTabs({}: DownloadTabsProps = {}) {
         setCanUseFree(false);
       }
     };
-    
-    const checkUserStatus = async () => {
-      if (user) {
-        try {
-          const response = await fetch('/api/user-status');
-          if (response.ok) {
-            const data = await response.json();
-            if (data.code === 0) {
-              setIsPremiumUser(data.data.isPremium);
-            }
-          }
-        } catch (error) {
-          console.error('Failed to check user status:', error);
-        }
-      } else {
-        setIsPremiumUser(false);
-      }
-    };
-    
+
     checkFreeUsage();
-    checkUserStatus();
   }, [user]);
 
   const handleSingleDownload = async () => {
