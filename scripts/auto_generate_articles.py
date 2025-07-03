@@ -347,17 +347,88 @@ def build_keywords_context(expanded_keywords: Dict[str, List[str]]) -> str:
     return '\n'.join(context_lines)
 
 def extract_delimiter_content(text, start_delimiter, end_delimiter):
-    """提取分隔符之间的内容"""
+    """提取分隔符之间的内容，并进行清理"""
     start_index = text.find(start_delimiter)
     if start_index == -1:
         return None
     start_index += len(start_delimiter)
-    
+
     end_index = text.find(end_delimiter, start_index)
     if end_index == -1:
         return None
-        
-    return text[start_index:end_index].strip()
+
+    content = text[start_index:end_index].strip()
+
+    # 清理可能残留的格式标记
+    content = clean_content_markers(content)
+
+    return content
+
+def clean_content_markers(content):
+    """清理内容中的格式标记"""
+    import re
+
+    # 移除所有===标记
+    content = re.sub(r'===.*?===', '', content, flags=re.DOTALL)
+
+    # 移除多余的空行
+    content = re.sub(r'\n\s*\n\s*\n', '\n\n', content)
+
+    # 清理开头和结尾的空白
+    content = content.strip()
+
+    return content
+
+def validate_and_clean_content(content, content_type="content"):
+    """验证并清理内容，确保没有格式标记"""
+    if not content:
+        return content
+
+    # 检查是否包含格式标记
+    if "===" in content:
+        print(f"⚠️ 检测到{content_type}中包含格式标记，正在清理...")
+        content = clean_content_markers(content)
+        print(f"✅ {content_type}清理完成")
+
+    return content
+
+def final_content_validation(title, description, content):
+    """最终内容验证，确保所有内容都符合要求"""
+    issues = []
+
+    # 检查是否包含格式标记
+    for field_name, field_content in [("标题", title), ("描述", description), ("内容", content)]:
+        if field_content and "===" in field_content:
+            issues.append(f"{field_name}包含格式标记")
+
+    # 检查内容长度
+    if not content or len(content.strip()) < 100:
+        issues.append("内容过短")
+
+    # 检查标题长度
+    if not title or len(title.strip()) < 5:
+        issues.append("标题过短")
+
+    # 检查描述长度
+    if not description or len(description.strip()) < 20:
+        issues.append("描述过短")
+
+    # 检查是否包含品牌相关内容
+    brand_keywords = ["kuaishou", "快手", "video", "download"]
+    content_lower = content.lower() if content else ""
+    if not any(keyword in content_lower for keyword in brand_keywords):
+        issues.append("内容缺少品牌相关关键词")
+
+    if issues:
+        return {
+            "valid": False,
+            "reason": "; ".join(issues)
+        }
+
+    return {
+        "valid": True,
+        "reason": "内容验证通过"
+    }
 
 def generate_slug(title):
     """生成URL友好的slug"""
@@ -382,32 +453,56 @@ def generate_unique_slug(base_slug, locale):
     return slug
 
 def generate_article(topic, language, locale, keywords_context=""):
-    """生成单篇文章"""
-    try:
-        print(f"正在生成{language}文章: {topic}")
-        
-        # 获取现有文章作为内链参考
-        existing_posts = supabase.table("posts").select("title, slug, locale").eq("status", "online").eq("locale", locale).limit(10).execute()
-        
-        internal_links_text = ""
-        if existing_posts.data:
-            if locale == "en":
-                internal_links_text = "\n## Existing Articles (for internal linking):\n"
-                for post in existing_posts.data:
-                    url = f"{SITE_URL}/posts/{post['slug']}"
-                    internal_links_text += f"- [{post['title']}]({url})\n"
-            else:
-                internal_links_text = "\n## 现有文章列表（用于内链参考）：\n"
-                for post in existing_posts.data:
-                    url = f"{SITE_URL}/zh/posts/{post['slug']}"
-                    internal_links_text += f"- [{post['title']}]({url})\n"
+    """生成单篇文章，带重试机制"""
+    max_retries = 2  # 最多重试2次
 
-        model = GenerativeModel("gemini-2.5-flash-preview-05-20")
-        
-        # 构建关键词上下文
-        keywords_section = ""
-        if keywords_context:
-            keywords_section = f"""
+    for attempt in range(max_retries + 1):
+        try:
+            if attempt > 0:
+                print(f"🔄 第{attempt + 1}次尝试生成文章: {topic}")
+
+            return _generate_article_attempt(topic, language, locale, keywords_context, attempt)
+
+        except Exception as e:
+            error_msg = str(e)
+            if "格式标记" in error_msg and attempt < max_retries:
+                print(f"⚠️ 第{attempt + 1}次尝试失败（格式标记问题），准备重试...")
+                continue
+            else:
+                # 最后一次尝试失败，或者非格式标记问题
+                print(f"❌ {language}文章生成失败 '{topic}': {e}")
+                return {
+                    "success": False,
+                    "topic": topic,
+                    "error": str(e),
+                }
+
+def _generate_article_attempt(topic, language, locale, keywords_context=""):
+    """单次文章生成尝试"""
+    print(f"正在生成{language}文章: {topic}")
+
+    # 获取现有文章作为内链参考
+    existing_posts = supabase.table("posts").select("title, slug, locale").eq("status", "online").eq("locale", locale).limit(10).execute()
+
+    internal_links_text = ""
+    if existing_posts.data:
+        if locale == "en":
+            internal_links_text = "\n## Existing Articles (for internal linking):\n"
+            for post in existing_posts.data:
+                url = f"{SITE_URL}/posts/{post['slug']}"
+                internal_links_text += f"- [{post['title']}]({url})\n"
+        else:
+            internal_links_text = "\n## 现有文章列表（用于内链参考）：\n"
+            for post in existing_posts.data:
+                url = f"{SITE_URL}/zh/posts/{post['slug']}"
+                internal_links_text += f"- [{post['title']}]({url})\n"
+
+    model = GenerativeModel("gemini-2.5-flash-preview-05-20")
+
+    # 构建关键词上下文
+    keywords_section = ""
+    if keywords_context:
+        keywords_section = f"""
 
 ## 关键词优化指导
 基于以下相关关键词优化你的内容：
@@ -418,9 +513,9 @@ def generate_article(topic, language, locale, keywords_context=""):
 - 在标题、小标题和正文中合理分布关键词
 - 确保关键词使用不影响内容的自然性和可读性
 - 优先使用长尾关键词和语义相关的词汇"""
-        
-        if locale == "en":
-            prompt = f"""You are a professional SEO content creator specializing in KuaishouVideoDownload (Kuaishou video downloader) related content.
+
+    if locale == "en":
+        prompt = f"""You are a professional SEO content creator specializing in KuaishouVideoDownload (Kuaishou video downloader) related content.
 
 ## Task
 Please create a high-quality SEO blog article for this topic: {topic}
@@ -472,88 +567,118 @@ Use the following delimiter format:
 Please generate natural, fluent content that avoids obvious AI-generated traces:
 
 (Internal note for uniqueness: {int(time.time())})"""
-        else:
-            prompt = f"""你是一位资深的SEO文章创作者，专注于 KuaishouVideoDownload（快手视频下载器）相关内容创作。
+    else:
+        prompt = f"""你是一位资深的SEO文章创作者，专注于 KuaishouVideoDownload（快手视频下载器）相关内容创作。
 
-## 任务
-请为以下题目创作一篇高质量的SEO博客文章：{topic}
+        ## 任务
+        请为以下题目创作一篇高质量的SEO博客文章：{topic}
 
-## 要求
-- 文章长度：1000-1500字
-- 语言：中文
-- 自然流畅的写作风格，避免AI生成的痕迹
-- 使用Markdown格式
-- 包含合适的标题结构（H1、H2、H3）
-- 必须包含至少3个内部链接到我们现有的相关文章
-- 包含2-3个高质量的外部链接（指向权威网站）
-- SEO优化，自然融入相关关键词
+        ## 要求
+        - 文章长度：1000-1500字
+        - 语言：中文
+        - 自然流畅的写作风格，避免AI生成的痕迹
+        - 使用Markdown格式
+        - 包含合适的标题结构（H1、H2、H3）
+        - 必须包含至少3个内部链接到我们现有的相关文章
+        - 包含2-3个高质量的外部链接（指向权威网站）
+        - SEO优化，自然融入相关关键词
 
-{internal_links_text}
+        {internal_links_text}
 
-{keywords_section}
+        {keywords_section}
 
-## 内链要求
-- 必须在内容中自然插入至少3个指向上述现有文章的链接
-- 内链应与文章内容相关，自然融入到段落中
-- 使用描述性锚文本，不要只是"点击这里"
-- 链接格式：[锚文本](URL)
+        ## 内链要求
+        - 必须在内容中自然插入至少3个指向上述现有文章的链接
+        - 内链应与文章内容相关，自然融入到段落中
+        - 使用描述性锚文本，不要只是"点击这里"
+        - 链接格式：[锚文本](URL)
 
-## 外链要求
-- 包含2-3个指向权威网站的链接
-- 外链应与快手、视频下载、社交媒体相关
-- 为外链添加适当的上下文
+        ## 外链要求
+        - 包含2-3个指向权威网站的链接
+        - 外链应与快手、视频下载、社交媒体相关
+        - 为外链添加适当的上下文
 
-## 输出格式
-使用以下分隔符格式：
+        ## 输出格式
+        使用以下分隔符格式：
 
-===TITLE_START===
-[SEO优化的标题，最多60个字符]
-===TITLE_END===
+        ===TITLE_START===
+        [SEO优化的标题，最多60个字符]
+        ===TITLE_END===
 
-===SLUG_START===
-[URL友好的slug]
-===SLUG_END===
+        ===SLUG_START===
+        [URL友好的slug]
+        ===SLUG_END===
 
-===DESCRIPTION_START===
-[元描述，150-160字符，吸引人的摘要]
-===DESCRIPTION_END===
+        ===DESCRIPTION_START===
+        [元描述，150-160字符，吸引人的摘要]
+        ===DESCRIPTION_END===
 
-===CONTENT_START===
-[完整的文章内容，Markdown格式，必须包含至少3个内链和2-3个外链]
-===CONTENT_END===
+        ===CONTENT_START===
+        [完整的文章内容，Markdown格式，必须包含至少3个内链和2-3个外链]
+        ===CONTENT_END===
 
-请生成自然、流畅的内容，避免明显的AI生成痕迹：
+        请生成自然、流畅的内容，避免明显的AI生成痕迹：
 
-(内部唯一性标识: {int(time.time())})"""
+        (内部唯一性标识: {int(time.time())})"""
 
-        result = model.generate_content(prompt)
-        text = result.text
-        
-        if not text:
-            raise Exception("AI未能生成有效内容")
+    result = model.generate_content(prompt)
+    text = result.text
 
-        # 解析生成的内容
-        title = extract_delimiter_content(text, "===TITLE_START===", "===TITLE_END===") or topic
-        slug = extract_delimiter_content(text, "===SLUG_START===", "===SLUG_END===") or generate_slug(title)
-        description = extract_delimiter_content(text, "===DESCRIPTION_START===", "===DESCRIPTION_END===") or f"关于{title}的详细指南"
-        content = extract_delimiter_content(text, "===CONTENT_START===", "===CONTENT_END===") or text
+    if not text:
+        raise Exception("AI未能生成有效内容")
 
-        # 生成唯一slug
-        final_slug = generate_unique_slug(slug, locale)
+    # 调试：显示原始响应的前几行
+    print(f"🔍 原始AI响应预览:")
+    preview_lines = text.split('\n')[:5]
+    for i, line in enumerate(preview_lines, 1):
+        print(f"   {i}. {line[:100]}{'...' if len(line) > 100 else ''}")
 
-        # 获取封面图片
-        cover_url = get_unsplash_image("kuaishou video")
+    # 解析生成的内容
+    title = extract_delimiter_content(text, "===TITLE_START===", "===TITLE_END===") or topic
+    slug = extract_delimiter_content(text, "===SLUG_START===", "===SLUG_END===") or generate_slug(title)
+    description = extract_delimiter_content(text, "===DESCRIPTION_START===", "===DESCRIPTION_END===") or f"关于{title}的详细指南"
+    content = extract_delimiter_content(text, "===CONTENT_START===", "===CONTENT_END===")
 
-        # 为文章添加随机的时间偏移，让发布时间更自然
-        publish_time = datetime.now()
-        random_hours_back = random.randint(1, 72)
-        random_minutes_back = random.randint(1, 60)
-        publish_time = publish_time.replace(hour=max(0, publish_time.hour - random_hours_back % 24))
-        publish_time = publish_time.replace(minute=max(0, publish_time.minute - random_minutes_back % 60))
+    # 如果内容解析失败，使用原始文本但进行清理
+    if not content:
+        print("⚠️ 内容解析失败，使用原始文本并清理格式标记")
+        content = clean_content_markers(text)
 
-        # 插入到数据库
-        post_uuid = str(uuid.uuid4())
-        insert_data = {
+    # 二次验证和清理所有字段
+    title = validate_and_clean_content(title, "标题")
+    description = validate_and_clean_content(description, "描述")
+    content = validate_and_clean_content(content, "内容")
+
+    # 确保内容不为空
+    if not content or len(content.strip()) < 100:
+        raise Exception("生成的内容过短或为空")
+
+    # 最终安全检查 - 如果检测到格式标记，直接重新生成
+    if "===" in content or "===" in title or "===" in description:
+        print("⚠️ 检测到格式标记残留，重新生成文章...")
+        raise Exception("内容包含格式标记，需要重新生成")
+
+    # 其他验证
+    final_validation_result = final_content_validation(title, description, content)
+    if not final_validation_result["valid"]:
+        raise Exception(f"内容验证失败: {final_validation_result['reason']}")
+
+    # 生成唯一slug
+    final_slug = generate_unique_slug(slug, locale)
+
+    # 获取封面图片
+    cover_url = get_unsplash_image("kuaishou video")
+
+    # 为文章添加随机的时间偏移，让发布时间更自然
+    publish_time = datetime.now()
+    random_hours_back = random.randint(1, 72)
+    random_minutes_back = random.randint(1, 60)
+    publish_time = publish_time.replace(hour=max(0, publish_time.hour - random_hours_back % 24))
+    publish_time = publish_time.replace(minute=max(0, publish_time.minute - random_minutes_back % 60))
+
+    # 插入到数据库
+    post_uuid = str(uuid.uuid4())
+    insert_data = {
             "uuid": post_uuid,
             "slug": final_slug,
             "title": title,
@@ -568,28 +693,20 @@ Please generate natural, fluent content that avoids obvious AI-generated traces:
             "author_avatar_url": "https://www.kuaishou-video-download.com/logo.png"
         }
 
-        result = supabase.table("posts").insert(insert_data).execute()
-        
-        if result.data:
-            print(f"✅ {language}文章生成成功: {title}")
-            return {
-                "success": True,
-                "topic": topic,
-                "title": title,
-                "uuid": post_uuid,
-                "slug": final_slug,
-                "cover_url": cover_url,
-            }
-        else:
-            raise Exception("数据库插入失败")
+    result = supabase.table("posts").insert(insert_data).execute()
 
-    except Exception as e:
-        print(f"❌ {language}文章生成失败 '{topic}': {e}")
+    if result.data:
+        print(f"✅ {language}文章生成成功: {title}")
         return {
-            "success": False,
+            "success": True,
             "topic": topic,
-            "error": str(e),
+            "title": title,
+            "uuid": post_uuid,
+            "slug": final_slug,
+            "cover_url": cover_url,
         }
+    else:
+        raise Exception("数据库插入失败")
 
 def generate_keyword_driven_articles(language: str, locale: str) -> Dict[str, Any]:
     """关键词驱动的文章生成流程"""
