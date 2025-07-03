@@ -461,7 +461,7 @@ def generate_article(topic, language, locale, keywords_context=""):
             if attempt > 0:
                 print(f"🔄 第{attempt + 1}次尝试生成文章: {topic}")
 
-            return _generate_article_attempt(topic, language, locale, keywords_context, attempt)
+            return _generate_article_attempt(topic, language, locale, keywords_context)
 
         except Exception as e:
             error_msg = str(e)
