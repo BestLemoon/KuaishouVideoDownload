@@ -16,7 +16,6 @@ export default function () {
     const expiresAt = getTimestamp() + expires;
 
     cacheSet(CacheKey.InviteCode, code, expiresAt);
-    console.log("cache invite code", code, expiresAt);
     window.location.href = "/";
   }, [code]);
 

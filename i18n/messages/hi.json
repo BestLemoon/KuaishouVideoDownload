@@ -1,0 +1,297 @@
+{
+    "api": {
+        "auth": {
+            "login_required": "कृपया पहले लॉग इन करें",
+            "login_required_download": "कृपया वीडियो डाउनलोड करने से पहले लॉग इन करें"
+        },
+        "batch": {
+            "invalid_urls_found": "बैच प्रोसेसिंग में अमान्य लिंक मिले",
+            "max_urls_exceeded": "बैच प्रोसेसिंग अधिकतम {max} लिंक का समर्थन करती है",
+            "no_valid_urls": "बैच प्रोसेसिंग में कोई वैध लिंक नहीं मिला"
+        },
+        "credits": {
+            "balance_current": "वर्तमान उपलब्ध अंक: {balance}",
+            "deduction_error": "अंक कटौती विसंगति",
+            "deduction_failed": "अंक कटौती विफल",
+            "deduction_success": "अंक सफलतापूर्वक काटे गए",
+            "get_balance_failed": "अंक शेष राशि प्राप्त करने में विफल",
+            "get_history_failed": "अंक रिकॉर्ड पुनः प्राप्त करने में विफल",
+            "gift_failed": "अंक उपहार में देने में विफल",
+            "gift_success": "अंक सफलतापूर्वक उपहार में दिए गए",
+            "insufficient": "अपर्याप्त अंक, वर्तमान में उपलब्ध: {available}, आवश्यक: {required}"
+        },
+        "download": {
+            "download_failed": "वीडियो डाउनलोड विफल, कृपया पुनः प्रयास करें",
+            "get_history_failed": "डाउनलोड इतिहास पुनः प्राप्त करने में विफल",
+            "invalid_token": "अमान्य टोकन",
+            "invalid_video_url": "अमान्य वीडियो यूआरएल",
+            "missing_token": "टोकन पैरामीटर अनुपलब्ध",
+            "server_error": "आंतरिक सर्वर त्रुटि",
+            "unknown_error": "अज्ञात त्रुटि",
+            "video_fetch_failed": "वीडियो प्राप्त करने में विफल: {status}",
+            "video_verification_failed": "वीडियो सत्यापन विफल"
+        },
+        "test": {
+            "download_record_failed": "डाउनलोड रिकॉर्ड बनाने में विफल",
+            "download_record_success": "डाउनलोड रिकॉर्ड सफलतापूर्वक बनाया गया",
+            "invalid_action": "अमान्य ऑपरेशन प्रकार",
+            "test_failed": "अंक प्रणाली परीक्षण विफल"
+        }
+    },
+    "api_keys": {
+        "apple_shortcut": "Apple शॉर्टकट",
+        "create_api_key": "एपीआई कुंजी बनाएँ",
+        "create_api_key_meta_title": "एपीआई कुंजी बनाएँ - कुआइशौवीडियोडाउनलोड",
+        "delete": {
+            "button_cancel": "रद्द करें",
+            "button_delete": "मिटाएँ",
+            "button_deleting": "हटाया जा रहा है...",
+            "confirm_message": "क्या आप वाकई इस एपीआई कुंजी को हटाना चाहते हैं? यह कार्रवाई पूर्ववत नहीं की जा सकती है और इस कुंजी का उपयोग करने वाले सभी एप्लिकेशन के लिए तुरंत पहुंच रद्द कर देगी।",
+            "confirm_title": "एपीआई कुंजी हटाएँ",
+            "error_message": "एपीआई कुंजी हटाने में विफल",
+            "success_message": "एपीआई कुंजी सफलतापूर्वक हटाई गई"
+        },
+        "delete_api_key": "एपीआई कुंजी हटाएँ",
+        "errors": {
+            "create_failed": "एपीआई कुंजी बनाने में विफल: {error}",
+            "invalid_params": "अमान्य पैरामीटर",
+            "no_auth": "कृपया पहले लॉग इन करें",
+            "premium_required": "एपीआई कुंजी केवल सशुल्क उपयोगकर्ताओं के लिए है, कृपया अपना खाता अपग्रेड करें"
+        },
+        "form": {
+            "name": "नाम",
+            "name_placeholder": "एपीआई कुंजी का नाम",
+            "submit": "सबमिट करें"
+        },
+        "messages": {
+            "created_success": "एपीआई कुंजी सफलतापूर्वक बनाई गई"
+        },
+        "meta_title": "एपीआई कुंजी प्रबंधन - कुआइशौवीडियोडाउनलोड",
+        "no_api_keys": "कोई एपीआई कुंजी नहीं",
+        "premium_only_tip": "एपीआई सुविधाएँ केवल सशुल्क उपयोगकर्ताओं के लिए हैं। एपीआई एक्सेस प्राप्त करने के लिए कृपया प्रीमियम में अपग्रेड करें।",
+        "table": {
+            "actions": "कार्रवाई",
+            "created_at": "निर्माण का समय",
+            "key": "कुंजी",
+            "name": "नाम"
+        },
+        "tip": "लीकेज से बचाने के लिए कृपया अपनी एपीआई कुंजी सुरक्षित रखें। ऐप से सीधे वीडियो डाउनलोड करने के लिए शॉर्टकट का उपयोग करें।",
+        "title": "एपीआई कुंजी",
+        "upgrade_to_premium": "प्रीमियम में अपग्रेड करें",
+        "view_api_docs": "एपीआई दस्तावेज़ देखें"
+    },
+    "batch_download_result": {
+        "title": "बैच डाउनलोड परिणाम - कुआइशौवीडियोडाउनलोड"
+    },
+    "blog": {
+        "description": "कुआइशौवीडियोडाउनलोड के बारे में समाचार, संसाधन और अपडेट",
+        "read_more_text": "और पढ़ें",
+        "title": "ब्लॉग"
+    },
+    "download_history": {
+        "description": "अपना वीडियो डाउनलोड इतिहास देखें",
+        "description_free": "अपने नवीनतम {count} डाउनलोड रिकॉर्ड देखें (मुफ्त संस्करण)",
+        "no_history": "अभी तक कोई डाउनलोड रिकॉर्ड नहीं",
+        "status": {
+            "completed": "सफलता",
+            "failed": "विफल"
+        },
+        "table": {
+            "created_at": "डाउनलोड का समय",
+            "credits_consumed": "अंक उपयोग करें",
+            "download_no": "डाउनलोड आईडी",
+            "download_status": "स्थिति",
+            "file_name": "फ़ाइल का नाम",
+            "file_size": "फ़ाइल का आकार",
+            "original_tweet": "मूल ट्वीट",
+            "original_video": "मूल वीडियो",
+            "username": "उपयोगकर्ता नाम",
+            "video_quality": "वीडियो गुणवत्ता",
+            "video_resolution": "रिज़ॉल्यूशन"
+        },
+        "title": "डाउनलोड इतिहास",
+        "upgrade_prompt": {
+            "button": "अभी अपग्रेड करें",
+            "message": "आपके पास {total} डाउनलोड रिकॉर्ड हैं, लेकिन निःशुल्क उपयोगकर्ता केवल नवीनतम {visible} रिकॉर्ड देख सकते हैं।",
+            "title": "अधिक देखने के लिए अपग्रेड करें"
+        }
+    },
+    "download_result": {
+        "title": "डाउनलोड परिणाम - कुआइशौवीडियोडाउनलोड"
+    },
+    "downloads": {
+        "batch_download": "बैच डाउनलोड",
+        "batch_download_button": "बैच डाउनलोड",
+        "batch_placeholder": "प्रति पंक्ति एक कुआइशौ वीडियो लिंक दर्ज करें, अधिकतम 10 लिंक समर्थित...",
+        "batch_processing": "बैच प्रोसेसिंग",
+        "free_user_tip": "उच्च-गुणवत्ता वाले वीडियो मुफ्त में डाउनलोड करने के लिए कोई भी कुआइशौ वीडियो लिंक दर्ज करें, सभी रिज़ॉल्यूशन का समर्थन करता है, असीमित डाउनलोड",
+        "high_speed": "उच्च गति डाउनलोड",
+        "results": {
+            "audio_download_coming_soon": "ऑडियो डाउनलोड सुविधा जल्द ही आ रही है",
+            "audio_download_failed": "ऑडियो डाउनलोड विफल",
+            "audio_extract": "ऑडियो निकालना",
+            "audio_extract_description": "वीडियो से ऑडियो निकालें",
+            "audio_quality": "ऑडियो गुणवत्ता",
+            "available_credits": "उपलब्ध अंक",
+            "available_formats": "उपलब्ध प्रारूप",
+            "batch_parse_error": "बैच प्रोसेसिंग विफल",
+            "batch_title": "बैच डाउनलोड परिणाम",
+            "continue_download": "डाउनलोड जारी रखें",
+            "cost_credits": "लागत",
+            "cost_downloads": "शुल्क",
+            "cost_format": "{credits} अंक",
+            "cost_format_downloads": "{downloads} डाउनलोड",
+            "credits_remaining": "शेष अंक: {credits}",
+            "credits_required": "{credits} अंक आवश्यक हैं",
+            "download_button": "डाउनलोड करें",
+            "download_failed": "डाउनलोड विफल",
+            "download_success": "डाउनलोड सफल",
+            "download_thumbnail": "कवर डाउनलोड करें",
+            "downloading": "डाउनलोड हो रहा है...",
+            "extract_audio": "ऑडियो निकालें",
+            "failed_count": "विफल",
+            "failed_links": "विफल लिंक",
+            "file_size": "फ़ाइल का आकार",
+            "format": "प्रारूप",
+            "hd_requires_paid_user": "एचडी वीडियो डाउनलोड के लिए सशुल्क उपयोगकर्ताओं की आवश्यकता है, कृपया पहले सेवा खरीदें",
+            "high_quality": "उच्च गुणवत्ता",
+            "insufficient_credits": "अपर्याप्त अंक, उपलब्ध: {available}, आवश्यक: {required}",
+            "insufficient_credits_short": "अपर्याप्त अंक: {available}/{required}",
+            "invalid_twitter_url": "अमान्य कुआइशौ लिंक प्रारूप",
+            "invalid_twitter_urls": "{count} अमान्य कुआइशौ लिंक मिले",
+            "invalid_url": "अमान्य वीडियो लिंक",
+            "loading": "पार्स किया जा रहा है...",
+            "login_required": "कृपया लॉग इन करें",
+            "new_download": "नया डाउनलोड",
+            "no_thumbnail_available": "कोई कवर उपलब्ध नहीं",
+            "no_urls_provided": "कोई लिंक प्रदान नहीं किया गया",
+            "no_valid_urls": "कोई वैध कुआइशौ लिंक नहीं मिला",
+            "no_video_found": "वीडियो नहीं मिला",
+            "one_download": "1 डाउनलोड",
+            "paid_badge": "भुगतान किया गया",
+            "paid_user_only": "केवल सशुल्क उपयोगकर्ताओं के लिए",
+            "paid_users_exclusive": "केवल सशुल्क उपयोगकर्ताओं के लिए",
+            "parse_error": "पार्सिंग विफल",
+            "premium_required": "केवल सशुल्क उपयोगकर्ताओं के लिए",
+            "purchase_to_unlock_hd": "एचडी डाउनलोड अनलॉक करने के लिए सेवा खरीदें",
+            "quality_hd": "एचडी",
+            "quality_sd": "एसडी",
+            "requires_one_download": "1 डाउनलोड की आवश्यकता है",
+            "resolution": "रिज़ॉल्यूशन",
+            "retry": "पुनः प्रयास करें",
+            "success_count": "सफलता",
+            "successful_videos": "वीडियो सफलतापूर्वक पार्स किए गए",
+            "thumbnail_download_failed": "कवर डाउनलोड विफल",
+            "thumbnail_download_success": "कवर डाउनलोड सफल",
+            "thumbnail_fetch_error": "कवर प्राप्त करने में विफल",
+            "title": "डाउनलोड परिणाम",
+            "top_up_credits": "अंक रीचार्ज करें",
+            "total_count": "कुल",
+            "unknown_error": "एक अज्ञात त्रुटि हुई",
+            "video_fetch_error": "कुआइशौ से वीडियो प्राप्त करने में विफल: {status}",
+            "video_info": "वीडियो जानकारी",
+            "video_preview": "वीडियो पूर्वावलोकन",
+            "view_original_tweet": "मूल कार्य देखें"
+        },
+        "single_download": "एकल डाउनलोड",
+        "single_placeholder": "कुआइशौ वीडियो लिंक पेस्ट करें...",
+        "start_download": "डाउनलोड शुरू करें",
+        "unlimited": "असीमित",
+        "urls_count": "{count} लिंक दर्ज किए गए",
+        "view_pricing": "मूल्य निर्धारण योजनाएँ देखें"
+    },
+    "metadata": {
+        "description": "KuaishouVideoDownload एक निःशुल्क ऑनलाइन कुआइशौ वीडियो डाउनलोड टूल है। बिना वॉटरमार्क के उच्च-गुणवत्ता वाले कुआइशौ वीडियो डाउनलोड करें। तेज़, सुरक्षित और उपयोग में आसान।",
+        "keywords": "कुआइशौ वीडियो डाउनलोडर, कुआइशौ वीडियो डाउनलोड, कुआइशौ वॉटरमार्क रिमूवर, कुआइशौ वीडियो सहेजें",
+        "title": "कुआइशौवीडियोडाउनलोड - निःशुल्क कुआइशौ वीडियो डाउनलोडर | कुआइशौ वीडियो ऑनलाइन डाउनलोड करें"
+    },
+    "my_credits": {
+        "left_tip": "शेष अंक: {left_credits}",
+        "no_credits": "कोई अंक रिकॉर्ड नहीं",
+        "recharge": "रीचार्ज करें",
+        "table": {
+            "credits": "अंक",
+            "status": "स्थिति",
+            "trans_no": "लेनदेन आईडी",
+            "trans_type": "लेनदेन का प्रकार",
+            "updated_at": "अपडेट का समय"
+        },
+        "title": "मेरे अंक"
+    },
+    "my_invites": {
+        "copy_invite_link": "आमंत्रण लिंक कॉपी करें",
+        "description": "अपने आमंत्रण रिकॉर्ड देखें",
+        "edit_invite_link": "आमंत्रण लिंक संपादित करें",
+        "invite_balance": "आमंत्रण इनाम शेष राशि",
+        "invite_code": "आमंत्रण कोड",
+        "invite_tip": "कुआइशौवीडियोडाउनलोड खरीदने के लिए 1 मित्र को आमंत्रित करें और इनाम के तौर पर 10 डाउनलोड प्राप्त करें।",
+        "my_invite_link": "मेरा आमंत्रण लिंक",
+        "no_affiliates": "आपके पास वर्तमान में मित्रों को आमंत्रित करने की अनुमति नहीं है। कृपया सक्रियण का अनुरोध करने के लिए हमसे संपर्क करें।",
+        "no_invites": "कोई आमंत्रण रिकॉर्ड नहीं मिला",
+        "no_orders": "दोस्तों को आमंत्रित करने के लिए आपको कुआइशौवीडियोडाउनलोड खरीदना होगा",
+        "table": {
+            "completed": "भुगतान किया गया",
+            "invite_time": "आमंत्रण समय",
+            "invite_user": "आमंत्रित उपयोगकर्ता",
+            "pending": "पंजीकृत, भुगतान नहीं किया गया",
+            "reward_amount": "इनाम राशि",
+            "reward_percent": "इनाम अनुपात",
+            "status": "स्थिति"
+        },
+        "title": "मेरे आमंत्रण",
+        "total_award_amount": "कुल इनाम राशि",
+        "total_invite_count": "आमंत्रित कुल उपयोगकर्ता",
+        "total_paid_count": "रिचार्ज किए गए उपयोगकर्ताओं की संख्या",
+        "update_invite_button": "सहेजें",
+        "update_invite_code": "आमंत्रण कोड सेट करें",
+        "update_invite_code_tip": "अपना कस्टम आमंत्रण कोड दर्ज करें"
+    },
+    "my_orders": {
+        "activate_order": "ऑर्डर सक्रिय करें",
+        "actived": "सक्रियित",
+        "description": "कुआइशौवीडियोडाउनलोड पर खरीदे गए ऑर्डर।",
+        "join_discord": "डिस्कॉर्ड में शामिल हों",
+        "no_orders": "ऑर्डर नहीं मिला",
+        "read_docs": "दस्तावेज़ पढ़ें",
+        "table": {
+            "amount": "राशि",
+            "email": "ईमेल",
+            "github_username": "GitHub उपयोगकर्ता नाम",
+            "order_no": "ऑर्डर संख्या",
+            "paid_at": "भुगतान का समय",
+            "product_name": "उत्पाद का नाम",
+            "status": "स्थिति"
+        },
+        "tip": " ",
+        "title": "मेरे ऑर्डर"
+    },
+    "sign_modal": {
+        "cancel_title": "रद्द करें",
+        "close_title": "बंद करें",
+        "continue": "जारी रखें",
+        "email_placeholder": "कृपया अपना ईमेल दर्ज करें",
+        "email_sign_in": "ईमेल से लॉग इन करें",
+        "email_title": "ईमेल",
+        "forgot_password": "पासवर्ड भूल गए?",
+        "github_sign_in": "GitHub से लॉग इन करें",
+        "google_sign_in": "Google से लॉग इन करें",
+        "no_account": "अभी तक खाता नहीं है?",
+        "or": "या",
+        "password_placeholder": "कृपया अपना पासवर्ड दर्ज करें",
+        "password_title": "पासवर्ड",
+        "sign_in_description": "अपने खाते में लॉग इन करें",
+        "sign_in_title": "लॉग इन करें",
+        "sign_up_description": "नया खाता बनाएँ",
+        "sign_up_title": "पंजीकरण करें"
+    },
+    "user": {
+        "admin_system": "एडमिन बैकएंड",
+        "api_keys": "एपीआई कुंजी",
+        "credits": "कोटा",
+        "download_history": "डाउनलोड इतिहास",
+        "my_orders": "मेरे ऑर्डर",
+        "sign_in": "लॉगिन करें",
+        "sign_out": "लॉग आउट",
+        "user_center": "उपयोगकर्ता केंद्र"
+    }
+}

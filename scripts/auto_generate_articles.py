@@ -18,13 +18,13 @@ GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
 SUPABASE_URL = os.getenv('SUPABASE_URL')
 SUPABASE_SERVICE_ROLE_KEY = os.getenv('SUPABASE_SERVICE_ROLE_KEY')
 UNSPLASH_ACCESS_KEY = os.getenv('UNSPLASH_ACCESS_KEY')
-SITE_URL = os.getenv('NEXT_PUBLIC_WEB_URL', 'https://twitterdown.com')
+SITE_URL = os.getenv('NEXT_PUBLIC_WEB_URL', 'https://kuaishou-video-download.com')
 
 # 初始化服务
 configure(api_key=GEMINI_API_KEY)
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
 
-def get_unsplash_image(query="twitter"):
+def get_unsplash_image(query="kuaishou video"):
     """从Unsplash获取图片"""
     try:
         if not UNSPLASH_ACCESS_KEY:
@@ -52,10 +52,10 @@ def generate_seed_keywords(language: str, count: int = 8) -> List[str]:
     """生成种子关键词"""
     model = GenerativeModel("gemini-2.5-flash-preview-05-20")
     
-    prompt = f"""你是一位专业的SEO关键词研究专家，专注于Twitter视频下载相关的关键词研究。
+    prompt = f"""你是一位专业的SEO关键词研究专家，专注于快手视频下载相关的关键词研究。
 
 ## 任务
-请为TwitterDown（Twitter视频下载器）生成{count}个高价值的种子关键词。
+请为KuaishouVideoDownload（快手视频下载器）生成{count}个高价值的种子关键词。
 
 ## 关键词类型要求
 请生成以下类型的关键词：
@@ -110,25 +110,25 @@ def get_default_seed_keywords(language: str, count: int) -> List[str]:
     """获取默认种子关键词"""
     if "chinese" in language.lower() or "中文" in language:
         default_keywords = [
-            "twitter视频下载",
-            "推特视频保存", 
-            "社交媒体视频下载",
-            "twitter下载器",
-            "视频下载工具",
-            "twitter保存",
-            "推特视频",
-            "下载twitter"
+            "快手视频下载",
+            "快手视频保存",
+            "快手短视频下载",
+            "快手下载器",
+            "快手视频下载工具",
+            "快手视频保存",
+            "快手短视频",
+            "下载快手视频"
         ]
     else:
         default_keywords = [
-            "twitter video downloader",
-            "download twitter video",
-            "twitter video download",
-            "twitter downloader",
-            "save twitter video",
-            "twitter video saver",
-            "download from twitter",
-            "twitter media download"
+            "kuaishou video downloader",
+            "download kuaishou video",
+            "kuaishou video download",
+            "kuaishou downloader",
+            "save kuaishou video",
+            "kuaishou video saver",
+            "download from kuaishou",
+            "kuaishou media download"
         ]
     
     return default_keywords[:count]
@@ -202,7 +202,7 @@ def generate_categorized_topics_by_keywords(expanded_keywords: Dict[str, List[st
     unique_keywords = list(set(all_keywords))
     keywords_text = '\n'.join(f"- {kw}" for kw in unique_keywords[:50])  # 限制关键词数量
     
-    prompt = f"""你是一位专业的SEO内容策略师，专注于TwitterDown（Twitter视频下载器）相关的内容创作。
+    prompt = f"""你是一位专业的SEO内容策略师，专注于KuaishouVideoDownload（快手视频下载器）相关的内容创作。
 
 ## 任务
 基于以下扩展关键词，按照指定类别生成文章题目建议。
@@ -214,24 +214,19 @@ def generate_categorized_topics_by_keywords(expanded_keywords: Dict[str, List[st
 
 ### 🔍 搜索型关键词文章（每日3篇）
 - 针对用户搜索意图，长尾关键词为主
-- 如"how to download Twitter video on iPhone"
+- 如"how to download Kuaishou video on iPhone"
 - 解决具体用户问题的文章
 需要生成：3个题目
 
-### 📘 教程型/列表型文章（每日1篇）  
+### 📘 教程型/列表型文章（每日1篇）
 - 增加分享率，适合内部链接
-- 如"Top 5 Twitter Video Downloaders 2025"
+- 如"Top 5 Kuaishou Video Downloaders 2025"
 - 比较、排行、完整指南类型
 需要生成：1个题目
 
-### 🌍 中英文对照内容（每日2-5篇）
-- 一键双语输出，适配中英文流量，提升页面密度
-- 同一主题的中英文版本
-需要生成：2个题目（同一主题，但请同时提供中英文版本）
-
-### 🧪 A/B测试型冷启动关键词（每日1-2篇）
-- 每天试验冷门关键词，观察有无意外流量  
-- 探索性的、新颖的角度
+### 🌍 功能介绍文章（每日1篇）
+- 介绍快手视频下载的各种功能和技巧
+- 提升用户体验和产品认知
 需要生成：1个题目
 
 ## 语言要求
@@ -248,13 +243,9 @@ def generate_categorized_topics_by_keywords(expanded_keywords: Dict[str, List[st
 [1个教程型/列表型文章题目]
 ===TUTORIAL_LISTS_END===
 
-===BILINGUAL_CONTENT_START===
-[2个双语文章题目，格式：中文题目 | English Title]
-===BILINGUAL_CONTENT_END===
-
-===AB_TEST_KEYWORDS_START===
-[1个A/B测试型文章题目]
-===AB_TEST_KEYWORDS_END===
+===FEATURE_CONTENT_START===
+[1个功能介绍文章题目]
+===FEATURE_CONTENT_END===
 
 请确保所有题目都与提供的关键词相关，具有SEO价值：
 
@@ -269,8 +260,7 @@ def generate_categorized_topics_by_keywords(expanded_keywords: Dict[str, List[st
         categories = {
             'search_keywords': extract_category_topics(result.text, "===SEARCH_KEYWORDS_START===", "===SEARCH_KEYWORDS_END==="),
             'tutorial_lists': extract_category_topics(result.text, "===TUTORIAL_LISTS_START===", "===TUTORIAL_LISTS_END==="),
-            'bilingual_content': extract_category_topics(result.text, "===BILINGUAL_CONTENT_START===", "===BILINGUAL_CONTENT_END==="),
-            'ab_test_keywords': extract_category_topics(result.text, "===AB_TEST_KEYWORDS_START===", "===AB_TEST_KEYWORDS_END===")
+            'feature_content': extract_category_topics(result.text, "===FEATURE_CONTENT_START===", "===FEATURE_CONTENT_END===")
         }
         
         print(f"✅ 成功生成分类文章题目:")
@@ -318,37 +308,29 @@ def get_default_category_topics(language: str) -> Dict[str, List[str]]:
     if "chinese" in language.lower() or "中文" in language:
         return {
             'search_keywords': [
-                "如何在iPhone上下载Twitter视频",
-                "Twitter视频下载器哪个最好用",
-                "免费下载Twitter视频的方法"
+                "如何在iPhone上下载快手视频",
+                "快手视频下载器哪个最好用",
+                "免费下载快手视频的方法"
             ],
             'tutorial_lists': [
-                "2025年最佳Twitter视频下载工具TOP5"
+                "2025年最佳快手视频下载工具TOP5"
             ],
-            'bilingual_content': [
-                "Twitter视频下载完整指南 | Complete Twitter Video Download Guide",
-                "批量下载Twitter视频方法 | How to Bulk Download Twitter Videos"
-            ],
-            'ab_test_keywords': [
-                "Twitter视频下载的法律问题解析"
+            'feature_content': [
+                "快手视频下载功能详解"
             ]
         }
     else:
         return {
             'search_keywords': [
-                "How to download Twitter videos on iPhone",
-                "Best Twitter video downloader 2024",
-                "Free Twitter video download methods"
+                "How to download Kuaishou videos on iPhone",
+                "Best Kuaishou video downloader 2024",
+                "Free Kuaishou video download methods"
             ],
             'tutorial_lists': [
-                "Top 5 Twitter Video Downloaders 2025"
+                "Top 5 Kuaishou Video Downloaders 2025"
             ],
-            'bilingual_content': [
-                "Complete Twitter Video Download Guide | Twitter视频下载完整指南",
-                "How to Bulk Download Twitter Videos | 批量下载Twitter视频方法"
-            ],
-            'ab_test_keywords': [
-                "Legal aspects of Twitter video downloading"
+            'feature_content': [
+                "Kuaishou Video Download Features Explained"
             ]
         }
 
@@ -438,7 +420,7 @@ def generate_article(topic, language, locale, keywords_context=""):
 - 优先使用长尾关键词和语义相关的词汇"""
         
         if locale == "en":
-            prompt = f"""You are a professional SEO content creator specializing in TwitterDown (Twitter video downloader) related content.
+            prompt = f"""You are a professional SEO content creator specializing in KuaishouVideoDownload (Kuaishou video downloader) related content.
 
 ## Task
 Please create a high-quality SEO blog article for this topic: {topic}
@@ -465,7 +447,7 @@ Please create a high-quality SEO blog article for this topic: {topic}
 
 ## External Link Requirements
 - Include 2-3 links to authoritative websites
-- External links should be related to Twitter, video downloading, social media
+- External links should be related to Kuaishou, video downloading, social media
 - Add appropriate context for external links
 
 ## Output Format
@@ -491,7 +473,7 @@ Please generate natural, fluent content that avoids obvious AI-generated traces:
 
 (Internal note for uniqueness: {int(time.time())})"""
         else:
-            prompt = f"""你是一位资深的SEO文章创作者，专注于 TwitterDown（Twitter视频下载器）相关内容创作。
+            prompt = f"""你是一位资深的SEO文章创作者，专注于 KuaishouVideoDownload（快手视频下载器）相关内容创作。
 
 ## 任务
 请为以下题目创作一篇高质量的SEO博客文章：{topic}
@@ -518,7 +500,7 @@ Please generate natural, fluent content that avoids obvious AI-generated traces:
 
 ## 外链要求
 - 包含2-3个指向权威网站的链接
-- 外链应与Twitter、视频下载、社交媒体相关
+- 外链应与快手、视频下载、社交媒体相关
 - 为外链添加适当的上下文
 
 ## 输出格式
@@ -560,7 +542,7 @@ Please generate natural, fluent content that avoids obvious AI-generated traces:
         final_slug = generate_unique_slug(slug, locale)
 
         # 获取封面图片
-        cover_url = get_unsplash_image("twitter")
+        cover_url = get_unsplash_image("kuaishou video")
 
         # 为文章添加随机的时间偏移，让发布时间更自然
         publish_time = datetime.now()
@@ -582,8 +564,8 @@ Please generate natural, fluent content that avoids obvious AI-generated traces:
             "updated_at": publish_time.isoformat(),
             "status": "online",
             "locale": locale,
-            "author_name": "TwitterDown Team",
-            "author_avatar_url": "https://www.twitterdown.com/logo.png"
+            "author_name": "KuaishouVideoDownload Team",
+            "author_avatar_url": "https://www.kuaishou-video-download.com/logo.png"
         }
 
         result = supabase.table("posts").insert(insert_data).execute()
@@ -660,15 +642,7 @@ def generate_keyword_driven_articles(language: str, locale: str) -> Dict[str, An
         failure_count = 0
         
         for category, topic in all_topics:
-            # 处理双语题目
-            if category == 'bilingual_content' and '|' in topic:
-                # 分离中英文题目
-                if locale == "zh":
-                    topic_to_use = topic.split('|')[0].strip()  # 中文部分
-                else:
-                    topic_to_use = topic.split('|')[1].strip()  # 英文部分
-            else:
-                topic_to_use = topic
+            topic_to_use = topic
             
             print(f"\n📝 生成文章: {topic_to_use} (分类: {category})")
             result = generate_article(topic_to_use, language, locale, keywords_context)
@@ -705,49 +679,30 @@ def generate_keyword_driven_articles(language: str, locale: str) -> Dict[str, An
         return {"success": 0, "failure": 0, "topics": [], "results": []}
 
 def main():
-    """主函数 - 关键词驱动版本"""
-    print("🚀 开始执行每日关键词驱动文章生成任务")
+    """主函数 - 只生成英文文章"""
+    print("🚀 开始执行每日英文文章生成任务（5篇）")
     print("=" * 60)
-    
-    results = {
-        "chinese": {},
-        "english": {}
-    }
 
-    # 生成中文文章
-    print("\n🇨🇳 开始中文关键词驱动生成...")
-    results["chinese"] = generate_keyword_driven_articles("Chinese (Simplified)", "zh")
-    
-    # 等待避免API限制
-    print("\n⏳ 等待5秒，避免API限制...")
-    time.sleep(5)
-
-    # 生成英文文章
+    # 只生成英文文章
     print("\n🇺🇸 开始英文关键词驱动生成...")
-    results["english"] = generate_keyword_driven_articles("English", "en")
+    results = generate_keyword_driven_articles("English", "en")
 
-    # 总结
-    total_success = results["chinese"]["success"] + results["english"]["success"]
-    total_failure = results["chinese"]["failure"] + results["english"]["failure"]
-
-    print(f"\n🎉 每日关键词驱动文章生成任务完成!")
+    print(f"\n🎉 每日英文文章生成任务完成!")
     print("=" * 60)
-    print(f"📊 总体统计:")
-    print(f"   🇨🇳 中文: 成功 {results['chinese']['success']} 篇，失败 {results['chinese']['failure']} 篇")
-    print(f"   🇺🇸 英文: 成功 {results['english']['success']} 篇，失败 {results['english']['failure']} 篇")
-    print(f"   📝 总计: 成功 {total_success} 篇，失败 {total_failure} 篇")
+    print(f"📊 统计结果:")
+    print(f"   🇺🇸 英文: 成功 {results['success']} 篇，失败 {results['failure']} 篇")
 
     # 记录任务执行日志到数据库
     try:
         log_data = {
             "execution_date": datetime.now().date().isoformat(),
-            "chinese_success": results["chinese"]["success"],
-            "chinese_failure": results["chinese"]["failure"],
-            "english_success": results["english"]["success"],
-            "english_failure": results["english"]["failure"],
-            "total_success": total_success,
-            "total_failure": total_failure,
-            "generation_method": "keyword_driven",
+            "chinese_success": 0,
+            "chinese_failure": 0,
+            "english_success": results["success"],
+            "english_failure": results["failure"],
+            "total_success": results["success"],
+            "total_failure": results["failure"],
+            "generation_method": "keyword_driven_english_only",
             "created_at": datetime.now().isoformat()
         }
         supabase.table("auto_generation_logs").insert(log_data).execute()

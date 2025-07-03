@@ -1,0 +1,297 @@
+{
+    "api": {
+        "auth": {
+            "login_required": "অনুগ্রহ করে প্রথমে লগ ইন করুন",
+            "login_required_download": "ভিডিও ডাউনলোড করার আগে অনুগ্রহ করে লগ ইন করুন"
+        },
+        "batch": {
+            "invalid_urls_found": "ব্যাচ প্রক্রিয়াকরণে অবৈধ লিঙ্ক পাওয়া গেছে",
+            "max_urls_exceeded": "ব্যাচ প্রক্রিয়াকরণ সর্বোচ্চ {max} টি লিঙ্ক সমর্থন করে",
+            "no_valid_urls": "ব্যাচ প্রক্রিয়াকরণে কোনো বৈধ লিঙ্ক পাওয়া যায়নি"
+        },
+        "credits": {
+            "balance_current": "বর্তমান উপলব্ধ পয়েন্ট: {balance}",
+            "deduction_error": "পয়েন্ট কর্তন অস্বাভাবিকতা",
+            "deduction_failed": "পয়েন্ট কর্তন ব্যর্থ হয়েছে",
+            "deduction_success": "পয়েন্ট সফলভাবে কেটে নেওয়া হয়েছে",
+            "get_balance_failed": "পয়েন্ট ব্যালেন্স পেতে ব্যর্থ হয়েছে",
+            "get_history_failed": "পয়েন্ট রেকর্ড পুনরুদ্ধার ব্যর্থ হয়েছে",
+            "gift_failed": "পয়েন্ট উপহার দিতে ব্যর্থ",
+            "gift_success": "পয়েন্ট সফলভাবে উপহার দেওয়া হয়েছে",
+            "insufficient": "অপর্যাপ্ত পয়েন্ট, বর্তমানে উপলব্ধ: {available}, প্রয়োজন: {required}"
+        },
+        "download": {
+            "download_failed": "ভিডিও ডাউনলোড ব্যর্থ হয়েছে, অনুগ্রহ করে আবার চেষ্টা করুন",
+            "get_history_failed": "ডাউনলোড ইতিহাস পুনরুদ্ধার ব্যর্থ হয়েছে",
+            "invalid_token": "অবৈধ টোকেন",
+            "invalid_video_url": "অবৈধ ভিডিও URL",
+            "missing_token": "টোকেন প্যারামিটার অনুপস্থিত",
+            "server_error": "অভ্যন্তরীণ সার্ভার ত্রুটি",
+            "unknown_error": "অজানা ত্রুটি",
+            "video_fetch_failed": "ভিডিও পেতে ব্যর্থ: {status}",
+            "video_verification_failed": "ভিডিও যাচাইকরণ ব্যর্থ হয়েছে"
+        },
+        "test": {
+            "download_record_failed": "ডাউনলোড রেকর্ড তৈরি ব্যর্থ হয়েছে",
+            "download_record_success": "ডাউনলোড রেকর্ড সফলভাবে তৈরি হয়েছে",
+            "invalid_action": "অবৈধ অপারেশন প্রকার",
+            "test_failed": "পয়েন্ট সিস্টেম পরীক্ষা ব্যর্থ হয়েছে"
+        }
+    },
+    "api_keys": {
+        "apple_shortcut": "অ্যাপল শর্টকাটস",
+        "create_api_key": "API কী তৈরি করুন",
+        "create_api_key_meta_title": "API কী তৈরি করুন - KuaishouVideoDownload",
+        "delete": {
+            "button_cancel": "বাতিল করুন",
+            "button_delete": "মুছুন",
+            "button_deleting": "মুছে ফেলা হচ্ছে...",
+            "confirm_message": "আপনি কি নিশ্চিত যে আপনি এই API কী মুছতে চান? এই কাজটি পূর্বাবস্থায় ফেরানো যাবে না এবং এই কী ব্যবহার করা সকল অ্যাপ্লিকেশনের অ্যাক্সেস অবিলম্বে প্রত্যাহার করবে।",
+            "confirm_title": "API কী মুছুন",
+            "error_message": "API কী মুছতে ব্যর্থ হয়েছে",
+            "success_message": "API কী সফলভাবে মুছে ফেলা হয়েছে"
+        },
+        "delete_api_key": "API কী মুছুন",
+        "errors": {
+            "create_failed": "API কী তৈরি করতে ব্যর্থ: {error}",
+            "invalid_params": "অবৈধ প্যারামিটার",
+            "no_auth": "অনুগ্রহ করে প্রথমে লগ ইন করুন",
+            "premium_required": "API কী শুধুমাত্র অর্থপ্রদানকারী ব্যবহারকারীদের জন্য, অনুগ্রহ করে আপনার অ্যাকাউন্ট আপগ্রেড করুন"
+        },
+        "form": {
+            "name": "নাম",
+            "name_placeholder": "API কী-এর নাম",
+            "submit": "জমা দিন"
+        },
+        "messages": {
+            "created_success": "API কী সফলভাবে তৈরি করা হয়েছে"
+        },
+        "meta_title": "API কী ম্যানেজমেন্ট - KuaishouVideoDownload",
+        "no_api_keys": "কোনো API কী নেই",
+        "premium_only_tip": "API ফিচারগুলি শুধুমাত্র অর্থপ্রদানকারী ব্যবহারকারীদের জন্য। API অ্যাক্সেস পেতে অনুগ্রহ করে প্রিমিয়ামে আপগ্রেড করুন।",
+        "table": {
+            "actions": "অ্যাকশন",
+            "created_at": "সৃষ্টির সময়",
+            "key": "কী",
+            "name": "নাম"
+        },
+        "tip": "লিক হওয়া রোধ করতে আপনার API কী সুরক্ষিত রাখুন। শেয়ারিংয়ের মাধ্যমে অ্যাপ থেকে সরাসরি ভিডিও ডাউনলোড করতে শর্টকাট ব্যবহার করুন।",
+        "title": "API কী",
+        "upgrade_to_premium": "প্রিমিয়ামে আপগ্রেড করুন",
+        "view_api_docs": "API ডকুমেন্টেশন দেখুন"
+    },
+    "batch_download_result": {
+        "title": "ব্যাচ ডাউনলোডের ফলাফল - KuaishouVideoDownload"
+    },
+    "blog": {
+        "description": "KuaishouVideoDownload সম্পর্কে খবর, সম্পদ এবং আপডেট",
+        "read_more_text": "আরও পড়ুন",
+        "title": "ব্লগ"
+    },
+    "download_history": {
+        "description": "আপনার ভিডিও ডাউনলোড ইতিহাস দেখুন",
+        "description_free": "আপনার সর্বশেষ {count} টি ডাউনলোড রেকর্ড দেখুন (বিনামূল্যে সংস্করণ)",
+        "no_history": "এখনও কোনো ডাউনলোড রেকর্ড নেই",
+        "status": {
+            "completed": "সফল",
+            "failed": "ব্যর্থ হয়েছে"
+        },
+        "table": {
+            "created_at": "ডাউনলোডের সময়",
+            "credits_consumed": "পয়েন্ট ব্যবহার করুন",
+            "download_no": "ডাউনলোড আইডি",
+            "download_status": "অবস্থা",
+            "file_name": "ফাইলের নাম",
+            "file_size": "ফাইলের আকার",
+            "original_tweet": "আসল টুইট",
+            "original_video": "আসল ভিডিও",
+            "username": "ব্যবহারকারীর নাম",
+            "video_quality": "ভিডিওর মান",
+            "video_resolution": "রেজোলিউশন"
+        },
+        "title": "ডাউনলোড ইতিহাস",
+        "upgrade_prompt": {
+            "button": "এখন আপগ্রেড করুন",
+            "message": "আপনার কাছে {total} টি ডাউনলোড রেকর্ড আছে, কিন্তু বিনামূল্যে ব্যবহারকারীরা শুধুমাত্র সর্বশেষ {visible} টি রেকর্ড দেখতে পারবেন।",
+            "title": "আরও দেখতে আপগ্রেড করুন"
+        }
+    },
+    "download_result": {
+        "title": "ডাউনলোডের ফলাফল - KuaishouVideoDownload"
+    },
+    "downloads": {
+        "batch_download": "ব্যাচ ডাউনলোড",
+        "batch_download_button": "ব্যাচ ডাউনলোড",
+        "batch_placeholder": "প্রতি লাইনে একটি Kuaishou ভিডিও লিঙ্ক লিখুন, সর্বোচ্চ ১০টি লিঙ্ক সমর্থিত...",
+        "batch_processing": "ব্যাচ প্রক্রিয়াকরণ",
+        "free_user_tip": "উচ্চ-মানের ভিডিও বিনামূল্যে ডাউনলোড করতে যেকোনো Kuaishou ভিডিও লিঙ্ক লিখুন, সকল রেজোলিউশন সমর্থন করে, সীমাহীন ডাউনলোড",
+        "high_speed": "উচ্চ-গতির ডাউনলোড",
+        "results": {
+            "audio_download_coming_soon": "অডিও ডাউনলোড ফিচার শীঘ্রই আসছে",
+            "audio_download_failed": "অডিও ডাউনলোড ব্যর্থ হয়েছে",
+            "audio_extract": "অডিও নিষ্কাশন",
+            "audio_extract_description": "ভিডিও থেকে অডিও নিষ্কাশন করুন",
+            "audio_quality": "অডিওর মান",
+            "available_credits": "উপলব্ধ পয়েন্ট",
+            "available_formats": "উপলব্ধ ফর্ম্যাটসমূহ",
+            "batch_parse_error": "ব্যাচ প্রক্রিয়াকরণ ব্যর্থ হয়েছে",
+            "batch_title": "ব্যাচ ডাউনলোডের ফলাফল",
+            "continue_download": "ডাউনলোড চালিয়ে যান",
+            "cost_credits": "খরচ",
+            "cost_downloads": "ফি",
+            "cost_format": "{credits} পয়েন্ট",
+            "cost_format_downloads": "{downloads} টি ডাউনলোড",
+            "credits_remaining": "বাকি পয়েন্ট: {credits}",
+            "credits_required": "{credits} পয়েন্ট প্রয়োজন",
+            "download_button": "ডাউনলোড",
+            "download_failed": "ডাউনলোড ব্যর্থ হয়েছে",
+            "download_success": "ডাউনলোড সফল হয়েছে",
+            "download_thumbnail": "কভার ডাউনলোড করুন",
+            "downloading": "ডাউনলোড হচ্ছে...",
+            "extract_audio": "অডিও নিষ্কাশন করুন",
+            "failed_count": "ব্যর্থ হয়েছে",
+            "failed_links": "ব্যর্থ লিঙ্কসমূহ",
+            "file_size": "ফাইলের আকার",
+            "format": "ফর্ম্যাট",
+            "hd_requires_paid_user": "এইচডি ভিডিও ডাউনলোড করতে অর্থপ্রদানকারী ব্যবহারকারী প্রয়োজন, অনুগ্রহ করে প্রথমে পরিষেবাটি কিনুন",
+            "high_quality": "উচ্চ গুণমান",
+            "insufficient_credits": "অপর্যাপ্ত পয়েন্ট, উপলব্ধ: {available}, প্রয়োজন: {required}",
+            "insufficient_credits_short": "অপর্যাপ্ত পয়েন্ট: {available}/{required}",
+            "invalid_twitter_url": "অবৈধ Kuaishou লিঙ্কের ফর্ম্যাট",
+            "invalid_twitter_urls": "{count} টি অবৈধ Kuaishou লিঙ্ক পাওয়া গেছে",
+            "invalid_url": "অবৈধ ভিডিও লিঙ্ক",
+            "loading": "পার্স করা হচ্ছে...",
+            "login_required": "অনুগ্রহ করে লগ ইন করুন",
+            "new_download": "নতুন ডাউনলোড",
+            "no_thumbnail_available": "কোনো কভার উপলব্ধ নেই",
+            "no_urls_provided": "কোনো লিঙ্ক প্রদান করা হয়নি",
+            "no_valid_urls": "কোনো বৈধ Kuaishou লিঙ্ক পাওয়া যায়নি",
+            "no_video_found": "ভিডিও পাওয়া যায়নি",
+            "one_download": "১টি ডাউনলোড",
+            "paid_badge": "পরিশোধিত",
+            "paid_user_only": "শুধুমাত্র অর্থপ্রদানকারী ব্যবহারকারীদের জন্য",
+            "paid_users_exclusive": "শুধুমাত্র অর্থপ্রদানকারী ব্যবহারকারীদের জন্য",
+            "parse_error": "পার্সিং ব্যর্থ হয়েছে",
+            "premium_required": "শুধুমাত্র অর্থপ্রদানকারী ব্যবহারকারীদের জন্য",
+            "purchase_to_unlock_hd": "HD ডাউনলোড আনলক করতে পরিষেবা কিনুন",
+            "quality_hd": "এইচডি",
+            "quality_sd": "এসডি",
+            "requires_one_download": "১টি ডাউনলোড প্রয়োজন",
+            "resolution": "রেজোলিউশন",
+            "retry": "পুনরায় চেষ্টা করুন",
+            "success_count": "সফল",
+            "successful_videos": "ভিডিও সফলভাবে পার্স করা হয়েছে",
+            "thumbnail_download_failed": "কভার ডাউনলোড ব্যর্থ হয়েছে",
+            "thumbnail_download_success": "কভার ডাউনলোড সফল হয়েছে",
+            "thumbnail_fetch_error": "কভার পেতে ব্যর্থ হয়েছে",
+            "title": "ডাউনলোডের ফলাফল",
+            "top_up_credits": "পয়েন্ট রিচার্জ করুন",
+            "total_count": "মোট",
+            "unknown_error": "একটি অজানা ত্রুটি ঘটেছে",
+            "video_fetch_error": "Kuaishou থেকে ভিডিও পেতে ব্যর্থ: {status}",
+            "video_info": "ভিডিও তথ্য",
+            "video_preview": "ভিডিও প্রিভিউ",
+            "view_original_tweet": "আসল কাজ দেখুন"
+        },
+        "single_download": "একক ডাউনলোড",
+        "single_placeholder": "Kuaishou ভিডিও লিঙ্ক পেস্ট করুন...",
+        "start_download": "ডাউনলোড শুরু করুন",
+        "unlimited": "সীমাহীন",
+        "urls_count": "{count} টি লিঙ্ক প্রবেশ করানো হয়েছে",
+        "view_pricing": "মূল্য নির্ধারণের পরিকল্পনা দেখুন"
+    },
+    "metadata": {
+        "description": "KuaishouVideoDownload একটি বিনামূল্যের অনলাইন Kuaishou ভিডিও ডাউনলোড টুল। ওয়াটারমার্ক ছাড়া উচ্চ-মানের Kuaishou ভিডিও ডাউনলোড করুন। দ্রুত, নিরাপদ এবং ব্যবহার করা সহজ।",
+        "keywords": "Kuaishou ভিডিও ডাউনলোডার, Kuaishou ভিডিও ডাউনলোড, Kuaishou ওয়াটারমার্ক রিমুভার, Kuaishou ভিডিও সংরক্ষণ করুন",
+        "title": "KuaishouVideoDownload - বিনামূল্যে Kuaishou ভিডিও ডাউনলোডার | অনলাইনে Kuaishou ভিডিও ডাউনলোড করুন"
+    },
+    "my_credits": {
+        "left_tip": "বাকি পয়েন্ট: {left_credits}",
+        "no_credits": "কোনো পয়েন্ট রেকর্ড নেই",
+        "recharge": "রিচার্জ",
+        "table": {
+            "credits": "পয়েন্ট",
+            "status": "অবস্থা",
+            "trans_no": "লেনদেন আইডি",
+            "trans_type": "লেনদেনের প্রকার",
+            "updated_at": "আপডেটের সময়"
+        },
+        "title": "আমার পয়েন্ট"
+    },
+    "my_invites": {
+        "copy_invite_link": "আমন্ত্রণ লিঙ্ক কপি করুন",
+        "description": "আপনার আমন্ত্রণ রেকর্ড দেখুন",
+        "edit_invite_link": "আমন্ত্রণ লিঙ্ক সম্পাদনা করুন",
+        "invite_balance": "আমন্ত্রণ পুরস্কারের ব্যালেন্স",
+        "invite_code": "আমন্ত্রণ কোড",
+        "invite_tip": "KuaishouVideoDownload কিনতে ১ জন বন্ধুকে আমন্ত্রণ জানান এবং পুরস্কার হিসেবে ১০টি ডাউনলোড পান।",
+        "my_invite_link": "আমার আমন্ত্রণ লিঙ্ক",
+        "no_affiliates": "বন্ধুদের আমন্ত্রণ জানানোর অনুমতি বর্তমানে আপনার নেই। অ্যাক্টিভেশনের অনুরোধ করতে আমাদের সাথে যোগাযোগ করুন।",
+        "no_invites": "কোনো আমন্ত্রণ রেকর্ড পাওয়া যায়নি",
+        "no_orders": "বন্ধুদের আমন্ত্রণ জানাতে আপনাকে KuaishouVideoDownload কিনতে হবে",
+        "table": {
+            "completed": "পরিশোধিত",
+            "invite_time": "আমন্ত্রণের সময়",
+            "invite_user": "আমন্ত্রিত ব্যবহারকারীগণ",
+            "pending": "নিবন্ধিত, কিন্তু পরিশোধিত হয়নি",
+            "reward_amount": "পুরস্কারের পরিমাণ",
+            "reward_percent": "পুরস্কারের অনুপাত",
+            "status": "অবস্থা"
+        },
+        "title": "আমার আমন্ত্রণসমূহ",
+        "total_award_amount": "মোট পুরস্কারের পরিমাণ",
+        "total_invite_count": "মোট আমন্ত্রিত ব্যবহারকারী",
+        "total_paid_count": "রিচার্জ করা ব্যবহারকারীর সংখ্যা",
+        "update_invite_button": "সংরক্ষণ করুন",
+        "update_invite_code": "আমন্ত্রণ কোড সেট করুন",
+        "update_invite_code_tip": "আপনার কাস্টম আমন্ত্রণ কোড লিখুন"
+    },
+    "my_orders": {
+        "activate_order": "অর্ডার সক্রিয় করুন",
+        "actived": "সক্রিয় করা হয়েছে",
+        "description": "KuaishouVideoDownload-এ কেনা অর্ডারসমূহ।",
+        "join_discord": "ডিসকর্ডে যোগ দিন",
+        "no_orders": "অর্ডার পাওয়া যায়নি",
+        "read_docs": "ডকুমেন্টেশন পড়ুন",
+        "table": {
+            "amount": "পরিমাণ",
+            "email": "ইমেল",
+            "github_username": "GitHub ব্যবহারকারীর নাম",
+            "order_no": "অর্ডার নম্বর",
+            "paid_at": "পেমেন্টের সময়",
+            "product_name": "পণ্যের নাম",
+            "status": "অবস্থা"
+        },
+        "tip": " ",
+        "title": "আমার অর্ডারসমূহ"
+    },
+    "sign_modal": {
+        "cancel_title": "বাতিল করুন",
+        "close_title": "বন্ধ করুন",
+        "continue": "চালিয়ে যান",
+        "email_placeholder": "আপনার ইমেল প্রবেশ করান",
+        "email_sign_in": "ইমেল দিয়ে লগ ইন করুন",
+        "email_title": "ইমেল",
+        "forgot_password": "পাসওয়ার্ড ভুলে গেছেন?",
+        "github_sign_in": "GitHub দিয়ে লগ ইন করুন",
+        "google_sign_in": "Google দিয়ে লগ ইন করুন",
+        "no_account": "এখনও অ্যাকাউন্ট নেই?",
+        "or": "অথবা",
+        "password_placeholder": "অনুগ্রহ করে আপনার পাসওয়ার্ড লিখুন",
+        "password_title": "পাসওয়ার্ড",
+        "sign_in_description": "আপনার অ্যাকাউন্টে লগ ইন করুন",
+        "sign_in_title": "লগ ইন করুন",
+        "sign_up_description": "নতুন অ্যাকাউন্ট তৈরি করুন",
+        "sign_up_title": "নিবন্ধন করুন"
+    },
+    "user": {
+        "admin_system": "অ্যাডমিন ব্যাকএন্ড",
+        "api_keys": "API কী",
+        "credits": "কোটা",
+        "download_history": "ডাউনলোড ইতিহাস",
+        "my_orders": "আমার অর্ডারসমূহ",
+        "sign_in": "লগইন",
+        "sign_out": "লগ আউট",
+        "user_center": "ব্যবহারকারী কেন্দ্র"
+    }
+}

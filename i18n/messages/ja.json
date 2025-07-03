@@ -1,296 +1,297 @@
 {
-  "metadata": {
-    "title": "TwitterDown - 無料のTwitter動画ダウンローダー | オンラインでTwitter動画をダウンロード",
-    "description": "TwitterDownは無料のオンラインTwitter動画ダウンローダーです。高品質でTwitter動画、GIF、画像をダウンロードできます。高速、安全で使いやすい。",
-    "keywords": "twitter 動画 ダウンローダー, twitter 動画 ダウンロード, ツイッター 動画 保存, twitter gif ダウンローダー, ツイッター 動画 保存"
-  },
-  "user": {
-    "sign_in": "サインイン",
-    "sign_out": "サインアウト",
-    "credits": "クレジット",
-    "api_keys": "APIキー",
-    "my_orders": "マイ注文",
-    "download_history": "ダウンロード履歴",
-    "user_center": "ユーザーセンター",
-    "admin_system": "管理システム"
-  },
-  "sign_modal": {
-    "sign_in_title": "ログイン",
-    "sign_in_description": "アカウントにログイン",
-    "sign_up_title": "新規登録",
-    "sign_up_description": "アカウントを作成",
-    "email_title": "メールアドレス",
-    "email_placeholder": "メールアドレスを入力してください",
-    "password_title": "パスワード",
-    "password_placeholder": "パスワードを入力してください",
-    "forgot_password": "パスワードを忘れましたか？",
-    "or": "または",
-    "continue": "続行",
-    "no_account": "アカウントをお持ちではありませんか？",
-    "email_sign_in": "メールでログイン",
-    "google_sign_in": "Googleでログイン",
-    "github_sign_in": "GitHubでログイン",
-    "close_title": "閉じる",
-    "cancel_title": "キャンセル"
-  },
-  "my_orders": {
-    "title": "マイ注文",
-    "description": "TwitterDownで支払った注文。",
-    "no_orders": "注文が見つかりません",
-    "tip": "",
-    "activate_order": "注文を有効化",
-    "actived": "有効化済み",
-    "join_discord": "Discordに参加",
-    "read_docs": "ドキュメントを読む",
-    "table": {
-      "order_no": "注文番号",
-      "email": "メールアドレス",
-      "product_name": "商品名",
-      "amount": "金額",
-      "paid_at": "支払い日時",
-      "github_username": "GitHubユーザー名",
-      "status": "ステータス"
+    "api": {
+        "auth": {
+            "login_required": "まずログインしてください",
+            "login_required_download": "動画をダウンロードする前にログインしてください"
+        },
+        "batch": {
+            "invalid_urls_found": "一括処理中に無効なリンクが見つかりました",
+            "max_urls_exceeded": "一括処理は最大{max}個のリンクまでサポートします",
+            "no_valid_urls": "一括処理で有効なリンクが見つかりませんでした"
+        },
+        "credits": {
+            "balance_current": "現在の利用可能ポイント: {balance}",
+            "deduction_error": "ポイント引き落とし異常",
+            "deduction_failed": "ポイント引き落とし失敗",
+            "deduction_success": "ポイント引き落とし成功",
+            "get_balance_failed": "ポイント残高の取得に失敗しました",
+            "get_history_failed": "ポイント履歴の取得に失敗しました",
+            "gift_failed": "ポイント付与に失敗しました",
+            "gift_success": "ポイント付与に成功しました",
+            "insufficient": "ポイント不足、現在利用可能ポイント: {available}、必要: {required}"
+        },
+        "download": {
+            "download_failed": "動画のダウンロードに失敗しました。再試行してください",
+            "get_history_failed": "ダウンロード履歴の取得に失敗しました",
+            "invalid_token": "無効なトークン",
+            "invalid_video_url": "無効な動画URL",
+            "missing_token": "トークンパラメータが不足しています",
+            "server_error": "サーバー内部エラー",
+            "unknown_error": "不明なエラー",
+            "video_fetch_failed": "動画の取得に失敗しました: {status}",
+            "video_verification_failed": "動画認証失敗"
+        },
+        "test": {
+            "download_record_failed": "ダウンロード履歴作成失敗",
+            "download_record_success": "ダウンロード履歴作成成功",
+            "invalid_action": "無効な操作タイプ",
+            "test_failed": "ポイントシステムテスト失敗"
+        }
+    },
+    "api_keys": {
+        "apple_shortcut": "Appleショートカット",
+        "create_api_key": "APIキーを作成",
+        "create_api_key_meta_title": "APIキー作成 - KuaishouVideoDownload",
+        "delete": {
+            "button_cancel": "キャンセル",
+            "button_delete": "削除",
+            "button_deleting": "削除中...",
+            "confirm_message": "このAPIキーを削除してもよろしいですか？この操作は元に戻すことはできず、このキーを使用しているすべてのアプリケーションへのアクセスが即座に取り消されます。",
+            "confirm_title": "APIキーを削除",
+            "error_message": "APIキーの削除に失敗しました",
+            "success_message": "APIキー削除成功"
+        },
+        "delete_api_key": "APIキーを削除",
+        "errors": {
+            "create_failed": "APIキーの作成に失敗しました: {error}",
+            "invalid_params": "無効なパラメータ",
+            "no_auth": "まずログインしてください",
+            "premium_required": "APIキーは有料ユーザー限定です。アカウントをアップグレードしてください。"
+        },
+        "form": {
+            "name": "名前",
+            "name_placeholder": "APIキー名",
+            "submit": "提出"
+        },
+        "messages": {
+            "created_success": "APIキー作成成功"
+        },
+        "meta_title": "APIキー管理 - KuaishouVideoDownload",
+        "no_api_keys": "APIキーがありません",
+        "premium_only_tip": "API機能は有料ユーザー限定です。APIアクセス権を取得するにはプレミアム版にアップグレードしてください。",
+        "table": {
+            "actions": "操作",
+            "created_at": "作成時間",
+            "key": "キー",
+            "name": "名前"
+        },
+        "tip": "APIキーは漏洩しないよう適切に保管してください。ショートカットを使用すると、アプリから直接共有して動画をダウンロードできます。",
+        "title": "APIキー",
+        "upgrade_to_premium": "プレミアム版にアップグレード",
+        "view_api_docs": "APIドキュメントを見る"
+    },
+    "batch_download_result": {
+        "title": "一括ダウンロード結果 - KuaishouVideoDownload"
+    },
+    "blog": {
+        "description": "KuaishouVideoDownloadに関するニュース、リソース、更新情報",
+        "read_more_text": "続きを読む",
+        "title": "ブログ"
+    },
+    "download_history": {
+        "description": "動画のダウンロード履歴を見る",
+        "description_free": "最近の {count} 件のダウンロード履歴を表示（無料版）",
+        "no_history": "ダウンロード履歴なし",
+        "status": {
+            "completed": "成功",
+            "failed": "失敗"
+        },
+        "table": {
+            "created_at": "ダウンロード時間",
+            "credits_consumed": "ポイント消費",
+            "download_no": "ダウンロード番号",
+            "download_status": "ステータス",
+            "file_name": "ファイル名",
+            "file_size": "ファイルサイズ",
+            "original_tweet": "元の投稿",
+            "original_video": "元の動画",
+            "username": "ユーザー名",
+            "video_quality": "動画品質",
+            "video_resolution": "解像度"
+        },
+        "title": "ダウンロード履歴",
+        "upgrade_prompt": {
+            "button": "今すぐアップグレード",
+            "message": "ダウンロード履歴が {total} 件ありますが、無料ユーザーは最近の {visible} 件のみ表示できます。",
+            "title": "アップグレードして詳細を表示"
+        }
+    },
+    "download_result": {
+        "title": "ダウンロード結果 - KuaishouVideoDownload"
+    },
+    "downloads": {
+        "batch_download": "一括ダウンロード",
+        "batch_download_button": "一括ダウンロード",
+        "batch_placeholder": "Kuaishou動画リンクを1行に1つ入力してください。最大10件まで対応...",
+        "batch_processing": "一括処理",
+        "free_user_tip": "任意のKuaishou動画リンクを入力すると、高品質の動画を無料でダウンロードできます。すべての解像度に対応し、無制限でダウンロード可能です。",
+        "high_speed": "高速ダウンロード",
+        "results": {
+            "audio_download_coming_soon": "音声ダウンロード機能は近日公開予定",
+            "audio_download_failed": "音声ダウンロードに失敗しました",
+            "audio_extract": "音声抽出",
+            "audio_extract_description": "動画から音声ファイルを抽出",
+            "audio_quality": "音声品質",
+            "available_credits": "利用可能ポイント",
+            "available_formats": "利用可能なフォーマット",
+            "batch_parse_error": "一括処理に失敗しました",
+            "batch_title": "一括ダウンロード結果",
+            "continue_download": "ダウンロードを続ける",
+            "cost_credits": "料金",
+            "cost_downloads": "料金",
+            "cost_format": "{credits} ポイント",
+            "cost_format_downloads": "{downloads} 回のダウンロード",
+            "credits_remaining": "残りポイント: {credits}",
+            "credits_required": "{credits} ポイント必要",
+            "download_button": "ダウンロード",
+            "download_failed": "ダウンロード失敗",
+            "download_success": "ダウンロード成功",
+            "download_thumbnail": "カバーをダウンロード",
+            "downloading": "ダウンロード中...",
+            "extract_audio": "音声を抽出",
+            "failed_count": "失敗",
+            "failed_links": "処理失敗リンク",
+            "file_size": "ファイルサイズ",
+            "format": "形式",
+            "hd_requires_paid_user": "HD動画のダウンロードは有料ユーザー限定です。まずサービスをご購入ください。",
+            "high_quality": "高品質",
+            "insufficient_credits": "ポイント不足、現在利用可能: {available}、必要: {required}",
+            "insufficient_credits_short": "ポイント不足: {available}/{required}",
+            "invalid_twitter_url": "無効なKuaishouリンク形式",
+            "invalid_twitter_urls": "{count}件の無効なKuaishouリンクが見つかりました",
+            "invalid_url": "無効な動画リンク",
+            "loading": "解析中...",
+            "login_required": "ログインしてください",
+            "new_download": "新規ダウンロード",
+            "no_thumbnail_available": "利用可能なカバーがありません",
+            "no_urls_provided": "リンクが提供されていません",
+            "no_valid_urls": "有効なKuaishouリンクが見つかりませんでした",
+            "no_video_found": "動画が見つかりませんでした",
+            "one_download": "1回ダウンロード",
+            "paid_badge": "有料",
+            "paid_user_only": "有料ユーザー限定",
+            "paid_users_exclusive": "有料ユーザー限定",
+            "parse_error": "解析失敗",
+            "premium_required": "有料ユーザー限定",
+            "purchase_to_unlock_hd": "サービスを購入してHDダウンロードをアンロック",
+            "quality_hd": "高画質",
+            "quality_sd": "標準画質",
+            "requires_one_download": "1回ダウンロードが必要",
+            "resolution": "解像度",
+            "retry": "再試行",
+            "success_count": "成功",
+            "successful_videos": "解析に成功した動画",
+            "thumbnail_download_failed": "カバーダウンロード失敗",
+            "thumbnail_download_success": "カバーダウンロード成功",
+            "thumbnail_fetch_error": "カバーの取得に失敗しました",
+            "title": "ダウンロード結果",
+            "top_up_credits": "ポイントをチャージ",
+            "total_count": "合計",
+            "unknown_error": "不明なエラーが発生しました",
+            "video_fetch_error": "Kuaishouから動画の取得に失敗しました: {status}",
+            "video_info": "動画情報",
+            "video_preview": "動画プレビュー",
+            "view_original_tweet": "元の作品を見る"
+        },
+        "single_download": "単一ダウンロード",
+        "single_placeholder": "Kuaishou動画リンクを貼り付け...",
+        "start_download": "ダウンロードを開始",
+        "unlimited": "無制限",
+        "urls_count": "{count} 個のリンクが入力されました",
+        "view_pricing": "料金プランを見る"
+    },
+    "metadata": {
+        "description": "KuaishouVideoDownloadは、無料のオンラインKuaishou動画ダウンロードツールです。高品質なKuaishou動画のダウンロード、透かし除去に対応。高速、安全、使いやすい。",
+        "keywords": "Kuaishou動画ダウンローダー, Kuaishou動画ダウンロード, Kuaishou透かし除去, Kuaishou動画保存",
+        "title": "KuaishouVideoDownload - 無料Kuaishou動画ダウンローダー | オンラインでKuaishou動画をダウンロード"
+    },
+    "my_credits": {
+        "left_tip": "残りポイント: {left_credits}",
+        "no_credits": "ポイント履歴がありません",
+        "recharge": "チャージ",
+        "table": {
+            "credits": "ポイント",
+            "status": "ステータス",
+            "trans_no": "取引番号",
+            "trans_type": "取引タイプ",
+            "updated_at": "更新日時"
+        },
+        "title": "マイポイント"
+    },
+    "my_invites": {
+        "copy_invite_link": "招待リンクをコピー",
+        "description": "招待履歴を見る",
+        "edit_invite_link": "招待リンクを編集",
+        "invite_balance": "招待報酬残高",
+        "invite_code": "招待コード",
+        "invite_tip": "KuaishouVideoDownloadを友人が1人購入するごとに、10回のダウンロードをプレゼント。",
+        "my_invite_link": "私の招待リンク",
+        "no_affiliates": "現在、友人を招待する権限がありません。開通を申請するにはお問い合わせください。",
+        "no_invites": "招待履歴が見つかりませんでした",
+        "no_orders": "友人を招待するには、まずKuaishouVideoDownloadを購入する必要があります",
+        "table": {
+            "completed": "支払い済み",
+            "invite_time": "招待時間",
+            "invite_user": "招待ユーザー",
+            "pending": "登録済み、未払い",
+            "reward_amount": "報酬額",
+            "reward_percent": "報酬率",
+            "status": "ステータス"
+        },
+        "title": "私の招待",
+        "total_award_amount": "総報酬額",
+        "total_invite_count": "総招待人数",
+        "total_paid_count": "チャージ済み人数",
+        "update_invite_button": "保存",
+        "update_invite_code": "招待コードを設定",
+        "update_invite_code_tip": "カスタム招待コードを入力してください"
+    },
+    "my_orders": {
+        "activate_order": "注文を有効化",
+        "actived": "アクティブ済み",
+        "description": "KuaishouVideoDownloadでの購入注文。",
+        "join_discord": "Discordに参加",
+        "no_orders": "注文が見つかりませんでした",
+        "read_docs": "ドキュメントを読む",
+        "table": {
+            "amount": "金額",
+            "email": "メールアドレス",
+            "github_username": "GitHubユーザー名",
+            "order_no": "注文番号",
+            "paid_at": "支払い日時",
+            "product_name": "製品名",
+            "status": "ステータス"
+        },
+        "tip": "なし",
+        "title": "私の注文"
+    },
+    "sign_modal": {
+        "cancel_title": "キャンセル",
+        "close_title": "閉じる",
+        "continue": "続行",
+        "email_placeholder": "メールアドレスを入力してください",
+        "email_sign_in": "メールアドレスでログイン",
+        "email_title": "メールアドレス",
+        "forgot_password": "パスワードを忘れましたか？",
+        "github_sign_in": "GitHubでログイン",
+        "google_sign_in": "Googleでログイン",
+        "no_account": "まだアカウントがありませんか？",
+        "or": "または",
+        "password_placeholder": "パスワードを入力してください",
+        "password_title": "パスワード",
+        "sign_in_description": "アカウントにログイン",
+        "sign_in_title": "ログイン",
+        "sign_up_description": "新規アカウント作成",
+        "sign_up_title": "登録"
+    },
+    "user": {
+        "admin_system": "管理画面",
+        "api_keys": "APIキー",
+        "credits": "残高",
+        "download_history": "ダウンロード履歴",
+        "my_orders": "私の注文",
+        "sign_in": "ログイン",
+        "sign_out": "ログアウト",
+        "user_center": "ユーザーセンター"
     }
-  },
-  "my_credits": {
-    "title": "マイクレジット",
-    "left_tip": "残りクレジット: {left_credits}",
-    "no_credits": "クレジット記録がありません",
-    "recharge": "チャージ",
-    "table": {
-      "trans_no": "取引番号",
-      "trans_type": "取引タイプ",
-      "credits": "クレジット",
-      "updated_at": "更新日時",
-      "status": "ステータス"
-    }
-  },
-  "api_keys": {
-    "title": "API キー",
-    "meta_title": "API キー管理 - TwitterDown",
-    "create_api_key_meta_title": "API キー作成 - TwitterDown",
-    "tip": "API キーを安全に保管してください、Appから直接ビデオをダウンロードするためにApple Shortcutを使用してください",
-    "premium_only_tip": "API 機能はプレミアムユーザーのみ利用可能です。API アクセスを取得するためにプレミアムプランにアップグレードしてください",
-    "no_api_keys": "API キーがありません",
-    "create_api_key": "API キーを作成",
-    "delete_api_key": "API キーを削除",
-    "upgrade_to_premium": "プレミアムにアップグレード",
-    "view_api_docs": "API ドキュメントを表示",
-    "apple_shortcut": "Apple Shortcut",
-    "table": {
-      "name": "名前",
-      "key": "キー",
-      "created_at": "作成日時",
-      "actions": "アクション"
-    },
-    "form": {
-      "name": "名前",
-      "name_placeholder": "API キー名",
-      "submit": "送信"
-    },
-    "messages": {
-      "created_success": "API キーが正常に作成されました"
-    },
-    "errors": {
-      "no_auth": "まずログインしてください",
-      "premium_required": "API キーはプレミアムユーザーのみ利用可能です。アカウントをアップグレードしてください",
-      "invalid_params": "無効なパラメータ",
-      "create_failed": "API キーの作成に失敗しました: {error}"
-    },
-    "delete": {
-      "confirm_title": "API キーを削除",
-      "confirm_message": "この API キーを削除してもよろしいですか？この操作は元に戻すことができず、このキーを使用しているすべてのアプリケーションのアクセスが即座に取り消されます。",
-      "success_message": "API キーが正常に削除されました",
-      "error_message": "API キーの削除に失敗しました",
-      "button_deleting": "削除中...",
-      "button_delete": "削除",
-      "button_cancel": "キャンセル"
-    }
-  },
-  "blog": {
-    "title": "ブログ",
-    "description": "TwitterDownに関するニュース、リソース、アップデート",
-    "read_more_text": "続きを読む"
-  },
-  "my_invites": {
-    "title": "マイ招待",
-    "description": "招待記録を表示",
-    "no_invites": "招待記録が見つかりません",
-    "my_invite_link": "マイ招待リンク",
-    "edit_invite_link": "招待リンクを編集",
-    "copy_invite_link": "招待リンクをコピー",
-    "invite_code": "招待コード",
-    "invite_tip": "友達1人をTwitterDownの購入に招待すると、$50の報酬。",
-    "invite_balance": "招待報酬残高",
-    "total_invite_count": "総招待数",
-    "total_paid_count": "総支払い数",
-    "total_award_amount": "総報酬金額",
-    "update_invite_code": "招待コードを設定",
-    "update_invite_code_tip": "カスタム招待コードを入力",
-    "update_invite_button": "保存",
-    "no_orders": "TwitterDownを購入する前に他の人を招待することはできません",
-    "no_affiliates": "他の人を招待する権限がありません。許可を申請するためにお問い合わせください。",
-    "table": {
-      "invite_time": "招待時間",
-      "invite_user": "招待ユーザー",
-      "status": "ステータス",
-      "reward_percent": "報酬率",
-      "reward_amount": "報酬金額",
-      "pending": "保留中",
-      "completed": "完了"
-    }
-  },
-  "download_history": {
-    "title": "ダウンロード履歴",
-    "description": "動画ダウンロード記録を表示",
-    "description_free": "最新の{count}件のダウンロード記録を表示（無料版）",
-    "no_history": "ダウンロード履歴が見つかりません",
-    "upgrade_prompt": {
-      "title": "アップグレードして全て表示",
-      "message": "{total}件のダウンロード記録がありますが、無料ユーザーは最新の{visible}件のみ表示できます。",
-      "button": "今すぐアップグレード"
-    },
-    "table": {
-      "download_no": "ダウンロード番号",
-      "file_name": "ファイル名",
-      "original_tweet": "元のツイート",
-      "video_resolution": "解像度",
-      "video_quality": "動画品質",
-      "file_size": "ファイルサイズ",
-      "credits_consumed": "使用クレジット",
-      "download_status": "ステータス",
-      "username": "Twitterユーザー",
-      "created_at": "ダウンロード時間"
-    },
-    "status": {
-      "completed": "完了",
-      "failed": "失敗"
-    }
-  },
-  "downloads": {
-    "single_download": "単一ダウンロード",
-    "batch_download": "一括ダウンロード",
-    "single_placeholder": "TwitterビデオのURLを貼り付け...",
-    "batch_placeholder": "1行に1つのTwitterビデオURLを入力、最大10個のURL...",
-    "start_download": "ダウンロード開始",
-    "batch_download_button": "一括ダウンロード",
-    "free_user_tip": "任意のTwitter/XビデオURLを入力して高品質でダウンロード, 無制限ダウンロード",
-    "batch_processing": "一括処理",
-    "high_speed": "高速",
-    "unlimited": "無制限",
-    "view_pricing": "料金を見る",
-    "urls_count": "{count}個のURL入力済み",
-    "results": {
-      "title": "ダウンロード結果",
-      "batch_title": "一括ダウンロード結果",
-      "video_info": "動画情報",
-      "available_formats": "利用可能な形式",
-      "download_button": "ダウンロード",
-      "downloading": "ダウンロード中...",
-      "quality_hd": "HD",
-      "quality_sd": "SD",
-      "credits_required": "{credits}クレジット必要",
-      "credits_remaining": "残りクレジット: {credits}",
-      "available_credits": "利用可能クレジット",
-      "top_up_credits": "クレジットをチャージ",
-      "download_success": "ダウンロード成功",
-      "download_failed": "ダウンロード失敗",
-      "retry": "再試行",
-      "new_download": "新しいダウンロード",
-      "continue_download": "ダウンロードを続ける",
-      "file_size": "ファイルサイズ",
-      "resolution": "解像度",
-      "format": "形式",
-      "video_preview": "動画プレビュー",
-      "loading": "解析中...",
-      "parse_error": "解析失敗",
-      "video_fetch_error": "Twitterから動画の取得に失敗しました: {status}",
-      "unknown_error": "不明なエラーが発生しました",
-      "invalid_url": "無効な動画URL",
-      "no_video_found": "動画が見つかりません",
-      "insufficient_credits": "クレジット不足、利用可能: {available}、必要: {required}",
-      "insufficient_credits_short": "不足: {available}/{required}",
-      "login_required": "ログインしてください",
-      "invalid_twitter_url": "無効なTwitter/X URL形式",
-      "no_urls_provided": "URLが提供されていません",
-      "invalid_twitter_urls": "{count}個の無効なTwitter/X URLが見つかりました",
-      "no_valid_urls": "有効なTwitter/X URLが見つかりません",
-      "batch_parse_error": "一括処理が失敗しました",
-      "successful_videos": "解析成功動画",
-      "failed_links": "失敗したリンク",
-      "success_count": "成功",
-      "failed_count": "失敗",
-      "total_count": "合計",
-      "view_original_tweet": "元のツイートを表示",
-      "cost_credits": "コスト",
-      "cost_format": "{credits}クレジット",
-      "cost_downloads": "コスト",
-      "cost_format_downloads": "{downloads}ダウンロード",
-      "premium_required": "プレミアムユーザー専用",
-      "paid_user_only": "有料ユーザー専用",
-      "purchase_to_unlock_hd": "HDダウンロードを解除するためにサービスを購入",
-      "download_thumbnail": "サムネイルをダウンロード",
-      "thumbnail_download_success": "サムネイルダウンロード成功",
-      "thumbnail_download_failed": "サムネイルダウンロード失敗",
-      "thumbnail_fetch_error": "サムネイル取得失敗",
-      "no_thumbnail_available": "利用可能なサムネイルなし",
-      "audio_extract": "音声抽出",
-      "audio_extract_description": "動画から音声ファイルを抽出",
-      "extract_audio": "音声を抽出",
-      "audio_quality": "音声品質",
-      "high_quality": "高品質",
-      "audio_download_coming_soon": "音声ダウンロード機能は近日公開",
-      "audio_download_failed": "音声ダウンロード失敗",
-      "paid_badge": "有料",
-      "paid_users_exclusive": "有料ユーザー専用",
-      "hd_requires_paid_user": "HD動画ダウンロードは有料ユーザーが必要です。まずサービスを購入してください",
-      "requires_one_download": "1ダウンロード必要",
-      "one_download": "1ダウンロード"
-    }
-  },
-  "download_result": {
-    "title": "ダウンロード結果 - TwitterDown"
-  },
-  "batch_download_result": {
-    "title": "一括ダウンロード結果 - TwitterDown"
-  },
-  "api": {
-    "auth": {
-      "login_required": "まずログインしてください",
-      "login_required_download": "動画をダウンロードする前にログインしてください"
-    },
-    "credits": {
-      "insufficient": "クレジット不足、利用可能: {available}、必要: {required}",
-      "deduction_success": "クレジットが正常に差し引かれました",
-      "deduction_failed": "クレジット差し引きに失敗しました",
-      "deduction_error": "クレジット差し引きエラー",
-      "gift_success": "クレジットが正常に贈与されました",
-      "gift_failed": "クレジット贈与に失敗しました",
-      "balance_current": "現在の利用可能クレジット: {balance}",
-      "get_balance_failed": "クレジット残高の取得に失敗しました",
-      "get_history_failed": "クレジット履歴の取得に失敗しました"
-    },
-    "download": {
-      "missing_token": "トークンパラメータがありません",
-      "invalid_token": "無効なトークン",
-      "invalid_video_url": "無効な動画URL",
-      "video_fetch_failed": "動画取得に失敗しました: {status}",
-      "video_verification_failed": "動画検証に失敗しました",
-      "download_failed": "動画ダウンロードに失敗しました。もう一度お試しください",
-      "server_error": "内部サーバーエラー",
-      "unknown_error": "不明なエラー",
-      "get_history_failed": "ダウンロード履歴の取得に失敗しました"
-    },
-    "test": {
-      "invalid_action": "無効なアクションタイプ",
-      "test_failed": "クレジットシステムテストに失敗しました",
-      "download_record_success": "ダウンロード記録が正常に作成されました",
-      "download_record_failed": "ダウンロード記録の作成に失敗しました"
-    },
-    "batch": {
-      "max_urls_exceeded": "一括処理では最大{max}個のURLが許可されています",
-      "invalid_urls_found": "一括処理で無効なURLが見つかりました",
-      "no_valid_urls": "一括処理で有効なURLが見つかりませんでした"
-    }
-  }
-} 
+}

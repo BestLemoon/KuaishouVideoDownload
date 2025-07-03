@@ -1,516 +1,364 @@
 {
-  "template": "shipany-template-one",
-  "theme": "light",
-  "header": {
-    "brand": {
-      "title": "TwitterDown",
-      "logo": {
-        "src": "/logo.png",
-        "alt": "TwitterDown"
-      },
-      "url": "/"
-    },
-    "nav": {
-      "items": [
-        {
-          "title": "Features",
-          "url": "/#feature",
-          "icon": "HiOutlineSparkles"
-        },
-        {
-          "title": "Pricing",
-          "url": "/#pricing",
-          "icon": "MdPayment"
-        },
-        {
-          "title": "How It Works",
-          "url": "/#usage",
-          "icon": "BiCube"
-        },
-        {
-          "title": "Blog",
-          "url": "/posts",
-          "icon": "RiArticleLine"
-        }
-      ]
-    },
-    "buttons": [
-      {
-        "title": "Start Downloading",
-        "url": "/#pricing",
-        "target": "_self",
-        "variant": "link",
-        "icon": "RiArrowRightUpLine"
-      }
-    ],
-    "show_sign": true,
-    "show_theme": true,
-    "show_locale": true
-  },
-  "hero": {
-    "title": "Download Twitter Videos Online in Seconds - Free Twitter Video Downloader",
-    "highlight_text": "Twitter Videos Online",
-    "description": "TwitterDown is the fastest online twitter video downloader and twitter downloader to download twitter videos online and save twitter content easily.<br/>Copy the tweet URL, paste it in our input field, and download videos from twitter in high quality MP4 format with our powerful twitter video downloader online tool.",
-    "announcement": {
-      "label": "NEW",
-      "title": "🎉 TwitterDown is now completely free! ",
-      "url": "/#pricing"
-    },
-    "tip": "🔥 new version, completely free to start",
-    "buttons": [
-      {
-        "title": "Start Downloading",
-        "icon": "RiDownloadCloud2Fill",
-        "url": "/#usage",
-        "target": "_self",
-        "variant": "default"
-      },
-      {
-        "title": "Learn More",
-        "icon": "RiInformationLine",
-        "url": "/#feature",
-        "target": "_self",
-        "variant": "outline"
-      }
-    ],
-    "show_happy_users": true,
-    "show_badge": false,
-    "badges": [
-      {
-        "title": "Chrome Web Store",
-        "alt": "Available on Chrome Web Store",
-        "src": "/imgs/badges/chromewebstore.png",
-        "url": "https://chromewebstore.google.com/detail/twitterdown-%E5%8A%A9%E6%89%8B/ahgcdehhlnimoledkibalbdhnecfojbl",
-        "target": "_blank"
-      },
-      {
-        "title": "iOS Shortcuts",
-        "alt": "Get on iOS Shortcuts",
-        "src": "/imgs/badges/iosshortcuts.png",
-        "url": "https://www.icloud.com/shortcuts/993ab7c1ef39448da4bee1bac546075b",
-        "target": "_blank"
-      }
-    ]
-  },
-  "introduce": {
-    "name": "introduce",
-    "title": "What is TwitterDown - Your Free Twitter Video Downloader Online",
-    "label": "Introduce",
-    "description": "TwitterDown is a powerful online twitter video downloader and twitter downloader that lets you download twitter video online and save twitter content in high quality. Perfect for content creators, marketers, and casual users who need reliable twitter downloads with our twitter video downloader and want to easily download videos from twitter.",
-    "image": {
-      "src": "/imgs/features/1.png"
-    },
-    "items": [
-      {
-        "title": "Simple & Fast",
-        "description": "Just copy the tweet URL, paste it in our input field and download twitter video online in seconds. Our twitter video downloader online makes it easy with no complicated steps required.",
-        "icon": "RiTimerFlashLine"
-      },
-      {
-        "title": "High Quality Downloads",
-        "description": "Get the highest quality version of any Twitter video using our online twitter video download service and twitter downloader, converting twitter to mp4 while maintaining the original resolution with our twitter video downloader.",
-        "icon": "RiHdLine"
-      },
-      {
-        "title": "No Login Required",
-        "description": "Use our tweet downloader and twitter downloader without creating an account or sharing your Twitter credentials. Start twitter downloads instantly and save twitter content with our online twitter video downloader tool.",
-        "icon": "RiLockUnlockLine"
-      }
-    ]
-  },
-  "benefit": {
-    "name": "benefit",
-    "title": "Why Choose TwitterDown - The Best Twitter Video Downloader Online",
-    "label": "Benefits",
-    "description": "TwitterDown offers the fastest and most reliable twitter downloader and online twitter video downloader to download twitter videos online with features designed for both casual users and professionals seeking quality twitter downloads. Easily download videos from twitter with our advanced twitter video downloader online tool.",
-    "items": [
-      {
-        "title": "High-Quality Twitter MP4 Downloader",
-        "description": "Professional twitter to mp4 format downloads with multiple quality options and ability to bypass 18+ content restrictions. Our twitter mp4 downloader meets your specific needs with download links for all resolutions.",
-        "icon": "RiFileList3Line",
-        "image": {
-          "src": "/imgs/features/2.png"
-        }
-      },
-      {
-        "title": "Batch Processing with Twitter Downloader",
-        "description": "Save time by downloading multiple Twitter videos at once with our premium batch processing feature using our twitter video downloader and online twitter video processing tool.",
-        "icon": "RiStackLine",
-        "image": {
-          "src": "/imgs/features/3.png"
-        }
-      },
-      {
-        "title": "Download History",
-        "description": "Automatically track your download history for easy management and retrieval of previously downloaded video files.",
-        "icon": "RiHistoryLine",
-        "image": {
-          "src": "/imgs/features/4.png"
-        }
-      }
-    ]
-  },
-  "usage": {
-    "name": "usage",
-    "title": "How to Use Our Twitter Video Downloader Online - Tw Down Guide",
-    "description": "Download twitter video online in four simple steps using our online twitter video downloader and twitter downloader. Save twitter content easily with our tw down tool and twitter video downloader:",
-    "image": {
-      "src": "/imgs/features/1.png"
-    },
-    "image_position": "left",
-    "text_align": "center",
-    "items": [
-      {
-        "title": "Find the Tweet",
-        "description": "Find the tweet that contains the video you want to download on Twitter."
-      },
-      {
-        "title": "Copy the Tweet URL",
-        "description": "Click the share icon and select \"Copy Link\" to copy the tweet URL for download from twitter."
-      },
-      {
-        "title": "Paste in Input Field & Parse",
-        "description": "Paste the twitter link into our online twitter video downloader and twitter downloader input field and click the \"Download\" button to process the tweet with our twitter video downloader."
-      },
-      {
-        "title": "Select Format & Download",
-        "description": "Choose your preferred twitter to mp4 format and quality, then download twitter video online to your device using our download links."
-      }
-    ]
-  },
-  "feature": {
-    "name": "feature",
-    "title": "Key Features of Our Twitter Video Downloader Online - Download Tweet Videos",
-    "description": "Simple and efficient online twitter video download tool and twitter downloader to meet all your twitter downloads needs. Easily download videos from twitter with our advanced twitter video downloader online tool.",
-    "items": [
-      {
-        "title": "Fast Parsing",
-        "description": "Intelligently parse twitter link download URLs and get download links within seconds using our tweet downloader and twitter downloader. Copy the tweet URL and easily download videos from twitter with our online twitter video processing tool.",
-        "icon": "RiRocketLine"
-      },
-      {
-        "title": "Quality Selection",
-        "description": "Support multiple quality options for twitter downloads, from standard to high-definition HD, meeting different needs and storage space with our twitter video downloader online.",
-        "icon": "RiSettings4Line"
-      },
-      {
-        "title": "High-Speed Downloads",
-        "description": "Optimized download servers ensure the fastest online twitter video download speeds with our twitter downloader, saving your precious time when you download twitter video online using our twitter video downloader.",
-        "icon": "RiDownloadCloud2Line"
-      },
-      {
-        "title": "Twitter MP4 Downloader",
-        "description": "Professional twitter to mp4 format downloads compatible with all devices and platforms, ensuring the best playback experience with our twitter mp4 downloader.",
-        "icon": "RiFileList3Line"
-      },
-      {
-        "title": "Batch Downloads",
-        "description": "Advanced users can batch process multiple Twitter videos and easily download videos from twitter in bulk, greatly improving work efficiency with our online twitter video downloader and twitter downloader tool.",
-        "icon": "RiStackLine"
-      },
-      {
-        "title": "Completely Free",
-        "description": "No account registration required, completely free to use with no hidden fees or usage restrictions. Save twitter content without limits using our tw down service and twitter downloader with our online twitter video processing capabilities.",
-        "icon": "RiGiftLine"
-      }
-    ]
-  },
-  "stats": {
-    "name": "stats",
-    "label": "Stats",
-    "title": "Trusted by Thousands",
-    "description": "Join the community of satisfied TwitterDown users.",
-    "icon": "FaRegHeart",
-    "items": [
-      {
-        "title": "Videos Downloaded",
-        "label": "1M+",
-        "description": "And counting"
-      },
-      {
-        "title": "Active Users",
-        "label": "50K+",
-        "description": "Monthly"
-      },
-      {
-        "title": "Average Download Time",
-        "label": "<5",
-        "description": "Seconds"
-      }
-    ]
-  },
-  "pricing": {
-    "name": "pricing",
-    "label": "Features Comparison",
-    "title": "Completely Free to Use, Only API Access Requires Payment",
-    "description": "All video download features are completely free, no registration required. Only developer API access requires subscription.",
-    "groups": [
-      {
-        "name": "individual",
-        "label": "Individual Users"
-      },
-      {
-        "name": "developer",
-        "label": "Developers"
-      }
-    ],
-    "items": [
-      {
-        "title": "Free Features",
-        "description": "Complete download functionality that all users can enjoy for free",
-        "label": "🎉 Completely Free",
-        "features_title": "Included Features",
-        "features": [
-          "Unlimited single video downloads",
-          "Unlimited batch video downloads",
-          "All quality video downloads (720p, 1080p, 4K, etc.)",
-          "Video thumbnail downloads",
-          "Audio extraction downloads (MP3 format)",
-          "Tweet multimedia package downloads",
-          "iOS shortcuts support",
-          "No registration required",
-          "Download history for logged-in users"
+    "benefit": {
+        "description": "KuaishouVideoDownload offers the fastest and most reliable way to download Kuaishou videos, with features designed to meet the needs of both casual users and professionals.",
+        "items": [
+            {
+                "description": "Professional MP4 format download, supports various quality options, and can download watermark-free videos to meet your specific needs.",
+                "icon": "RiFileList3Line",
+                "image": {
+                    "src": "/imgs/features/2.png"
+                },
+                "title": "High-Quality MP4 Download"
+            },
+            {
+                "description": "Save time by downloading multiple Kuaishou videos at once with our advanced batch processing feature.",
+                "icon": "RiStackLine",
+                "image": {
+                    "src": "/imgs/features/3.png"
+                },
+                "title": "Batch Processing"
+            },
+            {
+                "description": "Automatically records your download history, making it easy to manage and find previously downloaded video files.",
+                "icon": "RiHistoryLine",
+                "image": {
+                    "src": "/imgs/features/4.png"
+                },
+                "title": "Download History"
+            }
         ],
-        "interval": "month",
-        "amount": 0,
-        "currency": "USD",
-        "price": "Free",
-        "original_price": "",
-        "unit": "",
-        "is_featured": true,
-        "tip": "Forever free, no limitations",
-        "button": {
-          "title": "Start Using Now",
-          "url": "/#usage",
-          "icon": "RiDownloadCloud2Fill"
-        },
-        "product_id": "free",
-        "product_name": "TwitterDown Free Features",
-        "credits": 0,
-        "valid_months": 1,
-        "group": "individual"
-      },
-      {
-        "title": "API Developer Plan",
-        "description": "API interface for developers and enterprises who need programmatic access",
-        "features_title": "Included Features",
-        "features": [
-          "All free features included",
-          "RESTful API access",
-          "5,000 API calls per month",
-          "Complete API documentation and sample code",
-          "JSON format data return",
-          "Batch processing API endpoints",
-          "Dedicated technical support",
-          "Higher request rate limits",
-          "Priority server processing queue"
-        ],
-        "interval": "month",
-        "amount": 999,
-        "currency": "USD",
-        "price": "$9.99",
-        "original_price": "",
-        "unit": "/ month",
-        "is_featured": false,
-        "tip": "Perfect for developers and enterprise integration",
-        "button": {
-          "title": "Subscribe API Service",
-          "url": "/#pricing",
-          "icon": "RiCodeBoxLine"
-        },
-        "product_id": "api_monthly",
-        "product_name": "TwitterDown API Developer Plan (Monthly)",
-        "credits": 5000,
-        "valid_months": 1,
-        "group": "developer"
-      },
-      {
-        "title": "API Developer Plan",
-        "description": "API interface for developers and enterprises who need programmatic access",
-        "features_title": "Included Features",
-        "features": [
-          "All free features included",
-          "RESTful API access",
-          "5,000 API calls per month",
-          "Complete API documentation and sample code",
-          "JSON format data return",
-          "Batch processing API endpoints",
-          "Dedicated technical support",
-          "Higher request rate limits",
-          "Priority server processing queue"
-        ],
-        "interval": "year",
-        "amount": 9999,
-        "currency": "USD",
-        "price": "$99.99",
-        "original_price": "$119.88",
-        "unit": "/ year",
-        "is_featured": false,
-        "tip": "Save $19.89 annually, equivalent to $8.33/month",
-        "button": {
-          "title": "Subscribe API Service",
-          "url": "/#pricing",
-          "icon": "RiCodeBoxLine"
-        },
-        "product_id": "api_yearly",
-        "product_name": "TwitterDown API Developer Plan (Yearly)",
-        "credits": 60000,
-        "valid_months": 12,
-        "group": "developer"
-      }
-    ]
-  },
-  "testimonial": {
-    "name": "testimonial",
-    "label": "Testimonial",
-    "title": "What Users Say About TwitterDown",
-    "description": "Hear from people who use TwitterDown to download and save Twitter videos.",
-    "icon": "GoThumbsup",
-    "items": [
-      {
-        "title": "Sarah Johnson",
-        "label": "Content Creator",
-        "description": "TwitterDown has become an essential twitter video downloader in my content creation workflow. The high-quality downloads and fast processing with this twitter downloader save me so much time!",
-        "image": {
-          "src": "/imgs/users/1.png"
-        }
-      },
-      {
-        "title": "Mark Chen",
-        "label": "Digital Marketer",
-        "description": "The Pro plan's batch download feature with this twitter video downloader is a game-changer for our marketing team. We can easily archive multiple videos for analysis using our online twitter video processing tool.",
-        "image": {
-          "src": "/imgs/users/2.png"
-        }
-      },
-      {
-        "title": "Jessica Rodriguez",
-        "label": "Journalist",
-        "description": "As a journalist, I need to quickly save important videos before they disappear. TwitterDown's twitter downloader speed and reliability with this online twitter video tool have been invaluable for my work.",
-        "image": {
-          "src": "/imgs/users/3.png"
-        }
-      },
-      {
-        "title": "David Kim",
-        "label": "Teacher",
-        "description": "I use TwitterDown to save educational videos for my students. The quality options help me manage storage space while maintaining clarity.",
-        "image": {
-          "src": "/imgs/users/4.png"
-        }
-      },
-      {
-        "title": "Emily Wilson",
-        "label": "Social Media Manager",
-        "description": "TwitterDown's web interface is incredibly clean and user-friendly. I can quickly paste links and download videos with simple, efficient operations.",
-        "image": {
-          "src": "/imgs/users/5.png"
-        }
-      },
-      {
-        "title": "Michael Taylor",
-        "label": "Researcher",
-        "description": "TwitterDown's history feature helps me organize downloaded videos by project. It's become an essential part of my research workflow.",
-        "image": {
-          "src": "/imgs/users/6.png"
-        }
-      }
-    ]
-  },
-  "faq": {
-    "name": "faq",
-    "label": "FAQ",
-    "title": "Frequently Asked Questions",
-    "description": "Have another question? Contact our support team for assistance.",
-    "items": [
-      {
-        "title": "Is it legal to download Twitter videos?",
-        "description": "TwitterDown is designed for personal use. While downloading videos for personal viewing is generally acceptable, please respect copyright laws and the original creator's rights. Do not republish or monetize content without proper permission."
-      },
-      {
-        "title": "Do I need a Twitter account to use TwitterDown?",
-        "description": "No, you don't need a Twitter account to use TwitterDown. Simply copy the URL of the video you want to download and paste it into our tool."
-      },
-      {
-        "title": "What video formats does TwitterDown support?",
-        "description": "TwitterDown supports twitter to mp4 format downloads, which is the most universal and compatible video format that works on all devices and platforms. Whether you search for 'twitter dowon', 'tw down' or 'download twitter download', our twitter mp4 downloader provides reliable downloads."
-      },
-      {
-        "title": "Is there a limit to how many videos I can download?",
-        "description": "No limits at all! All users can download unlimited single videos and batch downloads, supporting all resolutions (720p, 1080p, 4K, etc.). Only API access requires a paid subscription."
-      },
-      {
-        "title": "Can I download private Twitter videos?",
-        "description": "No, TwitterDown can only download publicly available videos. Videos from private accounts or direct messages cannot be accessed."
-      },
-      {
-        "title": "How do I choose the right video quality?",
-        "description": "You can select quality based on your needs: HD is perfect for archiving and editing, while standard quality is ideal for quick previews and saving storage space. We offer multiple resolution options for you to choose from."
-      },
-      {
-        "title": "Is TwitterDown the same as 'tw down' or other twitter downloaders?",
-        "description": "Yes, TwitterDown is often referred to as 'tw down' by users. Our twitter video downloader online provides the same reliable service whether you search for 'twitter video downloader online', 'download twitter video online', 'twitter dl' or simply 'tw down'. We're your go-to solution for all twitter downloads and to save twitter content."
-      }
-    ]
-  },
-  "cta": {
-    "name": "cta",
-    "title": "Start Your Twitter Downloads Today - Download Tweet Videos Now",
-    "description": "Join thousands of users who trust our twitter video downloader online and twitter downloader for fast, high-quality twitter downloads. Easily download videos from twitter and save twitter content with our tw down service and online twitter video processing tool.",
-    "buttons": [
-      {
-        "title": "Start Free",
-        "url": "/#usage",
-        "target": "_self",
-        "icon": "RiDownloadCloud2Fill"
-      },
-      {
-        "title": "View Pricing",
-        "url": "/#pricing",
-        "target": "_self",
-        "variant": "outline"
-      }
-    ]
-  },
-  "footer": {
-    "name": "footer",
-    "brand": {
-      "title": "TwitterDown",
-      "description": "The fastest twitter video downloader online and twitter downloader to download twitter video online in high quality. Save twitter content and easily download videos from twitter with our powerful online twitter video processing tool and tw down service.",
-      "logo": {
-        "src": "/logo.png",
-        "alt": "TwitterDown"
-      },
-      "url": "/"
+        "label": "Advantages",
+        "name": "benefit",
+        "title": "Why Choose KuaishouVideoDownload"
     },
-    "copyright": "© 2025 • TwitterDown All rights reserved.",
-    "social": {
-      "items": [
-        {
-          "title": "Twitter",
-          "icon": "RiTwitterXFill",
-          "url": "https://twitter.com/Real_Jewel_AI",
-          "target": "_blank"
-        },
-        {
-          "title": "E-Mail",
-          "icon": "RiMailLine",
-          "url": "mailto:support@twitterdown.com",
-          "target": "_self"
-        }
-      ]
+    "cta": {
+        "buttons": [
+            {
+                "icon": "RiDownloadCloud2Fill",
+                "target": "_self",
+                "title": "Start for Free",
+                "url": "/en#usage"
+            }
+        ],
+        "description": "Join thousands of users who trust KuaishouVideoDownload for fast, high-quality video downloads.",
+        "name": "cta",
+        "title": "Start Downloading Kuaishou Videos Now"
     },
-    "agreement": {
-      "items": [
-        {
-          "title": "Privacy Policy",
-          "url": "/privacy-policy"
+    "faq": {
+        "description": "Still have questions? Contact our support team for assistance.",
+        "items": [
+            {
+                "description": "KuaishouVideoDownload is designed for personal use. While downloading videos for personal viewing is generally acceptable, please respect copyright laws and the rights of original creators. Do not republish or commercialize content without proper permission.",
+                "title": "Is it legal to download Kuaishou videos?"
+            },
+            {
+                "description": "No, you don't need a Kuaishou account to use KuaishouVideoDownload. Just copy the URL of the video you want to download and paste it into our tool.",
+                "title": "Do I need a Kuaishou account to use KuaishouVideoDownload?"
+            },
+            {
+                "description": "KuaishouVideoDownload supports MP4 format download, which is the most versatile and compatible video format for all devices and platforms.",
+                "title": "What video formats does KuaishouVideoDownload support?"
+            },
+            {
+                "description": "Absolutely no limits! All users can enjoy unlimited single video and batch downloads, supporting all resolutions (720p, 1080p, 4K, etc.).",
+                "title": "Is there a limit to the number of videos I can download?"
+            },
+            {
+                "description": "No, KuaishouVideoDownload can only download publicly available videos. It cannot access videos from private accounts or private works.",
+                "title": "Can I download private Kuaishou videos?"
+            },
+            {
+                "description": "You can choose the quality according to your use: HD is suitable for collection and editing, while standard quality is good for quick preview and saving space. We offer multiple resolution options for you to choose from.",
+                "title": "How to choose the right video quality?"
+            }
+        ],
+        "label": "FAQ",
+        "name": "faq",
+        "title": "FAQ"
+    },
+    "feature": {
+        "description": "A simple and efficient Kuaishou video downloader tool for all your needs.",
+        "items": [
+            {
+                "description": "Intelligently parses Kuaishou video links, identifying and retrieving video download addresses in seconds.",
+                "icon": "RiRocketLine",
+                "title": "Fast Parsing"
+            },
+            {
+                "description": "Supports multiple quality options, from SD to HD, to meet different needs and storage space.",
+                "icon": "RiSettings4Line",
+                "title": "Quality Selection"
+            },
+            {
+                "description": "Optimized download servers ensure the fastest download speeds, saving your valuable time.",
+                "icon": "RiDownloadCloud2Line",
+                "title": "High-Speed Download"
+            },
+            {
+                "description": "Professional MP4 format download, compatible with all devices and platforms, ensuring the best playback experience.",
+                "icon": "RiFileList3Line",
+                "title": "MP4 Format Download"
+            },
+            {
+                "description": "Advanced users can batch process multiple Kuaishou videos, significantly improving work efficiency.",
+                "icon": "RiStackLine",
+                "title": "Batch Download"
+            },
+            {
+                "description": "No account registration needed, completely free to use, no hidden fees or usage limits.",
+                "icon": "RiGiftLine",
+                "title": "Completely Free"
+            }
+        ],
+        "name": "feature",
+        "title": "Key Features of KuaishouVideoDownload"
+    },
+    "footer": {
+        "agreement": {
+            "items": [
+                {
+                    "title": "Privacy Policy",
+                    "url": "/privacy-policy"
+                },
+                {
+                    "title": "Terms of Service",
+                    "url": "/terms-of-service"
+                }
+            ]
         },
-        {
-          "title": "Terms of Service",
-          "url": "/terms-of-service"
+        "brand": {
+            "description": "The fastest way to download Kuaishou videos in high quality. Save and share your favorite Kuaishou content with just a few clicks.",
+            "logo": {
+                "alt": "KuaishouVideoDownload",
+                "src": "/logo.png"
+            },
+            "title": "KuaishouVideoDownload",
+            "url": "/"
+        },
+        "copyright": "© 2025 • KuaishouVideoDownload All rights reserved.",
+        "name": "footer",
+        "social": {
+            "items": [
+                {
+                    "icon": "RiTwitterXFill",
+                    "target": "_blank",
+                    "title": "Twitter",
+                    "url": "https://twitter.com/Real_Jewel_AI"
+                },
+                {
+                    "icon": "RiMailLine",
+                    "target": "_self",
+                    "title": "Email",
+                    "url": "mailto:support@Kuaishou-Video-Download.com"
+                }
+            ]
         }
-      ]
+    },
+    "header": {
+        "brand": {
+            "logo": {
+                "alt": "KuaishouVideoDownload",
+                "src": "/logo.png"
+            },
+            "title": "KuaishouVideoDownload",
+            "url": "/"
+        },
+        "buttons": [
+            {
+                "icon": "RiArrowRightUpLine",
+                "target": "_self",
+                "title": "Start Downloading",
+                "url": "/en#usage",
+                "variant": "link"
+            }
+        ],
+        "nav": {
+            "items": [
+                {
+                    "icon": "HiOutlineSparkles",
+                    "title": "Features",
+                    "url": "/en#feature"
+                },
+                {
+                    "icon": "BiCube",
+                    "title": "How to Use",
+                    "url": "/en#usage"
+                },
+                {
+                    "icon": "RiArticleLine",
+                    "title": "Blog",
+                    "url": "/en/posts"
+                }
+            ]
+        },
+        "show_locale": true,
+        "show_sign": true,
+        "show_theme": true
+    },
+    "hero": {
+        "announcement": {
+            "label": "New Features",
+            "title": "🎉 KuaishouVideoDownload is now completely FREE! No login required to use",
+            "url": "/en#usage"
+        },
+        "buttons": [
+            {
+                "icon": "RiDownloadCloud2Fill",
+                "target": "_self",
+                "title": "Start Downloading",
+                "url": "/en#usage",
+                "variant": "default"
+            },
+            {
+                "icon": "RiInformationLine",
+                "target": "_self",
+                "title": "Learn More",
+                "url": "/en#feature",
+                "variant": "outline"
+            }
+        ],
+        "description": "KuaishouVideoDownload is the fastest way to download Kuaishou videos.<br/>Save and share your favorite Kuaishou content with just a few clicks.",
+        "highlight_text": "Kuaishou Videos",
+        "show_badge": false,
+        "show_happy_users": true,
+        "tip": "🔥 Newly rebuilt, completely free to start using",
+        "title": "Download Kuaishou Videos in Seconds"
+    },
+    "introduce": {
+        "description": "KuaishouVideoDownload is a powerful tool that allows you to download any Kuaishou video in high quality. Perfect for content creators, marketers, and casual users.",
+        "image": {
+            "src": "/imgs/features/1.png"
+        },
+        "items": [
+            {
+                "description": "Just paste the Kuaishou link, and download videos in seconds. No complex steps needed.",
+                "icon": "RiTimerFlashLine",
+                "title": "Simple & Fast"
+            },
+            {
+                "description": "Get the highest quality version of any Kuaishou video, maintaining original resolution.",
+                "icon": "RiHdLine",
+                "title": "High-Quality Downloads"
+            },
+            {
+                "description": "No need to create an account or share your Kuaishou credentials to use KuaishouVideoDownload.",
+                "icon": "RiLockUnlockLine",
+                "title": "No Login Required"
+            }
+        ],
+        "label": "Introduction",
+        "name": "introduce",
+        "title": "What is KuaishouVideoDownload"
+    },
+    "stats": {
+        "description": "Join the satisfied KuaishouVideoDownload user community.",
+        "icon": "FaRegHeart",
+        "items": [
+            {
+                "description": "and growing",
+                "label": "1M+",
+                "title": "Videos Downloaded"
+            },
+            {
+                "description": "Monthly",
+                "label": "50K+",
+                "title": "Active Users"
+            },
+            {
+                "description": "seconds",
+                "label": "<5",
+                "title": "Average Download Time"
+            }
+        ],
+        "label": "Statistics",
+        "name": "stats",
+        "title": "Trusted by Thousands of Users"
+    },
+    "template": "shipany-template-one",
+    "testimonial": {
+        "description": "Hear what users who download and save Kuaishou videos with KuaishouVideoDownload have to say.",
+        "icon": "GoThumbsup",
+        "items": [
+            {
+                "description": "KuaishouVideoDownload has become an indispensable tool in my content creation workflow. High-quality downloads and fast processing save me a lot of time!",
+                "image": {
+                    "src": "/imgs/users/1.png"
+                },
+                "label": "Content Creator",
+                "title": "Sarah Johnson"
+            },
+            {
+                "description": "The Pro version's batch download feature is a game-changer for our marketing team. We can easily archive multiple videos for analysis.",
+                "image": {
+                    "src": "/imgs/users/2.png"
+                },
+                "label": "Digital Marketing Specialist",
+                "title": "Chen Ming"
+            },
+            {
+                "description": "As a journalist, I need to quickly save important videos before they disappear. KuaishouVideoDownload's speed and reliability are invaluable to my work.",
+                "image": {
+                    "src": "/imgs/users/3.png"
+                },
+                "label": "Journalist",
+                "title": "Jessica Rodriguez"
+            },
+            {
+                "description": "I use KuaishouVideoDownload to save educational videos for my students. The quality options help me manage storage while maintaining clarity.",
+                "image": {
+                    "src": "/imgs/users/4.png"
+                },
+                "label": "Teacher",
+                "title": "David Jin"
+            },
+            {
+                "description": "KuaishouVideoDownload's web interface is very clean and easy to use. I can quickly paste links and download videos, making the operation simple and efficient.",
+                "image": {
+                    "src": "/imgs/users/5.png"
+                },
+                "label": "Social Media Manager",
+                "title": "Emily Wilson"
+            },
+            {
+                "description": "KuaishouVideoDownload's history feature helps me organize downloaded videos by project. It has become an indispensable part of my research workflow.",
+                "image": {
+                    "src": "/imgs/users/6.png"
+                },
+                "label": "Researcher",
+                "title": "Michael Taylor"
+            }
+        ],
+        "label": "User Testimonials",
+        "name": "testimonial",
+        "title": "User Reviews of KuaishouVideoDownload"
+    },
+    "theme": "light",
+    "usage": {
+        "description": "Download any Kuaishou video in four simple steps:",
+        "image": {
+            "src": "/imgs/features/1.png"
+        },
+        "image_position": "left",
+        "items": [
+            {
+                "description": "Find the video you want to download on Kuaishou.",
+                "title": "Find Video"
+            },
+            {
+                "description": "Click the share icon and select \"Copy Link\" to copy the video link.",
+                "title": "Copy Link"
+            },
+            {
+                "description": "Paste the video link into KuaishouVideoDownload's input box and click the \"Download\" button.",
+                "title": "Paste & Parse"
+            },
+            {
+                "description": "Select the MP4 format and quality you need, then download to your device.",
+                "title": "Choose Format & Download"
+            }
+        ],
+        "name": "usage",
+        "text_align": "center",
+        "title": "How to Use KuaishouVideoDownload"
     }
-  }
 }

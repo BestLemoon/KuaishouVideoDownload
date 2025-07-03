@@ -1,0 +1,297 @@
+{
+    "api": {
+        "auth": {
+            "login_required": "Mohon masuk terlebih dahulu",
+            "login_required_download": "Mohon masuk sebelum mengunduh video"
+        },
+        "batch": {
+            "invalid_urls_found": "Tautan tidak valid ditemukan dalam pemrosesan batch",
+            "max_urls_exceeded": "Pemrosesan batch mendukung hingga {max} tautan",
+            "no_valid_urls": "Tidak ada tautan valid ditemukan dalam pemrosesan batch"
+        },
+        "credits": {
+            "balance_current": "Poin tersedia saat ini: {balance}",
+            "deduction_error": "Anomali pemotongan poin",
+            "deduction_failed": "Pemotongan poin gagal",
+            "deduction_success": "Poin berhasil dipotong",
+            "get_balance_failed": "Gagal mendapatkan saldo poin",
+            "get_history_failed": "Gagal mengambil catatan poin",
+            "gift_failed": "Gagal memberikan poin",
+            "gift_success": "Poin berhasil diberikan",
+            "insufficient": "Poin tidak cukup, saat ini tersedia: {available}, dibutuhkan: {required}"
+        },
+        "download": {
+            "download_failed": "Pengunduhan video gagal, mohon coba lagi",
+            "get_history_failed": "Gagal mengambil riwayat unduhan",
+            "invalid_token": "Token tidak valid",
+            "invalid_video_url": "URL video tidak valid",
+            "missing_token": "Parameter token hilang",
+            "server_error": "Kesalahan server internal",
+            "unknown_error": "Kesalahan tidak dikenal",
+            "video_fetch_failed": "Gagal mendapatkan video: {status}",
+            "video_verification_failed": "Verifikasi video gagal"
+        },
+        "test": {
+            "download_record_failed": "Gagal membuat catatan unduhan",
+            "download_record_success": "Catatan unduhan berhasil dibuat",
+            "invalid_action": "Jenis operasi tidak valid",
+            "test_failed": "Pengujian sistem poin gagal"
+        }
+    },
+    "api_keys": {
+        "apple_shortcut": "Pintasan Apple",
+        "create_api_key": "Buat Kunci API",
+        "create_api_key_meta_title": "Buat Kunci API - KuaishouVideoDownload",
+        "delete": {
+            "button_cancel": "Batal",
+            "button_delete": "Hapus",
+            "button_deleting": "Menghapus...",
+            "confirm_message": "Apakah Anda yakin ingin menghapus kunci API ini? Tindakan ini tidak dapat dibatalkan dan akan segera mencabut akses untuk semua aplikasi yang menggunakan kunci ini.",
+            "confirm_title": "Hapus Kunci API",
+            "error_message": "Gagal menghapus Kunci API",
+            "success_message": "Kunci API berhasil dihapus"
+        },
+        "delete_api_key": "Hapus Kunci API",
+        "errors": {
+            "create_failed": "Gagal membuat kunci API: {error}",
+            "invalid_params": "Parameter tidak valid",
+            "no_auth": "Mohon masuk terlebih dahulu",
+            "premium_required": "Kunci API hanya untuk pengguna berbayar, mohon tingkatkan akun Anda"
+        },
+        "form": {
+            "name": "Nama",
+            "name_placeholder": "Nama Kunci API",
+            "submit": "Kirim"
+        },
+        "messages": {
+            "created_success": "Kunci API berhasil dibuat"
+        },
+        "meta_title": "Manajemen Kunci API - KuaishouVideoDownload",
+        "no_api_keys": "Tidak ada Kunci API",
+        "premium_only_tip": "Fitur API hanya untuk pengguna berbayar. Mohon tingkatkan ke premium untuk mendapatkan akses API.",
+        "table": {
+            "actions": "Tindakan",
+            "created_at": "Waktu Pembuatan",
+            "key": "Kunci",
+            "name": "Nama"
+        },
+        "tip": "Harap jaga keamanan kunci API Anda untuk mencegah kebocoran. Gunakan Pintasan untuk mengunduh video langsung dari Aplikasi melalui berbagi.",
+        "title": "Kunci API",
+        "upgrade_to_premium": "Tingkatkan ke Premium",
+        "view_api_docs": "Lihat Dokumentasi API"
+    },
+    "batch_download_result": {
+        "title": "Hasil Unduhan Batch - KuaishouVideoDownload"
+    },
+    "blog": {
+        "description": "Berita, sumber daya, dan pembaruan tentang KuaishouVideoDownload",
+        "read_more_text": "Baca Selengkapnya",
+        "title": "Blog"
+    },
+    "download_history": {
+        "description": "Lihat riwayat unduhan video Anda",
+        "description_free": "Lihat {count} catatan unduhan terbaru Anda (Versi gratis)",
+        "no_history": "Belum ada catatan unduhan",
+        "status": {
+            "completed": "Berhasil",
+            "failed": "Gagal"
+        },
+        "table": {
+            "created_at": "Waktu Unduhan",
+            "credits_consumed": "Gunakan Poin",
+            "download_no": "ID Unduhan",
+            "download_status": "Status",
+            "file_name": "Nama File",
+            "file_size": "Ukuran File",
+            "original_tweet": "Tweet Asli",
+            "original_video": "Video Asli",
+            "username": "Nama Pengguna",
+            "video_quality": "Kualitas Video",
+            "video_resolution": "Resolusi"
+        },
+        "title": "Riwayat Unduhan",
+        "upgrade_prompt": {
+            "button": "Tingkatkan Sekarang",
+            "message": "Anda memiliki {total} catatan unduhan, tetapi pengguna gratis hanya dapat melihat {visible} catatan terbaru.",
+            "title": "Tingkatkan untuk melihat lebih banyak"
+        }
+    },
+    "download_result": {
+        "title": "Hasil Unduhan - KuaishouVideoDownload"
+    },
+    "downloads": {
+        "batch_download": "Unduhan Massal",
+        "batch_download_button": "Unduhan Massal",
+        "batch_placeholder": "Masukkan satu tautan video Kuaishou per baris, mendukung hingga 10 tautan...",
+        "batch_processing": "Pemrosesan Batch",
+        "free_user_tip": "Masukkan tautan video Kuaishou apa pun untuk mengunduh video berkualitas tinggi secara gratis, mendukung semua resolusi, unduhan tidak terbatas",
+        "high_speed": "Unduhan kecepatan tinggi",
+        "results": {
+            "audio_download_coming_soon": "Fitur unduh audio segera hadir",
+            "audio_download_failed": "Pengunduhan audio gagal",
+            "audio_extract": "Ekstraksi Audio",
+            "audio_extract_description": "Ekstrak audio dari video",
+            "audio_quality": "Kualitas Audio",
+            "available_credits": "Poin Tersedia",
+            "available_formats": "Format Tersedia",
+            "batch_parse_error": "Pemrosesan batch gagal",
+            "batch_title": "Hasil Unduhan Batch",
+            "continue_download": "Lanjutkan Unduhan",
+            "cost_credits": "Biaya",
+            "cost_downloads": "Biaya",
+            "cost_format": "{credits} Poin",
+            "cost_format_downloads": "{downloads} Unduhan",
+            "credits_remaining": "Poin tersisa: {credits}",
+            "credits_required": "Membutuhkan {credits} poin",
+            "download_button": "Unduh",
+            "download_failed": "Unduhan gagal",
+            "download_success": "Unduhan berhasil",
+            "download_thumbnail": "Unduh Sampul",
+            "downloading": "Mengunduh...",
+            "extract_audio": "Ekstrak Audio",
+            "failed_count": "Gagal",
+            "failed_links": "Tautan Gagal",
+            "file_size": "Ukuran File",
+            "format": "Format",
+            "hd_requires_paid_user": "Pengunduhan video HD memerlukan pengguna berbayar, silakan beli layanan terlebih dahulu",
+            "high_quality": "Kualitas Tinggi",
+            "insufficient_credits": "Poin tidak cukup, tersedia: {available}, dibutuhkan: {required}",
+            "insufficient_credits_short": "Poin tidak cukup: {available}/{required}",
+            "invalid_twitter_url": "Format tautan Kuaishou tidak valid",
+            "invalid_twitter_urls": "Ditemukan {count} tautan Kuaishou tidak valid",
+            "invalid_url": "Tautan video tidak valid",
+            "loading": "Mengurai...",
+            "login_required": "Mohon masuk",
+            "new_download": "Unduhan Baru",
+            "no_thumbnail_available": "Tidak ada sampul tersedia",
+            "no_urls_provided": "Tidak ada tautan yang disediakan",
+            "no_valid_urls": "Tidak ditemukan tautan Kuaishou yang valid",
+            "no_video_found": "Video tidak ditemukan",
+            "one_download": "1 Unduhan",
+            "paid_badge": "Dibayar",
+            "paid_user_only": "Eksklusif untuk Pengguna Berbayar",
+            "paid_users_exclusive": "Eksklusif untuk Pengguna Berbayar",
+            "parse_error": "Penguraian gagal",
+            "premium_required": "Eksklusif untuk Pengguna Berbayar",
+            "purchase_to_unlock_hd": "Beli layanan untuk membuka unduhan HD",
+            "quality_hd": "HD",
+            "quality_sd": "SD",
+            "requires_one_download": "Membutuhkan 1 unduhan",
+            "resolution": "Resolusi",
+            "retry": "Coba Lagi",
+            "success_count": "Berhasil",
+            "successful_videos": "Video berhasil diurai",
+            "thumbnail_download_failed": "Pengunduhan sampul gagal",
+            "thumbnail_download_success": "Pengunduhan sampul berhasil",
+            "thumbnail_fetch_error": "Gagal mendapatkan sampul",
+            "title": "Hasil Unduhan",
+            "top_up_credits": "Isi Ulang Poin",
+            "total_count": "Total",
+            "unknown_error": "Terjadi kesalahan tidak dikenal",
+            "video_fetch_error": "Gagal mendapatkan video dari Kuaishou: {status}",
+            "video_info": "Informasi Video",
+            "video_preview": "Pratinjau Video",
+            "view_original_tweet": "Lihat Karya Asli"
+        },
+        "single_download": "Unduhan Tunggal",
+        "single_placeholder": "Tempel tautan video Kuaishou...",
+        "start_download": "Mulai Unduh",
+        "unlimited": "Tanpa Batas",
+        "urls_count": "{count} tautan dimasukkan",
+        "view_pricing": "Lihat paket harga"
+    },
+    "metadata": {
+        "description": "KuaishouVideoDownload adalah alat unduh video Kuaishou online gratis. Unduh video Kuaishou berkualitas tinggi tanpa tanda air. Cepat, aman, dan mudah digunakan.",
+        "keywords": "Pengunduh Video Kuaishou, Unduh Video Kuaishou, Penghapus Tanda Air Kuaishou, Simpan Video Kuaishou",
+        "title": "KuaishouVideoDownload - Pengunduh Video Kuaishou Gratis | Unduh Video Kuaishou Online"
+    },
+    "my_credits": {
+        "left_tip": "Poin tersisa: {left_credits}",
+        "no_credits": "Tidak ada catatan poin",
+        "recharge": "Isi Ulang",
+        "table": {
+            "credits": "Poin",
+            "status": "Status",
+            "trans_no": "ID Transaksi",
+            "trans_type": "Jenis Transaksi",
+            "updated_at": "Waktu Pembaruan"
+        },
+        "title": "Poin Saya"
+    },
+    "my_invites": {
+        "copy_invite_link": "Salin Tautan Undangan",
+        "description": "Lihat catatan undangan Anda",
+        "edit_invite_link": "Edit Tautan Undangan",
+        "invite_balance": "Saldo Hadiah Undangan",
+        "invite_code": "Kode Undangan",
+        "invite_tip": "Undang 1 teman untuk membeli KuaishouVideoDownload dan dapatkan 10 unduhan sebagai hadiah.",
+        "my_invite_link": "Tautan Undangan Saya",
+        "no_affiliates": "Saat ini Anda tidak memiliki izin untuk mengundang teman. Silakan hubungi kami untuk meminta aktivasi.",
+        "no_invites": "Tidak ada catatan undangan ditemukan",
+        "no_orders": "Anda harus sudah membeli KuaishouVideoDownload untuk mengundang teman",
+        "table": {
+            "completed": "Dibayar",
+            "invite_time": "Waktu Undangan",
+            "invite_user": "Pengguna yang Diundang",
+            "pending": "Terdaftar, belum dibayar",
+            "reward_amount": "Jumlah hadiah",
+            "reward_percent": "Rasio Hadiah",
+            "status": "Status"
+        },
+        "title": "Undangan Saya",
+        "total_award_amount": "Total jumlah hadiah",
+        "total_invite_count": "Total pengguna yang diundang",
+        "total_paid_count": "Jumlah pengguna yang mengisi ulang",
+        "update_invite_button": "Simpan",
+        "update_invite_code": "Atur Kode Undangan",
+        "update_invite_code_tip": "Masukkan kode undangan kustom Anda"
+    },
+    "my_orders": {
+        "activate_order": "Aktifkan Pesanan",
+        "actived": "Diaktifkan",
+        "description": "Pesanan yang dibeli di KuaishouVideoDownload.",
+        "join_discord": "Gabung Discord",
+        "no_orders": "Pesanan tidak ditemukan",
+        "read_docs": "Baca Dokumentasi",
+        "table": {
+            "amount": "Jumlah",
+            "email": "Email",
+            "github_username": "Nama Pengguna GitHub",
+            "order_no": "Nomor Pesanan",
+            "paid_at": "Waktu Pembayaran",
+            "product_name": "Nama Produk",
+            "status": "Status"
+        },
+        "tip": " ",
+        "title": "Pesanan Saya"
+    },
+    "sign_modal": {
+        "cancel_title": "Batal",
+        "close_title": "Tutup",
+        "continue": "Lanjutkan",
+        "email_placeholder": "Mohon masukkan email Anda",
+        "email_sign_in": "Masuk dengan Email",
+        "email_title": "Email",
+        "forgot_password": "Lupa kata sandi?",
+        "github_sign_in": "Masuk dengan GitHub",
+        "google_sign_in": "Masuk dengan Google",
+        "no_account": "Belum punya akun?",
+        "or": "Atau",
+        "password_placeholder": "Mohon masukkan kata sandi Anda",
+        "password_title": "Kata Sandi",
+        "sign_in_description": "Masuk ke akun Anda",
+        "sign_in_title": "Masuk",
+        "sign_up_description": "Buat Akun Baru",
+        "sign_up_title": "Daftar"
+    },
+    "user": {
+        "admin_system": "Backend Admin",
+        "api_keys": "Kunci API",
+        "credits": "Kuota",
+        "download_history": "Riwayat Unduhan",
+        "my_orders": "Pesanan Saya",
+        "sign_in": "Masuk",
+        "sign_out": "Keluar",
+        "user_center": "Pusat Pengguna"
+    }
+}
