@@ -10,7 +10,7 @@ from supabase import create_client, Client
 # 环境变量配置
 SUPABASE_URL = os.getenv('SUPABASE_URL')
 SUPABASE_SERVICE_ROLE_KEY = os.getenv('SUPABASE_SERVICE_ROLE_KEY')
-SITE_URL = os.getenv('NEXT_PUBLIC_WEB_URL', 'https://twitterdown.com')
+SITE_URL = os.getenv('NEXT_PUBLIC_WEB_URL', 'https://kuaishou-video-download.com')
 
 # 初始化 Supabase 客户端
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
@@ -20,7 +20,7 @@ def get_all_posts():
     try:
         result = supabase.table("posts").select("slug, locale, created_at").eq("status", "online").execute()
         return result.data if result.data else []
-    except Exception as e:
+    except Exception as e:  
         print(f"获取文章数据失败: {e}")
         return []
 
@@ -50,7 +50,7 @@ def generate_sitemap(posts):
     existing_urls, _ = read_existing_sitemap()
     
     # 支持的语言列表
-    languages = ['zh', 'es', 'fr', 'de', 'ja', 'ko', 'ar']
+    languages = ['zh', 'es', 'fr', 'de', 'ja', 'ko', 'ar', 'bn', 'hi', 'id']
     
     # 基础URL列表（主要页面）
     base_urls = [
@@ -76,7 +76,7 @@ def generate_sitemap(posts):
     # 生成sitemap头部
     sitemap_content = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
 
-    # 添加基础页面
+    # 添加基础页面  
     for i, url in enumerate(base_urls):
         # 主页优先级最高
         if url == f"{SITE_URL}/":

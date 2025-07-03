@@ -23,13 +23,13 @@ async function generateTopics(language: string, count: number = 5): Promise<stri
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
   const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-preview-05-20" });
 
-  const prompt = `你是一位资深的SEO内容策划师，专注于 TwitterDown（Twitter视频下载器）相关内容创作。
+  const prompt = `你是一位资深的SEO内容策划师，专注于 KuaishouVideoDownload（快手视频下载器）相关内容创作。
 
 ## 任务
-请为 TwitterDown 生成 ${count} 个高质量的SEO博客文章题目建议。
+请为 KuaishouVideoDownload 生成 ${count} 个高质量的SEO博客文章题目建议。
 
 ## 主题方向
-围绕Twitter视频下载、社交媒体内容管理、视频保存技巧、内容创作工具等相关话题
+围绕快手视频下载、社交媒体内容管理、视频保存技巧、内容创作工具等相关话题
 
 ## 要求
 - 标题应该吸引点击，解决用户痛点
@@ -81,25 +81,25 @@ async function generateTopics(language: string, count: number = 5): Promise<stri
 // 默认题目备选
 function getDefaultTopics(language: string, count: number): string[] {
   const defaultTopicsZh = [
-    "Twitter视频下载终极指南：2024年最新方法汇总",
-    "如何批量保存Twitter视频：专业技巧分享",
-    "社交媒体内容管理：Twitter视频归档策略",
-    "Twitter视频下载工具对比：免费vs付费方案",
-    "移动端Twitter视频下载：完整操作教程",
-    "Twitter视频质量选择指南：如何下载高清视频",
-    "Twitter直播视频录制与下载方法详解",
-    "Twitter视频格式转换：常见问题解决方案"
+    "快手视频下载终极指南：2024年最新方法汇总",
+    "如何批量保存快手视频：专业技巧分享",
+    "社交媒体内容管理：快手视频归档策略",
+    "快手视频下载工具对比：免费vs付费方案",
+    "移动端快手视频下载：完整操作教程",
+    "快手视频质量选择指南：如何下载高清视频",
+    "快手直播视频录制与下载方法详解",
+    "快手视频格式转换：常见问题解决方案"
   ];
   
   const defaultTopicsEn = [
-    "Complete Twitter Video Download Guide: Latest Methods for 2024",
-    "How to Bulk Download Twitter Videos: Professional Tips",
-    "Social Media Content Management: Twitter Video Archiving Strategies",
-    "Twitter Video Download Tools Comparison: Free vs Premium Solutions",
-    "Mobile Twitter Video Download: Complete Tutorial",
-    "Twitter Video Quality Selection Guide: Download HD Videos",
-    "Twitter Live Video Recording and Download Methods",
-    "Twitter Video Format Conversion: Common Issues Solutions"
+    "Complete Kuaishou Video Download Guide: Latest Methods for 2024",
+    "How to Bulk Download Kuaishou Videos: Professional Tips",
+    "Social Media Content Management: Kuaishou Video Archiving Strategies",
+    "Kuaishou Video Download Tools Comparison: Free vs Premium Solutions",
+    "Mobile Kuaishou Video Download: Complete Tutorial",
+    "Kuaishou Video Quality Selection Guide: Download HD Videos",
+    "Kuaishou Live Video Recording and Download Methods",
+    "Kuaishou Video Format Conversion: Common Issues Solutions"
   ];
 
   const isChineseLanguage = language.toLowerCase().includes("chinese") || language.includes("中文");
@@ -111,7 +111,7 @@ function getDefaultTopics(language: string, count: number): string[] {
 // 调用批量生成API
 async function callBatchGenerate(topics: string[], language: string): Promise<any> {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_WEB_URL || 'https://twitterdown.com'}/api/seo-blog/batch-generate`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_WEB_URL || 'https://kuaishou-video-download.com'}/api/seo-blog/batch-generate`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

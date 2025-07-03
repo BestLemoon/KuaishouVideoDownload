@@ -14,10 +14,10 @@ class ImageDownloader:
             return DEFAULT_COVER_URL
         
         try:
-            # 搜索 Twitter 相关图片
+            # 搜索快手相关图片
             search_url = f"{self.base_url}/search/photos"
             params = {
-                "query": "twitter",
+                "query": "kuaishou video",
                 "per_page": 30,
                 "orientation": "landscape",
                 "content_filter": "high"

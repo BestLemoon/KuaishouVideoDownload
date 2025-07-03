@@ -1,512 +1,364 @@
 {
-    "template": "shipany-template-one",
-    "theme": "light",
-    "header": {
-      "brand": {
-        "title": "TwitterDown",
-        "logo": {
-          "src": "/logo.png",
-          "alt": "TwitterDown"
-        },
-        "url": "/"
-      },
-      "nav": {
-        "items": [
-          {
-            "title": "機能",
-            "url": "/#feature",
-            "icon": "HiOutlineSparkles"
-          },
-          {
-            "title": "料金",
-            "url": "/#pricing",
-            "icon": "MdPayment"
-          },
-          {
-            "title": "使い方",
-            "url": "/#usage",
-            "icon": "BiCube"
-          },
-          {
-            "title": "ブログ",
-            "url": "/ja/posts",
-            "icon": "RiArticleLine"
-          }
-        ]
-      },
-      "buttons": [
-        {
-          "title": "ダウンロードを開始",
-          "url": "/#pricing",
-          "target": "_self",
-          "variant": "link",
-          "icon": "RiArrowRightUpLine"
-        }
-      ],
-      "show_sign": true,
-      "show_theme": true,
-      "show_locale": true
-    },
-    "hero": {
-      "title": "Twitter動画を数秒でダウンロード",
-      "highlight_text": "Twitter動画",
-      "description": "TwitterDownはTwitter動画をダウンロードする最速の方法です。<br/>数クリックでお気に入りのTwitterコンテンツを保存して共有できます。",
-      "announcement": {
-        "label": "NEW",
-        "title": "🎉 TwitterDownは今も無料です！",
-        "url": "/#pricing"
-      },
-      "tip": "🔥 新しいバージョン、完全に無料で開始できます",
-      "buttons": [
-        {
-          "title": "ダウンロードを開始",
-          "icon": "RiDownloadCloud2Fill",
-          "url": "/#usage",
-          "target": "_self",
-          "variant": "default"
-        },
-        {
-          "title": "詳細を見る",
-          "icon": "RiInformationLine",
-          "url": "/#feature",
-          "target": "_self",
-          "variant": "outline"
-        }
-          ],
-    "show_happy_users": true,
-    "show_badge": false,
-    "badges": [
-      {
-        "title": "Chrome Web Store",
-        "alt": "Chrome Web Storeで利用可能",
-        "src": "/imgs/badges/chromewebstore.png",
-        "url": "https://chromewebstore.google.com/detail/twitterdown-%E5%8A%A9%E6%89%8B/ahgcdehhlnimoledkibalbdhnecfojbl",
-        "target": "_blank"
-      },
-      {
-        "title": "iOSショートカット",
-        "alt": "iOSショートカットで利用可能",
-        "src": "/imgs/badges/iosshortcuts.png",
-        "url": "https://www.icloud.com/shortcuts/993ab7c1ef39448da4bee1bac546075b",
-        "target": "_blank"
-      }
-    ]
-  },
-    "introduce": {
-      "name": "introduce",
-      "title": "TwitterDownとは",
-      "label": "導入",
-      "description": "TwitterDownは、どんなTwitter動画でも高品質でダウンロードできる強力なツールです。コンテンツクリエーター、マーケター、一般ユーザーに最適です。",
-      "image": {
-        "src": "/imgs/features/1.png"
-      },
-      "items": [
-        {
-          "title": "シンプル＆高速",
-          "description": "TwitterのURLを貼り付けるだけで、数秒で動画をダウンロードできます。複雑な手順は不要です。",
-          "icon": "RiTimerFlashLine"
-        },
-        {
-          "title": "高品質ダウンロード",
-          "description": "元の解像度を維持したまま、Twitter動画の最高品質バージョンを入手できます。",
-          "icon": "RiHdLine"
-        },
-        {
-          "title": "ログイン不要",
-          "description": "アカウントを作成したり、Twitterの認証情報を共有したりすることなくTwitterDownを使用できます。",
-          "icon": "RiLockUnlockLine"
-        }
-      ]
-    },
     "benefit": {
-      "name": "benefit",
-      "title": "TwitterDownを選ぶ理由",
-      "label": "メリット",
-      "description": "TwitterDownは、一般ユーザーからプロまで、両方のために設計された機能で、Twitter動画をダウンロードする最速かつ最も信頼性の高い方法を提供します。",
-      "items": [
-        {
-          "title": "高品質MP4ダウンロード",
-          "description": "複数の品質オプションと18歳以上のコンテンツ制限を回避する機能を備えたプロフェッショナルなMP4形式のダウンロードで、特定のニーズを満たします。",
-          "icon": "RiFileList3Line",
-          "image": {
-            "src": "/imgs/features/2.png"
-          }
-        },
-        {
-          "title": "バッチ処理",
-          "description": "プレミアムなバッチ処理機能で、複数のTwitter動画を一度にダウンロードして時間を節約します。",
-          "icon": "RiStackLine",
-          "image": {
-            "src": "/imgs/features/3.png"
-          }
-        },
-        {
-          "title": "ダウンロード履歴",
-          "description": "ダウンロード履歴を自動的に追跡し、以前にダウンロードした動画ファイルを簡単に管理・取得できます。",
-          "icon": "RiHistoryLine",
-          "image": {
-            "src": "/imgs/features/4.png"
-          }
-        }
-      ]
-    },
-    "usage": {
-      "name": "usage",
-      "title": "TwitterDownの使い方",
-      "description": "4つの簡単なステップでTwitter動画をダウンロード：",
-      "image": {
-        "src": "/imgs/features/1.png"
-      },
-      "image_position": "left",
-      "text_align": "center",
-      "items": [
-        {
-          "title": "ツイートを見つける",
-          "description": "Twitterでダウンロードしたい動画が含まれているツイートを見つけます。"
-        },
-        {
-          "title": "リンクをコピーする",
-          "description": "共有アイコンをクリックし、「リンクをコピー」を選択してツイートリンクをコピーします。"
-        },
-        {
-          "title": "貼り付けて解析",
-          "description": "ツイートリンクをTwitterDownの入力ボックスに貼り付け、「ダウンロード」ボタンをクリックします。"
-        },
-        {
-          "title": "形式を選択してダウンロード",
-          "description": "お好みのMP4形式と品質を選択し、デバイスにダウンロードします。"
-        }
-      ]
-    },
-    "feature": {
-      "name": "feature",
-      "title": "TwitterDownの主な機能",
-      "description": "すべてのニーズを満たす、シンプルで効率的なTwitter動画ダウンローダー。",
-      "items": [
-        {
-          "title": "高速解析",
-          "description": "Twitter動画リンクをインテリジェントに解析し、数秒以内にダウンロードアドレスを取得します。",
-          "icon": "RiRocketLine"
-        },
-        {
-          "title": "品質選択",
-          "description": "標準から高解像度HDまで、複数の品質オプションをサポートし、さまざまなニーズとストレージスペースに対応します。",
-          "icon": "RiSettings4Line"
-        },
-        {
-          "title": "高速ダウンロード",
-          "description": "最適化されたダウンロードサーバーは最速のダウンロード速度を保証し、貴重な時間を節約します。",
-          "icon": "RiDownloadCloud2Line"
-        },
-        {
-          "title": "MP4形式ダウンロード",
-          "description": "すべてのデバイスとプラットフォームに対応したプロフェッショナルなMP4形式のダウンロードで、最高の再生体験を保証します。",
-          "icon": "RiFileList3Line"
-        },
-        {
-          "title": "バッチダウンロード",
-          "description": "上級ユーザーは複数のTwitter動画を一括で処理でき、作業効率を大幅に向上させます。",
-          "icon": "RiStackLine"
-        },
-        {
-          "title": "完全無料",
-          "description": "アカウント登録不要、隠れた費用や使用制限なしで完全に無料で利用できます。",
-          "icon": "RiGiftLine"
-        }
-      ]
-    },
-    "stats": {
-      "name": "stats",
-      "label": "統計",
-      "title": "何千もの信頼",
-      "description": "満足しているTwitterDownユーザーのコミュニティに参加しましょう。",
-      "icon": "FaRegHeart",
-      "items": [
-        {
-          "title": "ダウンロードされた動画",
-          "label": "100万以上",
-          "description": "そして増加中"
-        },
-        {
-          "title": "アクティブユーザー",
-          "label": "5万人以上",
-          "description": "月間"
-        },
-        {
-          "title": "平均ダウンロード時間",
-          "label": "5秒未満",
-          "description": "秒"
-        }
-      ]
-    },
-    "pricing": {
-      "name": "pricing",
-      "label": "機能比較",
-      "title": "完全無料で使用、API アクセスのみ有料",
-      "description": "すべての動画ダウンロード機能は完全無料で、登録不要です。開発者向けAPIアクセスのみサブスクリプションが必要です。",
-      "groups": [
-        {
-          "name": "individual",
-          "label": "個人ユーザー"
-        },
-        {
-          "name": "developer",
-          "label": "開発者"
-        }
-      ],
-      "items": [
-        {
-          "title": "無料機能",
-          "description": "すべてのユーザーが無料で楽しめる完全なダウンロード機能",
-          "label": "🎉 完全無料",
-          "features_title": "含まれる機能",
-          "features": [
-            "無制限の単一動画ダウンロード",
-            "無制限のバッチ動画ダウンロード",
-            "すべての画質の動画ダウンロード（720p、1080p、4K等）",
-            "動画サムネイルダウンロード",
-            "音声抽出ダウンロード（MP3形式）",
-            "ツイートマルチメディアパッケージダウンロード",
-            "iOSショートカットサポート",
-            "登録不要",
-            "ログインユーザーのダウンロード履歴"
-          ],
-          "interval": "month",
-          "amount": 0,
-          "currency": "USD",
-          "price": "無料",
-          "original_price": "",
-          "unit": "",
-          "is_featured": true,
-          "tip": "永久無料、制限なし",
-          "button": {
-            "title": "今すぐ使用開始",
-            "url": "/#usage",
-            "icon": "RiDownloadCloud2Fill"
-          },
-          "product_id": "free",
-          "product_name": "TwitterDown 無料機能",
-          "credits": 0,
-          "valid_months": 1,
-          "group": "individual"
-        },
-        {
-          "title": "API開発者版",
-          "description": "プログラマティックアクセスが必要な開発者や企業向けのAPIインターフェース",
-          "features_title": "含まれる機能",
-          "features": [
-            "すべての無料機能が含まれます",
-            "RESTful APIアクセス",
-            "月5,000回のAPI呼び出し",
-            "完全なAPIドキュメントとサンプルコード",
-            "JSON形式データ返却",
-            "バッチ処理APIエンドポイント",
-            "専用技術サポート",
-            "高いリクエストレート制限",
-            "優先サーバー処理キュー"
-          ],
-          "interval": "month",
-          "amount": 999,
-          "currency": "USD",
-          "price": "$9.99",
-          "original_price": "",
-          "unit": "/ 月",
-          "is_featured": false,
-          "tip": "開発者や企業統合に最適",
-          "button": {
-            "title": "APIサービスを購読",
-            "url": "/#pricing",
-            "icon": "RiCodeBoxLine"
-          },
-          "product_id": "api_monthly",
-          "product_name": "TwitterDown API開発者版（月額）",
-          "credits": 5000,
-          "valid_months": 1,
-          "group": "developer"
-        },
-        {
-          "title": "API開発者版",
-          "description": "プログラマティックアクセスが必要な開発者や企業向けのAPIインターフェース",
-          "features_title": "含まれる機能",
-          "features": [
-            "すべての無料機能が含まれます",
-            "RESTful APIアクセス",
-            "月5,000回のAPI呼び出し",
-            "完全なAPIドキュメントとサンプルコード",
-            "JSON形式データ返却",
-            "バッチ処理APIエンドポイント",
-            "専用技術サポート",
-            "高いリクエストレート制限",
-            "優先サーバー処理キュー"
-          ],
-          "interval": "year",
-          "amount": 9999,
-          "currency": "USD",
-          "price": "$99.99",
-          "original_price": "$119.88",
-          "unit": "/ 年",
-          "is_featured": false,
-          "tip": "年間$19.89節約、月額$8.33相当",
-          "button": {
-            "title": "APIサービスを購読",
-            "url": "/#pricing",
-            "icon": "RiCodeBoxLine"
-          },
-          "product_id": "api_yearly",
-          "product_name": "TwitterDown API開発者版（年額）",
-          "credits": 60000,
-          "valid_months": 12,
-          "group": "developer"
-        }
-      ]
-    },
-    "testimonial": {
-      "name": "testimonial",
-      "label": "お客様の声",
-      "title": "TwitterDownについてユーザーが語る",
-      "description": "TwitterDownを使ってTwitter動画をダウンロード・保存している人々の声を聞いてください。",
-      "icon": "GoThumbsup",
-      "items": [
-        {
-          "title": "Sarah Johnson",
-          "label": "コンテンツクリエーター",
-          "description": "TwitterDownは、私のコンテンツ作成ワークフローにおいて不可欠なツールとなりました。高品質のダウンロードと高速処理により、多くの時間を節約できます！",
-          "image": {
-            "src": "/imgs/users/1.png"
-          }
-        },
-        {
-          "title": "Mark Chen",
-          "label": "デジタルマーケター",
-          "description": "Proプランのバッチダウンロード機能は、当社のマーケティングチームにとって画期的なものです。分析のために複数の動画を簡単にアーカイブできます。",
-          "image": {
-            "src": "/imgs/users/2.png"
-          }
-        },
-        {
-          "title": "Jessica Rodriguez",
-          "label": "ジャーナリスト",
-          "description": "ジャーナリストとして、重要な動画が消える前にすばやく保存する必要があります。TwitterDownの速度と信頼性は、私の仕事にとって非常に貴重です。",
-          "image": {
-            "src": "/imgs/users/3.png"
-          }
-        },
-        {
-          "title": "David Kim",
-          "label": "教師",
-          "description": "私はTwitterDownを使って、生徒向けの教育動画を保存しています。品質オプションは、鮮明さを保ちながらストレージスペースを管理するのに役立ちます。",
-          "image": {
-            "src": "/imgs/users/4.png"
-          }
-        },
-        {
-          "title": "Emily Wilson",
-          "label": "ソーシャルメディアマネージャー",
-          "description": "TwitterDownのウェブインターフェースは非常にクリーンでユーザーフレンドリーです。簡単にリンクを貼り付けて、シンプルかつ効率的な操作で動画をダウンロードできます。",
-          "image": {
-            "src": "/imgs/users/5.png"
-          }
-        },
-        {
-          "title": "Michael Taylor",
-          "label": "研究者",
-          "description": "TwitterDownの履歴機能は、プロジェクトごとにダウンロードした動画を整理するのに役立ちます。私の研究ワークフローの不可欠な一部となっています。",
-          "image": {
-            "src": "/imgs/users/6.png"
-          }
-        }
-      ]
-    },
-    "faq": {
-      "name": "faq",
-      "label": "よくある質問",
-      "title": "よくある質問",
-      "description": "他に質問がありますか？サポートチームにお問い合わせください。",
-      "items": [
-        {
-          "title": "Twitter動画をダウンロードするのは合法ですか？",
-          "description": "TwitterDownは個人利用のために設計されています。個人的な視聴のために動画をダウンロードすることは一般的に許容されますが、著作権法と元のクリエイターの権利を尊重してください。適切な許可なくコンテンツを再公開したり、収益化したりしないでください。"
-        },
-        {
-          "title": "TwitterDownを使用するにはTwitterアカウントが必要ですか？",
-          "description": "いいえ、TwitterDownを使用するためにTwitterアカウントは必要ありません。ダウンロードしたい動画のURLをコピーして、当社のツールに貼り付けるだけです。"
-        },
-        {
-          "title": "TwitterDownはどの動画形式をサポートしていますか？",
-          "description": "TwitterDownはMP4形式のダウンロードをサポートしており、これはすべてのデバイスとプラットフォームで動作する最も汎用性が高く互換性のある動画形式です。"
-        },
-        {
-          "title": "ダウンロードできる動画の数に制限はありますか？",
-          "description": "一切制限なし！すべてのユーザーは無制限の単一動画とバッチダウンロードができ、すべての解像度（720p、1080p、4Kなど）をサポートします。APIアクセスのみ有料サブスクリプションが必要です。"
-        },
-        {
-          "title": "プライベートなTwitter動画をダウンロードできますか？",
-          "description": "いいえ、TwitterDownは公開されている動画のみをダウンロードできます。プライベートアカウントやダイレクトメッセージからの動画はアクセスできません。"
-        },
-        {
-          "title": "適切な動画品質を選択するにはどうすればよいですか？",
-          "description": "ニーズに応じて品質を選択できます。HDはアーカイブや編集に最適で、標準品質は素早いプレビューやストレージスペースの節約に最適です。複数の解像度オプションから選択できます。"
-        }
-      ]
+        "description": "KuaishouVideoDownloadは、一般ユーザーとプロフェッショナルの両方のニーズを満たすように設計された機能で、最も迅速で信頼性の高いKuaishou動画ダウンロード方法を提供します。",
+        "items": [
+            {
+                "description": "プロフェッショナルなMP4形式のダウンロードに対応しており、様々な画質選択が可能で、ウォーターマークなしの動画もダウンロードでき、お客様の特定のニーズを満たします。",
+                "icon": "RiFileList3Line",
+                "image": {
+                    "src": "/imgs/features/2.png"
+                },
+                "title": "高品質MP4ダウンロード"
+            },
+            {
+                "description": "高度な一括処理機能で、複数のKuaishou動画を一度にダウンロードし、時間を節約します。",
+                "icon": "RiStackLine",
+                "image": {
+                    "src": "/imgs/features/3.png"
+                },
+                "title": "一括処理"
+            },
+            {
+                "description": "ダウンロード履歴を自動的に記録し、以前ダウンロードした動画ファイルの管理と検索を容易にします。",
+                "icon": "RiHistoryLine",
+                "image": {
+                    "src": "/imgs/features/4.png"
+                },
+                "title": "ダウンロード履歴"
+            }
+        ],
+        "label": "利点",
+        "name": "利点",
+        "title": "KuaishouVideoDownloadを選ぶ理由"
     },
     "cta": {
-      "name": "cta",
-      "title": "今日からTwitter動画のダウンロードを始めましょう",
-      "description": "高速で高品質な動画ダウンロードのためにTwitterDownを信頼している何千ものユーザーに参加しましょう。",
-      "buttons": [
-        {
-          "title": "無料で開始",
-          "url": "/#usage",
-          "target": "_self",
-          "icon": "RiDownloadCloud2Fill"
-        },
-        {
-          "title": "料金を見る",
-          "url": "/#pricing",
-          "target": "_self",
-          "variant": "outline"
-        }
-      ]
+        "buttons": [
+            {
+                "icon": "RiDownloadCloud2Fill",
+                "target": "_self",
+                "title": "無料で始める",
+                "url": "/ja#usage"
+            }
+        ],
+        "description": "数千ものユーザーがKuaishouVideoDownloadの高速かつ高品質な動画ダウンロードを信頼して利用しています。",
+        "name": "CTA",
+        "title": "今すぐKuaishou動画のダウンロードを開始"
+    },
+    "faq": {
+        "description": "他にご質問がありますか？サポートチームにお問い合わせください。",
+        "items": [
+            {
+                "description": "KuaishouVideoDownloadは個人使用のために設計されています。個人的な視聴のために動画をダウンロードすることは通常許容されますが、著作権法と原作者の権利を尊重してください。適切な許可なしにコンテンツを再公開したり、商業利用したりしないでください。",
+                "title": "Kuaishou動画のダウンロードは合法ですか？"
+            },
+            {
+                "description": "いいえ、KuaishouVideoDownloadを使用するためにKuaishouアカウントは必要ありません。ダウンロードしたい動画のURLをコピーし、私たちのツールに貼り付けるだけです。",
+                "title": "KuaishouVideoDownloadを使用するためにKuaishouアカウントは必要ですか？"
+            },
+            {
+                "description": "KuaishouVideoDownloadはMP4形式のダウンロードに対応しており、これはあらゆるデバイスとプラットフォームに適用できる、最も汎用性が高く互換性に優れた動画形式です。",
+                "title": "KuaishouVideoDownloadはどの動画形式をサポートしていますか？"
+            },
+            {
+                "description": "一切に制限はありません！すべてのユーザーは、個別動画および一括ダウンロードを無制限に利用でき、あらゆる解像度（720p、1080p、4Kなど）をサポートしています。",
+                "title": "ダウンロードできる動画の数に制限はありますか？"
+            },
+            {
+                "description": "いいえ、KuaishouVideoDownloadは公開されている動画のみダウンロードできます。プライベートアカウントや非公開作品の動画にはアクセスできません。",
+                "title": "プライベートなKuaishou動画もダウンロードできますか？"
+            },
+            {
+                "description": "用途に応じて画質を選択できます：HD高画質は保存や編集に、標準画質は素早いプレビューやスペース節約に適しています。複数の解像度オプションをご用意しています。",
+                "title": "適切な動画の画質を選択する方法は？"
+            }
+        ],
+        "label": "よくある質問",
+        "name": "FAQ",
+        "title": "よくある質問"
+    },
+    "feature": {
+        "description": "シンプルで効率的なKuaishou動画ダウンロードツール。あらゆるニーズに対応します。",
+        "items": [
+            {
+                "description": "Kuaishou動画リンクをスマートに解析し、数秒で動画のダウンロードアドレスを識別・取得します。",
+                "icon": "RiRocketLine",
+                "title": "高速解析"
+            },
+            {
+                "description": "標準画質から高画質HDまで、さまざまな画質オプションに対応しており、異なるニーズやストレージ容量に対応します。",
+                "icon": "RiSettings4Line",
+                "title": "画質選択"
+            },
+            {
+                "description": "最適化されたダウンロードサーバーが最速のダウンロード速度を保証し、貴重な時間を節約します。",
+                "icon": "RiDownloadCloud2Line",
+                "title": "高速ダウンロード"
+            },
+            {
+                "description": "プロフェッショナルなMP4形式でのダウンロードは、あらゆるデバイスとプラットフォームに対応しており、最高の再生体験を保証します。",
+                "icon": "RiFileList3Line",
+                "title": "MP4形式ダウンロード"
+            },
+            {
+                "description": "上級ユーザーは複数のKuaishou動画を一括処理でき、作業効率を大幅に向上させます。",
+                "icon": "RiStackLine",
+                "title": "一括ダウンロード"
+            },
+            {
+                "description": "アカウント登録不要、完全に無料で利用でき、隠れた費用や利用制限はありません。",
+                "icon": "RiGiftLine",
+                "title": "完全無料"
+            }
+        ],
+        "name": "機能",
+        "title": "KuaishouVideoDownloadの主な機能"
     },
     "footer": {
-      "name": "footer",
-      "brand": {
-        "title": "TwitterDown",
-        "description": "Twitter動画を高品質でダウンロードする最速の方法。数クリックでお気に入りのTwitterコンテンツを保存して共有できます。",
-        "logo": {
-          "src": "/logo.png",
-          "alt": "TwitterDown"
+        "agreement": {
+            "items": [
+                {
+                    "title": "プライバシーポリシー",
+                    "url": "/privacy-policy"
+                },
+                {
+                    "title": "利用規約",
+                    "url": "/terms-of-service"
+                }
+            ]
         },
-        "url": "/"
-      },
-      "copyright": "© 2025 • TwitterDown 無断複写・転載を禁じます。",
-      "social": {
+        "brand": {
+            "description": "高品質でKuaishou動画をダウンロードする最速の方法。数回クリックするだけで、お気に入りのKuaishouコンテンツを保存・共有できます。",
+            "logo": {
+                "alt": "KuaishouVideoDownload",
+                "src": "/logo.png"
+            },
+            "title": "KuaishouVideoDownload",
+            "url": "/"
+        },
+        "copyright": "© 2025 • KuaishouVideoDownload 全ての権利を保有。",
+        "name": "フッター",
+        "social": {
+            "items": [
+                {
+                    "icon": "RiTwitterXFill",
+                    "target": "_blank",
+                    "title": "Twitter",
+                    "url": "https://twitter.com/Real_Jewel_AI"
+                },
+                {
+                    "icon": "RiMailLine",
+                    "target": "_self",
+                    "title": "メール",
+                    "url": "mailto:support@Kuaishou-Video-Download.com"
+                }
+            ]
+        }
+    },
+    "header": {
+        "brand": {
+            "logo": {
+                "alt": "KuaishouVideoDownload",
+                "src": "/logo.png"
+            },
+            "title": "KuaishouVideoDownload",
+            "url": "/"
+        },
+        "buttons": [
+            {
+                "icon": "RiArrowRightUpLine",
+                "target": "_self",
+                "title": "ダウンロード開始",
+                "url": "/ja#usage",
+                "variant": "リンク"
+            }
+        ],
+        "nav": {
+            "items": [
+                {
+                    "icon": "HiOutlineSparkles",
+                    "title": "特徴",
+                    "url": "/ja#feature"
+                },
+                {
+                    "icon": "BiCube",
+                    "title": "使用方法",
+                    "url": "/ja#usage"
+                },
+                {
+                    "icon": "RiArticleLine",
+                    "title": "ブログ",
+                    "url": "/ja/posts"
+                }
+            ]
+        },
+        "show_locale": true,
+        "show_sign": true,
+        "show_theme": true
+    },
+    "hero": {
+        "announcement": {
+            "label": "新機能",
+            "title": "🎉 KuaishouVideoDownloadが完全に無料になりました！ログイン不要で利用できます",
+            "url": "/ja#usage"
+        },
+        "buttons": [
+            {
+                "icon": "RiDownloadCloud2Fill",
+                "target": "_self",
+                "title": "ダウンロード開始",
+                "url": "/ja#usage",
+                "variant": "default"
+            },
+            {
+                "icon": "RiInformationLine",
+                "target": "_self",
+                "title": "詳細を見る",
+                "url": "/ja#feature",
+                "variant": "outline"
+            }
+        ],
+        "description": "KuaishouVideoDownloadは、Kuaishou動画をダウンロードする最速の方法です。<br/>数回クリックするだけで、お気に入りのKuaishouコンテンツを保存・共有できます。",
+        "highlight_text": "Kuaishou動画",
+        "show_badge": false,
+        "show_happy_users": true,
+        "tip": "🔥 完全再構築、無料で使い始めよう",
+        "title": "数秒でKuaishou動画をダウンロード"
+    },
+    "introduce": {
+        "description": "KuaishouVideoDownloadは、あらゆるKuaishou動画を高品質でダウンロードできる強力なツールです。コンテンツクリエイター、マーケター、一般ユーザーに最適です。",
+        "image": {
+            "src": "/imgs/features/1.png"
+        },
         "items": [
-          {
-            "title": "Twitter",
-            "icon": "RiTwitterXFill",
-            "url": "https://twitter.com/Real_Jewel_AI",
-            "target": "_blank"
-          },
-          {
-            "title": "メール",
-            "icon": "RiMailLine",
-            "url": "mailto:support@twitterdown.com",
-            "target": "_self"
-          }
-        ]
-      },
-      "agreement": {
+            {
+                "description": "Kuaishouのリンクを貼り付けるだけで、数秒で動画をダウンロードできます。複雑な手順は不要です。",
+                "icon": "RiTimerFlashLine",
+                "title": "簡単かつ迅速"
+            },
+            {
+                "description": "Kuaishou動画の最高品質バージョンをオリジナル解像度で取得できます。",
+                "icon": "RiHdLine",
+                "title": "高品質ダウンロード"
+            },
+            {
+                "description": "KuaishouVideoDownloadを使用するために、アカウントを作成したり、Kuaishouの認証情報を共有したりする必要はありません。",
+                "icon": "RiLockUnlockLine",
+                "title": "ログイン不要"
+            }
+        ],
+        "label": "紹介",
+        "name": "紹介",
+        "title": "KuaishouVideoDownloadとは？"
+    },
+    "stats": {
+        "description": "満足しているKuaishouVideoDownloadユーザーコミュニティに参加しましょう。",
+        "icon": "FaRegHeart",
         "items": [
-          {
-            "title": "プライバシーポリシー",
-            "url": "/privacy-policy"
-          },
-          {
-            "title": "利用規約",
-            "url": "/terms-of-service"
-          }
-        ]
-      }
+            {
+                "description": "増加中",
+                "label": "1M+",
+                "title": "ダウンロード済み動画"
+            },
+            {
+                "description": "毎月",
+                "label": "50K+",
+                "title": "アクティブユーザー"
+            },
+            {
+                "description": "秒",
+                "label": "<5",
+                "title": "平均ダウンロード時間"
+            }
+        ],
+        "label": "統計",
+        "name": "統計",
+        "title": "数千人のユーザーに信頼されています"
+    },
+    "template": "shipany-template-one",
+    "testimonial": {
+        "description": "KuaishouVideoDownloadを使用してKuaishou動画をダウンロード・保存したユーザーの声を聞いてください。",
+        "icon": "GoThumbsup",
+        "items": [
+            {
+                "description": "KuaishouVideoDownloadは、私のコンテンツ作成ワークフローに不可欠なツールとなりました。高品質なダウンロードと高速処理は、私に多くの時間を節約してくれます！",
+                "image": {
+                    "src": "/imgs/users/1.png"
+                },
+                "label": "コンテンツクリエイター",
+                "title": "サラ・ジョンソン"
+            },
+            {
+                "description": "プロ版の一括ダウンロード機能は、当社のマーケティングチームにとって画期的なものです。複数の動画を簡単にアーカイブして分析できます。",
+                "image": {
+                    "src": "/imgs/users/2.png"
+                },
+                "label": "デジタルマーケティングスペシャリスト",
+                "title": "チェン・ミン"
+            },
+            {
+                "description": "ジャーナリストとして、私は重要な動画が消える前に素早く保存する必要があります。KuaishouVideoDownloadの速度と信頼性は、私の仕事にとって非常に貴重です。",
+                "image": {
+                    "src": "/imgs/users/3.png"
+                },
+                "label": "ジャーナリスト",
+                "title": "ジェシカ・ロドリゲス"
+            },
+            {
+                "description": "私はKuaishouVideoDownloadを使って学生向けの教育動画を保存しています。画質オプションのおかげで、鮮明さを保ちつつストレージを管理できています。",
+                "image": {
+                    "src": "/imgs/users/4.png"
+                },
+                "label": "教師",
+                "title": "デビッド・ジン"
+            },
+            {
+                "description": "KuaishouVideoDownloadのウェブインターフェースは非常にシンプルで使いやすいです。素早くリンクを貼り付けて動画をダウンロードでき、操作は簡単で効率的です。",
+                "image": {
+                    "src": "/imgs/users/5.png"
+                },
+                "label": "ソーシャルメディアマネージャー",
+                "title": "エミリー・ウィルソン"
+            },
+            {
+                "description": "KuaishouVideoDownloadの履歴機能は、ダウンロードした動画をプロジェクトごとに整理するのに役立ちました。これは私の研究ワークフローにおいて不可欠な部分となっています。",
+                "image": {
+                    "src": "/imgs/users/6.png"
+                },
+                "label": "研究者",
+                "title": "マイケル・テイラー"
+            }
+        ],
+        "label": "ユーザー評価",
+        "name": "お客様の声",
+        "title": "KuaishouVideoDownloadに対するユーザーの評価"
+    },
+    "theme": "light",
+    "usage": {
+        "description": "簡単な4つのステップで、Kuaishou動画をダウンロード：",
+        "image": {
+            "src": "/imgs/features/1.png"
+        },
+        "image_position": "left",
+        "items": [
+            {
+                "description": "Kuaishouでダウンロードしたい動画を見つけます。",
+                "title": "動画を探す"
+            },
+            {
+                "description": "共有アイコンをクリックし、「リンクをコピー」を選択して動画リンクをコピーします。",
+                "title": "リンクをコピー"
+            },
+            {
+                "description": "動画リンクをKuaishouVideoDownloadの入力ボックスに貼り付け、「ダウンロード」ボタンをクリックします。",
+                "title": "貼り付けて解析"
+            },
+            {
+                "description": "必要なMP4形式と画質を選択し、お使いのデバイスにダウンロードします。",
+                "title": "形式を選択してダウンロード"
+            }
+        ],
+        "name": "使用方法",
+        "text_align": "center",
+        "title": "KuaishouVideoDownloadの使い方"
     }
-  }
+}

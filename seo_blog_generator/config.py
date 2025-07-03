@@ -4,9 +4,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # 默认配置
-DEFAULT_COVER_URL = "https://www.twitterdown.com/imgs/TwitterDownAPICover.png"
-DEFAULT_AUTHOR_NAME = "TwitterDown"
-DEFAULT_AUTHOR_AVATAR_URL = "https://www.twitterdown.com/logo.png"
+DEFAULT_COVER_URL = "https://www.kuaishou-video-download.com/imgs/KuaishouVideoDownloadAPICover.png"
+DEFAULT_AUTHOR_NAME = "KuaishouVideoDownload"
+DEFAULT_AUTHOR_AVATAR_URL = "https://www.kuaishou-video-download.com/logo.png"
 
 # API 配置
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
@@ -17,7 +17,7 @@ SUPABASE_URL = os.getenv("SUPABASE_URL", "")
 SUPABASE_SERVICE_ROLE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY", "")
 
 # 网站配置
-SITE_URL = "https://TwitterDown.com"
+SITE_URL = "https://kuaishou-video-download.com"
 SITEMAP_PATH = "../public/sitemap.xml"
 
 # Gemini 模型配置

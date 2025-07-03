@@ -15,4 +15,4 @@ Disallow: /batch-download-result
 Disallow: /*?*q=
 
 # Sitemap
-Sitemap: https://TwitterDown.com/sitemap.xml
+Sitemap: https://Kuaishou-Video-Download.com/sitemap.xml

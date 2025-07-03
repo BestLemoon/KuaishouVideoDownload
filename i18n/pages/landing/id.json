@@ -1,0 +1,364 @@
+{
+    "benefit": {
+        "description": "KuaishouVideoDownload menawarkan cara tercepat dan paling andal untuk mengunduh video Kuaishou, dengan fitur yang dirancang untuk memenuhi kebutuhan pengguna biasa maupun profesional.",
+        "items": [
+            {
+                "description": "Unduhan format MP4 profesional, mendukung berbagai opsi kualitas, dan dapat mengunduh video tanpa tanda air untuk memenuhi kebutuhan spesifik Anda.",
+                "icon": "RiFileList3Line",
+                "image": {
+                    "src": "/imgs/features/2.png"
+                },
+                "title": "Unduh MP4 Kualitas Tinggi"
+            },
+            {
+                "description": "Hemat waktu dengan mengunduh beberapa video Kuaishou sekaligus dengan fitur pemrosesan batch canggih kami.",
+                "icon": "RiStackLine",
+                "image": {
+                    "src": "/imgs/features/3.png"
+                },
+                "title": "Pemrosesan Batch"
+            },
+            {
+                "description": "Secara otomatis mencatat riwayat unduhan Anda, memudahkan pengelolaan dan penemuan file video yang sebelumnya diunduh.",
+                "icon": "RiHistoryLine",
+                "image": {
+                    "src": "/imgs/features/4.png"
+                },
+                "title": "Riwayat Unduhan"
+            }
+        ],
+        "label": "Keuntungan",
+        "name": "manfaat",
+        "title": "Mengapa Memilih KuaishouVideoDownload"
+    },
+    "cta": {
+        "buttons": [
+            {
+                "icon": "RiDownloadCloud2Fill",
+                "target": "_self",
+                "title": "Mulai Secara Gratis",
+                "url": "/id#usage"
+            }
+        ],
+        "description": "Bergabunglah dengan ribuan pengguna yang mempercayai KuaishouVideoDownload untuk unduhan video cepat dan berkualitas tinggi.",
+        "name": "cta",
+        "title": "Mulai Mengunduh Video Kuaishou Sekarang"
+    },
+    "faq": {
+        "description": "Masih ada pertanyaan? Hubungi tim dukungan kami untuk bantuan.",
+        "items": [
+            {
+                "description": "KuaishouVideoDownload dirancang untuk penggunaan pribadi. Meskipun mengunduh video untuk tampilan pribadi umumnya dapat diterima, harap hormati undang-undang hak cipta dan hak pencipta asli. Jangan menerbitkan ulang atau mengkomersialkan konten tanpa izin yang sesuai.",
+                "title": "Apakah mengunduh video Kuaishou itu legal?"
+            },
+            {
+                "description": "Tidak, Anda tidak memerlukan akun Kuaishou untuk menggunakan KuaishouVideoDownload. Cukup salin URL video yang ingin Anda unduh dan tempelkan ke alat kami.",
+                "title": "Apakah saya perlu akun Kuaishou untuk menggunakan KuaishouVideoDownload?"
+            },
+            {
+                "description": "KuaishouVideoDownload mendukung unduhan format MP4, yang merupakan format video paling serbaguna dan kompatibel untuk semua perangkat dan platform.",
+                "title": "Format video apa yang didukung KuaishouVideoDownload?"
+            },
+            {
+                "description": "Sama sekali tidak ada batasan! Semua pengguna dapat menikmati unduhan video tunggal dan massal tanpa batas, mendukung semua resolusi (720p, 1080p, 4K, dll.).",
+                "title": "Apakah ada batasan jumlah video yang bisa saya unduh?"
+            },
+            {
+                "description": "Tidak, KuaishouVideoDownload hanya dapat mengunduh video yang tersedia untuk umum. Tidak dapat mengakses video dari akun pribadi atau karya pribadi.",
+                "title": "Bisakah saya mengunduh video Kuaishou pribadi?"
+            },
+            {
+                "description": "Anda dapat memilih kualitas sesuai penggunaan Anda: HD cocok untuk koleksi dan pengeditan, sedangkan kualitas standar baik untuk pratinjau cepat dan menghemat ruang. Kami menawarkan beberapa opsi resolusi untuk Anda pilih.",
+                "title": "Bagaimana memilih kualitas video yang tepat?"
+            }
+        ],
+        "label": "FAQ",
+        "name": "faq",
+        "title": "FAQ"
+    },
+    "feature": {
+        "description": "Alat pengunduh video Kuaishou yang sederhana dan efisien untuk semua kebutuhan Anda.",
+        "items": [
+            {
+                "description": "Secara cerdas mengurai tautan video Kuaishou, mengidentifikasi dan mengambil alamat unduhan video dalam hitungan detik.",
+                "icon": "RiRocketLine",
+                "title": "Penguraian Cepat"
+            },
+            {
+                "description": "Mendukung berbagai opsi kualitas, dari SD hingga HD, untuk memenuhi kebutuhan dan ruang penyimpanan yang berbeda.",
+                "icon": "RiSettings4Line",
+                "title": "Pilihan Kualitas"
+            },
+            {
+                "description": "Server unduhan yang dioptimalkan memastikan kecepatan unduh tercepat, menghemat waktu berharga Anda.",
+                "icon": "RiDownloadCloud2Line",
+                "title": "Unduhan Kecepatan Tinggi"
+            },
+            {
+                "description": "Unduhan format MP4 profesional, kompatibel dengan semua perangkat dan platform, memastikan pengalaman pemutaran terbaik.",
+                "icon": "RiFileList3Line",
+                "title": "Unduhan Format MP4"
+            },
+            {
+                "description": "Pengguna tingkat lanjut dapat memproses banyak video Kuaishou secara massal, secara signifikan meningkatkan efisiensi kerja.",
+                "icon": "RiStackLine",
+                "title": "Unduh Massal"
+            },
+            {
+                "description": "Tidak perlu registrasi akun, sepenuhnya gratis untuk digunakan, tanpa biaya tersembunyi atau batasan penggunaan.",
+                "icon": "RiGiftLine",
+                "title": "Sepenuhnya Gratis"
+            }
+        ],
+        "name": "fitur",
+        "title": "Fitur Utama KuaishouVideoDownload"
+    },
+    "footer": {
+        "agreement": {
+            "items": [
+                {
+                    "title": "Kebijakan Privasi",
+                    "url": "/kebijakan-privasi"
+                },
+                {
+                    "title": "Ketentuan Layanan",
+                    "url": "/terms-of-service"
+                }
+            ]
+        },
+        "brand": {
+            "description": "Cara tercepat untuk mengunduh video Kuaishou dalam kualitas tinggi. Simpan dan bagikan konten Kuaishou favorit Anda hanya dengan beberapa klik.",
+            "logo": {
+                "alt": "KuaishouVideoDownload",
+                "src": "/logo.png"
+            },
+            "title": "KuaishouVideoDownload",
+            "url": "/"
+        },
+        "copyright": "© 2025 • KuaishouVideoDownload Hak cipta dilindungi undang-undang.",
+        "name": "footer",
+        "social": {
+            "items": [
+                {
+                    "icon": "RiTwitterXFill",
+                    "target": "_blank",
+                    "title": "Twitter",
+                    "url": "https://twitter.com/Real_Jewel_AI"
+                },
+                {
+                    "icon": "RiMailLine",
+                    "target": "_self",
+                    "title": "Email",
+                    "url": "mailto:support@Kuaishou-Video-Download.com"
+                }
+            ]
+        }
+    },
+    "header": {
+        "brand": {
+            "logo": {
+                "alt": "KuaishouVideoDownload",
+                "src": "/logo.png"
+            },
+            "title": "KuaishouVideoDownload",
+            "url": "/"
+        },
+        "buttons": [
+            {
+                "icon": "RiArrowRightUpLine",
+                "target": "_self",
+                "title": "Mulai Mengunduh",
+                "url": "/id#usage",
+                "variant": "tautan"
+            }
+        ],
+        "nav": {
+            "items": [
+                {
+                    "icon": "HiOutlineSparkles",
+                    "title": "Fitur",
+                    "url": "/id#feature"
+                },
+                {
+                    "icon": "BiCube",
+                    "title": "Cara Menggunakan",
+                    "url": "/id#usage"
+                },
+                {
+                    "icon": "RiArticleLine",
+                    "title": "Blog",
+                    "url": "/id/posts"
+                }
+            ]
+        },
+        "show_locale": true,
+        "show_sign": true,
+        "show_theme": true
+    },
+    "hero": {
+        "announcement": {
+            "label": "Fitur Baru",
+            "title": "🎉 KuaishouVideoDownload sekarang sepenuhnya GRATIS! Tidak perlu login untuk menggunakan",
+            "url": "/id#usage"
+        },
+        "buttons": [
+            {
+                "icon": "RiDownloadCloud2Fill",
+                "target": "_self",
+                "title": "Mulai Mengunduh",
+                "url": "/id#usage",
+                "variant": "default"
+            },
+            {
+                "icon": "RiInformationLine",
+                "target": "_self",
+                "title": "Pelajari Lebih Lanjut",
+                "url": "/id#feature",
+                "variant": "outline"
+            }
+        ],
+        "description": "KuaishouVideoDownload adalah cara tercepat untuk mengunduh video Kuaishou.<br/>Simpan dan bagikan konten Kuaishou favorit Anda hanya dengan beberapa klik.",
+        "highlight_text": "Video Kuaishou",
+        "show_badge": false,
+        "show_happy_users": true,
+        "tip": "🔥 Baru dibangun ulang, sepenuhnya gratis untuk mulai digunakan",
+        "title": "Unduh Video Kuaishou dalam Hitungan Detik"
+    },
+    "introduce": {
+        "description": "KuaishouVideoDownload adalah alat canggih yang memungkinkan Anda mengunduh video Kuaishou apa pun dalam kualitas tinggi. Sempurna untuk pembuat konten, pemasar, dan pengguna biasa.",
+        "image": {
+            "src": "/imgs/features/1.png"
+        },
+        "items": [
+            {
+                "description": "Cukup tempel tautan Kuaishou, dan unduh video dalam hitungan detik. Tidak perlu langkah rumit.",
+                "icon": "RiTimerFlashLine",
+                "title": "Sederhana & Cepat"
+            },
+            {
+                "description": "Dapatkan versi kualitas tertinggi dari video Kuaishou apa pun, mempertahankan resolusi asli.",
+                "icon": "RiHdLine",
+                "title": "Unduhan Kualitas Tinggi"
+            },
+            {
+                "description": "Tidak perlu membuat akun atau membagikan kredensial Kuaishou Anda untuk menggunakan KuaishouVideoDownload.",
+                "icon": "RiLockUnlockLine",
+                "title": "Tidak Perlu Login"
+            }
+        ],
+        "label": "Pendahuluan",
+        "name": "perkenalan",
+        "title": "Apa itu KuaishouVideoDownload"
+    },
+    "stats": {
+        "description": "Bergabunglah dengan komunitas pengguna KuaishouVideoDownload yang puas.",
+        "icon": "FaRegHeart",
+        "items": [
+            {
+                "description": "dan terus bertambah",
+                "label": "1 Jt+",
+                "title": "Video Diunduh"
+            },
+            {
+                "description": "Bulanan",
+                "label": "50K+",
+                "title": "Pengguna Aktif"
+            },
+            {
+                "description": "detik",
+                "label": "<5",
+                "title": "Waktu Unduh Rata-rata"
+            }
+        ],
+        "label": "Statistik",
+        "name": "statistik",
+        "title": "Dipercaya oleh Ribuan Pengguna"
+    },
+    "template": "shipany-template-one",
+    "testimonial": {
+        "description": "Dengarkan apa kata pengguna yang mengunduh dan menyimpan video Kuaishou dengan KuaishouVideoDownload.",
+        "icon": "GoThumbsup",
+        "items": [
+            {
+                "description": "KuaishouVideoDownload telah menjadi alat yang tak tergantikan dalam alur kerja pembuatan konten saya. Unduhan berkualitas tinggi dan pemrosesan cepat menghemat banyak waktu saya!",
+                "image": {
+                    "src": "/imgs/users/1.png"
+                },
+                "label": "Pembuat Konten",
+                "title": "Sarah Johnson"
+            },
+            {
+                "description": "Fitur unduhan massal versi Pro adalah terobosan besar bagi tim pemasaran kami. Kami dapat dengan mudah mengarsipkan banyak video untuk analisis.",
+                "image": {
+                    "src": "/imgs/users/2.png"
+                },
+                "label": "Spesialis Pemasaran Digital",
+                "title": "Chen Ming"
+            },
+            {
+                "description": "Sebagai seorang jurnalis, saya perlu dengan cepat menyimpan video penting sebelum mereka menghilang. Kecepatan dan keandalan KuaishouVideoDownload sangat berharga bagi pekerjaan saya.",
+                "image": {
+                    "src": "/imgs/users/3.png"
+                },
+                "label": "Jurnalis",
+                "title": "Jessica Rodriguez"
+            },
+            {
+                "description": "Saya menggunakan KuaishouVideoDownload untuk menyimpan video edukasi untuk siswa saya. Opsi kualitas membantu saya mengelola penyimpanan sambil mempertahankan kejernihan.",
+                "image": {
+                    "src": "/imgs/users/4.png"
+                },
+                "label": "Guru",
+                "title": "David Jin"
+            },
+            {
+                "description": "Antarmuka web KuaishouVideoDownload sangat bersih dan mudah digunakan. Saya dapat dengan cepat menempel tautan dan mengunduh video, membuat pengoperasiannya sederhana dan efisien.",
+                "image": {
+                    "src": "/imgs/users/5.png"
+                },
+                "label": "Manajer Media Sosial",
+                "title": "Emily Wilson"
+            },
+            {
+                "description": "Fitur riwayat KuaishouVideoDownload membantu saya mengorganisir video yang diunduh berdasarkan proyek. Ini telah menjadi bagian tak terpisahkan dari alur kerja penelitian saya.",
+                "image": {
+                    "src": "/imgs/users/6.png"
+                },
+                "label": "Peneliti",
+                "title": "Michael Taylor"
+            }
+        ],
+        "label": "Testimoni Pengguna",
+        "name": "testimonial",
+        "title": "Ulasan Pengguna KuaishouVideoDownload"
+    },
+    "theme": "terang",
+    "usage": {
+        "description": "Unduh video Kuaishou apa pun dalam empat langkah mudah:",
+        "image": {
+            "src": "/imgs/features/1.png"
+        },
+        "image_position": "kiri",
+        "items": [
+            {
+                "description": "Temukan video yang ingin Anda unduh di Kuaishou.",
+                "title": "Temukan Video"
+            },
+            {
+                "description": "Klik ikon bagikan dan pilih \"Salin Tautan\" untuk menyalin tautan video.",
+                "title": "Salin Tautan"
+            },
+            {
+                "description": "Tempel tautan video ke kotak input KuaishouVideoDownload dan klik tombol \"Unduh\".",
+                "title": "Tempel & Urai"
+            },
+            {
+                "description": "Pilih format MP4 dan kualitas yang Anda butuhkan, lalu unduh ke perangkat Anda.",
+                "title": "Pilih Format & Unduh"
+            }
+        ],
+        "name": "penggunaan",
+        "text_align": "tengah",
+        "title": "Cara Menggunakan KuaishouVideoDownload"
+    }
+}

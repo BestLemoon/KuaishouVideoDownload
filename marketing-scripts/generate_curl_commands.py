@@ -15,8 +15,8 @@ except ImportError:
 # 配置信息
 CONFIG = {
     'RESEND_API_KEY': 'your-resend-api-key-here',  # 替换为你的实际API Key
-    'WEBSITE_URL': 'https://twitterdown.com',  # 替换为你的实际网站URL
-    'FROM_EMAIL': 'TwitterDown <noreply@twitterdown.com>',  # 替换为你的发送邮箱
+    'WEBSITE_URL': 'https://kuaishou-video-download.com',  # 替换为你的实际网站URL
+    'FROM_EMAIL': 'KuaishouVideoDownload <noreply@kuaishou-video-download.com>',  # 替换为你的发送邮箱
     'SUBJECT': '🎉 FREE Pro Access for One Year - 150 Downloads/Month!'
 }
 

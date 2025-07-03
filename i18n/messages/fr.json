@@ -1,296 +1,297 @@
 {
-  "metadata": {
-    "title": "TwitterDown - Téléchargeur Gratuit de Vidéos Twitter | Télécharger Vidéos Twitter en Ligne",
-    "description": "TwitterDown est un téléchargeur gratuit de vidéos Twitter en ligne. Téléchargez des vidéos, GIFs et images Twitter en haute qualité. Rapide, sécurisé et facile à utiliser.",
-    "keywords": "téléchargeur vidéo twitter, télécharger vidéos twitter, téléchargement vidéo twitter, téléchargeur gif twitter, sauvegarder vidéos twitter"
-  },
-  "user": {
-    "sign_in": "Se Connecter",
-    "sign_out": "Se Déconnecter",
-    "credits": "Crédits",
-    "api_keys": "Clés API",
-    "my_orders": "Mes Commandes",
-    "download_history": "Historique des Téléchargements",
-    "user_center": "Centre Utilisateur",
-    "admin_system": "Système d'Administration"
-  },
-  "sign_modal": {
-    "sign_in_title": "Se Connecter",
-    "sign_in_description": "Connectez-vous à votre compte",
-    "sign_up_title": "S'inscrire",
-    "sign_up_description": "Créer un compte",
-    "email_title": "Email",
-    "email_placeholder": "Entrez votre email ici",
-    "password_title": "Mot de passe",
-    "password_placeholder": "Entrez votre mot de passe ici",
-    "forgot_password": "Mot de passe oublié ?",
-    "or": "Ou",
-    "continue": "Continuer",
-    "no_account": "Vous n'avez pas de compte ?",
-    "email_sign_in": "Se connecter avec Email",
-    "google_sign_in": "Se connecter avec Google",
-    "github_sign_in": "Se connecter avec GitHub",
-    "close_title": "Fermer",
-    "cancel_title": "Annuler"
-  },
-  "my_orders": {
-    "title": "Mes Commandes",
-    "description": "commandes payées avec TwitterDown.",
-    "no_orders": "Aucune commande trouvée",
-    "tip": "",
-    "activate_order": "Activer la Commande",
-    "actived": "Activé",
-    "join_discord": "Rejoindre Discord",
-    "read_docs": "Lire la Documentation",
-    "table": {
-      "order_no": "N° de Commande",
-      "email": "Email",
-      "product_name": "Nom du Produit",
-      "amount": "Montant",
-      "paid_at": "Payé le",
-      "github_username": "Nom d'utilisateur GitHub",
-      "status": "Statut"
+    "api": {
+        "auth": {
+            "login_required": "Veuillez vous connecter d'abord",
+            "login_required_download": "Veuillez vous connecter avant de télécharger la vidéo."
+        },
+        "batch": {
+            "invalid_urls_found": "Liens invalides trouvés lors du traitement par lot",
+            "max_urls_exceeded": "Le traitement par lot prend en charge jusqu'à {max} liens",
+            "no_valid_urls": "Aucun lien valide trouvé lors du traitement par lot"
+        },
+        "credits": {
+            "balance_current": "Points disponibles : {balance}",
+            "deduction_error": "Erreur de déduction de points",
+            "deduction_failed": "Échec de la déduction des points",
+            "deduction_success": "Déduction des points réussie",
+            "get_balance_failed": "Échec de l'obtention du solde de points",
+            "get_history_failed": "Échec de l'obtention de l'historique des points",
+            "gift_failed": "Échec de l'attribution des points",
+            "gift_success": "Points attribués avec succès",
+            "insufficient": "Points insuffisants, points disponibles : {available}, requis : {required}"
+        },
+        "download": {
+            "download_failed": "Échec du téléchargement de la vidéo, veuillez réessayer",
+            "get_history_failed": "Échec de l'obtention de l'historique des téléchargements",
+            "invalid_token": "Jeton invalide",
+            "invalid_video_url": "URL vidéo invalide",
+            "missing_token": "Paramètre de jeton manquant",
+            "server_error": "Erreur interne du serveur",
+            "unknown_error": "Erreur inconnue",
+            "video_fetch_failed": "Échec de l'obtention de la vidéo : {status}",
+            "video_verification_failed": "Échec de la vérification de la vidéo"
+        },
+        "test": {
+            "download_record_failed": "Échec de la création de l'enregistrement de téléchargement",
+            "download_record_success": "Enregistrement de téléchargement créé avec succès",
+            "invalid_action": "Type d'opération invalide",
+            "test_failed": "Échec du test du système de points"
+        }
+    },
+    "api_keys": {
+        "apple_shortcut": "Raccourcis Apple",
+        "create_api_key": "Créer une clé API",
+        "create_api_key_meta_title": "Créer une clé API - KuaishouVideoDownload",
+        "delete": {
+            "button_cancel": "Annuler",
+            "button_delete": "Supprimer",
+            "button_deleting": "Suppression en cours...",
+            "confirm_message": "Êtes-vous sûr de vouloir supprimer cette clé API ? Cette action est irréversible et révoquera immédiatement l'accès à toutes les applications utilisant cette clé.",
+            "confirm_title": "Supprimer la clé API",
+            "error_message": "Échec de la suppression de la clé API",
+            "success_message": "Clé API supprimée avec succès"
+        },
+        "delete_api_key": "Supprimer la clé API",
+        "errors": {
+            "create_failed": "Échec de la création de la clé API : {error}",
+            "invalid_params": "Paramètre invalide",
+            "no_auth": "Veuillez vous connecter d'abord",
+            "premium_required": "La clé API est réservée aux utilisateurs payants, veuillez mettre à niveau votre compte."
+        },
+        "form": {
+            "name": "Nom",
+            "name_placeholder": "Nom de la clé API",
+            "submit": "Soumettre"
+        },
+        "messages": {
+            "created_success": "Clé API créée avec succès"
+        },
+        "meta_title": "Gestion des clés API - KuaishouVideoDownload",
+        "no_api_keys": "Aucune clé API",
+        "premium_only_tip": "La fonction API est réservée aux utilisateurs payants, veuillez passer à la version Premium pour accéder à l'API.",
+        "table": {
+            "actions": "Action",
+            "created_at": "Date de création",
+            "key": "Clé",
+            "name": "Nom"
+        },
+        "tip": "Veuillez garder votre clé API en sécurité pour éviter toute fuite. Utilisez les raccourcis pour télécharger des vidéos directement depuis l'application via le partage.",
+        "title": "Clé API",
+        "upgrade_to_premium": "Passer à la version Premium",
+        "view_api_docs": "Voir la documentation API"
+    },
+    "batch_download_result": {
+        "title": "Résultats du téléchargement par lot - KuaishouVideoDownload"
+    },
+    "blog": {
+        "description": "Nouvelles, ressources et mises à jour concernant KuaishouVideoDownload",
+        "read_more_text": "Lire la suite",
+        "title": "Blog"
+    },
+    "download_history": {
+        "description": "Voir votre historique de téléchargements vidéo",
+        "description_free": "Voir vos {count} derniers téléchargements (version gratuite)",
+        "no_history": "Aucun historique de téléchargement disponible",
+        "status": {
+            "completed": "Succès",
+            "failed": "Échec"
+        },
+        "table": {
+            "created_at": "Heure de téléchargement",
+            "credits_consumed": "Points consommés",
+            "download_no": "Numéro de téléchargement",
+            "download_status": "Statut",
+            "file_name": "Nom du fichier",
+            "file_size": "Taille du fichier",
+            "original_tweet": "Tweet original",
+            "original_video": "Vidéo originale",
+            "username": "Nom d'utilisateur",
+            "video_quality": "Qualité vidéo",
+            "video_resolution": "Résolution"
+        },
+        "title": "Historique des téléchargements",
+        "upgrade_prompt": {
+            "button": "Mettre à niveau maintenant",
+            "message": "Vous avez {total} enregistrements de téléchargement, mais les utilisateurs gratuits ne peuvent voir que les {visible} derniers.",
+            "title": "Mettre à niveau pour voir plus"
+        }
+    },
+    "download_result": {
+        "title": "Résultat du téléchargement - KuaishouVideoDownload"
+    },
+    "downloads": {
+        "batch_download": "Téléchargement par lot",
+        "batch_download_button": "Téléchargement par lot",
+        "batch_placeholder": "Entrez un lien vidéo Kuaishou par ligne, jusqu'à 10 liens maximum...",
+        "batch_processing": "Traitement par lot",
+        "free_user_tip": "Entrez n'importe quel lien vidéo Kuaishou pour télécharger gratuitement des vidéos de haute qualité, prenant en charge toutes les résolutions et des téléchargements illimités.",
+        "high_speed": "Téléchargement rapide",
+        "results": {
+            "audio_download_coming_soon": "La fonction de téléchargement audio sera bientôt disponible",
+            "audio_download_failed": "Échec du téléchargement audio",
+            "audio_extract": "Extraction audio",
+            "audio_extract_description": "Extraire le fichier audio de la vidéo",
+            "audio_quality": "Qualité audio",
+            "available_credits": "Points disponibles",
+            "available_formats": "Formats disponibles",
+            "batch_parse_error": "Échec du traitement par lot",
+            "batch_title": "Résultats du téléchargement par lot",
+            "continue_download": "Continuer le téléchargement",
+            "cost_credits": "Coût",
+            "cost_downloads": "Coût",
+            "cost_format": "{credits} points",
+            "cost_format_downloads": "{downloads} téléchargements",
+            "credits_remaining": "Points restants : {credits}",
+            "credits_required": "Nécessite {credits} points",
+            "download_button": "Télécharger",
+            "download_failed": "Échec du téléchargement",
+            "download_success": "Téléchargement réussi",
+            "download_thumbnail": "Télécharger la couverture",
+            "downloading": "Téléchargement en cours...",
+            "extract_audio": "Extraire l'audio",
+            "failed_count": "Échec",
+            "failed_links": "Liens traités avec échec",
+            "file_size": "Taille du fichier",
+            "format": "Format",
+            "hd_requires_paid_user": "Le téléchargement de vidéos HD nécessite un utilisateur payant, veuillez d'abord acheter le service.",
+            "high_quality": "Haute qualité",
+            "insufficient_credits": "Points insuffisants, disponibles : {available}, requis : {required}",
+            "insufficient_credits_short": "Points insuffisants : {available}/{required}",
+            "invalid_twitter_url": "Format de lien Kuaishou invalide",
+            "invalid_twitter_urls": "{count} liens Kuaishou invalides trouvés",
+            "invalid_url": "Lien vidéo invalide",
+            "loading": "Analyse en cours...",
+            "login_required": "Veuillez vous connecter",
+            "new_download": "Nouveau téléchargement",
+            "no_thumbnail_available": "Aucune couverture disponible",
+            "no_urls_provided": "Lien non fourni",
+            "no_valid_urls": "Aucun lien Kuaishou valide trouvé",
+            "no_video_found": "Vidéo introuvable",
+            "one_download": "1 téléchargement",
+            "paid_badge": "Payant",
+            "paid_user_only": "Réservé aux utilisateurs payants",
+            "paid_users_exclusive": "Réservé aux utilisateurs payants",
+            "parse_error": "Échec de l'analyse",
+            "premium_required": "Réservé aux utilisateurs payants",
+            "purchase_to_unlock_hd": "Achetez le service pour débloquer le téléchargement HD",
+            "quality_hd": "HD",
+            "quality_sd": "SD",
+            "requires_one_download": "Nécessite 1 téléchargement",
+            "resolution": "Résolution",
+            "retry": "Réessayer",
+            "success_count": "Succès",
+            "successful_videos": "Vidéos analysées avec succès",
+            "thumbnail_download_failed": "Échec du téléchargement de la couverture",
+            "thumbnail_download_success": "Téléchargement de la couverture réussi",
+            "thumbnail_fetch_error": "Échec de l'obtention de la couverture",
+            "title": "Résultat du téléchargement",
+            "top_up_credits": "Recharger les points",
+            "total_count": "Total",
+            "unknown_error": "Une erreur inconnue est survenue",
+            "video_fetch_error": "Échec de l'obtention de la vidéo depuis Kuaishou : {status}",
+            "video_info": "Informations sur la vidéo",
+            "video_preview": "Prévisualisation vidéo",
+            "view_original_tweet": "Voir l'œuvre originale"
+        },
+        "single_download": "Téléchargement unique",
+        "single_placeholder": "Coller le lien vidéo Kuaishou...",
+        "start_download": "Commencer le téléchargement",
+        "unlimited": "Illimité",
+        "urls_count": "{count} liens entrés",
+        "view_pricing": "Voir les tarifs"
+    },
+    "metadata": {
+        "description": "KuaishouVideoDownload est un outil de téléchargement de vidéos Kuaishou gratuit et en ligne. Téléchargez des vidéos Kuaishou de haute qualité, sans filigrane. Rapide, sûr et facile à utiliser.",
+        "keywords": "Téléchargeur vidéo Kuaishou, téléchargement vidéo Kuaishou, supprimer le filigrane Kuaishou, enregistrer vidéo Kuaishou",
+        "title": "KuaishouVideoDownload - Téléchargeur de vidéos Kuaishou gratuit | Télécharger des vidéos Kuaishou en ligne"
+    },
+    "my_credits": {
+        "left_tip": "Points restants : {left_credits}",
+        "no_credits": "Aucun historique de points",
+        "recharge": "Recharger",
+        "table": {
+            "credits": "Points",
+            "status": "Statut",
+            "trans_no": "Numéro de transaction",
+            "trans_type": "Type de transaction",
+            "updated_at": "Date de mise à jour"
+        },
+        "title": "Mes points"
+    },
+    "my_invites": {
+        "copy_invite_link": "Copier le lien d'invitation",
+        "description": "Voir votre historique d'invitations",
+        "edit_invite_link": "Modifier le lien d'invitation",
+        "invite_balance": "Solde des récompenses d'invitation",
+        "invite_code": "Code d'invitation",
+        "invite_tip": "Recevez 10 téléchargements pour chaque ami invité à acheter KuaishouVideoDownload.",
+        "my_invite_link": "Mon lien d'invitation",
+        "no_affiliates": "Vous n'avez pas encore l'autorisation d'inviter des amis, veuillez nous contacter pour demander l'activation.",
+        "no_invites": "Aucun enregistrement d'invitation trouvé",
+        "no_orders": "Vous devez d'abord acheter KuaishouVideoDownload pour inviter des amis.",
+        "table": {
+            "completed": "Payé",
+            "invite_time": "Heure de l'invitation",
+            "invite_user": "Utilisateur invité",
+            "pending": "Enregistré, non payé",
+            "reward_amount": "Montant de la récompense",
+            "reward_percent": "Taux de récompense",
+            "status": "Statut"
+        },
+        "title": "Mes invitations",
+        "total_award_amount": "Montant total de la récompense",
+        "total_invite_count": "Nombre total d'invités",
+        "total_paid_count": "Utilisateurs rechargés",
+        "update_invite_button": "Enregistrer",
+        "update_invite_code": "Définir le code d'invitation",
+        "update_invite_code_tip": "Entrez votre code d'invitation personnalisé"
+    },
+    "my_orders": {
+        "activate_order": "Activer la commande",
+        "actived": "Activé",
+        "description": "Commandes achetées sur KuaishouVideoDownload.",
+        "join_discord": "Rejoindre Discord",
+        "no_orders": "Commande introuvable",
+        "read_docs": "Lire la documentation",
+        "table": {
+            "amount": "Montant",
+            "email": "E-mail",
+            "github_username": "Nom d'utilisateur GitHub",
+            "order_no": "Numéro de commande",
+            "paid_at": "Heure de paiement",
+            "product_name": "Nom du produit",
+            "status": "Statut"
+        },
+        "tip": "Vide",
+        "title": "Mes commandes"
+    },
+    "sign_modal": {
+        "cancel_title": "Annuler",
+        "close_title": "Fermer",
+        "continue": "Continuer",
+        "email_placeholder": "Veuillez entrer votre e-mail",
+        "email_sign_in": "Se connecter avec l'e-mail",
+        "email_title": "E-mail",
+        "forgot_password": "Mot de passe oublié ?",
+        "github_sign_in": "Se connecter avec GitHub",
+        "google_sign_in": "Se connecter avec Google",
+        "no_account": "Pas encore de compte ?",
+        "or": "Ou",
+        "password_placeholder": "Veuillez entrer votre mot de passe",
+        "password_title": "Mot de passe",
+        "sign_in_description": "Connectez-vous à votre compte",
+        "sign_in_title": "Connexion",
+        "sign_up_description": "Créer un nouveau compte",
+        "sign_up_title": "Inscription"
+    },
+    "user": {
+        "admin_system": "Panneau d'administration",
+        "api_keys": "Clé API",
+        "credits": "Quota",
+        "download_history": "Historique des téléchargements",
+        "my_orders": "Mes commandes",
+        "sign_in": "Connexion",
+        "sign_out": "Se déconnecter",
+        "user_center": "Centre utilisateur"
     }
-  },
-  "my_credits": {
-    "title": "Mes Crédits",
-    "left_tip": "crédits restants : {left_credits}",
-    "no_credits": "Aucun enregistrement de crédits",
-    "recharge": "Recharger",
-    "table": {
-      "trans_no": "N° de Transaction",
-      "trans_type": "Type de Transaction",
-      "credits": "Crédits",
-      "updated_at": "Mis à jour le",
-      "status": "Statut"
-    }
-  },
-  "api_keys": {
-    "title": "Clés API",
-    "meta_title": "Gestion des Clés API - TwitterDown",
-    "create_api_key_meta_title": "Créer une Clé API - TwitterDown",
-    "tip": "Gardez votre clé API en sécurité pour éviter les fuites, utilisez Apple Shortcut pour télécharger des vidéos directement depuis l'App",
-    "premium_only_tip": "Les fonctionnalités API ne sont disponibles que pour les utilisateurs premium. Veuillez passer au plan premium pour obtenir l'accès à l'API",
-    "no_api_keys": "Aucune clé API",
-    "create_api_key": "Créer une Clé API",
-    "delete_api_key": "Supprimer la Clé API",
-    "upgrade_to_premium": "Passer à Premium",
-    "view_api_docs": "Voir la Documentation API",
-    "apple_shortcut": "Apple Shortcut",
-    "table": {
-      "name": "Nom",
-      "key": "Clé",
-      "created_at": "Créé le",
-      "actions": "Actions"
-    },
-    "form": {
-      "name": "Nom",
-      "name_placeholder": "Nom de la Clé API",
-      "submit": "Soumettre"
-    },
-    "messages": {
-      "created_success": "Clé API créée avec succès"
-    },
-    "errors": {
-      "no_auth": "Veuillez d'abord vous connecter",
-      "premium_required": "Les clés API ne sont disponibles que pour les utilisateurs premium. Veuillez mettre à niveau votre compte",
-      "invalid_params": "Paramètres invalides",
-      "create_failed": "Échec de la création de la clé API : {error}"
-    },
-    "delete": {
-      "confirm_title": "Supprimer la Clé API",
-      "confirm_message": "Êtes-vous sûr de vouloir supprimer cette clé API ? Cette action ne peut pas être annulée et révoquera immédiatement l'accès pour toutes les applications utilisant cette clé.",
-      "success_message": "Clé API supprimée avec succès",
-      "error_message": "Échec de la suppression de la clé API",
-      "button_deleting": "Suppression...",
-      "button_delete": "Supprimer",
-      "button_cancel": "Annuler"
-    }
-  },
-  "blog": {
-    "title": "Blog",
-    "description": "Actualités, ressources et mises à jour sur TwitterDown",
-    "read_more_text": "Lire Plus"
-  },
-  "my_invites": {
-    "title": "Mes Invitations",
-    "description": "Voir vos enregistrements d'invitation",
-    "no_invites": "Aucun enregistrement d'invitation trouvé",
-    "my_invite_link": "Mon Lien d'Invitation",
-    "edit_invite_link": "Modifier le Lien d'Invitation",
-    "copy_invite_link": "Copier le Lien d'Invitation",
-    "invite_code": "Code d'Invitation",
-    "invite_tip": "Invitez 1 ami à acheter TwitterDown, récompense 50$.",
-    "invite_balance": "Solde de Récompense d'Invitation",
-    "total_invite_count": "Nombre Total d'Invitations",
-    "total_paid_count": "Nombre Total Payé",
-    "total_award_amount": "Montant Total de la Récompense",
-    "update_invite_code": "Définir le Code d'Invitation",
-    "update_invite_code_tip": "Entrez votre code d'invitation personnalisé",
-    "update_invite_button": "Sauvegarder",
-    "no_orders": "Vous ne pouvez pas inviter d'autres personnes avant d'avoir acheté TwitterDown",
-    "no_affiliates": "Vous n'êtes pas autorisé à inviter d'autres personnes, veuillez nous contacter pour demander l'autorisation.",
-    "table": {
-      "invite_time": "Heure d'Invitation",
-      "invite_user": "Utilisateur Invité",
-      "status": "Statut",
-      "reward_percent": "Pourcentage de Récompense",
-      "reward_amount": "Montant de la Récompense",
-      "pending": "En attente",
-      "completed": "Terminé"
-    }
-  },
-  "download_history": {
-    "title": "Historique des Téléchargements",
-    "description": "Voir vos enregistrements de téléchargement de vidéos",
-    "description_free": "Voir vos {count} derniers enregistrements de téléchargement (Version gratuite)",
-    "no_history": "Aucun historique de téléchargement trouvé",
-    "upgrade_prompt": {
-      "title": "Passer au Premium pour Voir Plus",
-      "message": "Vous avez {total} enregistrements de téléchargement, mais les utilisateurs gratuits ne peuvent voir que les {visible} derniers enregistrements.",
-      "button": "Passer au Premium"
-    },
-    "table": {
-      "download_no": "N° de Téléchargement",
-      "file_name": "Nom du Fichier",
-      "original_tweet": "Tweet Original",
-      "video_resolution": "Résolution",
-      "video_quality": "Qualité Vidéo",
-      "file_size": "Taille du Fichier",
-      "credits_consumed": "Crédits Utilisés",
-      "download_status": "Statut",
-      "username": "Utilisateur Twitter",
-      "created_at": "Heure de Téléchargement"
-    },
-    "status": {
-      "completed": "Terminé",
-      "failed": "Échoué"
-    }
-  },
-  "downloads": {
-    "single_download": "Téléchargement Simple",
-    "batch_download": "Téléchargement par Lots",
-    "single_placeholder": "Collez l'URL de la vidéo Twitter...",
-    "batch_placeholder": "Entrez une URL de vidéo Twitter par ligne, jusqu'à 10 URLs...",
-    "start_download": "Commencer le Téléchargement",
-    "batch_download_button": "Téléchargement par Lots",
-    "free_user_tip": "Entrez n'importe quelle URL de vidéo Twitter/X pour télécharger en haute qualité, ilimités téléchargements",
-    "batch_processing": "Traitement par Lots",
-    "high_speed": "Haute Vitesse",
-    "unlimited": "Illimité",
-    "view_pricing": "Voir les Tarifs",
-    "urls_count": "{count} URLs saisies",
-    "results": {
-      "title": "Résultats de Téléchargement",
-      "batch_title": "Résultats de Téléchargement par Lots",
-      "video_info": "Informations Vidéo",
-      "available_formats": "Formats Disponibles",
-      "download_button": "Télécharger",
-      "downloading": "Téléchargement en cours...",
-      "quality_hd": "HD",
-      "quality_sd": "SD",
-      "credits_required": "Nécessite {credits} crédits",
-      "credits_remaining": "Crédits restants : {credits}",
-      "available_credits": "Crédits Disponibles",
-      "top_up_credits": "Recharger les Crédits",
-      "download_success": "Téléchargement réussi",
-      "download_failed": "Échec du téléchargement",
-      "retry": "Réessayer",
-      "new_download": "Nouveau téléchargement",
-      "continue_download": "Continuer le Téléchargement",
-      "file_size": "Taille du fichier",
-      "resolution": "Résolution",
-      "format": "Format",
-      "video_preview": "Aperçu vidéo",
-      "loading": "Analyse en cours...",
-      "parse_error": "Échec de l'analyse",
-      "video_fetch_error": "Échec de récupération de la vidéo depuis Twitter: {status}",
-      "unknown_error": "Une erreur inconnue s'est produite",
-      "invalid_url": "URL vidéo invalide",
-      "no_video_found": "Aucune vidéo trouvée",
-      "insufficient_credits": "Crédits insuffisants, disponibles : {available}, requis : {required}",
-      "insufficient_credits_short": "Insuffisants : {available}/{required}",
-      "login_required": "Veuillez vous connecter",
-      "invalid_twitter_url": "Format d'URL Twitter/X invalide",
-      "no_urls_provided": "Aucune URL fournie",
-      "invalid_twitter_urls": "{count} URLs Twitter/X invalides trouvées",
-      "no_valid_urls": "Aucune URL Twitter/X valide trouvée",
-      "batch_parse_error": "Échec du traitement par lots",
-      "successful_videos": "Vidéos Analysées avec Succès",
-      "failed_links": "Liens Échoués",
-      "success_count": "Succès",
-      "failed_count": "Échec",
-      "total_count": "Total",
-      "view_original_tweet": "Voir le Tweet Original",
-      "cost_credits": "Coût",
-      "cost_format": "{credits} crédits",
-      "cost_downloads": "Coût",
-      "cost_format_downloads": "{downloads} téléchargements",
-      "premium_required": "Exclusif aux utilisateurs premium",
-      "paid_user_only": "Réservé aux utilisateurs premium",
-      "purchase_to_unlock_hd": "Acheter le service pour débloquer le téléchargement HD",
-      "download_thumbnail": "Télécharger la miniature",
-      "thumbnail_download_success": "Miniature téléchargée avec succès",
-      "thumbnail_download_failed": "Échec du téléchargement de la miniature",
-      "thumbnail_fetch_error": "Erreur lors de la récupération de la miniature",
-      "no_thumbnail_available": "Aucune miniature disponible",
-      "audio_extract": "Extraction audio",
-      "audio_extract_description": "Extraire le fichier audio de la vidéo",
-      "extract_audio": "Extraire l'audio",
-      "audio_quality": "Qualité audio",
-      "high_quality": "Haute qualité",
-      "audio_download_coming_soon": "Fonction de téléchargement audio bientôt disponible",
-      "audio_download_failed": "Échec du téléchargement audio",
-      "paid_badge": "Premium",
-      "paid_users_exclusive": "Exclusif aux utilisateurs premium",
-      "hd_requires_paid_user": "Le téléchargement vidéo HD nécessite des utilisateurs premium, veuillez d'abord acheter le service",
-      "requires_one_download": "Nécessite 1 téléchargement",
-      "one_download": "1 téléchargement"
-    }
-  },
-  "download_result": {
-    "title": "Résultat de Téléchargement - TwitterDown"
-  },
-  "batch_download_result": {
-    "title": "Résultats de Téléchargement par Lots - TwitterDown"
-  },
-  "api": {
-    "auth": {
-      "login_required": "Veuillez vous connecter d'abord",
-      "login_required_download": "Veuillez vous connecter avant de télécharger des vidéos"
-    },
-    "credits": {
-      "insufficient": "Crédits insuffisants, disponibles : {available}, requis : {required}",
-      "deduction_success": "Crédits déduits avec succès",
-      "deduction_failed": "Échec de la déduction des crédits",
-      "deduction_error": "Erreur de déduction des crédits",
-      "gift_success": "Crédits offerts avec succès",
-      "gift_failed": "Échec de l'offre de crédits",
-      "balance_current": "Crédits disponibles actuels : {balance}",
-      "get_balance_failed": "Échec de l'obtention du solde de crédits",
-      "get_history_failed": "Échec de l'obtention de l'historique des crédits"
-    },
-    "download": {
-      "missing_token": "Paramètre token manquant",
-      "invalid_token": "Token invalide",
-      "invalid_video_url": "URL de vidéo invalide",
-      "video_fetch_failed": "Échec de la récupération de la vidéo : {status}",
-      "video_verification_failed": "Échec de la vérification de la vidéo",
-      "download_failed": "Échec du téléchargement de la vidéo, veuillez réessayer",
-      "server_error": "Erreur interne du serveur",
-      "unknown_error": "Erreur inconnue",
-      "get_history_failed": "Échec de l'obtention de l'historique des téléchargements"
-    },
-    "test": {
-      "invalid_action": "Type d'action invalide",
-      "test_failed": "Échec du test du système de crédits",
-      "download_record_success": "Enregistrement de téléchargement créé avec succès",
-      "download_record_failed": "Échec de la création de l'enregistrement de téléchargement"
-    },
-    "batch": {
-      "max_urls_exceeded": "Maximum {max} URLs autorisées pour le traitement par lots",
-      "invalid_urls_found": "URLs invalides trouvées dans le lot",
-      "no_valid_urls": "Aucune URL valide trouvée dans le lot"
-    }
-  }
-} 
+}
