@@ -49,8 +49,6 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        # 先拉取远程更改以避免推送冲突
-        git pull origin main --rebase
         git add public/sitemap.xml
         git commit -m "chore: update sitemap.xml [auto-generated]"
         git push
