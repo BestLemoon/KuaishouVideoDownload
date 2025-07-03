@@ -21,9 +21,9 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations();
 
-  const pageTitle = t("metadata.title") || "TwitterDown";
-  const pageDescription = t("metadata.description") || "Download Twitter videos quickly and easily.";
-  const siteName = t("metadata.title") || "TwitterDown";
+  const pageTitle = t("metadata.title") || "KuaishouVideoDownload";
+  const pageDescription = t("metadata.description") || "Download Kuaishou videos quickly and easily.";
+  const siteName = t("metadata.title") || "KuaishouVideoDownload";
   const ogImageUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/og-preview.png`;
 
   let canonicalUrl = `${process.env.NEXT_PUBLIC_WEB_URL}`;

@@ -3,22 +3,27 @@
  */
 
 /**
- * 验证Twitter/X URL格式
+ * 验证快手 URL格式
  */
-export function isValidTwitterUrl(url: string): boolean {
+export function isValidKuaishouUrl(url: string): boolean {
   if (!url || typeof url !== 'string') {
     return false;
   }
 
-  // 匹配 Twitter/X URL 格式
-  const twitterUrlPattern = /^https?:\/\/(?:www\.)?(twitter\.com|x\.com)\/([^\/]+)\/status\/(\d+)(?:\?.*)?$/i;
-  return twitterUrlPattern.test(url.trim());
+  // Only match domain: kuaishou.com or kwai.com, ignore the rest
+  // Supported domains:
+  // - https://www.kuaishou.com/...
+  // - https://kuaishou.com/...
+  // - https://www.kwai.com/...
+  // - https://kwai.com/...
+  const kuaishouDomainPattern = /^https?:\/\/(?:www\.)?(kuaishou\.com|kwai\.com)(\/|$)/i;
+  return kuaishouDomainPattern.test(url.trim());
 }
 
 /**
- * 验证多个Twitter/X URL
+ * 验证多个快手 URL
  */
-export function validateTwitterUrls(urls: string[]): {
+export function validateKuaishouUrls(urls: string[]): {
   valid: string[];
   invalid: string[];
   errors: { url: string; error: string }[];
@@ -33,13 +38,13 @@ export function validateTwitterUrls(urls: string[]): {
       return; // 跳过空行
     }
 
-    if (isValidTwitterUrl(trimmedUrl)) {
+    if (isValidKuaishouUrl(trimmedUrl)) {
       valid.push(trimmedUrl);
     } else {
       invalid.push(trimmedUrl);
       errors.push({
         url: trimmedUrl,
-        error: 'Invalid Twitter/X URL format'
+        error: 'Invalid Kuaishou URL format'
       });
     }
   });
@@ -48,30 +53,37 @@ export function validateTwitterUrls(urls: string[]): {
 }
 
 /**
- * 从Twitter URL中提取信息
+ * 从快手 URL中提取信息
  */
-export function extractTwitterInfo(url: string): {
-  username: string | null;
-  statusId: string | null;
+export function extractKuaishouInfo(url: string): {
+  videoId: string | null;
+  domain: string | null;
 } {
-  const match = url.match(/(?:twitter\.com|x\.com)\/([^\/]+)\/status\/(\d+)/i);
-  
+  const match = url.match(/(?:kuaishou\.com|kwai\.com|v\.kuaishou\.com)\/(?:short-video\/)?([a-zA-Z0-9_-]+)/i);
+  const domainMatch = url.match(/https?:\/\/(?:www\.)?(kuaishou\.com|kwai\.com|v\.kuaishou\.com)/i);
+
   return {
-    username: match ? match[1] : null,
-    statusId: match ? match[2] : null
+    videoId: match ? match[1] : null,
+    domain: domainMatch ? domainMatch[1] : null
   };
 }
 
 /**
- * 清理和标准化Twitter URL
+ * 清理和标准化快手 URL
  */
-export function normalizeTwitterUrl(url: string): string {
+export function normalizeKuaishouUrl(url: string): string {
   const trimmed = url.trim();
-  
+
   // 如果没有协议，添加https
-  if (trimmed.match(/^(twitter\.com|x\.com)/i)) {
+  if (trimmed.match(/^(kuaishou\.com|kwai\.com|v\.kuaishou\.com)/i)) {
     return `https://${trimmed}`;
   }
-  
+
   return trimmed;
-} 
+}
+
+// 保持向后兼容性的别名函数
+export const isValidTwitterUrl = isValidKuaishouUrl;
+export const validateTwitterUrls = validateKuaishouUrls;
+export const extractTwitterInfo = extractKuaishouInfo;
+export const normalizeTwitterUrl = normalizeKuaishouUrl;

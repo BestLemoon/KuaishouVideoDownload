@@ -154,12 +154,13 @@
       "download_no": "Download No",
       "file_name": "File Name",
       "original_tweet": "Original Tweet",
+      "original_video": "Original Video",
       "video_resolution": "Resolution",
       "video_quality": "Video Quality",
       "file_size": "File Size",
       "credits_consumed": "Credits Used",
       "download_status": "Status",
-      "username": "Twitter User",
+      "username": "Username",
       "created_at": "Download Time"
     },
     "status": {

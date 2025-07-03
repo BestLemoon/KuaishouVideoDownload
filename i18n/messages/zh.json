@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "TwitterDown - 免费 Twitter 视频下载器 | 在线下载推特视频",
-    "description": "TwitterDown 是一个免费的在线 Twitter 视频下载工具。高质量下载 Twitter 视频、GIF 和图片。快速、安全、易于使用。",
-    "keywords": "twitter 视频下载器, 推特视频下载, twitter 视频下载, 推特 gif 下载器, 保存推特视频"
+    "title": "KuaishouVideoDownload - 免费快手视频下载器 | 在线下载快手视频",
+    "description": "KuaishouVideoDownload 是一个免费的在线快手视频下载工具。高质量下载快手视频、去水印。快速、安全、易于使用。",
+    "keywords": "快手视频下载器, 快手视频下载, 快手去水印, 保存快手视频"
   },
   "user": {
     "sign_in": "登录",
@@ -35,7 +35,7 @@
   },
   "my_orders": {
     "title": "我的订单",
-    "description": "在 TwitterDown 上购买的订单。",
+    "description": "在 KuaishouVideoDownload 上购买的订单。",
     "no_orders": "未找到订单",
     "tip": "",
     "activate_order": "激活订单",
@@ -67,8 +67,8 @@
   },
   "api_keys": {
     "title": "API 密钥",
-    "meta_title": "API 密钥管理 - TwitterDown",
-    "create_api_key_meta_title": "创建 API 密钥 - TwitterDown",
+    "meta_title": "API 密钥管理 - KuaishouVideoDownload",
+    "create_api_key_meta_title": "创建 API 密钥 - KuaishouVideoDownload",
     "tip": "请妥善保管您的 API 密钥，避免泄露，使用快捷指令可直接从App通过分享下载视频",
     "premium_only_tip": "API 功能仅限付费用户使用，请升级到高级版以获取 API 访问权限",
     "no_api_keys": "没有 API 密钥",
@@ -109,7 +109,7 @@
   },
   "blog": {
     "title": "博客",
-    "description": "关于 TwitterDown 的新闻、资源和更新",
+    "description": "关于 KuaishouVideoDownload 的新闻、资源和更新",
     "read_more_text": "阅读更多"
   },
   "my_invites": {
@@ -120,7 +120,7 @@
     "edit_invite_link": "编辑邀请链接",
     "copy_invite_link": "复制邀请链接",
     "invite_code": "邀请码",
-    "invite_tip": "每邀请 1 位朋友购买 TwitterDown，奖励 10 次下载。",
+    "invite_tip": "每邀请 1 位朋友购买 KuaishouVideoDownload，奖励 10 次下载。",
     "invite_balance": "邀请奖励余额",
     "total_invite_count": "总邀请人数",
     "total_paid_count": "已充值人数",
@@ -128,7 +128,7 @@
     "update_invite_code": "设置邀请码",
     "update_invite_code_tip": "输入你的自定义邀请码",
     "update_invite_button": "保存",
-    "no_orders": "你需要先购买过 TwitterDown 才能邀请朋友",
+    "no_orders": "你需要先购买过 KuaishouVideoDownload 才能邀请朋友",
     "no_affiliates": "你暂无邀请朋友的权限，请联系我们申请开通。",
     "table": {
       "invite_time": "邀请时间",
@@ -153,13 +153,14 @@
     "table": {
       "download_no": "下载编号",
       "file_name": "文件名",
-      "original_tweet": "原始 Tweet",
+      "original_tweet": "原始推文",
+      "original_video": "原始视频",
       "video_resolution": "分辨率",
       "video_quality": "视频质量",
       "file_size": "文件大小",
       "credits_consumed": "消耗积分",
       "download_status": "状态",
-      "username": "Twitter 用户",
+      "username": "用户名",
       "created_at": "下载时间"
     },
     "status": {
@@ -170,11 +171,11 @@
   "downloads": {
     "single_download": "单个下载",
     "batch_download": "批量下载",
-    "single_placeholder": "粘贴 Twitter 视频链接...",
-    "batch_placeholder": "每行输入一个 Twitter 视频链接，最多支持 10 个链接...",
+    "single_placeholder": "粘贴快手视频链接...",
+    "batch_placeholder": "每行输入一个快手视频链接，最多支持 10 个链接...",
     "start_download": "开始下载",
     "batch_download_button": "批量下载",
-    "free_user_tip": "输入任意 Twitter/X 视频链接即可免费下载高质量视频，支持所有清晰度，无限制下载",
+    "free_user_tip": "输入任意快手视频链接即可免费下载高质量视频，支持所有清晰度，无限制下载",
     "batch_processing": "批量处理",
     "high_speed": "高速下载",
     "unlimited": "无限制",
@@ -204,31 +205,28 @@
       "video_preview": "视频预览",
       "loading": "解析中...",
       "parse_error": "解析失败",
-      "video_fetch_error": "从Twitter获取视频失败: {status}",
+      "video_fetch_error": "从快手获取视频失败: {status}",
       "unknown_error": "发生未知错误",
       "invalid_url": "无效的视频链接",
       "no_video_found": "未找到视频",
       "insufficient_credits": "积分不足，当前可用：{available}，需要：{required}",
       "insufficient_credits_short": "积分不足：{available}/{required}",
       "login_required": "请登录",
-      "invalid_twitter_url": "无效的Twitter/X链接格式",
+      "invalid_twitter_url": "无效的快手链接格式",
       "no_urls_provided": "未提供链接",
-      "invalid_twitter_urls": "发现{count}个无效的Twitter/X链接",
-      "no_valid_urls": "没有找到有效的Twitter/X链接",
+      "invalid_twitter_urls": "发现{count}个无效的快手链接",
+      "no_valid_urls": "没有找到有效的快手链接",
       "batch_parse_error": "批量处理失败",
       "successful_videos": "成功解析的视频",
       "failed_links": "处理失败的链接",
       "success_count": "成功",
       "failed_count": "失败",
       "total_count": "总计",
-      "view_original_tweet": "查看原推文",
+      "view_original_tweet": "查看原作品",
       "cost_credits": "费用",
       "cost_format": "{credits} 积分",
       "cost_downloads": "费用",
       "cost_format_downloads": "{downloads} 次下载",
-
-
-
       "premium_required": "付费用户专享",
       "paid_user_only": "付费用户专享",
       "purchase_to_unlock_hd": "购买服务解锁高清下载",
@@ -252,10 +250,10 @@
     }
   },
   "download_result": {
-    "title": "下载结果 - TwitterDown"
+    "title": "下载结果 - KuaishouVideoDownload"
   },
   "batch_download_result": {
-    "title": "批量下载结果 - TwitterDown"
+    "title": "批量下载结果 - KuaishouVideoDownload"
   },
   "api": {
     "auth": {

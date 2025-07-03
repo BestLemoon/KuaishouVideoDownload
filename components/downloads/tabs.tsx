@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/icon";
 import { useAppContext } from "@/contexts/app";
 import { useTranslations } from "next-intl";
-import { isValidTwitterUrl, validateTwitterUrls, normalizeTwitterUrl } from '@/lib/url-validator';
+import { isValidKuaishouUrl, validateKuaishouUrls, normalizeKuaishouUrl } from '@/lib/url-validator';
 
 import { toast } from "sonner";
 
@@ -36,7 +36,7 @@ export default function DownloadTabs({}: DownloadTabsProps = {}) {
   // Check if user can use free download and premium status
   useEffect(() => {
     const checkFreeUsage = () => {
-      const downloadCount = parseInt(localStorage.getItem("twitter_download_count") || "0");
+      const downloadCount = parseInt(localStorage.getItem("kuaishou_download_count") || "0");
       setFreeDownloadCount(downloadCount);
       if (downloadCount >= 5 && !user) {
         setCanUseFree(false);
@@ -53,16 +53,16 @@ export default function DownloadTabs({}: DownloadTabsProps = {}) {
     }
 
     // URL格式验证
-    const normalizedUrl = normalizeTwitterUrl(singleUrl.trim());
-    if (!isValidTwitterUrl(normalizedUrl)) {
-      toast.error(t('results.invalid_twitter_url'));
+    const normalizedUrl = normalizeKuaishouUrl(singleUrl.trim());
+    if (!isValidKuaishouUrl(normalizedUrl)) {
+      toast.error(t('results.invalid_kuaishou_url'));
       return;
     }
 
     setIsLoading(true);
     
     try {
-      const response = await fetch('/api/twitter', {
+      const response = await fetch('/api/kuaishou', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -98,11 +98,11 @@ export default function DownloadTabs({}: DownloadTabsProps = {}) {
     }
 
     // 验证URL格式
-    const normalizedUrls = urls.map(url => normalizeTwitterUrl(url));
-    const validation = validateTwitterUrls(normalizedUrls);
+    const normalizedUrls = urls.map(url => normalizeKuaishouUrl(url));
+    const validation = validateKuaishouUrls(normalizedUrls);
 
     if (validation.invalid.length > 0) {
-      toast.error(t('results.invalid_twitter_urls', { count: validation.invalid.length }));
+      toast.error(t('results.invalid_kuaishou_urls', { count: validation.invalid.length }));
       return;
     }
 
@@ -114,7 +114,7 @@ export default function DownloadTabs({}: DownloadTabsProps = {}) {
     setIsBatchLoading(true);
 
     try {
-      const response = await fetch('/api/twitter/batch', {
+      const response = await fetch('/api/kuaishou/batch', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

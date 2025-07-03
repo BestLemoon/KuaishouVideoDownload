@@ -63,15 +63,16 @@ export default async function () {
   };
 
   const columns: TableColumn[] = [
-    { 
-      name: "original_tweet_url", 
-      title: t("download_history.table.original_tweet"),
+    {
+      name: "original_video_url",
+      title: t("download_history.table.original_video"),
       allowHtml: true,
       callback: (item: any) => {
-        if (item.original_tweet_url && item.username) {
-          return `<a href="${item.original_tweet_url}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline">@${item.username}</a>`;
-        } else if (item.username) {
-          return `@${item.username}`;
+        // 优先使用 url 字段，如果没有则使用 original_tweet_url
+        const originalUrl = item.url || item.original_tweet_url;
+
+        if (originalUrl) {
+          return `<a href="${originalUrl}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline">${originalUrl}</a>`;
         }
         return "-";
       }
