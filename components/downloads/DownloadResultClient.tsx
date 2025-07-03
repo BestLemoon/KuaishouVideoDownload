@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+
 import Icon from "@/components/icon";
 import { useAppContext } from "@/contexts/app";
 import { toast } from "sonner";
@@ -23,8 +23,9 @@ interface ParsedData {
   thumbnail: string;
   videos: VideoInfo[];
   text: string;
-  username: string;
-  statusId: string;
+  videoId: string;
+  domain?: string;
+  originalUrl?: string;
 }
 
 interface UserCredits {
@@ -90,16 +91,14 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
     try {
       // 1. 调用API获取视频URL和文件名
       const token = video.downloadUrl.split('token=')[1].split('&')[0]; // Extract token
-      const apiResponse = await fetch('/api/twitter/get-download-details', {
+      const apiResponse = await fetch('/api/kuaishou/get-download-details', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           token,
-          original_url: `https://x.com/${downloadData.username}/status/${downloadData.statusId}`,
-          username: downloadData.username,
-          status_id: downloadData.statusId,
+          video_id: downloadData.videoId,
         }),
       });
 
@@ -162,16 +161,6 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
       return;
     }
 
-    if (!user) {
-      setShowSignModal(true);
-      return;
-    }
-
-    if (userCredits && userCredits.available_credits < 1) {
-      toast.error(t('insufficient_downloads'));
-      return;
-    }
-
     const downloadKey = 'thumbnail';
     setDownloadingItems(prev => new Set(prev).add(downloadKey));
 
@@ -185,7 +174,7 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = `${downloadData.username}_${downloadData.statusId}_thumbnail.jpg`;
+      link.download = `kuaishou_${downloadData.videoId}_thumbnail.jpg`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -205,87 +194,7 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
     }
   };
 
-  const handleAudioDownload = async () => {
 
-    const downloadKey = 'audio';
-    setDownloadingItems(prev => new Set(prev).add(downloadKey));
-    
-    try {
-      const apiResponse = await fetch('/api/twitter/get-audio-download', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          original_url: `https://x.com/${downloadData.username}/status/${downloadData.statusId}`,
-          username: downloadData.username,
-          status_id: downloadData.statusId,
-        }),
-      });
-
-      if (!apiResponse.ok) {
-        const errorData = await apiResponse.json().catch(() => ({ message: t('audio_download_failed') }));
-        throw new Error(errorData.message || `API Error: ${apiResponse.status}`);
-      }
-
-      const result = await apiResponse.json();
-      if (result.code !== 0) {
-        throw new Error(result.message || t('audio_download_failed'));
-      }
-      
-      const { audioBlob, audioUrl, filename, creditsRemaining } = result.data;
-
-      if (audioBlob) {
-        // 如果API返回了音频数据，直接下载
-        const blob = new Blob([new Uint8Array(audioBlob)], { type: 'audio/mpeg' });
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = filename;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        window.URL.revokeObjectURL(url);
-      } else if (audioUrl) {
-        // 如果API返回了URL，前端fetch下载
-        const audioResponse = await fetch(audioUrl);
-        if (!audioResponse.ok) {
-          throw new Error(t('audio_download_failed'));
-        }
-        
-        const blob = await audioResponse.blob();
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = filename;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        window.URL.revokeObjectURL(url);
-      }
-
-      // 更新积分余额
-      if (userCredits && creditsRemaining !== undefined) {
-        setUserCredits(prev => prev ? { ...prev, available_credits: creditsRemaining } : null);
-      }
-
-      toast.success(t('download_success'), {
-        description: `${filename} - Audio MP3`
-      });
-
-    } catch (error) {
-      console.error('Audio download error:', error);
-      toast.error(t('audio_download_failed'), {
-        description: error instanceof Error ? error.message : t('unknown_error')
-      });
-    } finally {
-      setDownloadingItems(prev => {
-        const newSet = new Set(prev);
-        newSet.delete(downloadKey);
-        return newSet;
-      });
-    }
-  };
 
   const handleNewDownload = () => {
     router.push('/');
@@ -330,35 +239,32 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
               
               {/* Content */}
               <div className="flex-1 space-y-3">
-                {/* User info */}
-                <div className="flex items-center gap-2">
-                  <Avatar className="w-10 h-10">
-                    <AvatarImage src={`https://unavatar.io/twitter/${downloadData.username}`} />
-                    <AvatarFallback>{downloadData.username.charAt(0).toUpperCase()}</AvatarFallback>
-                  </Avatar>
-                  <span className="font-medium text-lg">@{downloadData.username}</span>
-                </div>
-                
-                {/* Tweet text */}
+                {/* Video title from text */}
                 {downloadData.text && (
-                  <p className="text-muted-foreground">
+                  <h3 className="font-medium text-lg line-clamp-2">
                     {downloadData.text}
-                  </p>
+                  </h3>
                 )}
                 
-                {/* Tweet link and Downloads info */}
-                <div className="flex items-center gap-6 text-sm">
+                {/* Domain info */}
+                {downloadData.domain && (
+                  <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                    <Icon name="RiGlobalLine" className="w-4 h-4" />
+                    {downloadData.domain}
+                  </div>
+                )}
+
+                {/* View original video link */}
+                <div className="flex items-center gap-4 text-xs">
                   <a 
-                    href={`https://x.com/${downloadData.username}/status/${downloadData.statusId}`}
+                    href={downloadData.originalUrl || downloadData.videos[0]?.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-1 text-primary hover:underline"
                   >
-                    <Icon name="RiExternalLinkLine" className="w-4 h-4" />
-                    View original post
+                    <Icon name="RiExternalLinkLine" className="w-3 h-3" />
+                    {t('view_original_tweet')}
                   </a>
-                  
-
                 </div>
 
                 {/* Thumbnail Download Button */}
@@ -400,9 +306,9 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
           </CardHeader>
           <CardContent>
             <div className={`grid gap-6 ${
-              downloadData.videos.length + 1 <= 2 ? 'md:grid-cols-2' :
-              downloadData.videos.length + 1 <= 3 ? 'md:grid-cols-2 lg:grid-cols-3' :
-              downloadData.videos.length + 1 <= 4 ? 'md:grid-cols-2 lg:grid-cols-4' :
+              downloadData.videos.length <= 2 ? 'md:grid-cols-2' :
+              downloadData.videos.length <= 3 ? 'md:grid-cols-2 lg:grid-cols-3' :
+              downloadData.videos.length <= 4 ? 'md:grid-cols-2 lg:grid-cols-4' :
               'md:grid-cols-2 lg:grid-cols-5'
             }`}>
               {/* Video Downloads */}
@@ -464,53 +370,7 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
                 );
               })}
 
-              {/* Audio Download Card - Always last */}
-              <Card className="border-2 transition-all duration-200 hover:border-primary/50 hover:shadow-md">
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <Badge variant="secondary" className="bg-gradient-to-r from-purple-500 to-pink-600 text-white">
-                        <Icon name="RiVolumeUpLine" className="w-3 h-3 mr-1" />
-                        Audio
-                      </Badge>
-                    </div>
-                    <Badge variant="outline" className="font-mono text-sm">
-                      MP3
-                    </Badge>
-                  </div>
-                  
-                  <div className="space-y-3 text-sm">
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">{t('format')}:</span>
-                      <span className="font-medium">MP3</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">{t('audio_quality')}:</span>
-                      <span className="font-medium">{t('high_quality')}</span>
-                    </div>
 
-                  </div>
-                  
-                  <Button 
-                    className="w-full" 
-                    onClick={handleAudioDownload}
-                    disabled={downloadingItems.has('audio')}
-                    size="lg"
-                  >
-                    {downloadingItems.has('audio') ? (
-                      <>
-                        <Icon name="RiLoader4Line" className="w-4 h-4 mr-2 animate-spin" />
-                        {t('downloading')}
-                      </>
-                    ) : (
-                      <>
-                        <Icon name="RiHeadphoneLine" className="w-4 h-4 mr-2" />
-                        {t('extract_audio')}
-                      </>
-                    )}
-                  </Button>
-                </CardContent>
-              </Card>
             </div>
           </CardContent>
         </Card>

@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 import Icon from "@/components/icon";
 import { useAppContext } from "@/contexts/app";
 import { toast } from "sonner";
@@ -24,8 +24,8 @@ interface BatchResult {
   thumbnail: string | null;
   videos: VideoInfo[];
   text: string;
-  username: string | null;
-  statusId: string | null;
+  videoId: string | null;
+  domain?: string;
   processedAt: string;
 }
 
@@ -53,6 +53,16 @@ interface BatchDownloadResultClientProps {
 }
 
 export default function BatchDownloadResultClient({ batchData }: BatchDownloadResultClientProps) {
+  // 确保 batchData 有正确的结构
+  const safeData = {
+    results: batchData?.results || [],
+    errors: batchData?.errors || [],
+    summary: batchData?.summary || {
+      total: (batchData?.results?.length || 0) + (batchData?.errors?.length || 0),
+      successful: batchData?.results?.length || 0,
+      failed: batchData?.errors?.length || 0
+    }
+  };
   const { user, setShowSignModal } = useAppContext();
   const t = useTranslations('downloads.results');
   const router = useRouter();
@@ -100,7 +110,7 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
     try {
       // 1. 调用API获取视频URL和文件名
       const token = video.downloadUrl.split('token=')[1].split('&')[0];
-      const apiResponse = await fetch('/api/twitter/get-download-details', {
+      const apiResponse = await fetch('/api/kuaishou/get-download-details', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -108,8 +118,7 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
         body: JSON.stringify({
           token,
           original_url: resultItem.originalUrl,
-          username: resultItem.username,
-          status_id: resultItem.statusId,
+          video_id: resultItem.videoId,
         }),
       });
 
@@ -171,7 +180,7 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
       return;
     }
 
-    const downloadKey = `thumbnail-${result.statusId}`;
+    const downloadKey = `thumbnail-${result.videoId}`;
     setDownloadingItems(prev => new Set(prev).add(downloadKey));
 
     try {
@@ -184,7 +193,7 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = `${result.username}_${result.statusId}_thumbnail.jpg`;
+      link.download = `kuaishou_${result.videoId}_thumbnail.jpg`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -204,87 +213,7 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
     }
   };
 
-  const handleAudioDownload = async (result: BatchResult) => {
 
-    const downloadKey = `audio-${result.statusId}`;
-    setDownloadingItems(prev => new Set(prev).add(downloadKey));
-    
-    try {
-      const apiResponse = await fetch('/api/twitter/get-audio-download', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          original_url: result.originalUrl,
-          username: result.username,
-          status_id: result.statusId,
-        }),
-      });
-
-      if (!apiResponse.ok) {
-        const errorData = await apiResponse.json().catch(() => ({ message: t('audio_download_failed') }));
-        throw new Error(errorData.message || `API Error: ${apiResponse.status}`);
-      }
-
-      const apiResult = await apiResponse.json();
-      if (apiResult.code !== 0) {
-        throw new Error(apiResult.message || t('audio_download_failed'));
-      }
-      
-      const { audioBlob, audioUrl, filename, creditsRemaining } = apiResult.data;
-
-      if (audioBlob) {
-        // 如果API返回了音频数据，直接下载
-        const blob = new Blob([new Uint8Array(audioBlob)], { type: 'audio/mpeg' });
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = filename;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        window.URL.revokeObjectURL(url);
-      } else if (audioUrl) {
-        // 如果API返回了URL，前端fetch下载
-        const audioResponse = await fetch(audioUrl);
-        if (!audioResponse.ok) {
-          throw new Error(t('audio_download_failed'));
-        }
-        
-        const blob = await audioResponse.blob();
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = filename;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        window.URL.revokeObjectURL(url);
-      }
-
-      // 更新积分余额
-      if (userCredits && creditsRemaining !== undefined) {
-        setUserCredits(prev => prev ? { ...prev, available_credits: creditsRemaining } : null);
-      }
-
-      toast.success(t('download_success'), {
-        description: `${filename} - Audio MP3`
-      });
-
-    } catch (error) {
-      console.error('Audio download error:', error);
-      toast.error(t('audio_download_failed'), {
-        description: error instanceof Error ? error.message : t('unknown_error')
-      });
-    } finally {
-      setDownloadingItems(prev => {
-        const newSet = new Set(prev);
-        newSet.delete(downloadKey);
-        return newSet;
-      });
-    }
-  };
 
   return (
     <>
@@ -306,30 +235,30 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
         <div className="flex justify-center gap-4 text-sm mb-8">
           <Badge variant="default" className="px-3 py-1">
             <Icon name="RiCheckLine" className="w-4 h-4 mr-1" />
-            {t('success_count')}: {batchData.summary.successful}
+            {t('success_count')}: {safeData.summary.successful}
           </Badge>
-          {batchData.summary.failed > 0 && (
+          {safeData.summary.failed > 0 && (
             <Badge variant="destructive" className="px-3 py-1">
               <Icon name="RiCloseLine" className="w-4 h-4 mr-1" />
-              {t('failed_count')}: {batchData.summary.failed}
+              {t('failed_count')}: {safeData.summary.failed}
             </Badge>
           )}
           <Badge variant="secondary" className="px-3 py-1">
-            {t('total_count')}: {batchData.summary.total}
+            {t('total_count')}: {safeData.summary.total}
           </Badge>
         </div>
 
 
 
         {/* Successful Results */}
-        {batchData.results.length > 0 && (
+        {safeData.results.length > 0 && (
           <div className="space-y-6 mb-8">
             <h2 className="text-xl font-semibold flex items-center gap-2">
               <Icon name="RiCheckLine" className="w-5 h-5 text-green-500" />
-              {t('successful_videos')} ({batchData.results.length})
+              {t('successful_videos')} ({safeData.results.length})
             </h2>
-            
-            {batchData.results.map((result, index) => (
+
+            {safeData.results.map((result, index) => (
               <Card key={index} className="overflow-hidden">
                 <CardHeader>
                   <div className="flex gap-4">
@@ -346,20 +275,11 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
                     
                     {/* Content */}
                     <div className="flex-1 space-y-2">
-                      {/* User info */}
-                      <div className="flex items-center gap-2">
-                        <Avatar className="w-8 h-8">
-                          <AvatarImage src={`https://unavatar.io/twitter/${result.username}`} />
-                          <AvatarFallback>{result.username?.charAt(0).toUpperCase()}</AvatarFallback>
-                        </Avatar>
-                        <span className="font-medium">@{result.username}</span>
-                      </div>
-                      
-                      {/* Tweet text */}
+                      {/* Video title from text */}
                       {result.text && (
-                        <p className="text-sm text-muted-foreground line-clamp-2">
+                        <h3 className="font-medium text-lg line-clamp-2">
                           {result.text}
-                        </p>
+                        </h3>
                       )}
                       
                       {/* Tweet link and Actions */}
@@ -380,7 +300,7 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
                             variant="ghost"
                             size="sm"
                             onClick={() => handleThumbnailDownload(result)}
-                            disabled={downloadingItems.has(`thumbnail-${result.statusId}`)}
+                            disabled={downloadingItems.has(`thumbnail-${result.videoId}`)}
                             className="h-6 px-2 text-xs"
                           >
                             <Icon name="RiImageLine" className="w-3 h-3 mr-1" />
@@ -396,23 +316,18 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
 
                 <CardContent>
                   <div className={`grid gap-3 ${
-                    result.videos.length + 1 <= 2 ? 'md:grid-cols-2' :
-                    result.videos.length + 1 <= 3 ? 'md:grid-cols-2 lg:grid-cols-3' :
-                    result.videos.length + 1 <= 4 ? 'md:grid-cols-2 lg:grid-cols-4' :
+                    result.videos.length <= 2 ? 'md:grid-cols-2' :
+                    result.videos.length <= 3 ? 'md:grid-cols-2 lg:grid-cols-3' :
+                    result.videos.length <= 4 ? 'md:grid-cols-2 lg:grid-cols-4' :
                     'md:grid-cols-2 lg:grid-cols-5'
                   }`}>
                     {result.videos.map((video, videoIndex) => {
                       const isHD = isHighDefinition(video.resolution, result.videos);
                       const isDownloading = downloadingItems.has(video.downloadUrl);
-                      const canDownload = true;
-                      const canDownloadThisHD = true;
+
                       
                       return (
-                        <Card key={videoIndex} className={`border-2 transition-all duration-200 ${
-                          canDownloadThisHD 
-                            ? 'hover:border-primary/50 hover:shadow-md' 
-                            : 'opacity-75 border-muted'
-                        }`}>
+                        <Card key={videoIndex} className="border-2 transition-all duration-200 hover:border-primary/50 hover:shadow-md">
                           <CardContent className="p-4 space-y-3">
                             <div className="flex items-center justify-between">
                               <div className="space-y-1">
@@ -452,45 +367,6 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
                         </Card>
                       );
                     })}
-
-                    {/* Audio Download Card - Always last */}
-                    <Card className="border-2 transition-all duration-200 hover:border-primary/50 hover:shadow-md">
-                      <CardContent className="p-4 space-y-3">
-                        <div className="flex items-center justify-between">
-                          <div className="space-y-1">
-                            <div className="flex items-center gap-2">
-                              <span className="font-medium text-lg">MP3</span>
-                              <Badge variant="secondary" className="bg-gradient-to-r from-purple-500 to-pink-600 text-white">
-                                <Icon name="RiVolumeUpLine" className="w-3 h-3 mr-1" />
-                                Audio
-                              </Badge>
-                            </div>
-                            <p className="text-sm text-muted-foreground">
-                              {t('format')}: MP3
-                            </p>
-                          </div>
-                        </div>
-                        
-                        <Button
-                          onClick={() => handleAudioDownload(result)}
-                          disabled={downloadingItems.has(`audio-${result.statusId}`)}
-                          className="w-full"
-                          size="sm"
-                        >
-                          {downloadingItems.has(`audio-${result.statusId}`) ? (
-                            <>
-                              <Icon name="RiLoader4Line" className="w-4 h-4 mr-2 animate-spin" />
-                              {t('downloading')}
-                            </>
-                          ) : (
-                            <>
-                              <Icon name="RiHeadphoneLine" className="w-4 h-4 mr-2" />
-                              {t('extract_audio')}
-                            </>
-                          )}
-                        </Button>
-                      </CardContent>
-                    </Card>
                   </div>
                 </CardContent>
               </Card>
@@ -499,14 +375,14 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
         )}
 
         {/* Error Results */}
-        {batchData.errors.length > 0 && (
+        {safeData.errors.length > 0 && (
           <div className="space-y-4 mb-8">
             <h2 className="text-xl font-semibold flex items-center gap-2">
               <Icon name="RiErrorWarningLine" className="w-5 h-5 text-red-500" />
-              {t('failed_links')} ({batchData.errors.length})
+              {t('failed_links')} ({safeData.errors.length})
             </h2>
-            
-            {batchData.errors.map((error, index) => (
+
+            {safeData.errors.map((error, index) => (
               <Card key={index} className="border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-900/20">
                 <CardContent className="p-4">
                   <div className="flex items-start gap-3">

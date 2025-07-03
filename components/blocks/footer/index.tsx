@@ -80,19 +80,9 @@ export default function Footer({ footer }: { footer: FooterType }) {
                       build with ShipAny
                     </a>
                   )}
-                  <a
-                    href="https://asphaltcalculator.rocks/"
-                    target="_blank"
-                    className="px-2 text-muted-foreground hover:text-primary text-xs"
-                  >
-                    Asphalt Calculator
-                  </a>
                 </p>
               )}
-              <a href="https://startupfa.me/s/twitterdown?utm_source=twitterdown.com" target="_blank"><img src="https://startupfa.me/badges/featured/default-small.webp" alt="Featured on Startup Fame" width="224" height="36" /></a>
-              <a href="https://fazier.com/launches/twitterdown.com" target="_blank"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=light" width="250" alt="Fazier badge" /></a>
             </div>
-
             {footer.agreement && (
               <ul className="flex justify-center gap-4 lg:justify-start">
                 {footer.agreement.items?.map((item, i) => (

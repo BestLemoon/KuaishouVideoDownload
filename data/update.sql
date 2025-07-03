@@ -28,10 +28,17 @@ CREATE TABLE IF NOT EXISTS download_history (
     description TEXT -- 视频描述或推文内容
 );
 
+-- 添加缺失的字段到 download_history 表
+ALTER TABLE download_history ADD COLUMN IF NOT EXISTS platform VARCHAR(50); -- 平台标识：twitter, kuaishou等
+ALTER TABLE download_history ADD COLUMN IF NOT EXISTS url TEXT; -- 通用的原始URL字段
+ALTER TABLE download_history ADD COLUMN IF NOT EXISTS video_id VARCHAR(255); -- 通用视频ID字段
+
 -- 创建索引
 CREATE INDEX IF NOT EXISTS idx_download_history_user_uuid ON download_history(user_uuid);
 CREATE INDEX IF NOT EXISTS idx_download_history_created_at ON download_history(created_at);
 CREATE INDEX IF NOT EXISTS idx_download_history_status ON download_history(download_status);
+CREATE INDEX IF NOT EXISTS idx_download_history_platform ON download_history(platform);
+CREATE INDEX IF NOT EXISTS idx_download_history_video_id ON download_history(video_id);
 
 -- 为现有表创建缺失的索引
 CREATE INDEX IF NOT EXISTS idx_credits_user_uuid ON credits(user_uuid);

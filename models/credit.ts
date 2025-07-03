@@ -19,15 +19,18 @@ export interface DownloadHistory {
   created_at?: string
   user_uuid: string
   video_url: string
-  original_tweet_url?: string
+  url?: string // 通用的原始URL字段
+  original_tweet_url?: string // 保持向后兼容
   video_resolution?: string
   video_quality?: string
   file_name?: string
   file_size?: number
   credits_consumed: number
   download_status?: string
+  platform?: string // 平台标识：twitter, kuaishou等
   username?: string
-  status_id?: string
+  status_id?: string // Twitter状态ID
+  video_id?: string // 通用视频ID字段
   description?: string
 }
 
@@ -425,21 +428,58 @@ export function calculateRequiredCredits(resolution: string): number {
  */
 export async function createDownloadHistory(record: Omit<DownloadHistory, 'id' | 'created_at'>): Promise<boolean> {
   try {
+    console.log('[createDownloadHistory] 开始创建下载历史记录:', {
+      download_no: record.download_no,
+      user_uuid: record.user_uuid,
+      platform: record.platform,
+      video_url: record.video_url ? '已提供' : '未提供'
+    });
+
     const client = getSupabaseClient()
-    
-    const { error } = await client
+
+    // 添加created_at字段
+    const recordWithTimestamp = {
+      ...record,
+      created_at: new Date().toISOString()
+    };
+
+    const { data, error } = await client
       .from('download_history')
-      .insert(record)
-    
+      .insert(recordWithTimestamp)
+      .select()
+
     if (error) {
-      console.error('Failed to create download history:', error)
+      console.error('[createDownloadHistory] 数据库插入失败:', {
+        error: error.message,
+        code: error.code,
+        details: error.details,
+        hint: error.hint,
+        record: {
+          download_no: record.download_no,
+          user_uuid: record.user_uuid,
+          platform: record.platform
+        }
+      });
       return false
     }
-    
-    console.log(`Download history created: ${record.download_no}, ${record.user_uuid}`)
+
+    console.log('[createDownloadHistory] 下载历史记录创建成功:', {
+      download_no: record.download_no,
+      user_uuid: record.user_uuid,
+      platform: record.platform,
+      inserted_id: data?.[0]?.id
+    });
     return true
   } catch (error) {
-    console.error('Failed to create download history:', error)
+    console.error('[createDownloadHistory] 创建下载历史记录异常:', {
+      error: error instanceof Error ? error.message : String(error),
+      stack: error instanceof Error ? error.stack : undefined,
+      record: {
+        download_no: record.download_no,
+        user_uuid: record.user_uuid,
+        platform: record.platform
+      }
+    });
     return false
   }
 }
@@ -542,6 +582,133 @@ export async function getUserDownloadStats(user_uuid: string): Promise<{
 }
 
 /**
+ * 获取用户特定平台的下载历史
+ */
+export async function getUserDownloadHistoryByPlatform(
+  user_uuid: string,
+  platform: string,
+  limit: number = 50,
+  offset: number = 0
+): Promise<{ records: DownloadHistory[], total: number }> {
+  try {
+    const client = getSupabaseClient()
+
+    // 先获取总数
+    const { count, error: countError } = await client
+      .from('download_history')
+      .select('*', { count: 'exact', head: true })
+      .eq('user_uuid', user_uuid)
+      .eq('platform', platform)
+
+    if (countError) {
+      console.error('Failed to get download history count:', countError)
+      return { records: [], total: 0 }
+    }
+
+    // 获取分页数据
+    const { data: records, error } = await client
+      .from('download_history')
+      .select('*')
+      .eq('user_uuid', user_uuid)
+      .eq('platform', platform)
+      .order('created_at', { ascending: false })
+      .range(offset, offset + limit - 1)
+
+    if (error) {
+      console.error('Failed to get user download history by platform:', error)
+      return { records: [], total: 0 }
+    }
+
+    return {
+      records: records || [],
+      total: count || 0
+    }
+  } catch (error) {
+    console.error('Failed to get user download history by platform:', error)
+    return { records: [], total: 0 }
+  }
+}
+
+/**
+ * 获取用户特定平台的下载统计
+ */
+export async function getUserDownloadStatsByPlatform(
+  user_uuid: string,
+  platform: string
+): Promise<{
+  total_downloads: number
+  total_credits_consumed: number
+  hd_downloads: number
+  sd_downloads: number
+}> {
+  try {
+    const client = getSupabaseClient()
+
+    const { data: records, error } = await client
+      .from('download_history')
+      .select('video_resolution, credits_consumed')
+      .eq('user_uuid', user_uuid)
+      .eq('platform', platform)
+      .eq('download_status', 'completed')
+
+    if (error) {
+      console.error('Failed to get user download stats by platform:', error)
+      return {
+        total_downloads: 0,
+        total_credits_consumed: 0,
+        hd_downloads: 0,
+        sd_downloads: 0
+      }
+    }
+
+    if (!records) {
+      return {
+        total_downloads: 0,
+        total_credits_consumed: 0,
+        hd_downloads: 0,
+        sd_downloads: 0
+      }
+    }
+
+    const stats = {
+      total_downloads: records.length,
+      total_credits_consumed: records.reduce((sum, record) => sum + (record.credits_consumed || 0), 0),
+      hd_downloads: 0,
+      sd_downloads: 0
+    }
+
+    records.forEach(record => {
+      if (record.video_resolution) {
+        // 检查是否为高清视频
+        const isHD = record.video_resolution.includes('HD') ||
+                     record.video_resolution.includes('1080') ||
+                     record.video_resolution.includes('720') ||
+                     parseInt(record.video_resolution.replace('p', '')) >= 720
+
+        if (isHD) {
+          stats.hd_downloads++
+        } else {
+          stats.sd_downloads++
+        }
+      } else {
+        // 如果没有分辨率信息，默认为标清
+        stats.sd_downloads++
+      }
+    })
+
+    return stats
+  } catch (error) {
+    console.error('Failed to get user download stats by platform:', error)
+    return {
+      total_downloads: 0,
+      total_credits_consumed: 0,
+      hd_downloads: 0,
+      sd_downloads: 0
+    }
+  }
+}
+
+/**
  * 获取所有用户下载历史（管理后台使用）
  */
 export async function getAllDownloadHistory(
@@ -550,18 +717,18 @@ export async function getAllDownloadHistory(
 ): Promise<DownloadHistory[]> {
   try {
     const client = getSupabaseClient()
-    
+
     const { data: records, error } = await client
       .from('download_history')
       .select('*')
       .order('created_at', { ascending: false })
       .range(offset, offset + limit - 1)
-    
+
     if (error) {
       console.error('Failed to get all download history:', error)
       return []
     }
-    
+
     return records || []
   } catch (error) {
     console.error('Failed to get all download history:', error)

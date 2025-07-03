@@ -34,6 +34,10 @@ export async function saveUser(user: User) {
   }
 }
 
+// 简单的内存缓存，避免重复调用
+let userUuidCache: { uuid: string; timestamp: number } | null = null;
+const CACHE_DURATION = 5 * 60 * 1000; // 5分钟缓存
+
 export async function getUserUuid() {
   try {
     // 在静态渲染时直接返回空字符串，避免动态服务器使用错误
@@ -41,37 +45,50 @@ export async function getUserUuid() {
       return "";
     }
 
-    console.log('[Service] getUserUuid - 开始获取用户UUID');
+    // 检查缓存
+    if (userUuidCache && Date.now() - userUuidCache.timestamp < CACHE_DURATION) {
+      return userUuidCache.uuid;
+    }
+
     let user_uuid = "";
 
     const token = await getBearerToken();
-    console.log('[Service] getUserUuid - Bearer token:', token ? '已获取' : '未获取');
 
     if (token) {
       // api key
       if (token.startsWith("sk-")) {
-        console.log('[Service] getUserUuid - 使用API Key获取用户UUID');
-        const user_uuid = await getUserUuidByApiKey(token);
-        console.log('[Service] getUserUuid - API Key用户UUID:', user_uuid ? '已获取' : '未获取');
-        return user_uuid || "";
+        const apiKeyUuid = await getUserUuidByApiKey(token);
+        user_uuid = apiKeyUuid || "";
+        if (user_uuid) {
+          // 更新缓存
+          userUuidCache = { uuid: user_uuid, timestamp: Date.now() };
+          return user_uuid;
+        }
       }
     }
 
-    console.log('[Service] getUserUuid - 尝试从session获取用户UUID');
     const session = await auth();
-    console.log('[Service] getUserUuid - Session状态:', session ? '已获取' : '未获取');
 
-    if (session && session.user && session.user.uuid) {
-      user_uuid = session.user.uuid;
-      console.log('[Service] getUserUuid - Session用户UUID:', user_uuid ? '已获取' : '未获取');
+    if (session && session.user) {
+      // 优先使用uuid字段，如果没有则使用id字段
+      user_uuid = session.user.uuid || session.user.id || "";
+
+      // 如果还是没有UUID，尝试通过email查找用户
+      if (!user_uuid && session.user.email) {
+        const user = await findUserByEmail(session.user.email);
+        user_uuid = user?.uuid || "";
+      }
     }
 
-    console.log('[Service] getUserUuid - 最终返回UUID:', user_uuid ? '已获取' : '未获取');
+    // 更新缓存
+    if (user_uuid) {
+      userUuidCache = { uuid: user_uuid, timestamp: Date.now() };
+    }
+
     return user_uuid;
   } catch (error) {
     // 如果是动态服务器使用错误，静默处理
     if (error instanceof Error && error.message.includes('Dynamic server usage')) {
-      console.log('[Service] getUserUuid - 静态渲染时跳过用户UUID获取');
       return "";
     }
     console.error('[Service] getUserUuid - 获取用户UUID失败:', error);
@@ -178,61 +195,103 @@ export async function checkUserGiftReceived(user_uuid: string): Promise<boolean>
   }
 }
 
+// Premium状态缓存
+let premiumStatusCache: Map<string, { isPremium: boolean; timestamp: number }> = new Map();
+const PREMIUM_CACHE_DURATION = 10 * 60 * 1000; // 10分钟缓存
+
 export async function checkUserIsPremium(user_uuid: string): Promise<boolean> {
   try {
-    console.log('[Service] checkUserIsPremium - 开始检查用户Premium状态:', user_uuid);
-
     if (!user_uuid) {
-      console.log('[Service] checkUserIsPremium - 用户UUID为空，返回false');
       return false;
     }
 
+    // 检查缓存
+    const cached = premiumStatusCache.get(user_uuid);
+    if (cached && Date.now() - cached.timestamp < PREMIUM_CACHE_DURATION) {
+      return cached.isPremium;
+    }
+
     // Check if user has any paid orders
-    console.log('[Service] checkUserIsPremium - 查询用户订单');
     const { getOrdersByUserUuid } = await import("@/models/order");
     const orders = await getOrdersByUserUuid(user_uuid);
-    console.log('[Service] checkUserIsPremium - 用户订单数量:', orders ? orders.length : 0);
+
+    let isPremium = false;
 
     if (orders && orders.length > 0) {
       // User has paid orders, check if any are still valid
       const now = new Date();
-      console.log('[Service] checkUserIsPremium - 检查订单有效性，当前时间:', now.toISOString());
 
       for (const order of orders) {
-        console.log('[Service] checkUserIsPremium - 检查订单:', {
-          order_no: order.order_no,
-          status: order.status,
-          interval: order.interval,
-          expired_at: order.expired_at
-        });
-
         if (order.status === 'paid') {
           // For one-time purchases, consider them premium
           if (order.interval === 'one-time') {
-            console.log('[Service] checkUserIsPremium - 找到一次性付费订单，返回true');
-            return true;
+            isPremium = true;
+            break;
           }
 
           // For subscriptions, check if not expired
           if (order.expired_at) {
             const expiredAt = new Date(order.expired_at);
-            console.log('[Service] checkUserIsPremium - 订阅到期时间:', expiredAt.toISOString());
             if (expiredAt > now) {
-              console.log('[Service] checkUserIsPremium - 订阅未过期，返回true');
-              return true;
-            } else {
-              console.log('[Service] checkUserIsPremium - 订阅已过期');
+              isPremium = true;
+              break;
             }
           }
         }
       }
     }
 
-    console.log('[Service] checkUserIsPremium - 未找到有效的付费订单，返回false');
-    return false;
+    // 更新缓存
+    premiumStatusCache.set(user_uuid, { isPremium, timestamp: Date.now() });
+
+    // 清理过期的缓存条目（简单的清理策略）
+    if (premiumStatusCache.size > 100) {
+      const now = Date.now();
+      for (const [key, value] of premiumStatusCache.entries()) {
+        if (now - value.timestamp > PREMIUM_CACHE_DURATION) {
+          premiumStatusCache.delete(key);
+        }
+      }
+    }
+
+    return isPremium;
   } catch (e) {
     console.error("[Service] checkUserIsPremium - 检查用户Premium状态失败:", e);
-    console.error("[Service] checkUserIsPremium - 错误堆栈:", e instanceof Error ? e.stack : 'No stack trace');
     return false;
   }
+}
+
+/**
+ * 清理用户相关的缓存
+ */
+export function clearUserCache(user_uuid?: string) {
+  if (user_uuid) {
+    // 清理特定用户的缓存
+    premiumStatusCache.delete(user_uuid);
+    if (userUuidCache && userUuidCache.uuid === user_uuid) {
+      userUuidCache = null;
+    }
+  } else {
+    // 清理所有缓存
+    premiumStatusCache.clear();
+    userUuidCache = null;
+  }
+}
+
+/**
+ * 获取缓存统计信息（用于调试）
+ */
+export function getCacheStats() {
+  return {
+    userUuidCache: userUuidCache ? {
+      uuid: userUuidCache.uuid,
+      age: Date.now() - userUuidCache.timestamp
+    } : null,
+    premiumCacheSize: premiumStatusCache.size,
+    premiumCacheEntries: Array.from(premiumStatusCache.entries()).map(([uuid, data]) => ({
+      uuid,
+      isPremium: data.isPremium,
+      age: Date.now() - data.timestamp
+    }))
+  };
 }

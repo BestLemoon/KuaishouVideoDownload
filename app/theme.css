@@ -5,25 +5,25 @@
   --card-foreground: 240 10% 10%;
   --popover: 0 0% 100%;
   --popover-foreground: 240 10% 10%;
-  --primary: 262 83% 58%; /* 紫色 */
+  --primary: 19 99% 50%; /* 快手橙红色 */
   --primary-foreground: 0 0% 100%;
-  --secondary: 320 80% 86%; /* 淡粉色 */
-  --secondary-foreground: 262 83% 58%;
+  --secondary: 19 80% 85%; /* 浅橙色 */
+  --secondary-foreground: 19 99% 50%;
   --muted: 240 20% 95%;
   --muted-foreground: 240 10% 40%;
-  --accent: 300 100% 90%; /* 粉色 */
-  --accent-foreground: 262 83% 58%;
+  --accent: 19 90% 70%; /* 橙色强调色 */
+  --accent-foreground: 19 99% 50%; /* 快手主题色 */
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 100%;
   --border: 240 20% 90%;
   --input: 240 20% 90%;
-  --ring: 262 83% 58%;
+  --ring: 19 99% 50%;
   --radius: 0.5rem;
-  --chart-1: 262 83% 58%;
-  --chart-2: 320 80% 86%;
-  --chart-3: 300 100% 90%;
-  --chart-4: 262 100% 90%;
-  --chart-5: 262 83% 80%;
+  --chart-1: 19 99% 50%;
+  --chart-2: 19 80% 85%;
+  --chart-3: 19 90% 70%;
+  --chart-4: 19 100% 90%;
+  --chart-5: 19 99% 75%;
 }
 
 .dark {
@@ -33,22 +33,22 @@
   --card-foreground: 0 0% 100%;
   --popover: 240 10% 15%;
   --popover-foreground: 0 0% 100%;
-  --primary: 262 83% 68%; /* 更亮的紫色 */
+  --primary: 19 99% 60%; /* 更亮的快手橙红色 */
   --primary-foreground: 0 0% 100%;
-  --secondary: 320 80% 30%; /* 深粉色 */
+  --secondary: 19 70% 30%; /* 深橙色 */
   --secondary-foreground: 0 0% 100%;
   --muted: 240 10% 20%;
   --muted-foreground: 0 0% 80%;
-  --accent: 300 100% 40%;
-  --accent-foreground: 0 0% 100%;
+  --accent: 19 85% 45%; /* 深橙色强调色 */
+  --accent-foreground: 19 99% 60%; /* 快手主题色 */
   --destructive: 0 72.2% 50.6%;
   --destructive-foreground: 0 0% 100%;
   --border: 240 10% 20%;
   --input: 240 10% 20%;
-  --ring: 262 83% 68%;
-  --chart-1: 262 83% 68%;
-  --chart-2: 320 80% 30%;
-  --chart-3: 300 100% 40%;
-  --chart-4: 262 100% 40%;
-  --chart-5: 262 83% 60%;
+  --ring: 19 99% 60%;
+  --chart-1: 19 99% 60%;
+  --chart-2: 19 70% 30%;
+  --chart-3: 19 85% 45%;
+  --chart-4: 19 100% 40%;
+  --chart-5: 19 99% 55%;
 }
