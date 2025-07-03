@@ -67,6 +67,7 @@ export default function Footer({ footer }: { footer: FooterType }) {
             </div>
           </div>
           <div className="mt-8 flex flex-col justify-between gap-4 border-t pt-8 text-center text-sm font-medium text-muted-foreground lg:flex-row lg:items-center lg:text-left">
+
             <div className="flex items-center gap-4 justify-start">
               {footer.copyright && (
                 <p className="m-0">
@@ -82,7 +83,11 @@ export default function Footer({ footer }: { footer: FooterType }) {
                   )}
                 </p>
               )}
+        
+        <a href="https://fazier.com/launches/kuaishou-video-download.com" target="_blank"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=light" width={250} alt="Fazier badge" /></a>
+        <a href="https://startupfa.me/s/kuaishouvideodl?utm_source=kuaishou-video-download.com" target="_blank"><img src="https://startupfa.me/badges/featured-badge-small.webp" alt="Featured on Startup Fame" width="224" height="36" /></a>
             </div>
+
             {footer.agreement && (
               <ul className="flex justify-center gap-4 lg:justify-start">
                 {footer.agreement.items?.map((item, i) => (
@@ -94,6 +99,7 @@ export default function Footer({ footer }: { footer: FooterType }) {
                 ))}
               </ul>
             )}
+
           </div>
         </footer>
       </div>

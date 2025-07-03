@@ -26,9 +26,12 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+.env
 .env.local
 .env.development
 .env.production
+.env.test
+seo_blog_generator/.env
 wrangler.toml
 # vercel
 .vercel
@@ -43,4 +46,17 @@ Makefile
 wrangler.toml
 supabase
 chrome-extension/
-seo_blog_generator/.env
+
+# 安全相关文件
+*.key
+*.pem
+*.p12
+*.pfx
+secrets/
+.secrets
+config/secrets.json
+
+# API Keys 和敏感配置
+**/config/secrets.*
+**/.env*
+!**/.env.example

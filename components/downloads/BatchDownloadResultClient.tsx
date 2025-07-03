@@ -294,19 +294,7 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
                           {t('view_original_tweet')}
                         </a>
                         
-                        {/* Thumbnail Download Button */}
-                        {result.thumbnail && (
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => handleThumbnailDownload(result)}
-                            disabled={downloadingItems.has(`thumbnail-${result.videoId}`)}
-                            className="h-6 px-2 text-xs"
-                          >
-                            <Icon name="RiImageLine" className="w-3 h-3 mr-1" />
-                            {t('download_thumbnail')}
-                          </Button>
-                        )}
+
                         
                        
                       </div>
@@ -315,36 +303,30 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
                 </CardHeader>
 
                 <CardContent>
-                  <div className={`grid gap-3 ${
-                    result.videos.length <= 2 ? 'md:grid-cols-2' :
-                    result.videos.length <= 3 ? 'md:grid-cols-2 lg:grid-cols-3' :
-                    result.videos.length <= 4 ? 'md:grid-cols-2 lg:grid-cols-4' :
-                    'md:grid-cols-2 lg:grid-cols-5'
-                  }`}>
-                    {result.videos.map((video, videoIndex) => {
-                      const isHD = isHighDefinition(video.resolution, result.videos);
+                  <div className="grid gap-3 md:grid-cols-2">
+                    {/* Video Download - Only show the first video */}
+                    {result.videos.length > 0 && (() => {
+                      const video = result.videos[0]; // 只使用第一个视频
                       const isDownloading = downloadingItems.has(video.downloadUrl);
 
-                      
                       return (
-                        <Card key={videoIndex} className="border-2 transition-all duration-200 hover:border-primary/50 hover:shadow-md">
+                        <Card className="border-2 transition-all duration-200 hover:border-primary/50 hover:shadow-md">
                           <CardContent className="p-4 space-y-3">
                             <div className="flex items-center justify-between">
                               <div className="space-y-1">
                                 <div className="flex items-center gap-2">
                                   <span className="font-medium text-lg">{video.resolution}</span>
-                                  <Badge variant={isHD ? 'default' : 'secondary'} className={isHD ? 'bg-gradient-to-r from-blue-500 to-purple-600' : ''}>
-                                    <Icon name={isHD ? 'RiHdLine' : 'RiSdCardLine'} className="w-3 h-3 mr-1" />
-                                    {isHD ? t('quality_hd') : t('quality_sd')}
+                                  <Badge variant="default" className="bg-gradient-to-r from-blue-500 to-purple-600">
+                                    <Icon name="RiHdLine" className="w-3 h-3 mr-1" />
+                                    {t('quality_hd')}
                                   </Badge>
-
                                 </div>
                                 <p className="text-sm text-muted-foreground">
                                   {t('format')}: MP4
                                 </p>
                               </div>
                             </div>
-                            
+
                             <Button
                               onClick={() => handleDownload(video, result)}
                               disabled={isDownloading}
@@ -366,7 +348,49 @@ export default function BatchDownloadResultClient({ batchData }: BatchDownloadRe
                           </CardContent>
                         </Card>
                       );
-                    })}
+                    })()}
+
+                    {/* Thumbnail Download Card */}
+                    {result.thumbnail && (
+                      <Card className="border-2 transition-all duration-200 hover:border-primary/50 hover:shadow-md">
+                        <CardContent className="p-4 space-y-3">
+                          <div className="flex items-center justify-between">
+                            <div className="space-y-1">
+                              <div className="flex items-center gap-2">
+                                <span className="font-medium text-lg">{t('download_thumbnail')}</span>
+                                <Badge variant="secondary">
+                                  <Icon name="RiImageLine" className="w-3 h-3 mr-1" />
+                                  JPG
+                                </Badge>
+                              </div>
+                              <p className="text-sm text-muted-foreground">
+                                {t('format')}: JPG
+                              </p>
+                            </div>
+                          </div>
+
+                          <Button
+                            onClick={() => handleThumbnailDownload(result)}
+                            disabled={downloadingItems.has(`thumbnail-${result.videoId}`)}
+                            className="w-full"
+                            size="sm"
+                            variant="outline"
+                          >
+                            {downloadingItems.has(`thumbnail-${result.videoId}`) ? (
+                              <>
+                                <Icon name="RiLoader4Line" className="w-4 h-4 mr-2 animate-spin" />
+                                {t('downloading')}
+                              </>
+                            ) : (
+                              <>
+                                <Icon name="RiImageLine" className="w-4 h-4 mr-2" />
+                                {t('download_thumbnail')}
+                              </>
+                            )}
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    )}
                   </div>
                 </CardContent>
               </Card>

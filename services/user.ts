@@ -40,11 +40,6 @@ const CACHE_DURATION = 5 * 60 * 1000; // 5分钟缓存
 
 export async function getUserUuid() {
   try {
-    // 在静态渲染时直接返回空字符串，避免动态服务器使用错误
-    if (typeof window === 'undefined' && process.env.NODE_ENV === 'production') {
-      return "";
-    }
-
     // 检查缓存
     if (userUuidCache && Date.now() - userUuidCache.timestamp < CACHE_DURATION) {
       return userUuidCache.uuid;
@@ -98,12 +93,6 @@ export async function getUserUuid() {
 
 export async function getBearerToken() {
   try {
-    // 检查是否在构建时或静态渲染环境中
-    if (typeof window === 'undefined' && process.env.NODE_ENV === 'production') {
-      // 在构建时返回空字符串，避免访问headers
-      return "";
-    }
-
     const h = await headers();
     const auth = h.get("Authorization");
     if (!auth) {
