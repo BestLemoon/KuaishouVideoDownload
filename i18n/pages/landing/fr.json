@@ -133,7 +133,7 @@
                 "src": "/logo.png"
             },
             "title": "KuaishouVideoDownload",
-            "url": "accueil"
+            "url": "/"
         },
         "copyright": "© 2025 • KuaishouVideoDownload Tous droits réservés.",
         "name": "pied de page",
@@ -161,7 +161,7 @@
                 "src": "/logo.png"
             },
             "title": "KuaishouVideoDownload",
-            "url": "accueil"
+            "url": "/"
         },
         "buttons": [
             {

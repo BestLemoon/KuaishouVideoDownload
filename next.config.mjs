@@ -34,29 +34,6 @@ const nextConfig = {
       },
     ],
   },
-  async redirects() {
-    return [
-      // Redirect Twitter-like status URLs to our API handler
-      {
-        source: '/:locale/:username/status/:statusId',
-        destination: '/api/redirect-status?username=:username&statusId=:statusId',
-        permanent: false,
-      },
-      // Redirect status URLs without locale to our API handler
-      {
-        source: '/:username/status/:statusId',
-        destination: '/api/redirect-status?username=:username&statusId=:statusId',
-        permanent: false,
-      },
-      // Catch any other paths containing 'status' and redirect to home
-      {
-        source: '/:path*/status/:rest*',
-        destination: '/',
-        permanent: false,
-      },
-    ];
-  },
-
 };
 
 // Make sure experimental mdx flag is enabled

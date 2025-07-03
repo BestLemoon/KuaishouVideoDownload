@@ -267,30 +267,7 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
                   </a>
                 </div>
 
-                {/* Thumbnail Download Button */}
-                {downloadData.thumbnail && (
-                  <div className="pt-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={handleThumbnailDownload}
-                      disabled={downloadingItems.has('thumbnail')}
-                      className="text-xs"
-                    >
-                      {downloadingItems.has('thumbnail') ? (
-                        <>
-                          <Icon name="RiLoader4Line" className="w-3 h-3 mr-1 animate-spin" />
-                          {t('downloading')}
-                        </>
-                      ) : (
-                        <>
-                          <Icon name="RiImageLine" className="w-3 h-3 mr-1" />
-                          {t('download_thumbnail')}
-                        </>
-                      )}
-                    </Button>
-                  </div>
-                )}
+
               </div>
             </div>
           </CardContent>
@@ -305,36 +282,30 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className={`grid gap-6 ${
-              downloadData.videos.length <= 2 ? 'md:grid-cols-2' :
-              downloadData.videos.length <= 3 ? 'md:grid-cols-2 lg:grid-cols-3' :
-              downloadData.videos.length <= 4 ? 'md:grid-cols-2 lg:grid-cols-4' :
-              'md:grid-cols-2 lg:grid-cols-5'
-            }`}>
-              {/* Video Downloads */}
-              {downloadData.videos.map((video, index) => {
-                const isHD = isHighDefinition(video.resolution, downloadData.videos);
+            <div className="grid gap-6 md:grid-cols-2">
+              {/* Video Download - Only show the first video */}
+              {downloadData.videos.length > 0 && (() => {
+                const video = downloadData.videos[0]; // 只使用第一个视频
                 const isDownloading = downloadingItems.has(video.downloadUrl);
-                
+
                 return (
-                  <Card key={index} className="border-2 transition-all duration-200 hover:border-primary/50 hover:shadow-md">
+                  <Card className="border-2 transition-all duration-200 hover:border-primary/50 hover:shadow-md">
                     <CardContent className="p-6 space-y-4">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <Badge 
-                            variant={isHD ? 'default' : 'secondary'}
-                            className={isHD ? 'bg-gradient-to-r from-blue-500 to-purple-600' : ''}
+                          <Badge
+                            variant="default"
+                            className="bg-gradient-to-r from-blue-500 to-purple-600"
                           >
-                            <Icon name={isHD ? 'RiHdLine' : 'RiSdCardLine'} className="w-3 h-3 mr-1" />
-                            {isHD ? t('quality_hd') : t('quality_sd')}
+                            <Icon name="RiHdLine" className="w-3 h-3 mr-1" />
+                            {t('quality_hd')}
                           </Badge>
-
                         </div>
                         <Badge variant="outline" className="font-mono text-sm">
                           {video.resolution}
                         </Badge>
                       </div>
-                      
+
                       <div className="space-y-3 text-sm">
                         <div className="flex justify-between">
                           <span className="text-muted-foreground">{t('resolution')}:</span>
@@ -344,11 +315,10 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
                           <span className="text-muted-foreground">{t('format')}:</span>
                           <span className="font-medium">MP4</span>
                         </div>
-
                       </div>
-                      
-                      <Button 
-                        className="w-full" 
+
+                      <Button
+                        className="w-full"
                         onClick={() => handleVideoDownload(video)}
                         disabled={isDownloading}
                         size="lg"
@@ -368,9 +338,57 @@ export default function DownloadResultClient({ downloadData }: DownloadResultCli
                     </CardContent>
                   </Card>
                 );
-              })}
+              })()}
 
+              {/* Thumbnail Download Card */}
+              {downloadData.thumbnail && (
+                <Card className="border-2 transition-all duration-200 hover:border-primary/50 hover:shadow-md">
+                  <CardContent className="p-6 space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <Badge variant="secondary">
+                          <Icon name="RiImageLine" className="w-3 h-3 mr-1" />
+                          {t('download_thumbnail')}
+                        </Badge>
+                      </div>
+                      <Badge variant="outline" className="font-mono text-sm">
+                        JPG
+                      </Badge>
+                    </div>
 
+                    <div className="space-y-3 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">{t('format')}:</span>
+                        <span className="font-medium">JPG</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">类型:</span>
+                        <span className="font-medium">封面图片</span>
+                      </div>
+                    </div>
+
+                    <Button
+                      className="w-full"
+                      onClick={handleThumbnailDownload}
+                      disabled={downloadingItems.has('thumbnail')}
+                      size="lg"
+                      variant="outline"
+                    >
+                      {downloadingItems.has('thumbnail') ? (
+                        <>
+                          <Icon name="RiLoader4Line" className="w-4 h-4 mr-2 animate-spin" />
+                          {t('downloading')}
+                        </>
+                      ) : (
+                        <>
+                          <Icon name="RiImageLine" className="w-4 h-4 mr-2" />
+                          {t('download_thumbnail')}
+                        </>
+                      )}
+                    </Button>
+                  </CardContent>
+                </Card>
+              )}
             </div>
           </CardContent>
         </Card>
