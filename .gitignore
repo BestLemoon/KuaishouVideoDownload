@@ -29,7 +29,7 @@ yarn-error.log*
 .env.local
 .env.development
 .env.production
-
+wrangler.toml
 # vercel
 .vercel
 .tmp
