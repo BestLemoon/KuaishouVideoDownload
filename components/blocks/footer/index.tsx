@@ -86,6 +86,7 @@ export default function Footer({ footer }: { footer: FooterType }) {
         
         <a href="https://fazier.com/launches/kuaishou-video-download.com" target="_blank"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=light" width={250} alt="Fazier badge" /></a>
         <a href="https://startupfa.me/s/kuaishouvideodl?utm_source=kuaishou-video-download.com" target="_blank"><img src="https://startupfa.me/badges/featured-badge-small.webp" alt="Featured on Startup Fame" width="224" height="36" /></a>
+        <a href="https://twelve.tools" target="_blank"><img src="https://twelve.tools/badge1-light.svg" alt="Featured on Twelve Tools" width="200" height="54" /></a>
             </div>
 
             {footer.agreement && (

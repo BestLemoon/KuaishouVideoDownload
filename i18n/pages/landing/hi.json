@@ -123,6 +123,11 @@
                 {
                     "title": "सेवा की शर्तें",
                     "url": "/terms-of-service"
+                },
+                {
+                    "title": "स्थिति",
+                    "url": "https://status.kuaishou-video-download.com",
+                    "target": "_blank"
                 }
             ]
         },

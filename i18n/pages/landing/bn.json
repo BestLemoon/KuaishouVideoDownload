@@ -123,6 +123,11 @@
                 {
                     "title": "পরিষেবার শর্তাবলী",
                     "url": "/terms-of-service"
+                },
+                {
+                    "title": "স্ট্যাটাস",
+                    "url": "https://status.kuaishou-video-download.com",
+                    "target": "_blank"
                 }
             ]
         },

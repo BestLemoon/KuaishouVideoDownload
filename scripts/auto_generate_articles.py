@@ -188,6 +188,109 @@ def expand_keywords_with_google(seed_keywords: List[str], max_per_keyword: int =
     
     return expanded_keywords
 
+def generate_categorized_topics_by_keywords_with_count(expanded_keywords: Dict[str, List[str]], language: str, target_count: int) -> Dict[str, List[str]]:
+    """根据扩展的关键词和目标数量，按分类生成文章题目"""
+    model = GenerativeModel("gemini-2.5-flash-preview-05-20")
+
+    # 将所有关键词合并成一个列表用于AI分析
+    all_keywords = []
+    for seed_keyword, suggestions in expanded_keywords.items():
+        all_keywords.append(seed_keyword)
+        all_keywords.extend(suggestions)
+
+    # 去重
+    unique_keywords = list(set(all_keywords))
+    keywords_text = '\n'.join(f"- {kw}" for kw in unique_keywords[:50])  # 限制关键词数量
+
+    # 根据目标数量分配文章类型
+    if target_count <= 3:
+        search_count = target_count
+        tutorial_count = 0
+        feature_count = 0
+    elif target_count <= 5:
+        search_count = target_count - 1
+        tutorial_count = 1
+        feature_count = 0
+    elif target_count <= 8:
+        search_count = target_count - 2
+        tutorial_count = 1
+        feature_count = 1
+    else:
+        search_count = target_count - 3
+        tutorial_count = 2
+        feature_count = 1
+
+    prompt = f"""你是一位专业的SEO内容策略师，专注于KuaishouVideoDownload（快手视频下载器）相关的内容创作。
+
+## 任务
+基于以下扩展关键词，按照指定类别生成文章题目建议。
+
+## 可用关键词：
+{keywords_text}
+
+## 文章类别要求：
+
+### 🔍 搜索型关键词文章（需要{search_count}篇）
+- 针对用户搜索意图，长尾关键词为主
+- 如"how to download Kuaishou video on iPhone"
+- 解决具体用户问题的文章
+需要生成：{search_count}个题目
+
+### 📘 教程型/列表型文章（需要{tutorial_count}篇）
+- 增加分享率，适合内部链接
+- 如"Top 5 Kuaishou Video Downloaders 2025"
+- 比较、排行、完整指南类型
+需要生成：{tutorial_count}个题目
+
+### 🌍 功能介绍文章（需要{feature_count}篇）
+- 介绍快手视频下载的各种功能和技巧
+- 提升用户体验和产品认知
+需要生成：{feature_count}个题目
+
+## 语言要求
+{language}
+
+## 输出格式
+请使用以下格式：
+
+===SEARCH_KEYWORDS_START===
+[{search_count}个搜索型文章题目，每行一个]
+===SEARCH_KEYWORDS_END===
+
+===TUTORIAL_LISTS_START===
+[{tutorial_count}个教程型/列表型文章题目，每行一个]
+===TUTORIAL_LISTS_END===
+
+===FEATURE_CONTENT_START===
+[{feature_count}个功能介绍文章题目，每行一个]
+===FEATURE_CONTENT_END===
+
+请确保所有题目都与提供的关键词相关，具有SEO价值：
+
+(唯一性标识: {int(time.time())})"""
+
+    try:
+        result = model.generate_content(prompt)
+        if not result.text:
+            raise ValueError("AI未能生成分类文章题目")
+
+        # 解析分类题目
+        categories = {
+            'search_keywords': extract_category_topics(result.text, "===SEARCH_KEYWORDS_START===", "===SEARCH_KEYWORDS_END==="),
+            'tutorial_lists': extract_category_topics(result.text, "===TUTORIAL_LISTS_START===", "===TUTORIAL_LISTS_END==="),
+            'feature_content': extract_category_topics(result.text, "===FEATURE_CONTENT_START===", "===FEATURE_CONTENT_END===")
+        }
+
+        print(f"✅ 成功生成分类文章题目:")
+        for category, topics in categories.items():
+            print(f"   {category}: {len(topics)}个题目")
+
+        return categories
+
+    except Exception as e:
+        print(f"❌ 分类文章题目生成失败: {e}")
+        return get_default_category_topics_with_count(language, target_count)
+
 def generate_categorized_topics_by_keywords(expanded_keywords: Dict[str, List[str]], language: str) -> Dict[str, List[str]]:
     """根据扩展的关键词，按分类生成文章题目"""
     model = GenerativeModel("gemini-2.5-flash-preview-05-20")
@@ -303,36 +406,134 @@ def extract_category_topics(content: str, start_delimiter: str, end_delimiter: s
     except Exception:
         return []
 
-def get_default_category_topics(language: str) -> Dict[str, List[str]]:
-    """获取默认分类题目"""
-    if "chinese" in language.lower() or "中文" in language:
-        return {
+def get_default_category_topics_with_count(language: str, target_count: int) -> Dict[str, List[str]]:
+    """根据目标数量获取默认分类题目"""
+    # 根据语言获取基础题目模板
+    if "hindi" in language.lower() or "हिंदी" in language:
+        base_topics = {
+            'search_keywords': [
+                "कुआईशौ वीडियो डाउनलोड कैसे करें",
+                "iPhone पर कुआईशौ वीडियो डाउनलोड करने का तरीका",
+                "बिना वॉटरमार्क कुआईशौ वीडियो डाउनलोड",
+                "कुआईशौ वीडियो डाउनलोडर ऐप",
+                "मुफ्त कुआईशौ वीडियो डाउनलोड",
+                "Android पर कुआईशौ वीडियो सेव करें",
+                "कुआईशौ से HD वीडियो डाउनलोड",
+                "कुआईशौ वीडियो ऑनलाइन डाउनलोड"
+            ],
+            'tutorial_lists': [
+                "2025 के बेस्ट कुआईशौ वीडियो डाउनलोडर",
+                "कुआईशौ वीडियो डाउनलोड के 5 आसान तरीके"
+            ],
+            'feature_content': [
+                "कुआईशौ वीडियो डाउनलोड फीचर्स की जानकारी",
+                "कुआईशौ डाउनलोडर की विशेषताएं"
+            ]
+        }
+    elif "urdu" in language.lower() or "اردو" in language:
+        base_topics = {
+            'search_keywords': [
+                "Kuaishou video download kaise kare",
+                "iPhone mein Kuaishou video download",
+                "Kuaishou video downloader app",
+                "Free Kuaishou video download",
+                "Android mein Kuaishou video save",
+                "HD Kuaishou video download",
+                "Online Kuaishou video download"
+            ],
+            'tutorial_lists': [
+                "Best Kuaishou Video Downloaders 2025",
+                "Kuaishou Video Download ke 5 Tarike"
+            ],
+            'feature_content': [
+                "Kuaishou Video Download Features"
+            ]
+        }
+    elif "indonesian" in language.lower() or "bahasa" in language.lower():
+        base_topics = {
+            'search_keywords': [
+                "Cara download video Kuaishou",
+                "Download video Kuaishou di iPhone",
+                "Aplikasi download video Kuaishou",
+                "Download video Kuaishou gratis",
+                "Simpan video Kuaishou di Android",
+                "Download video Kuaishou HD",
+                "Download video Kuaishou online"
+            ],
+            'tutorial_lists': [
+                "5 Aplikasi Download Video Kuaishou Terbaik 2025",
+                "Cara Download Video Kuaishou Tanpa Watermark"
+            ],
+            'feature_content': [
+                "Fitur Download Video Kuaishou"
+            ]
+        }
+    elif "chinese" in language.lower() or "中文" in language:
+        base_topics = {
             'search_keywords': [
                 "如何在iPhone上下载快手视频",
                 "快手视频下载器哪个最好用",
-                "免费下载快手视频的方法"
+                "免费下载快手视频的方法",
+                "安卓手机下载快手视频",
+                "快手视频无水印下载",
+                "在线快手视频下载工具",
+                "快手短视频保存方法"
             ],
             'tutorial_lists': [
-                "2025年最佳快手视频下载工具TOP5"
+                "2025年最佳快手视频下载工具TOP5",
+                "快手视频下载完整教程"
             ],
             'feature_content': [
                 "快手视频下载功能详解"
             ]
         }
-    else:
-        return {
+    else:  # English
+        base_topics = {
             'search_keywords': [
                 "How to download Kuaishou videos on iPhone",
                 "Best Kuaishou video downloader 2024",
-                "Free Kuaishou video download methods"
+                "Free Kuaishou video download methods",
+                "Download Kuaishou videos on Android",
+                "Kuaishou video downloader without watermark",
+                "Online Kuaishou video download tool",
+                "Save Kuaishou videos to phone"
             ],
             'tutorial_lists': [
-                "Top 5 Kuaishou Video Downloaders 2025"
+                "Top 5 Kuaishou Video Downloaders 2025",
+                "Complete Guide to Kuaishou Video Download"
             ],
             'feature_content': [
                 "Kuaishou Video Download Features Explained"
             ]
         }
+
+    # 根据目标数量分配题目
+    if target_count <= 3:
+        search_count = target_count
+        tutorial_count = 0
+        feature_count = 0
+    elif target_count <= 5:
+        search_count = target_count - 1
+        tutorial_count = 1
+        feature_count = 0
+    elif target_count <= 8:
+        search_count = target_count - 2
+        tutorial_count = 1
+        feature_count = 1
+    else:
+        search_count = target_count - 3
+        tutorial_count = 2
+        feature_count = 1
+
+    return {
+        'search_keywords': base_topics['search_keywords'][:search_count],
+        'tutorial_lists': base_topics['tutorial_lists'][:tutorial_count],
+        'feature_content': base_topics['feature_content'][:feature_count]
+    }
+
+def get_default_category_topics(language: str) -> Dict[str, List[str]]:
+    """获取默认分类题目"""
+    return get_default_category_topics_with_count(language, 5)
 
 def build_keywords_context(expanded_keywords: Dict[str, List[str]]) -> str:
     """构建关键词上下文字符串"""
@@ -514,6 +715,7 @@ def _generate_article_attempt(topic, language, locale, keywords_context=""):
 - 确保关键词使用不影响内容的自然性和可读性
 - 优先使用长尾关键词和语义相关的词汇"""
 
+    # 根据语言和地区设置提示词
     if locale == "en":
         prompt = f"""You are a professional SEO content creator specializing in KuaishouVideoDownload (Kuaishou video downloader) related content.
 
@@ -553,7 +755,7 @@ Use the following delimiter format:
 ===TITLE_END===
 
 ===SLUG_START===
-[URL-friendly slug]
+[URL-friendly English slug, e.g., kuaishou-video-download-guide]
 ===SLUG_END===
 
 ===DESCRIPTION_START===
@@ -567,7 +769,170 @@ Use the following delimiter format:
 Please generate natural, fluent content that avoids obvious AI-generated traces:
 
 (Internal note for uniqueness: {int(time.time())})"""
-    else:
+
+    elif locale == "hi":
+        prompt = f"""आप एक पेशेवर SEO कंटेंट क्रिएटर हैं जो KuaishouVideoDownload (कुआईशौ वीडियो डाउनलोडर) संबंधित कंटेंट में विशेषज्ञ हैं।
+
+## कार्य
+इस विषय पर एक उच्च गुणवत्ता वाला SEO ब्लॉग लेख बनाएं: {topic}
+
+## आवश्यकताएं
+- लेख की लंबाई: 1000-1500 शब्द
+- भाषा: हिंदी
+- प्राकृतिक, धाराप्रवाह लेखन शैली जो AI-जनरेटेड निशान से बचे
+- Markdown फॉर्मेट का उपयोग करें
+- उचित शीर्षक संरचना शामिल करें (H1, H2, H3)
+- हमारे मौजूदा संबंधित लेखों के लिए कम से कम 3 आंतरिक लिंक शामिल करना आवश्यक है
+- 2-3 उच्च गुणवत्ता वाले बाहरी लिंक शामिल करें (प्राधिकरण वेबसाइटों के लिए)
+- प्रासंगिक कीवर्ड के साथ SEO अनुकूलित
+
+{internal_links_text}
+
+{keywords_section}
+
+## आंतरिक लिंक आवश्यकताएं
+- कंटेंट में उपरोक्त मौजूदा लेखों के लिए कम से कम 3 लिंक प्राकृतिक रूप से डालना आवश्यक है
+- आंतरिक लिंक लेख कंटेंट से संबंधित होने चाहिए और पैराग्राफ में प्राकृतिक रूप से एकीकृत होने चाहिए
+- वर्णनात्मक एंकर टेक्स्ट का उपयोग करें, केवल "यहां क्लिक करें" नहीं
+- लिंक फॉर्मेट: [एंकर टेक्स्ट](URL)
+
+## बाहरी लिंक आवश्यकताएं
+- प्राधिकरण वेबसाइटों के लिए 2-3 लिंक शामिल करें
+- बाहरी लिंक कुआईशौ, वीडियो डाउनलोडिंग, सोशल मीडिया से संबंधित होने चाहिए
+- बाहरी लिंक के लिए उचित संदर्भ जोड़ें
+
+## आउटपुट फॉर्मेट
+निम्नलिखित डिलिमिटर फॉर्मेट का उपयोग करें:
+
+===TITLE_START===
+[SEO-अनुकूलित शीर्षक, अधिकतम 60 वर्ण]
+===TITLE_END===
+
+===SLUG_START===
+[URL-फ्रेंडली अंग्रेजी slug, जैसे: kuaishou-video-download-hindi-guide]
+===SLUG_END===
+
+===DESCRIPTION_START===
+[मेटा विवरण, 150-160 वर्ण, आकर्षक सारांश]
+===DESCRIPTION_END===
+
+===CONTENT_START===
+[Markdown फॉर्मेट में पूरा लेख कंटेंट, कम से कम 3 आंतरिक लिंक और 2-3 बाहरी लिंक शामिल करना आवश्यक है]
+===CONTENT_END===
+
+कृपया प्राकृतिक, धाराप्रवाह कंटेंट बनाएं जो स्पष्ट AI-जनरेटेड निशान से बचे:
+
+(विशिष्टता के लिए आंतरिक नोट: {int(time.time())})"""
+
+    elif locale == "ur":
+        prompt = f"""آپ ایک پیشہ ور SEO کنٹینٹ کریٹر ہیں جو KuaishouVideoDownload (کوائی شو ویڈیو ڈاؤن لوڈر) سے متعلق کنٹینٹ میں مہارت رکھتے ہیں۔
+
+## کام
+اس موضوع پر ایک اعلیٰ معیار کا SEO بلاگ مضمون بنائیں: {topic}
+
+## ضروریات
+- مضمون کی لمبائی: 1000-1500 الفاظ
+- زبان: اردو
+- قدرتی، روانی سے لکھنے کا انداز جو AI-generated نشانات سے بچے
+- Markdown فارمیٹ استعمال کریں
+- مناسب عنوان کی ساخت شامل کریں (H1, H2, H3)
+- ہمارے موجودہ متعلقہ مضامین کے لیے کم از کم 3 اندرونی لنکس شامل کرنا ضروری ہے
+- 2-3 اعلیٰ معیار کے بیرونی لنکس شامل کریں (مستند ویب سائٹس کے لیے)
+- متعلقہ کلیدی الفاظ کے ساتھ SEO کے لیے موزوں
+
+{internal_links_text}
+
+{keywords_section}
+
+## اندرونی لنک کی ضروریات
+- کنٹینٹ میں اوپر دیے گئے موجودہ مضامین کے لیے کم از کم 3 لنکس قدرتی طور پر داخل کرنا ضروری ہے
+- اندرونی لنکس مضمون کے کنٹینٹ سے متعلق ہونے چاہیے اور پیراگرافس میں قدرتی طور پر شامل ہونے چاہیے
+- وضاحتی anchor text استعمال کریں، صرف "یہاں کلک کریں" نہیں
+- لنک فارمیٹ: [anchor text](URL)
+
+## بیرونی لنک کی ضروریات
+- مستند ویب سائٹس کے لیے 2-3 لنکس شامل کریں
+- بیرونی لنکس کوائی شو، ویڈیو ڈاؤن لوڈنگ، سوشل میڈیا سے متعلق ہونے چاہیے
+- بیرونی لنکس کے لیے مناسب سیاق و سباق شامل کریں
+
+## آؤٹ پٹ فارمیٹ
+مندرجہ ذیل delimiter فارمیٹ استعمال کریں:
+
+===TITLE_START===
+[SEO کے لیے موزوں عنوان، زیادہ سے زیادہ 60 حروف]
+===TITLE_END===
+
+===SLUG_START===
+[URL-friendly انگریزی slug، جیسے: kuaishou-video-download-urdu-guide]
+===SLUG_END===
+
+===DESCRIPTION_START===
+[میٹا تفصیل، 150-160 حروف، دلچسپ خلاصہ]
+===DESCRIPTION_END===
+
+===CONTENT_START===
+[Markdown فارمیٹ میں مکمل مضمون کا کنٹینٹ، کم از کم 3 اندرونی لنکس اور 2-3 بیرونی لنکس شامل کرنا ضروری ہے]
+===CONTENT_END===
+
+براہ کرم قدرتی، روانی والا کنٹینٹ بنائیں جو واضح AI-generated نشانات سے بچے:
+
+(منفردیت کے لیے اندرونی نوٹ: {int(time.time())})"""
+
+    elif locale == "id":
+        prompt = f"""Anda adalah seorang pembuat konten SEO profesional yang mengkhususkan diri dalam konten terkait KuaishouVideoDownload (pengunduh video Kuaishou).
+
+## Tugas
+Buatlah artikel blog SEO berkualitas tinggi untuk topik ini: {topic}
+
+## Persyaratan
+- Panjang artikel: 1000-1500 kata
+- Bahasa: Bahasa Indonesia
+- Gaya penulisan yang alami dan lancar yang menghindari jejak AI-generated
+- Gunakan format Markdown
+- Sertakan struktur judul yang tepat (H1, H2, H3)
+- Harus menyertakan setidaknya 3 tautan internal ke artikel terkait yang sudah ada
+- Sertakan 2-3 tautan eksternal berkualitas tinggi (ke situs web otoritatif)
+- Dioptimalkan SEO dengan kata kunci relevan yang terintegrasi secara alami
+
+{internal_links_text}
+
+{keywords_section}
+
+## Persyaratan Tautan Internal
+- Harus secara alami menyisipkan setidaknya 3 tautan ke artikel yang sudah ada di atas dalam konten
+- Tautan internal harus relevan dengan konten artikel dan terintegrasi secara alami ke dalam paragraf
+- Gunakan anchor text yang deskriptif, bukan hanya "klik di sini"
+- Format tautan: [anchor text](URL)
+
+## Persyaratan Tautan Eksternal
+- Sertakan 2-3 tautan ke situs web otoritatif
+- Tautan eksternal harus terkait dengan Kuaishou, pengunduhan video, media sosial
+- Tambahkan konteks yang tepat untuk tautan eksternal
+
+## Format Output
+Gunakan format delimiter berikut:
+
+===TITLE_START===
+[Judul yang dioptimalkan SEO, maksimal 60 karakter]
+===TITLE_END===
+
+===SLUG_START===
+[Slug bahasa Inggris yang ramah URL, misalnya: kuaishou-video-download-indonesian-guide]
+===SLUG_END===
+
+===DESCRIPTION_START===
+[Deskripsi meta, 150-160 karakter, ringkasan yang menarik]
+===DESCRIPTION_END===
+
+===CONTENT_START===
+[Konten artikel lengkap dalam format Markdown, harus menyertakan setidaknya 3 tautan internal dan 2-3 tautan eksternal]
+===CONTENT_END===
+
+Harap buat konten yang alami dan lancar yang menghindari jejak AI-generated yang jelas:
+
+(Catatan internal untuk keunikan: {int(time.time())})"""
+
+    else:  # Default to Chinese
         prompt = f"""你是一位资深的SEO文章创作者，专注于 KuaishouVideoDownload（快手视频下载器）相关内容创作。
 
         ## 任务
@@ -606,7 +971,7 @@ Please generate natural, fluent content that avoids obvious AI-generated traces:
         ===TITLE_END===
 
         ===SLUG_START===
-        [URL友好的slug]
+        [URL友好的英语slug，例如：kuaishou-video-download-chinese-guide]
         ===SLUG_END===
 
         ===DESCRIPTION_START===
@@ -708,38 +1073,38 @@ Please generate natural, fluent content that avoids obvious AI-generated traces:
     else:
         raise Exception("数据库插入失败")
 
-def generate_keyword_driven_articles(language: str, locale: str) -> Dict[str, Any]:
+def generate_keyword_driven_articles(language: str, locale: str, target_count: int = 5) -> Dict[str, Any]:
     """关键词驱动的文章生成流程"""
     try:
-        print(f"\n🎯 开始{language}关键词驱动的内容生成流程...")
-        
+        print(f"\n🎯 开始{language}关键词驱动的内容生成流程（目标：{target_count}篇）...")
+
         # 步骤1: 生成种子关键词
         print(f"\n📊 步骤1: 生成{language}种子关键词")
-        seed_keywords = generate_seed_keywords(language, 6)
-        
+        seed_keywords = generate_seed_keywords(language, max(6, target_count))
+
         if not seed_keywords:
             print(f"❌ {language}种子关键词生成失败")
             return {"success": 0, "failure": 0, "topics": [], "results": []}
-        
+
         print(f"🔑 {language}种子关键词:")
         for i, keyword in enumerate(seed_keywords, 1):
             print(f"   {i}. {keyword}")
-        
+
         # 步骤2: 使用Google自动完成扩展关键词
         print(f"\n🔍 步骤2: 扩展{language}关键词")
         expanded_keywords = expand_keywords_with_google(seed_keywords, 5)
-        
+
         print(f"\n📈 {language}扩展后的关键词集合:")
         total_keywords = 0
         for seed, suggestions in expanded_keywords.items():
             print(f"   🌱 {seed}: {len(suggestions)}个建议")
             total_keywords += len(suggestions)
         print(f"   总计: {len(seed_keywords)}个种子关键词 → {total_keywords}个扩展关键词")
-        
+
         # 步骤3: 基于关键词生成分类文章题目
         print(f"\n📝 步骤3: 生成{language}分类文章题目")
-        categorized_topics = generate_categorized_topics_by_keywords(expanded_keywords, language)
-        
+        categorized_topics = generate_categorized_topics_by_keywords_with_count(expanded_keywords, language, target_count)
+
         print(f"\n📚 {language}生成的分类文章题目:")
         all_topics = []
         for category, topics in categorized_topics.items():
@@ -747,40 +1112,45 @@ def generate_keyword_driven_articles(language: str, locale: str) -> Dict[str, An
             for topic in topics:
                 print(f"      • {topic}")
                 all_topics.append((category, topic))
-        
+
+        # 限制文章数量到目标数量
+        if len(all_topics) > target_count:
+            all_topics = all_topics[:target_count]
+            print(f"📏 限制文章数量到目标数量: {target_count}篇")
+
         # 步骤4: 执行文章生成
         print(f"\n🚀 步骤4: 开始生成{language}文章...")
-        
+
         # 构建关键词上下文
         keywords_context = build_keywords_context(expanded_keywords)
-        
+
         results = []
         success_count = 0
         failure_count = 0
-        
+
         for category, topic in all_topics:
             topic_to_use = topic
-            
+
             print(f"\n📝 生成文章: {topic_to_use} (分类: {category})")
             result = generate_article(topic_to_use, language, locale, keywords_context)
             results.append(result)
-            
+
             if result["success"]:
                 success_count += 1
                 print(f"✅ 成功: {result['title']}")
             else:
                 failure_count += 1
                 print(f"❌ 失败: {result.get('error', '未知错误')}")
-            
+
             # 延迟避免API限制
             time.sleep(3)
-        
+
         print(f"\n🎉 {language}关键词驱动生成完成!")
         print(f"   📊 种子关键词: {len(seed_keywords)} 个")
         print(f"   🔍 扩展关键词: {total_keywords} 个")
         print(f"   📝 成功生成文章: {success_count} 篇")
         print(f"   ❌ 失败: {failure_count} 篇")
-        
+
         return {
             "success": success_count,
             "failure": failure_count,
@@ -790,36 +1160,70 @@ def generate_keyword_driven_articles(language: str, locale: str) -> Dict[str, An
             "expanded_keywords": expanded_keywords,
             "categorized_topics": categorized_topics
         }
-        
+
     except Exception as e:
         print(f"❌ {language}关键词驱动生成失败: {e}")
         return {"success": 0, "failure": 0, "topics": [], "results": []}
 
 def main():
-    """主函数 - 只生成英文文章"""
-    print("🚀 开始执行每日英文文章生成任务（5篇）")
+    """主函数 - 多语言文章生成"""
+    print("🚀 开始执行每日多语言文章生成任务")
+    print("📋 生成计划:")
+    print("   🇺🇸 英语: 5篇")
+    print("   🇮🇳 印地语: 8篇")
+    print("   🇵🇰 乌尔都语(巴基斯坦): 3篇")
+    print("   🇮🇩 印尼语: 3篇")
     print("=" * 60)
 
-    # 只生成英文文章
-    print("\n🇺🇸 开始英文关键词驱动生成...")
-    results = generate_keyword_driven_articles("English", "en")
+    all_results = {}
 
-    print(f"\n🎉 每日英文文章生成任务完成!")
+    # 1. 生成英文文章 (5篇)
+    print("\n🇺🇸 开始英文关键词驱动生成...")
+    english_results = generate_keyword_driven_articles("English", "en", 5)
+    all_results["english"] = english_results
+
+    # 2. 生成印地语文章 (8篇)
+    print("\n🇮🇳 开始印地语关键词驱动生成...")
+    hindi_results = generate_keyword_driven_articles("Hindi", "hi", 8)
+    all_results["hindi"] = hindi_results
+
+    # 3. 生成乌尔都语文章 (3篇)
+    print("\n🇵🇰 开始乌尔都语关键词驱动生成...")
+    urdu_results = generate_keyword_driven_articles("Urdu", "ur", 3)
+    all_results["urdu"] = urdu_results
+
+    # 4. 生成印尼语文章 (3篇)
+    print("\n🇮🇩 开始印尼语关键词驱动生成...")
+    indonesian_results = generate_keyword_driven_articles("Indonesian", "id", 3)
+    all_results["indonesian"] = indonesian_results
+
+    print(f"\n🎉 每日多语言文章生成任务完成!")
     print("=" * 60)
     print(f"📊 统计结果:")
-    print(f"   🇺🇸 英文: 成功 {results['success']} 篇，失败 {results['failure']} 篇")
+    print(f"   🇺🇸 英文: 成功 {english_results['success']} 篇，失败 {english_results['failure']} 篇")
+    print(f"   🇮🇳 印地语: 成功 {hindi_results['success']} 篇，失败 {hindi_results['failure']} 篇")
+    print(f"   🇵🇰 乌尔都语: 成功 {urdu_results['success']} 篇，失败 {urdu_results['failure']} 篇")
+    print(f"   🇮🇩 印尼语: 成功 {indonesian_results['success']} 篇，失败 {indonesian_results['failure']} 篇")
+
+    total_success = sum(result['success'] for result in all_results.values())
+    total_failure = sum(result['failure'] for result in all_results.values())
+    print(f"   📈 总计: 成功 {total_success} 篇，失败 {total_failure} 篇")
 
     # 记录任务执行日志到数据库
     try:
         log_data = {
             "execution_date": datetime.now().date().isoformat(),
-            "chinese_success": 0,
-            "chinese_failure": 0,
-            "english_success": results["success"],
-            "english_failure": results["failure"],
-            "total_success": results["success"],
-            "total_failure": results["failure"],
-            "generation_method": "keyword_driven_english_only",
+            "english_success": english_results["success"],
+            "english_failure": english_results["failure"],
+            "hindi_success": hindi_results["success"],
+            "hindi_failure": hindi_results["failure"],
+            "urdu_success": urdu_results["success"],
+            "urdu_failure": urdu_results["failure"],
+            "indonesian_success": indonesian_results["success"],
+            "indonesian_failure": indonesian_results["failure"],
+            "total_success": total_success,
+            "total_failure": total_failure,
+            "generation_method": "keyword_driven_multilingual",
             "created_at": datetime.now().isoformat()
         }
         supabase.table("auto_generation_logs").insert(log_data).execute()
@@ -827,38 +1231,56 @@ def main():
     except Exception as log_error:
         print(f"⚠️ 日志记录失败（不影响主要功能）: {log_error}")
 
-    return results
+    return all_results
 
 if __name__ == "__main__":
     import sys
-    
+
     # 支持命令行参数
     if len(sys.argv) > 1:
         command = sys.argv[1].lower()
-        
+
         if command == "keywords":
             # 关键词驱动模式
-            language = sys.argv[2] if len(sys.argv) > 2 else "both"
-            
+            language = sys.argv[2] if len(sys.argv) > 2 else "all"
+
             print("🚀 启动关键词驱动文章生成模式")
             print(f"🌍 目标语言: {language}")
-            
+
             if language.lower() in ["chinese", "zh", "中文"]:
                 print("\n🇨🇳 仅生成中文内容...")
-                result = generate_keyword_driven_articles("Chinese (Simplified)", "zh")
+                result = generate_keyword_driven_articles("Chinese (Simplified)", "zh", 5)
                 print(f"✅ 中文生成完成: 成功 {result['success']} 篇")
             elif language.lower() in ["english", "en", "英文"]:
                 print("\n🇺🇸 仅生成英文内容...")
-                result = generate_keyword_driven_articles("English", "en")
+                result = generate_keyword_driven_articles("English", "en", 5)
                 print(f"✅ 英文生成完成: 成功 {result['success']} 篇")
+            elif language.lower() in ["hindi", "hi", "हिंदी"]:
+                print("\n🇮🇳 仅生成印地语内容...")
+                result = generate_keyword_driven_articles("Hindi", "hi", 8)
+                print(f"✅ 印地语生成完成: 成功 {result['success']} 篇")
+            elif language.lower() in ["urdu", "ur", "اردو"]:
+                print("\n🇵🇰 仅生成乌尔都语内容...")
+                result = generate_keyword_driven_articles("Urdu", "ur", 3)
+                print(f"✅ 乌尔都语生成完成: 成功 {result['success']} 篇")
+            elif language.lower() in ["indonesian", "id", "bahasa"]:
+                print("\n🇮🇩 仅生成印尼语内容...")
+                result = generate_keyword_driven_articles("Indonesian", "id", 3)
+                print(f"✅ 印尼语生成完成: 成功 {result['success']} 篇")
             else:
-                # 默认生成双语
+                # 默认生成多语言
                 main()
         else:
             print(f"❌ 未知命令: {command}")
             print("💡 可用命令:")
             print("   python auto_generate_articles.py keywords [language]")
-            print("   language 可选值: chinese/zh/中文, english/en/英文, both(默认)")
+            print("   language 可选值:")
+            print("     - english/en/英文 (5篇)")
+            print("     - hindi/hi/हिंदी (8篇)")
+            print("     - urdu/ur/اردو (3篇)")
+            print("     - indonesian/id/bahasa (3篇)")
+            print("     - chinese/zh/中文 (5篇)")
+            print("     - all/both (默认，所有语言)")
     else:
-        # 默认执行关键词驱动的双语生成
-        main() 
+        # 默认执行关键词驱动的多语言生成
+        main()

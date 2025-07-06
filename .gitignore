@@ -60,3 +60,6 @@ config/secrets.json
 **/config/secrets.*
 **/.env*
 !**/.env.example
+
+seo_blog_generator/*
+scripts/*

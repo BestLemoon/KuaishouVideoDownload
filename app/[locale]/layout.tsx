@@ -123,6 +123,13 @@ export default async function RootLayout({
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
+        {/* Ahrefs Analytics */}
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="eNi3JPRqg9e54JhRd3dARw"
+          async
+          strategy="afterInteractive"
+        />
       </head>
       <body
         className={cn(

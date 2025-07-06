@@ -123,6 +123,11 @@
                 {
                     "title": "서비스 약관",
                     "url": "/terms-of-service"
+                },
+                {
+                    "title": "상태",
+                    "url": "https://status.kuaishou-video-download.com",
+                    "target": "_blank"
                 }
             ]
         },

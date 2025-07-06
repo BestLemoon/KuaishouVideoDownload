@@ -357,6 +357,11 @@
         {
           "title": "服务条款",
           "url": "/terms-of-service"
+        },
+        {
+          "title": "服务状态",
+          "url": "https://status.kuaishou-video-download.com",
+          "target": "_blank"
         }
       ]
     }
