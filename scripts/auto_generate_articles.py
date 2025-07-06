@@ -824,7 +824,7 @@ Please generate natural, fluent content that avoids obvious AI-generated traces:
 
 (विशिष्टता के लिए आंतरिक नोट: {int(time.time())})"""
 
-    elif locale == "ur":
+    elif locale == "bn":
         prompt = f"""آپ ایک پیشہ ور SEO کنٹینٹ کریٹر ہیں جو KuaishouVideoDownload (کوائی شو ویڈیو ڈاؤن لوڈر) سے متعلق کنٹینٹ میں مہارت رکھتے ہیں۔
 
 ## کام
@@ -863,7 +863,7 @@ Please generate natural, fluent content that avoids obvious AI-generated traces:
 ===TITLE_END===
 
 ===SLUG_START===
-[URL-friendly انگریزی slug، جیسے: kuaishou-video-download-urdu-guide]
+[URL-friendly انگریزی slug، جیسے: kuaishou-video-download-bengali-guide]
 ===SLUG_END===
 
 ===DESCRIPTION_START===
@@ -1189,7 +1189,7 @@ def main():
 
     # 3. 生成乌尔都语文章 (3篇)
     print("\n🇵🇰 开始乌尔都语关键词驱动生成...")
-    urdu_results = generate_keyword_driven_articles("Urdu", "ur", 3)
+    urdu_results = generate_keyword_driven_articles("Urdu", "bn", 3)
     all_results["urdu"] = urdu_results
 
     # 4. 生成印尼语文章 (3篇)
@@ -1217,8 +1217,8 @@ def main():
             "english_failure": english_results["failure"],
             "hindi_success": hindi_results["success"],
             "hindi_failure": hindi_results["failure"],
-            "urdu_success": urdu_results["success"],
-            "urdu_failure": urdu_results["failure"],
+            "bengali_success": urdu_results["success"],
+            "bengali_failure": urdu_results["failure"],
             "indonesian_success": indonesian_results["success"],
             "indonesian_failure": indonesian_results["failure"],
             "total_success": total_success,
@@ -1259,9 +1259,9 @@ if __name__ == "__main__":
                 print("\n🇮🇳 仅生成印地语内容...")
                 result = generate_keyword_driven_articles("Hindi", "hi", 8)
                 print(f"✅ 印地语生成完成: 成功 {result['success']} 篇")
-            elif language.lower() in ["urdu", "ur", "اردو"]:
+            elif language.lower() in ["urdu", "ur", "bn", "اردو"]:
                 print("\n🇵🇰 仅生成乌尔都语内容...")
-                result = generate_keyword_driven_articles("Urdu", "ur", 3)
+                result = generate_keyword_driven_articles("Urdu", "bn", 3)
                 print(f"✅ 乌尔都语生成完成: 成功 {result['success']} 篇")
             elif language.lower() in ["indonesian", "id", "bahasa"]:
                 print("\n🇮🇩 仅生成印尼语内容...")
@@ -1277,7 +1277,7 @@ if __name__ == "__main__":
             print("   language 可选值:")
             print("     - english/en/英文 (5篇)")
             print("     - hindi/hi/हिंदी (8篇)")
-            print("     - urdu/ur/اردو (3篇)")
+            print("     - urdu/ur/bn/اردو (3篇)")
             print("     - indonesian/id/bahasa (3篇)")
             print("     - chinese/zh/中文 (5篇)")
             print("     - all/both (默认，所有语言)")
