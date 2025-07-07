@@ -9,8 +9,6 @@ import moment from "moment";
 import { redirect } from "next/navigation";
 import { Metadata } from "next";
 
-// 强制动态渲染，避免静态生成时的错误
-export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params: promiseParams }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await promiseParams;

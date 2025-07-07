@@ -11,16 +11,13 @@ import { ThemeProvider } from "@/providers/theme";
 
 import { cn } from "@/lib/utils";
 import Script from "next/script";
-import { locales } from "@/i18n/locale";
 
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 });
 
-export async function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
-}
+
 
 export async function generateMetadata({
   params,

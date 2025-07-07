@@ -9,8 +9,6 @@ import { getTranslations } from "next-intl/server";
 import moment from "moment";
 import { redirect } from "next/navigation";
 
-// 强制动态渲染，避免静态生成时的错误
-export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({
   params,
