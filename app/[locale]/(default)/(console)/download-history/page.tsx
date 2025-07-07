@@ -1,6 +1,6 @@
 
 import { getUserDownloadHistory } from "@/models/credit";
-import { getUserUuid, checkUserIsPremium } from "@/services/user";
+import { getUserUuid } from "@/services/user";
 
 import { TableColumn } from "@/types/blocks/table";
 import TableSlot from "@/components/console/slots/table";
@@ -43,22 +43,11 @@ export default async function () {
     redirect(`/auth/signin?callbackUrl=${encodeURIComponent(callbackUrl)}`);
   }
 
-  // 检查用户是否为付费用户
-  const isPremium = await checkUserIsPremium(user_uuid);
-  
-  // 获取用户下载历史
-  const downloadHistory = await getUserDownloadHistory(user_uuid, 50, 0);
-  
-  // 免费版只显示最近3条记录
-  const displayHistory = isPremium ? downloadHistory : downloadHistory.slice(0, 3);
+  // 获取用户下载历史 - 移除条数限制，获取更多记录
+  const downloadHistory = await getUserDownloadHistory(user_uuid, 1000, 0);
 
-  // 格式化文件大小
-  const formatFileSize = (bytes: number | null | undefined): string => {
-    if (!bytes) return "-";
-    const sizes = ["B", "KB", "MB", "GB"];
-    const i = Math.floor(Math.log(bytes) / Math.log(1024));
-    return `${(bytes / Math.pow(1024, i)).toFixed(1)} ${sizes[i]}`;
-  };
+  // 移除付费限制，所有用户都可以查看完整历史
+  const displayHistory = downloadHistory;
 
   const columns: TableColumn[] = [
     {
@@ -114,9 +103,7 @@ export default async function () {
 
   const table: TableSlotType = {
     title: t("download_history.title"),
-    description: isPremium 
-      ? t("download_history.description")
-      : t("download_history.description_free", { count: 3 }),
+    description: t("download_history.description"),
     columns: columns,
     data: displayHistory,
     empty_message: t("download_history.no_history"),
@@ -125,29 +112,6 @@ export default async function () {
   return (
     <div>
       <TableSlot {...table} />
-      {!isPremium && downloadHistory.length > 3 && (
-        <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-          <div className="flex items-center justify-between">
-            <div>
-              <h3 className="text-lg font-medium text-blue-900">
-                {t("download_history.upgrade_prompt.title")}
-              </h3>
-              <p className="text-blue-700">
-                {t("download_history.upgrade_prompt.message", { 
-                  total: downloadHistory.length,
-                  visible: 3 
-                })}
-              </p>
-            </div>
-            <a
-              href="/pricing"
-              className="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors"
-            >
-              {t("download_history.upgrade_prompt.button")}
-            </a>
-          </div>
-        </div>
-      )}
     </div>
   );
 } 
