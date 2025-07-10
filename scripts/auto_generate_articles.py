@@ -24,25 +24,37 @@ SITE_URL = os.getenv('NEXT_PUBLIC_WEB_URL', 'https://kuaishou-video-download.com
 configure(api_key=GEMINI_API_KEY)
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
 
-def get_unsplash_image(query="kuaishou video"):
-    """从Unsplash获取图片"""
+def get_unsplash_image(query="short video"):
+    """从Unsplash获取图片 - 优化为短视频相关关键词"""
     try:
         if not UNSPLASH_ACCESS_KEY:
             return "https://images.unsplash.com/photo-1611605698335-8b1569810432?w=800&q=80"
-        
+
+        # 短视频相关的关键词列表
+        short_video_keywords = [
+            "short video", "mobile video", "social media", "smartphone recording",
+            "video content", "digital media", "content creation", "video editing",
+            "mobile phone", "social network", "video streaming", "online video",
+            "vertical video", "tiktok style", "video maker", "video production"
+        ]
+
+        # 随机选择一个短视频相关关键词，如果没有提供特定查询
+        if query == "short video" or "kuaishou" in query.lower():
+            query = random.choice(short_video_keywords)
+
         headers = {"Authorization": f"Client-ID {UNSPLASH_ACCESS_KEY}"}
         response = requests.get(
             f"https://api.unsplash.com/search/photos?query={query}&per_page=30&orientation=landscape",
             headers=headers,
             timeout=10
         )
-        
+
         if response.status_code == 200:
             data = response.json()
             if data.get('results'):
                 photo = random.choice(data['results'])
                 return f"{photo['urls']['regular']}?w=800&q=80"
-                
+
         return "https://images.unsplash.com/photo-1611605698335-8b1569810432?w=800&q=80"
     except Exception as e:
         print(f"获取Unsplash图片失败: {e}")
@@ -1031,8 +1043,8 @@ Harap buat konten yang alami dan lancar yang menghindari jejak AI-generated yang
     # 生成唯一slug
     final_slug = generate_unique_slug(slug, locale)
 
-    # 获取封面图片
-    cover_url = get_unsplash_image("kuaishou video")
+    # 获取封面图片 - 使用短视频相关关键词
+    cover_url = get_unsplash_image("short video")
 
     # 为文章添加随机的时间偏移，让发布时间更自然
     publish_time = datetime.now()
@@ -1166,48 +1178,20 @@ def generate_keyword_driven_articles(language: str, locale: str, target_count: i
         return {"success": 0, "failure": 0, "topics": [], "results": []}
 
 def main():
-    """主函数 - 多语言文章生成"""
-    print("🚀 开始执行每日多语言文章生成任务")
+    """主函数 - 英文文章生成"""
+    print("🚀 开始执行每日英文文章生成任务")
     print("📋 生成计划:")
-    print("   🇺🇸 英语: 5篇")
-    print("   🇮🇳 印地语: 8篇")
-    print("   🇵🇰 乌尔都语(巴基斯坦): 3篇")
-    print("   🇮🇩 印尼语: 3篇")
+    print("   🇺🇸 英语: 10篇")
     print("=" * 60)
 
-    all_results = {}
-
-    # 1. 生成英文文章 (5篇)
+    # 生成英文文章 (10篇)
     print("\n🇺🇸 开始英文关键词驱动生成...")
-    english_results = generate_keyword_driven_articles("English", "en", 5)
-    all_results["english"] = english_results
+    english_results = generate_keyword_driven_articles("English", "en", 10)
 
-    # 2. 生成印地语文章 (8篇)
-    print("\n🇮🇳 开始印地语关键词驱动生成...")
-    hindi_results = generate_keyword_driven_articles("Hindi", "hi", 8)
-    all_results["hindi"] = hindi_results
-
-    # 3. 生成乌尔都语文章 (3篇)
-    print("\n🇵🇰 开始乌尔都语关键词驱动生成...")
-    urdu_results = generate_keyword_driven_articles("Urdu", "bn", 3)
-    all_results["urdu"] = urdu_results
-
-    # 4. 生成印尼语文章 (3篇)
-    print("\n🇮🇩 开始印尼语关键词驱动生成...")
-    indonesian_results = generate_keyword_driven_articles("Indonesian", "id", 3)
-    all_results["indonesian"] = indonesian_results
-
-    print(f"\n🎉 每日多语言文章生成任务完成!")
+    print(f"\n🎉 每日英文文章生成任务完成!")
     print("=" * 60)
     print(f"📊 统计结果:")
     print(f"   🇺🇸 英文: 成功 {english_results['success']} 篇，失败 {english_results['failure']} 篇")
-    print(f"   🇮🇳 印地语: 成功 {hindi_results['success']} 篇，失败 {hindi_results['failure']} 篇")
-    print(f"   🇵🇰 乌尔都语: 成功 {urdu_results['success']} 篇，失败 {urdu_results['failure']} 篇")
-    print(f"   🇮🇩 印尼语: 成功 {indonesian_results['success']} 篇，失败 {indonesian_results['failure']} 篇")
-
-    total_success = sum(result['success'] for result in all_results.values())
-    total_failure = sum(result['failure'] for result in all_results.values())
-    print(f"   📈 总计: 成功 {total_success} 篇，失败 {total_failure} 篇")
 
     # 记录任务执行日志到数据库
     try:
@@ -1215,15 +1199,15 @@ def main():
             "execution_date": datetime.now().date().isoformat(),
             "english_success": english_results["success"],
             "english_failure": english_results["failure"],
-            "hindi_success": hindi_results["success"],
-            "hindi_failure": hindi_results["failure"],
-            "bengali_success": urdu_results["success"],
-            "bengali_failure": urdu_results["failure"],
-            "indonesian_success": indonesian_results["success"],
-            "indonesian_failure": indonesian_results["failure"],
-            "total_success": total_success,
-            "total_failure": total_failure,
-            "generation_method": "keyword_driven_multilingual",
+            "hindi_success": 0,
+            "hindi_failure": 0,
+            "bengali_success": 0,
+            "bengali_failure": 0,
+            "indonesian_success": 0,
+            "indonesian_failure": 0,
+            "total_success": english_results["success"],
+            "total_failure": english_results["failure"],
+            "generation_method": "keyword_driven_english_only",
             "created_at": datetime.now().isoformat()
         }
         supabase.table("auto_generation_logs").insert(log_data).execute()
@@ -1231,7 +1215,7 @@ def main():
     except Exception as log_error:
         print(f"⚠️ 日志记录失败（不影响主要功能）: {log_error}")
 
-    return all_results
+    return english_results
 
 if __name__ == "__main__":
     import sys
@@ -1243,44 +1227,58 @@ if __name__ == "__main__":
         if command == "keywords":
             # 关键词驱动模式
             language = sys.argv[2] if len(sys.argv) > 2 else "all"
+            count = int(sys.argv[3]) if len(sys.argv) > 3 else None
 
             print("🚀 启动关键词驱动文章生成模式")
             print(f"🌍 目标语言: {language}")
+            if count:
+                print(f"📊 目标数量: {count}篇")
 
             if language.lower() in ["chinese", "zh", "中文"]:
-                print("\n🇨🇳 仅生成中文内容...")
-                result = generate_keyword_driven_articles("Chinese (Simplified)", "zh", 5)
+                target_count = count or 5
+                print(f"\n🇨🇳 仅生成中文内容({target_count}篇)...")
+                result = generate_keyword_driven_articles("Chinese (Simplified)", "zh", target_count)
                 print(f"✅ 中文生成完成: 成功 {result['success']} 篇")
             elif language.lower() in ["english", "en", "英文"]:
-                print("\n🇺🇸 仅生成英文内容...")
-                result = generate_keyword_driven_articles("English", "en", 5)
+                target_count = count or 10  # 默认改为10篇
+                print(f"\n🇺🇸 仅生成英文内容({target_count}篇)...")
+                result = generate_keyword_driven_articles("English", "en", target_count)
                 print(f"✅ 英文生成完成: 成功 {result['success']} 篇")
             elif language.lower() in ["hindi", "hi", "हिंदी"]:
-                print("\n🇮🇳 仅生成印地语内容...")
-                result = generate_keyword_driven_articles("Hindi", "hi", 8)
+                target_count = count or 8
+                print(f"\n🇮🇳 仅生成印地语内容({target_count}篇)...")
+                result = generate_keyword_driven_articles("Hindi", "hi", target_count)
                 print(f"✅ 印地语生成完成: 成功 {result['success']} 篇")
             elif language.lower() in ["urdu", "ur", "bn", "اردو"]:
-                print("\n🇵🇰 仅生成乌尔都语内容...")
-                result = generate_keyword_driven_articles("Urdu", "bn", 3)
+                target_count = count or 3
+                print(f"\n🇵🇰 仅生成乌尔都语内容({target_count}篇)...")
+                result = generate_keyword_driven_articles("Urdu", "bn", target_count)
                 print(f"✅ 乌尔都语生成完成: 成功 {result['success']} 篇")
             elif language.lower() in ["indonesian", "id", "bahasa"]:
-                print("\n🇮🇩 仅生成印尼语内容...")
-                result = generate_keyword_driven_articles("Indonesian", "id", 3)
+                target_count = count or 3
+                print(f"\n🇮🇩 仅生成印尼语内容({target_count}篇)...")
+                result = generate_keyword_driven_articles("Indonesian", "id", target_count)
                 print(f"✅ 印尼语生成完成: 成功 {result['success']} 篇")
             else:
-                # 默认生成多语言
-                main()
+                # 默认只生成英文
+                target_count = count or 10
+                print(f"\n🇺🇸 默认生成英文内容({target_count}篇)...")
+                result = generate_keyword_driven_articles("English", "en", target_count)
+                print(f"✅ 英文生成完成: 成功 {result['success']} 篇")
         else:
             print(f"❌ 未知命令: {command}")
             print("💡 可用命令:")
-            print("   python auto_generate_articles.py keywords [language]")
+            print("   python auto_generate_articles.py keywords [language] [count]")
             print("   language 可选值:")
-            print("     - english/en/英文 (5篇)")
-            print("     - hindi/hi/हिंदी (8篇)")
-            print("     - urdu/ur/bn/اردو (3篇)")
-            print("     - indonesian/id/bahasa (3篇)")
-            print("     - chinese/zh/中文 (5篇)")
-            print("     - all/both (默认，所有语言)")
+            print("     - english/en/英文 (默认10篇)")
+            print("     - hindi/hi/हिंदी (默认8篇)")
+            print("     - urdu/ur/bn/اردو (默认3篇)")
+            print("     - indonesian/id/bahasa (默认3篇)")
+            print("     - chinese/zh/中文 (默认5篇)")
+            print("   count: 可选，指定生成文章数量")
+            print("   示例:")
+            print("     python auto_generate_articles.py keywords english 10")
+            print("     python auto_generate_articles.py keywords english 15")
     else:
-        # 默认执行关键词驱动的多语言生成
+        # 默认执行关键词驱动的英文生成
         main()

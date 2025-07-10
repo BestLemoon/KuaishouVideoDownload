@@ -56,9 +56,9 @@ def run_generator():
         print("🚀 开始生成英文博客文章...")
         print("=" * 50)
         
-        # 运行脚本，只生成英文文章
+        # 运行脚本，生成10篇英文文章
         result = subprocess.run([
-            sys.executable, "scripts/auto_generate_articles.py", "keywords", "english"
+            sys.executable, "scripts/auto_generate_articles.py", "keywords", "english", "10"
         ], capture_output=False, text=True)
         
         if result.returncode == 0:
@@ -75,7 +75,7 @@ def run_generator():
 def main():
     """主函数"""
     print("🎯 快手视频下载博客生成器")
-    print("📝 每日生成5篇英文文章")
+    print("📝 每日生成10篇英文文章")
     print("=" * 50)
     
     # 检查环境

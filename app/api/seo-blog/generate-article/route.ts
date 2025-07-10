@@ -8,13 +8,26 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-// 获取Unsplash随机图片
-async function getUnsplashImage(query: string = "technology"): Promise<string> {
+// 获取Unsplash随机图片 - 优化为短视频相关关键词
+async function getUnsplashImage(query: string = "short video"): Promise<string> {
   try {
     // 如果没有设置Unsplash Access Key，返回默认图片
     if (!process.env.UNSPLASH_ACCESS_KEY) {
       console.log("Unsplash Access Key not set, using default image");
       return "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80";
+    }
+
+    // 短视频相关的关键词列表
+    const shortVideoKeywords = [
+      "short video", "mobile video", "social media", "smartphone recording",
+      "video content", "digital media", "content creation", "video editing",
+      "mobile phone", "social network", "video streaming", "online video",
+      "vertical video", "tiktok style", "video maker", "video production"
+    ];
+
+    // 如果查询是默认的短视频或包含特定关键词，随机选择一个短视频相关关键词
+    if (query === "short video" || query.toLowerCase().includes("twitter") || query.toLowerCase().includes("kuaishou")) {
+      query = shortVideoKeywords[Math.floor(Math.random() * shortVideoKeywords.length)];
     }
 
     const response = await fetch(
@@ -145,8 +158,8 @@ ${internalLinksText}
     // 生成唯一slug
     const finalSlug = await generateUniqueSlug(slug, locale);
 
-    // 获取Unsplash封面图片
-    const coverUrl = await getUnsplashImage("twitter");
+    // 获取Unsplash封面图片 - 使用短视频相关关键词
+    const coverUrl = await getUnsplashImage("short video");
 
     // 插入到数据库
     const postUuid = uuidv4();
