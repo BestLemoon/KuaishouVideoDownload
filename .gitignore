@@ -31,7 +31,8 @@ yarn-error.log*
 .env.development
 .env.production
 .env.test
-seo_blog_generator/.env
+seo_blog_generator/
+marketing_scripts/
 wrangler.toml
 # vercel
 .vercel
