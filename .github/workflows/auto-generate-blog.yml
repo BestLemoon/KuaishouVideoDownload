@@ -1,21 +1,32 @@
-name: Auto Generate English Blog Articles
+name: Auto Generate Multi-Language Blog Articles
 
 on:
   schedule:
-    # 每天凌晨2点执行 (UTC时间) - 生成英语文章
+    # 每天凌晨2点执行 (UTC时间) - 生成多语言文章
     - cron: '0 2 * * *'
   workflow_dispatch: # 允许手动触发
     inputs:
-      count:
-        description: '生成文章数量'
+      english_count:
+        description: '英语文章数量'
         required: false
-        default: '10'
+        default: '3'
         type: choice
         options:
+        - '1'
+        - '2'
+        - '3'
         - '5'
         - '10'
-        - '15'
-        - '20'
+      other_count:
+        description: '其他语言文章数量'
+        required: false
+        default: '1'
+        type: choice
+        options:
+        - '1'
+        - '2'
+        - '3'
+        - '5'
 
 jobs:
   generate-articles:
@@ -44,9 +55,45 @@ jobs:
         UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
         NEXT_PUBLIC_WEB_URL: ${{ secrets.NEXT_PUBLIC_WEB_URL }}
       run: |
-        ARTICLE_COUNT="${{ github.event.inputs.count || '10' }}"
-        echo "🇺🇸 生成英语文章 (${ARTICLE_COUNT}篇)"
-        python scripts/auto_generate_articles.py keywords english ${ARTICLE_COUNT}
+        ENGLISH_COUNT="${{ github.event.inputs.english_count || '3' }}"
+        echo "🇺🇸 生成英语文章 (${ENGLISH_COUNT}篇)"
+        python scripts/auto_generate_articles.py keywords english ${ENGLISH_COUNT}
+
+    - name: Run Indonesian article generation
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+        SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+        NEXT_PUBLIC_WEB_URL: ${{ secrets.NEXT_PUBLIC_WEB_URL }}
+      run: |
+        OTHER_COUNT="${{ github.event.inputs.other_count || '1' }}"
+        echo "🇮🇩 生成印尼语文章 (${OTHER_COUNT}篇)"
+        python scripts/auto_generate_articles.py keywords id ${OTHER_COUNT}
+
+    - name: Run Hindi article generation
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+        SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+        NEXT_PUBLIC_WEB_URL: ${{ secrets.NEXT_PUBLIC_WEB_URL }}
+      run: |
+        OTHER_COUNT="${{ github.event.inputs.other_count || '1' }}"
+        echo "🇮🇳 生成印地语文章 (${OTHER_COUNT}篇)"
+        python scripts/auto_generate_articles.py keywords hi ${OTHER_COUNT}
+
+    - name: Run Bengali article generation
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+        SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+        NEXT_PUBLIC_WEB_URL: ${{ secrets.NEXT_PUBLIC_WEB_URL }}
+      run: |
+        OTHER_COUNT="${{ github.event.inputs.other_count || '1' }}"
+        echo "🇧🇩 生成孟加拉语文章 (${OTHER_COUNT}篇)"
+        python scripts/auto_generate_articles.py keywords bn ${OTHER_COUNT}
 
     - name: Generate sitemap update
       env:
@@ -58,8 +105,13 @@ jobs:
 
     - name: Summary
       run: |
-        ARTICLE_COUNT="${{ github.event.inputs.count || '10' }}"
-        echo "🎉 英语文章生成任务完成!"
+        ENGLISH_COUNT="${{ github.event.inputs.english_count || '3' }}"
+        OTHER_COUNT="${{ github.event.inputs.other_count || '1' }}"
+        TOTAL_COUNT=$((ENGLISH_COUNT + OTHER_COUNT * 3))
+        echo "🎉 多语言文章生成任务完成!"
         echo "📊 每日生成计划:"
-        echo "   🇺🇸 英语: ${ARTICLE_COUNT}篇"
-        echo "   📈 总计: ${ARTICLE_COUNT}篇/天"
+        echo "   🇺🇸 英语: ${ENGLISH_COUNT}篇"
+        echo "   🇮🇩 印尼语: ${OTHER_COUNT}篇"
+        echo "   🇮🇳 印地语: ${OTHER_COUNT}篇"
+        echo "   🇧🇩 孟加拉语: ${OTHER_COUNT}篇"
+        echo "   📈 总计: ${TOTAL_COUNT}篇/天"

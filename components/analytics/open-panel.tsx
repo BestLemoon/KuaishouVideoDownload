@@ -13,6 +13,7 @@ export default function OpenPanel() {
   return (
     <OpenPanelComponent
       clientId={clientId}
+      apiUrl="https://openpanel.chillwaytech.com/api"
       trackScreenViews={true}
       trackAttributes={true}
       trackOutgoingLinks={true}
